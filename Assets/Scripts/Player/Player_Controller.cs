@@ -77,12 +77,27 @@ public class Player_Controller : MonoBehaviour
     {
         //Calculamos la dirección del movimiento y se la sumamos a la posición x multiplicandolo por la velocidad y el time.deltatime
       Vector2 dir = _move.ReadValue<Vector2>();
+        float HorizontalDir = Mathf.Round(dir.x);
+        Quaternion rot = transform.rotation;
         Vector2 pos = transform.position;
+
         //Redondeamos el valor de dir.x para que en todas las plataformas y controladores el movimiento sea igual.
-        
-            pos.x += Mathf.Round(dir.x) * Speed * Time.deltaTime;
+            pos.x += HorizontalDir * Speed * Time.deltaTime;
             transform.position = pos;
-            
+
+        //Calculamos la dirección a la que mira el jugador
+        Debug.Log(HorizontalDir);
+        rot.x = 0;
+        rot.z = 0;
+            if(HorizontalDir == -1)
+            {
+               rot.y = 180;
+            }
+            else if(HorizontalDir == 1)
+            {
+               rot.y = 0;
+            }
+        transform.rotation = rot;
 
 
         
