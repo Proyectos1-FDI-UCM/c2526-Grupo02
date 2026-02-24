@@ -7,11 +7,10 @@
 using UnityEngine;
 using static UnityEditor.SceneView;
 
-/// <summary>
+
 /// Script encargado de seguir al jugador en un juego 2D,
 /// utilizando la altura proporcionada por CameraSettings
 /// y suavizando el movimiento con Lerp.
-/// </summary>
 public class CameraFollow : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
@@ -38,8 +37,7 @@ public class CameraFollow : MonoBehaviour
 
     /// LateUpdate se llama después de todos los Update para
     /// que la cámara siga al jugador suavemente.
-    ///
-    /// 
+
     private void LateUpdate()
     {
         if (player == null || cameraSettings == null) return;
