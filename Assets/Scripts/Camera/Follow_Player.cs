@@ -71,15 +71,15 @@ public class Follow_Player : MonoBehaviour
         //Vector3 act = transform.position;
         ////Vector3 targetEyes = Target.position + Vector3.up * TargetEyes;
         //Vector3 highPos = expectedPos + Vector3.up * 5f; 
-        bool _collidingR = Physics2D.Raycast(rayPos, Vector2.right, DistanceToWall);
-        bool _collidingL = Physics2D.Raycast(rayPos, Vector2.left, DistanceToWall);
-        Debug.Log(_collidingL + "L " + _collidingR);
+        bool _collidingR = Physics2D.Raycast(rayPos, Vector2.right, DistanceToWall).distance > 0.1f;
+        bool _collidingL = Physics2D.Raycast(rayPos, Vector2.left, DistanceToWall).distance > 0.1f;
+
         if (!_collidingR && !_collidingL)
         {
             targetPos.x = Mathf.Lerp(targetPos.x, playerAct.x, (SpringFactor * Time.deltaTime));
             transform.position = targetPos;
         }
-       
+
 
         /* Vector3 dir = (targetEyes - transform.position).normalized; *///Calculamos la dirección hacia los ojos
                                                                          //Quaternion lookAtRotation = Quaternion.LookRotation(dir, Vector3.up);
