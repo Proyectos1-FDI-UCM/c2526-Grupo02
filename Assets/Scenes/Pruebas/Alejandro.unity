@@ -246,6 +246,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b6afd9649cc5e04f8045051d8286f34, type: 3}
+--- !u!1 &1019795789 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2460893897635827811, guid: b09c55b748697f24d8824adcd974f68d, type: 3}
+  m_PrefabInstance: {fileID: 1070479943}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1070479943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -305,6 +310,22 @@ PrefabInstance:
     - target: {fileID: 2956505944852746576, guid: b09c55b748697f24d8824adcd974f68d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5796866007303315036, guid: b09c55b748697f24d8824adcd974f68d, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5796866007303315036, guid: b09c55b748697f24d8824adcd974f68d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5796866007303315036, guid: b09c55b748697f24d8824adcd974f68d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5796866007303315036, guid: b09c55b748697f24d8824adcd974f68d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -424,6 +445,10 @@ PrefabInstance:
       propertyPath: Target
       value: 
       objectReference: {fileID: 131941472}
+    - target: {fileID: 8745099721723881016, guid: fdc3b92a468881b4f80bd7062fa2fd4e, type: 3}
+      propertyPath: Jugador
+      value: 
+      objectReference: {fileID: 1019795789}
     - target: {fileID: 9078941738397881916, guid: fdc3b92a468881b4f80bd7062fa2fd4e, type: 3}
       propertyPath: m_Name
       value: Camara
