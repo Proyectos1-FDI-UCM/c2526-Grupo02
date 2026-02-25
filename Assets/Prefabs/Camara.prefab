@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4992442896370385262}
   - component: {fileID: 3838993935119545493}
   - component: {fileID: 7324887246047123663}
+  - component: {fileID: 8745099721723881016}
   m_Layer: 0
   m_Name: Camara
   m_TagString: MainCamera
@@ -151,6 +152,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  TargetEyes: 0.5
-  springFactor: 5
-  rotationspringFactor: 5
+  SpringFactor: 5
+  DistanceToWall: 7
+  rayHeight: 3
+--- !u!114 &8745099721723881016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9078941738397881916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef6a062928c6d1240a31dd5cd9f68243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alturaNormal: 2
+  alturaElevada: 5
+  velocidadTransicionAltura: 3
