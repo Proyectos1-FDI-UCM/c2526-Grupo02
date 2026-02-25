@@ -26,7 +26,7 @@ public class Player_Controller : MonoBehaviour
 
     //Atributo que nos dice la velocidad máxima del jugador.
     [SerializeField]
-    int Speed;
+    int Speed = 5;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -40,30 +40,32 @@ public class Player_Controller : MonoBehaviour
 
     private InputAction _move;
     private Rigidbody2D _rb;
+    private int SpeedRecord;
 
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
+        SpeedRecord = Speed;
         _rb = GetComponent<Rigidbody2D>();
-        if (_rb == null )
+        if (_rb == null)
         {
             Debug.Log("No hay Rigidbody");
             return;
         }
         _move = InputSystem.actions.FindAction("move");
-        if(_move == null)
+        if (_move == null)
         {
             Debug.Log("No se ha encontrado la acción move");
             return;
@@ -76,37 +78,37 @@ public class Player_Controller : MonoBehaviour
     void Update()
     {
         //Calculamos la dirección del movimiento y se la sumamos a la posición x multiplicandolo por la velocidad y el time.deltatime
-      Vector2 dir = _move.ReadValue<Vector2>();
+        Vector2 dir = _move.ReadValue<Vector2>();
         float HorizontalDir = Mathf.Round(dir.x);
         Quaternion rot = transform.rotation;
         Vector2 pos = transform.position;
 
         //Redondeamos el valor de dir.x para que en todas las plataformas y controladores el movimiento sea igual.
-            pos.x += HorizontalDir * Speed * Time.deltaTime;
-            transform.position = pos;
+        pos.x += HorizontalDir * Speed * Time.deltaTime;
+        transform.position = pos;
 
         //Calculamos la dirección a la que mira el jugador
         Debug.Log(HorizontalDir);
         rot.x = 0;
         rot.z = 0;
-            if(HorizontalDir == -1)
-            {
-               rot.y = 180;
-            }
-            else if(HorizontalDir == 1)
-            {
-               rot.y = 0;
-            }
+        if (HorizontalDir == -1)
+        {
+            rot.y = 180;
+        }
+        else if (HorizontalDir == 1)
+        {
+            rot.y = 0;
+        }
         transform.rotation = rot;
 
 
-        
-       
-        
-        
+
+
+
+
     }
     #endregion
-   
+
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -116,8 +118,17 @@ public class Player_Controller : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    public void Stop()
+    {
+        Speed = 0;
+    }
+
+    public void Resume()
+    {
+        Speed = SpeedRecord;
+    }
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -125,7 +136,7 @@ public class Player_Controller : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
 } // class Player_Controller 
 // namespace

@@ -23,6 +23,10 @@ public class LookUp : MonoBehaviour
     [Header("Velocidad transición altura")]
     [SerializeField] private float velocidadTransicionAltura = 3f;
 
+    [Header("Jugador")]
+    [SerializeField] private GameObject Jugador;
+
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados
     /// <summary>Indica si la cámara está en altura elevada</summary>
@@ -34,6 +38,7 @@ public class LookUp : MonoBehaviour
     /// <summary> Variables para hacer un temporizador que frene el presionado de los botones
     private float _nextMov;
 
+
     /// </summary>
     #endregion
 
@@ -43,6 +48,16 @@ public class LookUp : MonoBehaviour
     private void Start()
     {
         _lookUp = InputSystem.actions.FindAction("LookUP");
+        if (Jugador == null)
+        {
+            
+            Debug.Log("No se encontró Jugador seleccionado");
+            return;
+        }
+        else if(Jugador.GetComponent<Player_Controller>() == null)
+        {
+            Debug.Log("El jugador no tiene el Player_Controller");
+        }
         if (_lookUp == null)
         {
             Debug.Log("No se encontró la acción para mirar hacia arriba");
@@ -68,10 +83,13 @@ public class LookUp : MonoBehaviour
         if (_alturaAlta)
         {
             yObj = alturaElevada;
+            Jugador.GetComponent<Player_Controller>().Stop();
         }
         else
         {
             yObj = alturaNormal;
+            Jugador.GetComponent<Player_Controller>().Resume();
+            
         }
 
         // Lerp suave hacia la altura objetivo
