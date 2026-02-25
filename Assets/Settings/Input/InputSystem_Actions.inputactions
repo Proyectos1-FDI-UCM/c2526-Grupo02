@@ -25,7 +25,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Subir_camara",
+                    "name": "LookUP",
                     "type": "Button",
                     "id": "b269bb05-96bd-4d82-a161-9dba6cbe308b",
                     "expectedControlType": "",
@@ -148,11 +148,22 @@
                 {
                     "name": "",
                     "id": "f6a38042-b61a-4d7e-b218-e4ad9538fcf3",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Subir_camara",
+                    "action": "LookUP",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1c922070-624f-48a7-84b0-916b027448de",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LookUP",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

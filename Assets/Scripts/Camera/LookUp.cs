@@ -12,11 +12,9 @@ using UnityEngine.InputSystem;
 /// permite alternar entre altura normal y elevada con una tecla,
 /// y suaviza la transición de altura mediante Lerp.
 
-public class CameraSettings : MonoBehaviour
+public class LookUp : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
-    [Header("Velocidad seguimiento")]
-    [SerializeField] private float velocidad = 5f;
 
     [Header("Alturas de cámara")]
     [SerializeField] private float alturaNormal = 2f;
@@ -25,19 +23,18 @@ public class CameraSettings : MonoBehaviour
     [Header("Velocidad transición altura")]
     [SerializeField] private float velocidadTransicionAltura = 3f;
 
-    [Header("Input System")]
-    [SerializeField] private InputActionReference teclaAltura = null;
-
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados
     /// <summary>Indica si la cámara está en altura elevada</summary>
     private bool _alturaAlta = false;
 
-    /// <summary>Controla el estado anterior de la tecla para detectar pulsación</summary>
-    private bool _teclaAnterior = false;
+    ///<summary>Controles
+    private InputAction _lookUp;
 
-    /// <summary>Altura actual de la cámara (Lerp suave)</summary>
-    private float _alturaActual;
+    /// <summary> Variables para hacer un temporizador que frene el presionado de los botones
+    private float _nextMov;
+
+    /// </summary>
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -45,55 +42,51 @@ public class CameraSettings : MonoBehaviour
 
     private void Start()
     {
-        _alturaActual = alturaNormal;
+        _lookUp = InputSystem.actions.FindAction("LookUP");
+        if (_lookUp == null)
+        {
+            Debug.Log("No se encontró la acción para mirar hacia arriba");
+            return;
+        }
+
     }
 
     private void Update()
     {
-        if (teclaAltura == null) return;
-
         // Leer valor de la acción (0 = no presionada, 1 = presionada)
-        bool teclaActual = teclaAltura.action.ReadValue<float>() > 0.5f;
+        bool teclaActual = _lookUp.ReadValue<float>() > 0.5f;
 
         // Detecta solo el "press" (como GetKeyDown)
-        if (teclaActual && !_teclaAnterior)
+        if (teclaActual && _nextMov < Time.time)
+        {
+            _nextMov = Time.time + 1;
             _alturaAlta = !_alturaAlta;
+        }
+        Vector3 act = transform.position;
+        float yObj = alturaNormal;
 
-        _teclaAnterior = teclaActual;
+        if (_alturaAlta)
+        {
+            yObj = alturaElevada;
+        }
+        else
+        {
+            yObj = alturaNormal;
+        }
 
         // Lerp suave hacia la altura objetivo
-        float alturaObjetivo = _alturaAlta ? alturaElevada : alturaNormal;
-        _alturaActual = Mathf.Lerp(
-            _alturaActual,
-            alturaObjetivo,
+        act.y = Mathf.Lerp(
+            act.y,
+            yObj,
             velocidadTransicionAltura * Time.deltaTime
         );
+        transform.position = act;
     }
 
-    private void OnEnable()
-    {
-        teclaAltura?.action.Enable();
-    }
-
-    private void OnDisable()
-    {
-        teclaAltura?.action.Disable();
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos Públicos
-    /// <summary>Devuelve la altura actual de la cámara (para CameraFollow)</summary>
-    public float GetAlturaActual()
-    {
-        return _alturaActual;
-    }
-
-    /// <summary>Devuelve la velocidad de seguimiento de la cámara</summary>
-    public float GetVelocidad()
-    {
-        return velocidad;
-    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
