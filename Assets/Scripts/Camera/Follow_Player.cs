@@ -18,37 +18,41 @@ public class Follow_Player : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     [SerializeField]
     private Transform Target;
-    [SerializeField]
-    private float TargetEyes = 0.5f;
+    //[SerializeField]
+    //private float TargetEyes = 0.5f;
     [SerializeField]
     private float springFactor = 5f;
-    [SerializeField]
-    private float rotationspringFactor = 5f;
-    
+    //[SerializeField]
+    //private float rotationspringFactor = 5f;
 
-    private Vector3 offset; //Distancia entre punto A y B. (El juagdor y la cámara)
-    private Vector3 currentPos; // Posicion actual con el movimiento 'suave' de la cámara
-    private Vector3 expectedPos;
+
+    //private Vector3 offset; //Distancia entre punto A y B. (El juagdor y la cámara)
+    //private Vector3 currentPos; // Posicion actual con el movimiento 'suave' de la cámara
+    //private Vector3 expectedPos;
 
     void Start()
     {
-        offset = transform.position - Target.position; // Calculamos la distancia inicial.
+        if (Target == null)
+        {
+            Debug.Log("No has asignado ningun target a la cámara");
+            return;
+        }
     }
-    private void LateUpdate()
+    private void Update()
     {
-        if (Target == null) return;
 
-        expectedPos = Target.position + offset; //Posicion ideal con el objetivo y el offset. 
-        Vector3 bestPos = expectedPos;
-        Vector3 targetEyes = Target.position + Vector3.up * TargetEyes;
-        Vector3 highPos = expectedPos + Vector3.up * 5f; 
-        currentPos = Vector3.Lerp(transform.position, bestPos, (springFactor * Time.deltaTime));
-        transform.position = currentPos;
+        Vector3 playerAct = Target.transform.position;
+        Vector3 targetPos = transform.position;
+        //expectedPos = Target.position + offset; //Posicion ideal con el objetivo y el offset. 
+        //Vector3 act = transform.position;
+        ////Vector3 targetEyes = Target.position + Vector3.up * TargetEyes;
+        //Vector3 highPos = expectedPos + Vector3.up * 5f; 
+        targetPos.x = Mathf.Lerp(targetPos.x, playerAct.x, (springFactor * Time.deltaTime));
+        transform.position = targetPos;
 
-        Vector3 dir = (targetEyes - transform.position).normalized; //Calculamos la dirección hacia los ojos
-        Quaternion lookAtRotation = Quaternion.LookRotation(dir, Vector3.up);
-        transform.rotation = Quaternion.Lerp(transform.rotation, lookAtRotation, rotationspringFactor * Time.deltaTime);
-
+        /* Vector3 dir = (targetEyes - transform.position).normalized; *///Calculamos la dirección hacia los ojos
+                                                                         //Quaternion lookAtRotation = Quaternion.LookRotation(dir, Vector3.up);
+                                                                         //transform.rotation = Quaternion.Lerp(transform.rotation, lookAtRotation, rotationspringFactor * Time.deltaTime);
     }
     #region Atributos del Inspector (serialized fields)
     // Documentar cada atributo que aparece aquí.
@@ -81,12 +85,12 @@ public class Follow_Player : MonoBehaviour
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-   
+
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
-    
+
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -98,7 +102,7 @@ public class Follow_Player : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -106,7 +110,7 @@ public class Follow_Player : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
 } // class Follow_Player 
 // namespace
