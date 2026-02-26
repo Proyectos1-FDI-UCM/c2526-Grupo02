@@ -82,14 +82,14 @@ public class Detect : MonoBehaviour
     // mayúscula, incluida la primera letra)
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == Jugador)
+        if (collision.gameObject.GetComponent<Player_Controller>() != null)
         {
             Canvas.SetActive(true);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject == Jugador)
+        if (collision.gameObject.GetComponent<Player_Controller>() != null) 
         {
             Canvas.SetActive(false);
         }
