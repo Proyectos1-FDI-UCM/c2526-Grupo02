@@ -6,7 +6,6 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 
@@ -14,7 +13,7 @@ using UnityEngine.InputSystem;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Player_Controller : MonoBehaviour
+public class Obj_Interact_Test : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -23,10 +22,14 @@ public class Player_Controller : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
-    //Atributo que nos dice la velocidad máxima del jugador.
     [SerializeField]
-    int Speed = 5;
+    objType type;
+    [SerializeField]
+    string desc;
+    [SerializeField]
+    Inventory_Manager inventory;
+
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -37,10 +40,6 @@ public class Player_Controller : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
-    private InputAction _move;
-    private Rigidbody2D _rb;
-    private int SpeedRecord;
 
     #endregion
 
@@ -55,19 +54,18 @@ public class Player_Controller : MonoBehaviour
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Object o = new Object();
+        o = inventory.CreateObj(type, desc);
+        inventory.AddObj(o);
+        Destroy(this.gameObject);
+    }
     void Start()
     {
-        SpeedRecord = Speed;
-        _rb = GetComponent<Rigidbody2D>();
-        if (_rb == null)
+     if (inventory == null)
         {
-            Debug.Log("No hay Rigidbody");
-            return;
-        }
-        _move = InputSystem.actions.FindAction("move");
-        if (_move == null)
-        {
-            Debug.Log("No se ha encontrado la acción move");
+            Debug.Log("no hay inventario configurado");
             return;
         }
     }
@@ -77,37 +75,9 @@ public class Player_Controller : MonoBehaviour
     /// </summary>
     void Update()
     {
-        //Calculamos la dirección del movimiento y se la sumamos a la posición x multiplicandolo por la velocidad y el time.deltatime
-        Vector2 dir = _move.ReadValue<Vector2>();
-        float HorizontalDir = Mathf.Round(dir.x);
-        Quaternion rot = transform.rotation;
-        Vector2 pos = transform.position;
-
-        //Redondeamos el valor de dir.x para que en todas las plataformas y controladores el movimiento sea igual.
-        pos.x += HorizontalDir * Speed * Time.deltaTime;
-        transform.position = pos;
-
-        //Calculamos la dirección a la que mira el jugador
-        rot.x = 0;
-        rot.z = 0;
-        if (HorizontalDir == -1)
-        {
-            rot.y = 180;
-        }
-        else if (HorizontalDir == 1)
-        {
-            rot.y = 0;
-        }
-        transform.rotation = rot;
-
-
-
-
-
-
+        
     }
     #endregion
-
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -117,17 +87,8 @@ public class Player_Controller : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    public void Stop()
-    {
-        Speed = 0;
-    }
-
-    public void Resume()
-    {
-        Speed = SpeedRecord;
-    }
     #endregion
-
+    
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -135,7 +96,7 @@ public class Player_Controller : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion
+    #endregion   
 
-} // class Player_Controller 
+} // class Obj_Interact_Test 
 // namespace

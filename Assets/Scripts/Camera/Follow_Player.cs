@@ -44,6 +44,7 @@ public class Follow_Player : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+    private float _minRayDist = 0.00f;
 
     #endregion
 
@@ -71,8 +72,8 @@ public class Follow_Player : MonoBehaviour
         //Vector3 act = transform.position;
         ////Vector3 targetEyes = Target.position + Vector3.up * TargetEyes;
         //Vector3 highPos = expectedPos + Vector3.up * 5f; 
-        bool _collidingR = Physics2D.Raycast(rayPos, Vector2.right, DistanceToWall).distance > 0.1f;
-        bool _collidingL = Physics2D.Raycast(rayPos, Vector2.left, DistanceToWall).distance > 0.1f;
+        bool _collidingR = Physics2D.Raycast(rayPos, Vector2.right, DistanceToWall).distance > _minRayDist;
+        bool _collidingL = Physics2D.Raycast(rayPos, Vector2.left, DistanceToWall).distance > _minRayDist;
 
         if (!_collidingR && !_collidingL)
         {
