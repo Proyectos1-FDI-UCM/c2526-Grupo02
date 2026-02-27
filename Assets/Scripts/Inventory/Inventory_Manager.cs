@@ -108,6 +108,7 @@ public class Inventory_Manager : MonoBehaviour
         //Si el objeto es encontrado lo quitamos y desplazamos a la izquierda todo lo siguiente
         if (encontrado)
         {
+            _nObj--;
             while (i < _invLenght && !acabado)
             {
                 inv[i - 1] = inv[i];
@@ -119,7 +120,6 @@ public class Inventory_Manager : MonoBehaviour
             {
                 inv[i - 1] = CreateObj(objType.vacio, "");
             }
-
         }
         else
         {
