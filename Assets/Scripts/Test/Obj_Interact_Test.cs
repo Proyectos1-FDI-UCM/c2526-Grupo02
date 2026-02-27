@@ -16,7 +16,7 @@ using UnityEngine;
 public class Obj_Interact_Test : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
-    #region Atributos del Inspector (serialized fields)
+    /*#region Atributos del Inspector (serialized fields)
     // Documentar cada atributo que aparece aquí.
     // El convenio de nombres de Unity recomienda que los atributos
     // públicos y de inspector se nombren en formato PascalCase
@@ -97,6 +97,6 @@ public class Obj_Interact_Test : MonoBehaviour
     // mayúscula, incluida la primera letra)
 
     #endregion   
-
+    */
 } // class Obj_Interact_Test 
 // namespace

@@ -13,22 +13,24 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class RM_From_Inv_Test : MonoBehaviour
+public class Object : MonoBehaviour
 {
+    public enum ItemType { flor, pelota, salchipapa}
+
     // ---- ATRIBUTOS DEL INSPECTOR ----
-    /*#region Atributos del Inspector (serialized fields)
+    #region Atributos del Inspector (serialized fields)
     // Documentar cada atributo que aparece aquí.
     // El convenio de nombres de Unity recomienda que los atributos
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    [SerializeField]
-    objType type;
-    [SerializeField]
-    Inventory_Manager inventory;
     #endregion
-
+    [SerializeField]
+    private ItemType itemType;
+    [SerializeField]
+    private Sprite inventorySprite;
+    
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -39,32 +41,20 @@ public class RM_From_Inv_Test : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     #endregion
-
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
+    
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        inventory.RemoveObj(type);
-        //inventory.
-        Destroy(this.gameObject);
-    }
     void Start()
     {
-        if (inventory == null)
-        {
-            Debug.Log("No hay inventario configurado");
-            return;
-        }
         
     }
 
@@ -84,9 +74,15 @@ public class RM_From_Inv_Test : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    public ItemType GetItem() {  return itemType; }
+    public Sprite GetInventorySprite() { return inventorySprite; }
 
+    public void RemoveFromWorld() 
+    {
+        gameObject.SetActive(false);
+    }
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -94,7 +90,7 @@ public class RM_From_Inv_Test : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
-    */
-} // class RM_From_Inv_Test 
+    #endregion
+
+} // class Object 
 // namespace
