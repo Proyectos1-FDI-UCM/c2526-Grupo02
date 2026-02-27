@@ -24,8 +24,7 @@ public class Detect : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     [SerializeField]
     private GameObject Canvas;
-    [SerializeField]
-    private GameObject Jugador;
+    
     #endregion
     
     // ---- ATRIBUTOS PRIVADOS ----
