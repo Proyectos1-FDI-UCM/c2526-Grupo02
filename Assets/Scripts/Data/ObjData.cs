@@ -18,7 +18,7 @@ public struct Object
     [SerializeField]
     private string Description;
 
-
+    //Métodos públicos que nos permiten configurar las distintas cualidades del objeto
     public void SetIndex(int _inputIndex)
     {
         index = _inputIndex;
@@ -31,6 +31,7 @@ public struct Object
     {
         Description = desc;
     }
+    //Método que nos permite obtener el tipo de objeto que es este.
     public objType Getobj()
     {
         return ThisObj;

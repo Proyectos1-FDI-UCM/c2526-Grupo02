@@ -47,11 +47,12 @@ public class Inventory_Manager : MonoBehaviour
     // - Hay que borrar los que no se usen 
     void Start()
     {
+        //Programación defensiva para  ver que la hud del inventario este configurada
         if (InvHud != null)
         {
             Debug.Log("No hay ningún hud configurado para el inventario");
         }
-
+        //Creamos el inventario (array de Object)
         inv = new Object[_invLenght];
 
     }
@@ -65,9 +66,9 @@ public class Inventory_Manager : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    //Método que nos permite crear un objeto dotándole el tipo de objeto que es y la descripción.
     public Object CreateObj(objType obj, string desc)
     {
-
         Object o = new Object();
         o.SetDesc(desc);
         //Hay que plantearnos quitar el index
@@ -75,6 +76,7 @@ public class Inventory_Manager : MonoBehaviour
         o.SetObj(obj);
         return o;
     }
+    //Método que busca un espacio libre en el inventario (Dado por el último nObj) y añade el objeto (que se habrá creado con CreateObj)
     public void AddObj(Object Object)
     {
         //Va la posición _objeto y añade ese objeto en el inventario, a no ser que este lleno (_nObj no es menor a la longitud del inventario)
@@ -90,21 +92,23 @@ public class Inventory_Manager : MonoBehaviour
         }
         else { Debug.Log("INVENTARIO LLENO"); }
     }
-
+    //Método que busca un tipo de objeto en el inventario y si lo encuentra lo borra y desplaza todos los posteriores al final
     public void RemoveObj(objType obj)
     {
         //No se si hay otra manera que no sea una búsqueda, la idea de los indices no se como funcionaría ya que no se como acceder a un objeto según su indice
         int i = 0;
         bool encontrado = false;
         bool acabado = false;
+        //Si el objeto es igual al que queremos salimos del bucle
         while (i < _invLenght && !encontrado)
         {
             encontrado = (inv[i].Getobj() == obj);
             i++;
         }
+        //Si el objeto es encontrado lo quitamos y desplazamos a la izquierda todo lo siguiente
         if (encontrado)
         {
-            while (i < _invLenght  && !acabado)
+            while (i < _invLenght && !acabado)
             {
                 inv[i - 1] = inv[i];
                 //acaba cuando el siguiente del inventario es vacio
