@@ -120,7 +120,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Talk"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""8d7c6d1d-b23c-4de9-8c72-364963c7a3c6"",
                     ""expectedControlType"": """",
@@ -269,7 +269,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Talk"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -280,7 +280,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Talk"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -871,7 +871,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_LookUP = m_Player.FindAction("LookUP", throwIfNotFound: true);
-        m_Player_Talk = m_Player.FindAction("Talk", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -968,7 +968,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_LookUP;
-    private readonly InputAction m_Player_Talk;
+    private readonly InputAction m_Player_Interact;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -993,9 +993,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @LookUP => m_Wrapper.m_Player_LookUP;
         /// <summary>
-        /// Provides access to the underlying input action "Player/Talk".
+        /// Provides access to the underlying input action "Player/Interact".
         /// </summary>
-        public InputAction @Talk => m_Wrapper.m_Player_Talk;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1031,9 +1031,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @LookUP.started += instance.OnLookUP;
             @LookUP.performed += instance.OnLookUP;
             @LookUP.canceled += instance.OnLookUP;
-            @Talk.started += instance.OnTalk;
-            @Talk.performed += instance.OnTalk;
-            @Talk.canceled += instance.OnTalk;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         /// <summary>
@@ -1054,9 +1054,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @LookUP.started -= instance.OnLookUP;
             @LookUP.performed -= instance.OnLookUP;
             @LookUP.canceled -= instance.OnLookUP;
-            @Talk.started -= instance.OnTalk;
-            @Talk.performed -= instance.OnTalk;
-            @Talk.canceled -= instance.OnTalk;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         /// <summary>
@@ -1379,12 +1379,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLookUP(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Talk" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnTalk(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

@@ -6,6 +6,8 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 
@@ -13,11 +15,8 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Object : MonoBehaviour
+public class Interactuable : MonoBehaviour
 {
-    //numItemTypes se utiliza para saber el tamaño del enum, SIEMPRE debe estar al final
-    public enum ItemType { flor, pelota, salchipapa, numItemTypes} 
-
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     // Documentar cada atributo que aparece aquí.
@@ -26,12 +25,20 @@ public class Object : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
+    //Componente que se usa para comprobar si la camara esta mirando arriba
+    [SerializeField]
+    private LookUp LookUpComponent;
+
+    //Evento que se llama cuando interactuas
+    [SerializeField]
+    private UnityEvent OnInteract;
+
+    //Booleano usado para controlar si la interaccion la lleva a cabo la camara o el jugador
+    [SerializeField]
+    [Tooltip("Bool que controla si la interaccion la hace la camara o el jugador")]
+    private bool cameraInteracts = true;
     #endregion
-    [SerializeField]
-    private ItemType itemType; //tipo del item
-    [SerializeField]
-    private Sprite inventorySprite; //sprite que usara en el inventario
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -41,6 +48,9 @@ public class Object : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    //Variable que guarda la accion de interact
+    private InputAction _Interact;
+
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -49,6 +59,35 @@ public class Object : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+    
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
+    void Start()
+    {
+        _Interact = InputSystem.actions.FindAction("Interact"); //asignamos la accion
+        if (_Interact == null)
+        {
+            Debug.Log("No se ha encontrado la acción Interact");
+            return;
+        }
+        if(LookUpComponent == null)
+        {
+            Debug.Log("Falta asignar el lookUp de la camara");
+        }
+    }
+
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (((!cameraInteracts && !LookUpComponent.GetAlturaAlta() && other.GetComponent<Player_Controller>()) //Interaccion del jugador, la camara no esta mirando arriba y el jugador esta en rango
+            || (cameraInteracts && LookUpComponent.GetAlturaAlta() && other.GetComponentInParent<Camera>())) //Interaccion de la camara, la camara esta mirando arriba y esta en rango
+            && _Interact.WasPressedThisFrame()) //Si el jugador esta pulsando el boton de interaccion
+        {
+            OnInteract.Invoke(); //llamamos a la funcion asignada en el inspector
+        }
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -58,13 +97,7 @@ public class Object : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public ItemType GetItem() {  return itemType; }
-    public Sprite GetInventorySprite() { return inventorySprite; }
 
-    public void RemoveFromWorld() 
-    {
-        gameObject.SetActive(false); //lo desactivamos en el mundo
-    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -76,5 +109,5 @@ public class Object : MonoBehaviour
 
     #endregion
 
-} // class Object 
+} // class Interactuable 
 // namespace

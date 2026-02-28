@@ -105,6 +105,7 @@ public class LookUp : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos Públicos
+    public bool GetAlturaAlta() { return _alturaAlta; }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

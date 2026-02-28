@@ -34,7 +34,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Talk",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "8d7c6d1d-b23c-4de9-8c72-364963c7a3c6",
                     "expectedControlType": "",
@@ -183,7 +183,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Talk",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -194,7 +194,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Talk",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

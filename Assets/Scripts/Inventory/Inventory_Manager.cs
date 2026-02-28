@@ -37,6 +37,8 @@ public class Inventory_Manager : MonoBehaviour
     private int _invLenght = 5;
     //indice del ultimo hueco vacio
     private int _nObj = 0;
+    //array donde se guardan los objetos
+    //[SerializeField] //por si se quiere ver que objetos hay en el inventario
     private Object[] _inv;
     #endregion
 
@@ -67,41 +69,29 @@ public class Inventory_Manager : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    //Método que busca un espacio libre en el inventario (Dado por el último nObj) y añade el objeto (que se habrá creado con CreateObj)
+    //Método que busca un espacio libre en el inventario (Dado por el último nObj) y añade el objeto que se le pasa
     public void AddObj(Object Object)
     {
-        if (_nObj < _invLenght)
+        if (_nObj < _invLenght) //para no coger objetos con el inventario lleno, despues lo añadimos y quitamos del mundo
         {
-
             _inv[_nObj] = Object;
             _nObj++;
-            Object.RemoveFromWorld();
+            Object.RemoveFromWorld(); //lo quitamos del mundo
         }
-
     }
-    //Método que busca un tipo de objeto en el inventario y si lo encuentra lo borra y desplaza todos los posteriores al final
-    public void RemoveObj(Object.ItemType obj)
-    {
-        bool encontrao = false;
-        int i = 0;
-        while (!encontrao && i < _nObj)
-        {
-            if (_inv[i].GetItem() == obj)
-            {
-                encontrao = true;
-                //Añadir la pelota en la mano
-            }
-            else
-            {
-                i++;
-            }
-        }
 
-        for(int j = i; j < _nObj; j++)
+    //Al usar UnityEvents serializados, no se pueden usar funciones que tengan como parametro un enum,
+    //por lo que pasamos un int y casteamos al enum
+    public void RemoveFromInv(int itemType)
+    {
+        if (itemType < (int)Object.ItemType.numItemTypes) 
         {
-            _inv[j] = _inv[j + 1];
+            RemoveObj((Object.ItemType)itemType);
         }
-        _nObj--;
+        else
+        {
+            Debug.Log("Tipo de item no válido");
+        }
     }
 
 
@@ -113,7 +103,30 @@ public class Inventory_Manager : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
+    //Método que busca un tipo de objeto en el inventario y si lo encuentra lo borra y desplaza todos los posteriores hacia delante
+    private void RemoveObj(Object.ItemType obj)
+    {
+        bool encontrao = false;
+        int i = 0;
+        while (!encontrao && i < _nObj) //buscamos el objeto
+        {
+            if (_inv[i].GetItem() == obj)
+            {
+                encontrao = true;
+                //TODO: añadir el objeto a la mano
+            }
+            else
+            {
+                i++;
+            }
+        }
 
+        for (int j = i; j < _nObj; j++) //desplazamos todos los objetos para rellenar el hueco del objeto borrado
+        {
+            _inv[j] = _inv[j + 1];
+        }
+        _nObj--;
+    }
     #endregion
 
 } // class Inventory_Manager 
