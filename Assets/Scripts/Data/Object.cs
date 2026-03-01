@@ -28,9 +28,9 @@ public class Object : MonoBehaviour
 
     #endregion
     [SerializeField]
-    private ItemType itemType; //tipo del item
+    private ItemType _itemType; //tipo del item
     [SerializeField]
-    private Sprite inventorySprite; //sprite que usara en el inventario
+    private Sprite _inventorySprite; //sprite que usara en el inventario
     
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
@@ -58,8 +58,8 @@ public class Object : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public ItemType GetItem() {  return itemType; }
-    public Sprite GetInventorySprite() { return inventorySprite; }
+    public ItemType GetItem() {  return _itemType; }
+    public Sprite GetInventorySprite() { return _inventorySprite; }
 
     public void RemoveFromWorld() 
     {
