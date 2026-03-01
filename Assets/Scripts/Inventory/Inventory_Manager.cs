@@ -23,10 +23,14 @@ public class Inventory_Manager : MonoBehaviour
     //los huecos donde van los objetos en el hud del inventario 
     [SerializeField]
     private GameObject[] _invHudSpaces;
+    //
+    [SerializeField]
+    private GameObject jugador; 
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
+
 
 
     //longitud del inventario
@@ -34,6 +38,9 @@ public class Inventory_Manager : MonoBehaviour
 
     //indice del ultimo hueco vacio
     private int _nObj = 0;
+
+    //input para poder usar el objeto selecionado
+    private InputAction usar;
 
     //array donde se guardan los objetos
     [SerializeField] //por si se quiere ver que objetos hay en el inventario
@@ -44,6 +51,9 @@ public class Inventory_Manager : MonoBehaviour
 
     //booleano que indica si el inventario esta abierto
     private bool _inventoryIsOpen = false;
+
+    // El índice de la posición actual en la que estoy
+    private int Index = 0; 
 
     //objet de la ui que tiene todo el inventario abierto (mas facil de ocultar/mostrar asi)
     private GameObject _inventoryHud;
@@ -70,6 +80,12 @@ public class Inventory_Manager : MonoBehaviour
             Debug.Log("No se ha encontrado la acción Inventario");
             return;
         }
+        usar =InputSystem.actions.FindAction("Interact");
+        if (usar == null)
+        {
+            Debug.Log("usar no encontrado");
+            Destroy(this);
+        }
 
         //Creamos el inventario (array de Object)
         _inv = new Object[_invLenght];
@@ -81,6 +97,10 @@ public class Inventory_Manager : MonoBehaviour
         {
             _inventoryIsOpen = !_inventoryIsOpen;
             _inventoryHud.SetActive(_inventoryIsOpen);
+        }
+        if (usar.WasPressedThisFrame())
+        {
+            IntentamoUsar(Index);
         }
     }
 
@@ -116,7 +136,22 @@ public class Inventory_Manager : MonoBehaviour
             Debug.Log("Tipo de item no válido");
         }
     }
+    public void IntentamoUsar(int n)
+    {
+        if (n < 0 || n >= _inv.Length || _inv[n] == null)
+        {
+            return;
+        }
+        UsarObjeto(n);
 
+    }
+    public void UsarObjeto(int n)
+    {
+        var item = _inv[n];
+        jugador.GetComponent<Object_use>().ObjetoRecojido(item);
+        RemoveObj(item.GetItem());
+
+    }
 
     #endregion
 

@@ -5,9 +5,7 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 
@@ -15,12 +13,9 @@ using UnityEngine.InputSystem;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Use_Object : MonoBehaviour
+public class Object_use : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
-    [SerializeField]
-    private GameObject usar;
-
     #region Atributos del Inspector (serialized fields)
     // Documentar cada atributo que aparece aquí.
     // El convenio de nombres de Unity recomienda que los atributos
@@ -31,7 +26,6 @@ public class Use_Object : MonoBehaviour
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
-    private InputAction uso; 
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
     // El convenio de nombres de Unity recomienda que los atributos
@@ -39,6 +33,9 @@ public class Use_Object : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+
+    // Objeto selecionado por el jugador
+    private Object ObjetoEnUso; 
 
     #endregion
     
@@ -53,49 +50,32 @@ public class Use_Object : MonoBehaviour
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-    void Start()
-    {
-        uso =InputSystem.actions.FindAction("usar"); 
-        if (uso == null)
-        {
-            Debug.Log("usar no encintrado");
-            Destroy(this); 
-        }
-    }
-
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        if(uso.WasPressedThisFrame())
-        {
-            IntentamoUsar(n); 
-        }
-    }
+   
     #endregion
 
-    // ---- MÉTODOS PÚBLICOS ---
-    public void IntentamoUsar(int n)
-    {
-        if (n < 0 || n >= inventario.Length || inventario[n] == null)
-        {
-            return; 
-        }
-        UsarObjeto(n); 
-
-    }
-    public void UsarObjeto(int n)
-    {
-        var item = inventario[n];
-        inventario[n] = null; 
-    }
+    // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
     // Documentar cada método que aparece aquí con ///<summary>
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+
+    // Método que señala al jugador que obejto a recojido 
+    public void ObjetoRecojido ( Object objeto)
+    {
+        Debug.Log("Estoy usando este objeto" + ObjetoEnUso); 
+        if (ObjetoEnUso == objeto)
+        {
+            ObjetoEnUso = null;
+            
+        }
+        else
+        {
+            ObjetoEnUso= objeto;
+        }
+            
+    }
 
     #endregion
     
@@ -108,5 +88,5 @@ public class Use_Object : MonoBehaviour
 
     #endregion   
 
-} // class Use_Object 
+} // class Object_use 
 // namespace
