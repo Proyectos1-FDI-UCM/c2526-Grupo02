@@ -79,7 +79,7 @@ public class Teleport : MonoBehaviour
         player.transform.position = TargetDestination;
         Vector3 camAux = camera.transform.position;
         camAux.x = TargetDestination.x;
-        camAux.y = TargetDestination.y;
+        camAux.y = TargetDestination.y+2;
         camera.transform.position = camAux;
     }
 
