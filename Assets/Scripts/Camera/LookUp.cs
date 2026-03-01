@@ -78,16 +78,16 @@ public class LookUp : MonoBehaviour
             _alturaAlta = !_alturaAlta;
         }
         Vector3 act = transform.position;
-        float yObj = alturaNormal+Jugador.transform.position.y;
+        float yObj = alturaNormal;
 
         if (_alturaAlta)
         {
-            yObj = alturaElevada+Jugador.transform.position.y;
+            yObj = alturaElevada;
             Jugador.GetComponent<Player_Controller>().Stop();
         }
         else
         {
-            yObj = alturaNormal+Jugador.transform.position.y;
+            yObj = alturaNormal;
             Jugador.GetComponent<Player_Controller>().Resume();
             
         }

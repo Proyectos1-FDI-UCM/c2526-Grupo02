@@ -44,7 +44,7 @@ public class Follow_Player : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    private float _minRayDist = 1f;
+    private float _minRayDist = 0.00f;
 
     #endregion
 

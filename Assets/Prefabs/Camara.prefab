@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5077823757969039682}
   - component: {fileID: 3681712611557871133}
   - component: {fileID: 2228154449824681604}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: InteractionZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 3838993935119545493}
   - component: {fileID: 7324887246047123663}
   - component: {fileID: 8745099721723881016}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Camara
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
