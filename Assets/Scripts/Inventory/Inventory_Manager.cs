@@ -8,6 +8,8 @@
 using System.Collections.Specialized;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 // Añadir aquí el resto de directivas using
 
 
@@ -37,10 +39,13 @@ public class Inventory_Manager : MonoBehaviour
 
     //longitud del inventario
     private int _invLenght = 5;
+
     //indice del ultimo hueco vacio
     private int _nObj = 0;
+    
     //input para poder usar el objeto selecionado
     private InputAction usar;
+    
     //array donde se guardan los objetos
     //[SerializeField] //por si se quiere ver que objetos hay en el inventario
     private Object[] _inv;
@@ -56,7 +61,9 @@ public class Inventory_Manager : MonoBehaviour
 
     //objet de la ui que tiene todo el inventario abierto (mas facil de ocultar/mostrar asi)
     private GameObject _inventoryHud;
+    private GameObject[] _invHudSpaces;
     #endregion
+
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
@@ -81,7 +88,7 @@ public class Inventory_Manager : MonoBehaviour
             Debug.Log("No se ha encontrado la acción Inventario");
             return;
         }
-        usar =InputSystem.actions.FindAction("Interact");
+        usar = InputSystem.actions.FindAction("Interact");
         if (usar == null)
         {
             Debug.Log("usar no encontrado");
@@ -90,6 +97,7 @@ public class Inventory_Manager : MonoBehaviour
 
         //Creamos el inventario (array de Object)
         _inv = new Object[_invLenght];
+    }
 
     private void Update()
     {
