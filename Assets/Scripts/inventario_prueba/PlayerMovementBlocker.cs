@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo - JESUS DIEZ
+// Responsable de la creación de este archivo
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -48,7 +48,7 @@ public class PlayerMovementBlocker: MonoBehaviour
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-    void Start()
+    void Awake()
     {
         // Referencias
         playerMovement = GetComponent<Player_Controller>();

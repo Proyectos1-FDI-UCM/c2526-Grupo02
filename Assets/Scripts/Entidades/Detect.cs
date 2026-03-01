@@ -93,9 +93,6 @@ public class Detect : MonoBehaviour
             Canvas.SetActive(false);
         }
     }
-
-
-
     #endregion   
 
 } // class Detect 
