@@ -1,3 +1,10 @@
+//---------------------------------------------------------
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo - JESUS DIEZ A PARTIR DE CODIGO DE ALEJANDRO
+// Nombre del juego
+// Proyectos 1 - Curso 2025-26
+//
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -69,7 +76,6 @@ public class PlayerInventory : MonoBehaviour
     }
 
     
-
     private void Update()
     {
         HandleToggleInventory();
