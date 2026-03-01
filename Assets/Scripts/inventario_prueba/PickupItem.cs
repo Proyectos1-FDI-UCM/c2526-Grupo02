@@ -11,6 +11,7 @@ public class PickupItem : MonoBehaviour
     [SerializeField] private InputActionAsset inputActions; // arrastra aquí tu Input Actions Asset
     [SerializeField] private GameObject pickupIcon;
 
+
     private InputAction pickupAction;
     private InventoryItem item;
     private PlayerInventory playerInventory;

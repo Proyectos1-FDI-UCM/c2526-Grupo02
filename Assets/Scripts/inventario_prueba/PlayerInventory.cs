@@ -24,8 +24,10 @@ public class PlayerInventory : MonoBehaviour
     [Header("Input System")]
     [SerializeField] private InputActionAsset inputActions; // arrastra aquí tu Input Actions Asset
     [SerializeField] private float toggleDelay = 0.3f;
-    
-    
+
+    private float navCooldown = 0.2f;   // segundos entre movimientos
+    private float navTimer = 0f;
+
     private float lastToggleTime = 0f;
     private InventoryItem[] _inv;
     private int _nObj = 0;
@@ -111,10 +113,16 @@ public class PlayerInventory : MonoBehaviour
 
     private void HandleNavigation()
     {
-        Vector2 nav = navigateAction.ReadValue<Vector2>();
+        navTimer -= Time.deltaTime;
 
+        Vector2 nav = navigateAction.ReadValue<Vector2>();
         if (nav == Vector2.zero)
+        {
+            navTimer = 0f; // reset si no hay input
             return;
+        }
+
+        if (navTimer > 0f) return;
 
         int delta = 0;
 
@@ -123,8 +131,18 @@ public class PlayerInventory : MonoBehaviour
         else if (nav.y < -0.1f) delta = columns;   // Abajo
         else if (nav.y > 0.1f) delta = -columns;  // Arriba
 
-        _selectedIndex = (_selectedIndex + delta + maxItems) % maxItems;
+        // Buscamos el siguiente slot que no esté vacío
+        int newIndex = _selectedIndex;
+        for (int i = 0; i < _inv.Length; i++) // evitar bucle infinito
+        {
+            newIndex = (newIndex + delta + _inv.Length) % _inv.Length;
+            if (_inv[newIndex] != null) break; // si no está vacío, usamos este
+        }
+
+        _selectedIndex = newIndex;
         HighlightSlot(_selectedIndex);
+
+        navTimer = navCooldown;
     }
 
     #endregion
