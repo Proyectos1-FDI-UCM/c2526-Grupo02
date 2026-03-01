@@ -106,7 +106,7 @@ public class Inventory_Manager : MonoBehaviour
     //por lo que pasamos un int y casteamos al enum
     public void RemoveFromInv(int itemType)
     {
-        if (itemType < (int)Object.ItemType.numItemTypes) //comprobamos que el indice del enum ea valido
+        if (itemType < (int)Object.ItemType.numItemTypes) //comprobamos que el indice del enum es valido
         {
             //Debug.Log((Object.ItemType)itemType);
             RemoveObj((Object.ItemType)itemType);

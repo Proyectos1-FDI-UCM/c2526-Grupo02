@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Responsable de la creación de este archivo - JESUS DIEZ
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -13,7 +13,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Detect : MonoBehaviour
+public class PlayerMovementBlocker: MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -22,11 +22,9 @@ public class Detect : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField]
-    private GameObject Canvas;
-    
+
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -37,31 +35,39 @@ public class Detect : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     #endregion
-    
+    private Player_Controller playerMovement;
+    private PlayerInventory playerInventory;
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-        Canvas.SetActive(false);
+        // Referencias
+        playerMovement = GetComponent<Player_Controller>();
+        playerInventory = FindObjectOfType<PlayerInventory>();
+
+        if (playerInventory == null)
+        {
+            Debug.LogError("No se encontró PlayerInventory en la escena.");
+        }
     }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
     void Update()
     {
-        
+        if (playerInventory != null)
+        {
+            // Bloquea movimiento si inventario abierto
+            playerMovement.enabled = !playerInventory.IsOpen;
+        }
     }
-    #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -79,24 +85,8 @@ public class Detect : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponent<Player_Controller>() != null)
-        {
-            Canvas.SetActive(true);
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponent<Player_Controller>() != null) 
-        {
-            Canvas.SetActive(false);
-        }
-    }
 
-
-
-    #endregion   
-
-} // class Detect 
-// namespace
+    #endregion
+#endregion Métodos de MonoBehaviour
+} // class NewMonoBehaviourScript 
+  // namespace

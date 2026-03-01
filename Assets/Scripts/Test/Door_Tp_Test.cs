@@ -13,7 +13,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Detect : MonoBehaviour
+public class Door_Tp_Test : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -22,11 +22,9 @@ public class Detect : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField]
-    private GameObject Canvas;
-    
+
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -36,6 +34,7 @@ public class Detect : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    private Teleport tp;
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -51,15 +50,25 @@ public class Detect : MonoBehaviour
     /// </summary>
     void Start()
     {
-        Canvas.SetActive(false);
+        tp = GetComponent<Teleport>();
+        if (tp == null)
+        {
+            Debug.Log("No hay teleport configurado en el objeto");
+        }
     }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         
+        if (collision.GetComponent<Player_Controller>() == true)
+        {
+            Debug.Log(collision);
+
+            tp.Tp();
+        }
     }
     #endregion
 
@@ -79,24 +88,8 @@ public class Detect : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponent<Player_Controller>() != null)
-        {
-            Canvas.SetActive(true);
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponent<Player_Controller>() != null) 
-        {
-            Canvas.SetActive(false);
-        }
-    }
 
+    #endregion
 
-
-    #endregion   
-
-} // class Detect 
+} // class Door_Tp_Test 
 // namespace

@@ -6,6 +6,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 // Añadir aquí el resto de directivas using
 
 
@@ -13,7 +14,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Detect : MonoBehaviour
+public class Teleport : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -22,11 +23,16 @@ public class Detect : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+
     [SerializeField]
-    private GameObject Canvas;
-    
+    Vector3 TargetDestination;
+    [SerializeField]
+    Player_Controller player;
+    [SerializeField]
+    Camera camera;
+
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -37,29 +43,26 @@ public class Detect : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-    void Start()
-    {
-        Canvas.SetActive(false);
-    }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
+    private void Start()
     {
-        
+        if (player == null)
+        { Debug.Log("NO HAY JUGADOR CONFIGURADO EN ESTE TP"); }
+        if (camera == null)
+        { Debug.Log("NO HAY CÁMARA CONFIGURADA EN ESTE TP"); }
+
     }
     #endregion
 
@@ -71,6 +74,15 @@ public class Detect : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    public void Tp()
+    {
+        player.transform.position = TargetDestination;
+        Vector3 camAux = camera.transform.position;
+        camAux.x = TargetDestination.x;
+        camAux.y = TargetDestination.y+2;
+        camera.transform.position = camAux;
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -79,24 +91,8 @@ public class Detect : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponent<Player_Controller>() != null)
-        {
-            Canvas.SetActive(true);
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponent<Player_Controller>() != null) 
-        {
-            Canvas.SetActive(false);
-        }
-    }
 
+    #endregion
 
-
-    #endregion   
-
-} // class Detect 
+} // class Teleport 
 // namespace
