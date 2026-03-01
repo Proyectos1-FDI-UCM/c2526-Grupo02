@@ -6,6 +6,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 // Añadir aquí el resto de directivas using
 
 
@@ -13,11 +14,8 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Object : MonoBehaviour
+public class Teleport : MonoBehaviour
 {
-    //numItemTypes se utiliza para saber el tamaño del enum, SIEMPRE debe estar al final
-    public enum ItemType { flor, pelota, salchipapa, numItemTypes} 
-
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     // Documentar cada atributo que aparece aquí.
@@ -26,12 +24,15 @@ public class Object : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
+    [SerializeField]
+    Vector3 TargetDestination;
+    [SerializeField]
+    Player_Controller player;
+    [SerializeField]
+    Camera camera;
+
     #endregion
-    [SerializeField]
-    private ItemType _itemType; //tipo del item
-    [SerializeField]
-    private Sprite _inventorySprite; //sprite que usara en el inventario
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -42,13 +43,27 @@ public class Object : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
+
+    private void Start()
+    {
+        if (player == null)
+        { Debug.Log("NO HAY JUGADOR CONFIGURADO EN ESTE TP"); }
+        if (camera == null)
+        { Debug.Log("NO HAY CÁMARA CONFIGURADA EN ESTE TP"); }
+
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -58,13 +73,16 @@ public class Object : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public ItemType GetItem() {  return _itemType; }
-    public Sprite GetInventorySprite() { return _inventorySprite; }
 
-    public void RemoveFromWorld() 
+    public void Tp()
     {
-        gameObject.SetActive(false); //lo desactivamos en el mundo
+        player.transform.position = TargetDestination;
+        Vector3 camAux = camera.transform.position;
+        camAux.x = TargetDestination.x;
+        camAux.y = TargetDestination.y+2;
+        camera.transform.position = camAux;
     }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -76,5 +94,5 @@ public class Object : MonoBehaviour
 
     #endregion
 
-} // class Object 
+} // class Teleport 
 // namespace

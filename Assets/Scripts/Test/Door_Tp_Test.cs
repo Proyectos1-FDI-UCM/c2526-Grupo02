@@ -13,11 +13,8 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Object : MonoBehaviour
+public class Door_Tp_Test : MonoBehaviour
 {
-    //numItemTypes se utiliza para saber el tamaño del enum, SIEMPRE debe estar al final
-    public enum ItemType { flor, pelota, salchipapa, numItemTypes} 
-
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     // Documentar cada atributo que aparece aquí.
@@ -27,11 +24,7 @@ public class Object : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     #endregion
-    [SerializeField]
-    private ItemType _itemType; //tipo del item
-    [SerializeField]
-    private Sprite _inventorySprite; //sprite que usara en el inventario
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -41,6 +34,7 @@ public class Object : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    private Teleport tp;
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -49,6 +43,33 @@ public class Object : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+    
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
+    void Start()
+    {
+        tp = GetComponent<Teleport>();
+        if (tp == null)
+        {
+            Debug.Log("No hay teleport configurado en el objeto");
+        }
+    }
+
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+        if (collision.GetComponent<Player_Controller>() == true)
+        {
+            Debug.Log(collision);
+
+            tp.Tp();
+        }
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -58,13 +79,7 @@ public class Object : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public ItemType GetItem() {  return _itemType; }
-    public Sprite GetInventorySprite() { return _inventorySprite; }
 
-    public void RemoveFromWorld() 
-    {
-        gameObject.SetActive(false); //lo desactivamos en el mundo
-    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -76,5 +91,5 @@ public class Object : MonoBehaviour
 
     #endregion
 
-} // class Object 
+} // class Door_Tp_Test 
 // namespace
