@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Responsable de la creación de este archivo 
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -61,9 +61,11 @@ public class Inventory_Manager : MonoBehaviour
 
     //objet de la ui que tiene todo el inventario abierto (mas facil de ocultar/mostrar asi)
     private GameObject _inventoryHud;
+    
+    //los huecos donde van los objetos en el hud del inventario 
     private GameObject[] _invHudSpaces;
+    
     #endregion
-
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
@@ -121,7 +123,11 @@ public class Inventory_Manager : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    //Método que busca un espacio libre en el inventario (Dado por el último nObj) y añade el objeto que se le pasa
+    /// <Summary>
+    /// Método que busca un espacio libre en el inventario 
+    /// (Dado por el último nObj) 
+    /// y añade el objeto que se le pasa
+    /// <Summary>
     public void AddObj(Object Object)
     {
         if (_nObj < _invLenght) //para no coger objetos con el inventario lleno, despues lo añadimos y quitamos del mundo
@@ -132,11 +138,13 @@ public class Inventory_Manager : MonoBehaviour
         }
     }
 
-    //Al usar UnityEvents serializados, no se pueden usar funciones que tengan como parametro un enum,
-    //por lo que pasamos un int y casteamos al enum
+    /// <Summary>
+    ///Al usar UnityEvents serializados, no se pueden usar funciones que tengan como parametro un enum,
+    ///por lo que pasamos un int y casteamos al enum
+    /// <Summary>
     public void RemoveFromInv(int itemType)
     {
-        if (itemType < (int)Object.ItemType.numItemTypes) 
+        if (itemType < (int)Object.ItemType.numItemTypes) //comprobamos que el indice del enum es valido
         {
             RemoveObj((Object.ItemType)itemType);
         }
@@ -171,6 +179,7 @@ public class Inventory_Manager : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     //Método que busca un tipo de objeto en el inventario y si lo encuentra lo borra y desplaza todos los posteriores hacia delante
+   
     private void RemoveObj(Object.ItemType obj)
     {
         bool encontrao = false;
