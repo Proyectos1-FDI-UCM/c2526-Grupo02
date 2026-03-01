@@ -6,16 +6,12 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
-
-
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Interactuable : MonoBehaviour
+public class InventoryItem : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -24,19 +20,21 @@ public class Interactuable : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    public string itemName;
+    public ItemType type;  // <-- aquí se usa ItemType
+    public Sprite icon;
 
-    //Componente que se usa para comprobar si la camara esta mirando arriba
-    [SerializeField]
-    private LookUp LookUpComponent;
-
-    //Evento que se llama cuando interactuas
-    [SerializeField]
-    private UnityEvent OnInteract;
-
-    //Booleano usado para controlar si la interaccion la lleva a cabo la camara o el jugador
-    [SerializeField]
-    [Tooltip("Bool que controla si la interaccion la hace la camara o el jugador")]
-    private bool cameraInteracts = true;
+    // Enumerador que define los tipos de items
+    public enum ItemType
+    {
+        None,
+        flor,
+        mariposa,
+        llave,
+        libro,
+        lapicero
+        // puedes añadir más tipos
+    }
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -48,45 +46,30 @@ public class Interactuable : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    //Variable que guarda la accion de interact
-    private InputAction _Interact;
-
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-        _Interact = InputSystem.actions.FindAction("Interact"); //asignamos la accion
-        if (_Interact == null)
-        {
-            Debug.Log("No se ha encontrado la acción Interact");
-            return;
-        }
-        if(LookUpComponent == null)
-        {
-            Debug.Log("Falta asignar el lookUp de la camara");
-        }
+        
     }
 
-
-    void OnTriggerStay2D(Collider2D other)
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
     {
-        if (((!cameraInteracts && !LookUpComponent.GetAlturaAlta() && other.GetComponent<Player_Controller>()) //Interaccion del jugador, la camara no esta mirando arriba y el jugador esta en rango
-            || (cameraInteracts && LookUpComponent.GetAlturaAlta() && other.GetComponentInParent<Camera>())) //Interaccion de la camara, la camara esta mirando arriba y esta en rango
-            && _Interact.WasPressedThisFrame()) //Si el jugador esta pulsando el boton de interaccion
-        {
-            OnInteract.Invoke(); //llamamos a la funcion asignada en el inspector
-        }
+        
     }
     #endregion
 
@@ -97,7 +80,15 @@ public class Interactuable : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    public ItemType GetItem()
+    {
+        return type;
+    }
 
+    public void RemoveFromWorld()
+    {
+        gameObject.SetActive(false);
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -109,5 +100,5 @@ public class Interactuable : MonoBehaviour
 
     #endregion
 
-} // class Interactuable 
+} // class NewMonoBehaviourScript 
 // namespace

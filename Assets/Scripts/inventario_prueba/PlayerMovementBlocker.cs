@@ -6,8 +6,6 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 
@@ -15,7 +13,7 @@ using UnityEngine.InputSystem;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Interactuable : MonoBehaviour
+public class PlayerMovementBlocker: MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -25,18 +23,6 @@ public class Interactuable : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    //Componente que se usa para comprobar si la camara esta mirando arriba
-    [SerializeField]
-    private LookUp LookUpComponent;
-
-    //Evento que se llama cuando interactuas
-    [SerializeField]
-    private UnityEvent OnInteract;
-
-    //Booleano usado para controlar si la interaccion la lleva a cabo la camara o el jugador
-    [SerializeField]
-    [Tooltip("Bool que controla si la interaccion la hace la camara o el jugador")]
-    private bool cameraInteracts = true;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -48,47 +34,40 @@ public class Interactuable : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    //Variable que guarda la accion de interact
-    private InputAction _Interact;
-
     #endregion
-    
+    private Player_Controller playerMovement;
+    private PlayerInventory playerInventory;
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-    void Start()
+    void Awake()
     {
-        _Interact = InputSystem.actions.FindAction("Interact"); //asignamos la accion
-        if (_Interact == null)
+        // Referencias
+        playerMovement = GetComponent<Player_Controller>();
+        playerInventory = FindObjectOfType<PlayerInventory>();
+
+        if (playerInventory == null)
         {
-            Debug.Log("No se ha encontrado la acción Interact");
-            return;
-        }
-        if(LookUpComponent == null)
-        {
-            Debug.Log("Falta asignar el lookUp de la camara");
+            Debug.LogError("No se encontró PlayerInventory en la escena.");
         }
     }
 
-
-    void OnTriggerStay2D(Collider2D other)
+    void Update()
     {
-        if (((!cameraInteracts && !LookUpComponent.GetAlturaAlta() && other.GetComponent<Player_Controller>()) //Interaccion del jugador, la camara no esta mirando arriba y el jugador esta en rango
-            || (cameraInteracts && LookUpComponent.GetAlturaAlta() && other.GetComponentInParent<Camera>())) //Interaccion de la camara, la camara esta mirando arriba y esta en rango
-            && _Interact.WasPressedThisFrame()) //Si el jugador esta pulsando el boton de interaccion
+        if (playerInventory != null)
         {
-            OnInteract.Invoke(); //llamamos a la funcion asignada en el inspector
+            // Bloquea movimiento si inventario abierto
+            playerMovement.enabled = !playerInventory.IsOpen;
         }
     }
-    #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -108,6 +87,6 @@ public class Interactuable : MonoBehaviour
     // mayúscula, incluida la primera letra)
 
     #endregion
-
-} // class Interactuable 
-// namespace
+#endregion Métodos de MonoBehaviour
+} // class NewMonoBehaviourScript 
+  // namespace
