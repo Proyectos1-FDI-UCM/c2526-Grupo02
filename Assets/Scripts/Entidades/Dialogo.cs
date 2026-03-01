@@ -27,11 +27,13 @@ public class Dialogo : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField]
-    private GameObject Canvas;
+    private GameObject Canvas; //caja del texto
     [SerializeField]
-    private Text dialogo;
-    [SerializeField] 
-    private GameObject Jugador;
+    private Text dialogo; //el texto
+    [SerializeField]
+    private float Velocidad = 0.03f;//velocidad del texto
+    [SerializeField]
+    private string Nombre; //nombre del npc
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -42,11 +44,10 @@ public class Dialogo : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    private InputAction _talk;
-    private bool _talking;
-    private bool _isTalking;
-    private string _script;
-    private int _line;
+    private InputAction _talk; //la accion
+    private bool _talking; //indica la posibilidad de hablar
+    private string [] _script; //las lineas de dialogo
+    private int _line; //el indice para las lineas de dialogo
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -60,19 +61,27 @@ public class Dialogo : MonoBehaviour
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
+    /// sistema de dialogo, usa un archivo de texto y lee el contenido y lo muestra linea por linea
     void Start()
     {
         Canvas.SetActive(false);
-        _talk = InputSystem.actions.FindAction("Talk");
+        _talk = InputSystem.actions.FindAction("Interact");
         if (_talk == null )
         {
             Debug.Log("Error con la acción talk");
         }
-        if (Jugador == null)
-        {
+       
+        string ruta = Path.Combine(Application.streamingAssetsPath, "Dialogo.txt");
 
-            Debug.Log("No se encontró Jugador seleccionado");
-            return;
+        if (File.Exists(ruta))
+        {
+            string texto = File.ReadAllText(ruta); // lee el archivo
+            _script = texto.Split('\n'); //lo separa por lineas
+            Debug.Log(texto.Length);
+        }
+        else
+        {
+            Debug.LogError("No se encontró el archivo en: " + ruta);
         }
         _line = 0;
     }
@@ -82,24 +91,18 @@ public class Dialogo : MonoBehaviour
     /// </summary>
     void Update()
     {
-        _script = Guion(_line);
-        
         if (_talking) 
-        {
-            if (_talk.ReadValue<float>() > 0.5f&&_talk.WasPressedThisFrame())
+        { 
+            if (_line == _script.GetLength(0)+1) { Canvas.SetActive(false); _line = 0; } //si avanza dialogo en la ultima linea regresa al estado de entrar
+            if (_talk.ReadValue<float>() > 0.5f&&_talk.WasPressedThisFrame()) //detecta solo un frame de input
             {
                 Canvas.SetActive(true);
+                if (_line < _script.GetLength(0)) MostrarLinea();  //comprueba que estas dentro del array de dialogo
                 _line++;
-                dialogo.text = $"Chamito: {_script}";
-                _isTalking = true;
-                if (_script == "")
-                { _talking = false; Canvas.SetActive(false); /*Jugador.GetComponent<Player_Controller>().Resume();*/ _line = 0;_isTalking = false; }
             }
-            if (_isTalking)
-            {
-               //Jugador.GetComponent<Player_Controller>().Stop();
-            }
+            
          }
+        else { Canvas.SetActive(false); _line = 0; } //una vez se aleja el dialogo regresa al estado inicial
         
     }
     #endregion
@@ -124,28 +127,35 @@ public class Dialogo : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Player_Controller>() != null)
         {
-            _talking = true; 
+            _talking = true; //indica que es posible empezar dialogo
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Player_Controller>() != null)
         {
-            _talking=false;
+            _talking=false; //prohibe empezar o seguir dialogo
         }
     }
-   private string Guion (int n)
+    private void MostrarLinea()
     {
-        switch (n)
-        {
-            case 0: return "empanada"; break;
-            case 1: return "bazinga"; break;
-            case 2: return "buche"; break;
-            default: return ""; break;
-        }
-       
+        StopAllCoroutines();
+        StartCoroutine(EscribirLinea(_script[_line]));
     }
+
+    IEnumerator EscribirLinea(string linea) //animacion de escribir por letra, el nombre del personaje se queda afuera del bucle para que no cambie
+    {
+        dialogo.text = $"{Nombre}: ";
+
+        foreach (char letra in linea)
+        {
+            dialogo.text += letra;
+            yield return new WaitForSeconds(Velocidad);
+        }
+    }
+}
+    
     #endregion   
 
-} // class Dialogo 
+ // class Dialogo 
 // namespace
