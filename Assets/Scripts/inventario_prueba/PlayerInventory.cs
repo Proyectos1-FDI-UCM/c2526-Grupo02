@@ -42,7 +42,7 @@ public class PlayerInventory : MonoBehaviour
     private InputAction addTestItemAction;
     private InputAction pickupItemAction;
 
-    private void Awake()
+    private void Start()
     {
         // Inicializar inventario
         _inv = new InventoryItem[maxItems];
@@ -63,24 +63,10 @@ public class PlayerInventory : MonoBehaviour
         toggleInventoryAction = inputActions.FindAction("ToggleInventory");
         navigateAction = inputActions.FindAction("Navigate");
         //addTestItemAction = inputActions.FindAction("AddTestItem");
-        pickupItemAction = inputActions.FindAction("PickupItem");
+        pickupItemAction = inputActions.FindAction("Pickup");
     }
 
-    private void OnEnable()
-    {
-        toggleInventoryAction?.Enable();
-        navigateAction?.Enable();
-        addTestItemAction?.Enable();
-        pickupItemAction?.Enable();
-    }
-
-    private void OnDisable()
-    {
-        toggleInventoryAction?.Disable();
-        navigateAction?.Disable();
-        addTestItemAction?.Disable();
-        pickupItemAction?.Disable();
-    }
+    
 
     private void Update()
     {
