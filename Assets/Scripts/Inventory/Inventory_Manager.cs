@@ -9,6 +9,7 @@ using System.Collections.Specialized;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 // Añadir aquí el resto de directivas using
 
@@ -25,7 +26,11 @@ public class Inventory_Manager : MonoBehaviour
     [SerializeField]
     private GameObject InvHud;
     [SerializeField]
-    private GameObject jugador; 
+    private GameObject jugador;
+    [SerializeField]
+    private Image image;
+    [SerializeField]
+    private Image cursor;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -45,7 +50,8 @@ public class Inventory_Manager : MonoBehaviour
     
     //input para poder usar el objeto selecionado
     private InputAction usar;
-    
+    private InputAction _invMov;
+
     //array donde se guardan los objetos
     //[SerializeField] //por si se quiere ver que objetos hay en el inventario
     private Object[] _inv;
@@ -63,7 +69,7 @@ public class Inventory_Manager : MonoBehaviour
     private GameObject _inventoryHud;
     
     //los huecos donde van los objetos en el hud del inventario 
-    private GameObject[] _invHudSpaces;
+    private Image[] _invHudSpaces;
     
     #endregion
 
@@ -81,19 +87,45 @@ public class Inventory_Manager : MonoBehaviour
             Debug.Log("No hay ningún hud configurado para el inventario");
         }
         //mu feo pero asi te quitas asignarlo en el inspector
-        _inventoryHud = _invHudSpaces[0].transform.parent.gameObject.transform.parent.gameObject;
+        // _inventoryHud = _invHudSpaces[0].transform.parent.gameObject.transform.parent.gameObject;
+        _inventoryHud = InvHud;
 
+        if (cursor == null)
+        {
+            Debug.Log("No hay configurado cursor para el hud");
+        }
+        _invMov = InputSystem.actions.FindAction("MoveInv");
+        if (_invMov == null)
+        {
+            Debug.Log("No hay configurado MoveInv");
+        }
 
+        _invHudSpaces = new Image[_invLenght];
+        for (int i = 0; i < _invLenght; i++)
+        {
+            if(i == 0)
+            {
+                _invHudSpaces[i] = image;
+            }
+            else
+            {
+                Vector3 imgCrd = image.rectTransform.position;
+                Quaternion rot = image.rectTransform.rotation;
+                imgCrd.x += i * 60;
+                _invHudSpaces[i] = Instantiate(image,imgCrd,rot,_inventoryHud.transform);
+                _invHudSpaces[i].rectTransform.localScale = image.rectTransform.localScale;
+            }
+        }
         _openInvAction = InputSystem.actions.FindAction("Inventory"); //asignamos la accion
         if (_openInvAction == null)
         {
-            Debug.Log("No se ha encontrado la acción Inventario");
+            Debug.Log("No se ha encontrado la acción Inventory");
             return;
         }
         usar = InputSystem.actions.FindAction("Interact");
         if (usar == null)
         {
-            Debug.Log("usar no encontrado");
+            Debug.Log("acción Interact no encontrado");
             Destroy(this);
         }
 
@@ -108,13 +140,16 @@ public class Inventory_Manager : MonoBehaviour
             _inventoryIsOpen = !_inventoryIsOpen;
             _inventoryHud.SetActive(_inventoryIsOpen);
         }
+        InvMov();
+        Vector3 cursorCrd = cursor.rectTransform.position;
+        cursorCrd = _invHudSpaces[Index].rectTransform.position;
+        cursor.rectTransform.position = cursorCrd;
         if (usar.WasPressedThisFrame())
         {
             IntentamoUsar(Index);
         }
     }
     #endregion
-
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
     // Documentar cada método que aparece aquí con ///<summary>
@@ -179,7 +214,22 @@ public class Inventory_Manager : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     //Método que busca un tipo de objeto en el inventario y si lo encuentra lo borra y desplaza todos los posteriores hacia delante
-   
+   private void InvMov()
+    {
+        if (_invMov.WasPressedThisFrame())
+        {
+            Index += Mathf.RoundToInt(_invMov.ReadValue<Vector2>().x);
+        }
+
+        if (Index < 0)
+        {
+            Index = _invLenght - 1; 
+        }
+        if (Index >= _invLenght)
+        {
+            Index = 0;
+        }
+    }
     private void RemoveObj(Object.ItemType obj)
     {
         bool encontrao = false;
