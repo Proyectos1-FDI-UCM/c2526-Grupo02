@@ -82,12 +82,12 @@ public class LookUp : MonoBehaviour
 
         if (_alturaAlta)
         {
-            yObj = alturaElevada;
+            yObj = alturaElevada + Jugador.transform.position.y;
             Jugador.GetComponent<Player_Controller>().Stop();
         }
         else
         {
-            yObj = alturaNormal;
+            yObj = alturaNormal + Jugador.transform.position.y;
             Jugador.GetComponent<Player_Controller>().Resume();
             
         }
