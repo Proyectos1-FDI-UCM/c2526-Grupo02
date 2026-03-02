@@ -68,10 +68,7 @@ public class Follow_Player : MonoBehaviour
         Vector3 rayPos = Target.transform.position;
         rayPos.y += rayHeight;
         Vector3 targetPos = transform.position;
-        //expectedPos = Target.position + offset; //Posicion ideal con el objetivo y el offset. 
-        //Vector3 act = transform.position;
-        ////Vector3 targetEyes = Target.position + Vector3.up * TargetEyes;
-        //Vector3 highPos = expectedPos + Vector3.up * 5f; 
+
         bool _collidingR = Physics2D.Raycast(rayPos, Vector2.right, DistanceToWall).distance > _minRayDist;
         bool _collidingL = Physics2D.Raycast(rayPos, Vector2.left, DistanceToWall).distance > _minRayDist;
 

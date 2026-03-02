@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Responsable de la creación de este archivo 
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -8,6 +8,8 @@
 using System.Collections.Specialized;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 // Añadir aquí el resto de directivas using
 
 
@@ -37,10 +39,13 @@ public class Inventory_Manager : MonoBehaviour
 
     //longitud del inventario
     private int _invLenght = 5;
+
     //indice del ultimo hueco vacio
     private int _nObj = 0;
+    
     //input para poder usar el objeto selecionado
     private InputAction usar;
+    
     //array donde se guardan los objetos
     //[SerializeField] //por si se quiere ver que objetos hay en el inventario
     private Object[] _inv;
@@ -56,6 +61,10 @@ public class Inventory_Manager : MonoBehaviour
 
     //objet de la ui que tiene todo el inventario abierto (mas facil de ocultar/mostrar asi)
     private GameObject _inventoryHud;
+    
+    //los huecos donde van los objetos en el hud del inventario 
+    private GameObject[] _invHudSpaces;
+    
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -81,7 +90,7 @@ public class Inventory_Manager : MonoBehaviour
             Debug.Log("No se ha encontrado la acción Inventario");
             return;
         }
-        usar =InputSystem.actions.FindAction("Interact");
+        usar = InputSystem.actions.FindAction("Interact");
         if (usar == null)
         {
             Debug.Log("usar no encontrado");
@@ -90,6 +99,7 @@ public class Inventory_Manager : MonoBehaviour
 
         //Creamos el inventario (array de Object)
         _inv = new Object[_invLenght];
+    }
 
     private void Update()
     {
@@ -113,7 +123,11 @@ public class Inventory_Manager : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    //Método que busca un espacio libre en el inventario (Dado por el último nObj) y añade el objeto que se le pasa
+    /// <Summary>
+    /// Método que busca un espacio libre en el inventario 
+    /// (Dado por el último nObj) 
+    /// y añade el objeto que se le pasa
+    /// <Summary>
     public void AddObj(Object Object)
     {
         if (_nObj < _invLenght) //para no coger objetos con el inventario lleno, despues lo añadimos y quitamos del mundo
@@ -124,11 +138,13 @@ public class Inventory_Manager : MonoBehaviour
         }
     }
 
-    //Al usar UnityEvents serializados, no se pueden usar funciones que tengan como parametro un enum,
-    //por lo que pasamos un int y casteamos al enum
+    /// <Summary>
+    ///Al usar UnityEvents serializados, no se pueden usar funciones que tengan como parametro un enum,
+    ///por lo que pasamos un int y casteamos al enum
+    /// <Summary>
     public void RemoveFromInv(int itemType)
     {
-        if (itemType < (int)Object.ItemType.numItemTypes) 
+        if (itemType < (int)Object.ItemType.numItemTypes) //comprobamos que el indice del enum es valido
         {
             RemoveObj((Object.ItemType)itemType);
         }
@@ -163,6 +179,7 @@ public class Inventory_Manager : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     //Método que busca un tipo de objeto en el inventario y si lo encuentra lo borra y desplaza todos los posteriores hacia delante
+   
     private void RemoveObj(Object.ItemType obj)
     {
         bool encontrao = false;

@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Responsable de la creación de este archivo - JESUS DIEZ 
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------

@@ -34,9 +34,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PickupItem",
+                    "name": "Pickup",
                     "type": "Button",
-                    "id": "8d7c6d1d-b23c-4de9-8c72-364963c7a3c6",
+                    "id": "2ff5ef02-5daa-4bfc-8ff1-b78b2a5f7b44",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -178,23 +178,12 @@
                 },
                 {
                     "name": "",
-                    "id": "bd54583b-2625-417e-9c4e-83802e5e826e",
+                    "id": "0e8b317d-5d18-40cb-b26d-e89fed677e0b",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PickupItem",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b020aff3-c919-4041-8b34-ebf13a097a1a",
-                    "path": "<Gamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PickupItem",
+                    "action": "Pickup",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

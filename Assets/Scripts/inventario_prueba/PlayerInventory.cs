@@ -1,3 +1,10 @@
+//---------------------------------------------------------
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo - JESUS DIEZ A PARTIR DE CODIGO DE ALEJANDRO
+// Nombre del juego
+// Proyectos 1 - Curso 2025-26
+//
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -24,8 +31,10 @@ public class PlayerInventory : MonoBehaviour
     [Header("Input System")]
     [SerializeField] private InputActionAsset inputActions; // arrastra aquí tu Input Actions Asset
     [SerializeField] private float toggleDelay = 0.3f;
-    
-    
+
+    private float navCooldown = 0.2f;   // segundos entre movimientos
+    private float navTimer = 0f;
+
     private float lastToggleTime = 0f;
     private InventoryItem[] _inv;
     private int _nObj = 0;
@@ -42,7 +51,7 @@ public class PlayerInventory : MonoBehaviour
     private InputAction addTestItemAction;
     private InputAction pickupItemAction;
 
-    private void Awake()
+    private void Start()
     {
         // Inicializar inventario
         _inv = new InventoryItem[maxItems];
@@ -63,25 +72,10 @@ public class PlayerInventory : MonoBehaviour
         toggleInventoryAction = inputActions.FindAction("ToggleInventory");
         navigateAction = inputActions.FindAction("Navigate");
         //addTestItemAction = inputActions.FindAction("AddTestItem");
-        pickupItemAction = inputActions.FindAction("PickupItem");
+        pickupItemAction = inputActions.FindAction("Pickup");
     }
 
-    private void OnEnable()
-    {
-        toggleInventoryAction?.Enable();
-        navigateAction?.Enable();
-        addTestItemAction?.Enable();
-        pickupItemAction?.Enable();
-    }
-
-    private void OnDisable()
-    {
-        toggleInventoryAction?.Disable();
-        navigateAction?.Disable();
-        addTestItemAction?.Disable();
-        pickupItemAction?.Disable();
-    }
-
+    
     private void Update()
     {
         HandleToggleInventory();
@@ -125,10 +119,16 @@ public class PlayerInventory : MonoBehaviour
 
     private void HandleNavigation()
     {
-        Vector2 nav = navigateAction.ReadValue<Vector2>();
+        navTimer -= Time.deltaTime;
 
+        Vector2 nav = navigateAction.ReadValue<Vector2>();
         if (nav == Vector2.zero)
+        {
+            navTimer = 0f; // reset si no hay input
             return;
+        }
+
+        if (navTimer > 0f) return;
 
         int delta = 0;
 
@@ -137,8 +137,18 @@ public class PlayerInventory : MonoBehaviour
         else if (nav.y < -0.1f) delta = columns;   // Abajo
         else if (nav.y > 0.1f) delta = -columns;  // Arriba
 
-        _selectedIndex = (_selectedIndex + delta + maxItems) % maxItems;
+        // Buscamos el siguiente slot que no esté vacío
+        int newIndex = _selectedIndex;
+        for (int i = 0; i < _inv.Length; i++) // evitar bucle infinito
+        {
+            newIndex = (newIndex + delta + _inv.Length) % _inv.Length;
+            if (_inv[newIndex] != null) break; // si no está vacío, usamos este
+        }
+
+        _selectedIndex = newIndex;
         HighlightSlot(_selectedIndex);
+
+        navTimer = navCooldown;
     }
 
     #endregion
