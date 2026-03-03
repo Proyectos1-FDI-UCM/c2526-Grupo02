@@ -6,6 +6,8 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using static UnityEditor.Experimental.GraphView.GraphView;
 // Añadir aquí el resto de directivas using
 
@@ -30,6 +32,9 @@ public class Teleport : MonoBehaviour
     Player_Controller player;
     [SerializeField]
     Camera camera;
+    // En caso de que  queramos en algún momento teletrasportar automáticamente al jugador
+    [SerializeField]
+    bool AutomaticTelepor;
 
     #endregion
 
@@ -43,7 +48,8 @@ public class Teleport : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     #endregion
-
+    private InputAction Tele;
+    private bool InteractPuss; 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
@@ -62,9 +68,46 @@ public class Teleport : MonoBehaviour
         { Debug.Log("NO HAY JUGADOR CONFIGURADO EN ESTE TP"); }
         if (camera == null)
         { Debug.Log("NO HAY CÁMARA CONFIGURADA EN ESTE TP"); }
+        Tele = InputSystem.actions.FindAction("Interact");
+        if (Tele == null)
+        {
+             Debug.Log("No encontrada acción interact"); 
+        }
 
     }
+    private void Update()
+    {
+        if (!AutomaticTelepor)
+        {
+            if (Tele.WasPressedThisFrame())
+            {
+                Debug.Log("pulsar ha sido pulsado");
+                InteractPuss = true;
+            }
+        }
+       
+    }
+
     #endregion
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log("entran");
+        if (!collision.GetComponent<Player_Controller>())
+        {
+            return; 
+        }
+        else if (InteractPuss && !AutomaticTelepor)
+        {
+            Debug.Log("pulsar ha sido pulsado");
+            Tp();
+            InteractPuss = false;
+        }
+        else if (AutomaticTelepor)
+        {
+            Tp();
+        }
+    }
+   
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
