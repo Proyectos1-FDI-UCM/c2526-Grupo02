@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo 
+// Breve descripción del contenido del archivo - Maneja el inventario
+// Responsable de la creación de este archivo - Alejandra 
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -11,13 +11,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-// Añadir aquí el resto de directivas using
 
 
-/// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
-/// </summary>
+
 public class Inventory_Manager : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
@@ -28,9 +24,9 @@ public class Inventory_Manager : MonoBehaviour
     [SerializeField]
     private GameObject jugador;
     [SerializeField]
-    private Image image;
+    private Image image; //Sprite del inventario por si quieres otra foto
     [SerializeField]
-    private Image cursor;
+    private Image cursor; 
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -76,13 +72,10 @@ public class Inventory_Manager : MonoBehaviour
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
     void Start()
     {
         //Programación defensiva para  ver que la hud del inventario este configurada
-        if (InvHud != null)
+        if (InvHud == null)
         {
             Debug.Log("No hay ningún hud configurado para el inventario");
         }
@@ -117,15 +110,17 @@ public class Inventory_Manager : MonoBehaviour
             }
         }
         _openInvAction = InputSystem.actions.FindAction("Inventory"); //asignamos la accion
-        if (_openInvAction == null)
+
+        if (_openInvAction == null) //no se encuentra
         {
             Debug.Log("No se ha encontrado la acción Inventory");
             return;
         }
-        usar = InputSystem.actions.FindAction("Interact");
+
+        usar = InputSystem.actions.FindAction("Interact"); 
         if (usar == null)
         {
-            Debug.Log("acción Interact no encontrado");
+            Debug.Log("acción Interact no encontrado"); 
             Destroy(this);
         }
 
@@ -152,11 +147,6 @@ public class Inventory_Manager : MonoBehaviour
     #endregion
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
 
     /// <Summary>
     /// Método que busca un espacio libre en el inventario 
@@ -168,6 +158,7 @@ public class Inventory_Manager : MonoBehaviour
         if (_nObj < _invLenght) //para no coger objetos con el inventario lleno, despues lo añadimos y quitamos del mundo
         {
             _inv[_nObj] = Object;
+            _invHudSpaces[_nObj].sprite = Object.GetInventorySprite();
             _nObj++;
             Object.RemoveFromWorld(); //lo quitamos del mundo
         }
@@ -188,6 +179,8 @@ public class Inventory_Manager : MonoBehaviour
             Debug.Log("Tipo de item no válido");
         }
     }
+
+
     public void IntentamoUsar(int n)
     {
         if (n < 0 || n >= _inv.Length || _inv[n] == null)
@@ -197,6 +190,8 @@ public class Inventory_Manager : MonoBehaviour
         UsarObjeto(n);
 
     }
+
+
     public void UsarObjeto(int n)
     {
         var item = _inv[n];
@@ -209,11 +204,7 @@ public class Inventory_Manager : MonoBehaviour
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    //Método que busca un tipo de objeto en el inventario y si lo encuentra lo borra y desplaza todos los posteriores hacia delante
+   
    private void InvMov()
     {
         if (_invMov.WasPressedThisFrame())
