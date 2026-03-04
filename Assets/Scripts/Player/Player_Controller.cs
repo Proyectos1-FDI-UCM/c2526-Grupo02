@@ -64,7 +64,7 @@ public class Player_Controller : MonoBehaviour
             Debug.Log("No hay Rigidbody");
             return;
         }
-        _move = InputSystem.actions.FindAction("move");
+        _move = InputSystem.actions.FindAction("Move");
         if (_move == null)
         {
             Debug.Log("No se ha encontrado la acción move");
