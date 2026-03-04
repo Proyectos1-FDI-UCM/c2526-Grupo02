@@ -14,6 +14,7 @@ using UnityEngine.UI;
 
 
 
+
 public class Inventory_Manager : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
@@ -24,9 +25,9 @@ public class Inventory_Manager : MonoBehaviour
     [SerializeField]
     private GameObject jugador;
     [SerializeField]
-    private Image image; //Sprite del inventario por si quieres otra foto
+    private UnityEngine.UI.Image image; //Sprite del inventario por si quieres otra foto
     [SerializeField]
-    private Image cursor; 
+    private UnityEngine.UI.Image cursor; 
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -173,6 +174,7 @@ public class Inventory_Manager : MonoBehaviour
         if (itemType < (int)Object.ItemType.numItemTypes) //comprobamos que el indice del enum es valido
         {
             RemoveObj((Object.ItemType)itemType);
+            jugador.GetComponent<Object_use>().RemoveFromHand();
         }
         else
         {

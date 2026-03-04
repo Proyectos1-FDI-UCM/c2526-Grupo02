@@ -78,8 +78,8 @@ public class Object_use : MonoBehaviour
         Debug.Log("Estoy usando " + objeto.GetItem().ToString());
         if (ObjetoEnUso == objeto)
         {
-            ObjetoEnUso = null;
-            Mano.sprite = null;
+            //hemos pasado esto a un método auxiliar ya que lo necesitamos para cuando usamos el objeto y nos lo quitan del inventario
+            RemoveFromHand();
 
         }
         else
@@ -90,6 +90,16 @@ public class Object_use : MonoBehaviour
 
     }
 
+    public Object GetHandItem()
+    {
+        return ObjetoEnUso;
+    }
+    public void RemoveFromHand()
+    {
+        ObjetoEnUso = null;
+        Mano.sprite = null;
+    }
+        
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
