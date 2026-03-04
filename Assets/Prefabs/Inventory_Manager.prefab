@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InvHud: {fileID: 0}
-  inv:
-  - index: 0
-    ThisObj: 0
-    Description: 
+  jugador: {fileID: 0}
+  image: {fileID: 0}
+  cursor: {fileID: 0}

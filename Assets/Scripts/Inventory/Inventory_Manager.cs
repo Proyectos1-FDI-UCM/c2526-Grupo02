@@ -75,7 +75,7 @@ public class Inventory_Manager : MonoBehaviour
     void Start()
     {
         //Programación defensiva para  ver que la hud del inventario este configurada
-        if (InvHud != null)
+        if (InvHud == null)
         {
             Debug.Log("No hay ningún hud configurado para el inventario");
         }
@@ -158,6 +158,7 @@ public class Inventory_Manager : MonoBehaviour
         if (_nObj < _invLenght) //para no coger objetos con el inventario lleno, despues lo añadimos y quitamos del mundo
         {
             _inv[_nObj] = Object;
+            _invHudSpaces[_nObj].sprite = Object.GetInventorySprite();
             _nObj++;
             Object.RemoveFromWorld(); //lo quitamos del mundo
         }

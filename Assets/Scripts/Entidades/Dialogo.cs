@@ -27,13 +27,15 @@ public class Dialogo : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField]
-    private GameObject Canvas; //caja del texto
+    private Canvas Canvas; //caja del texto
     [SerializeField]
     private Text dialogo; //el texto
     [SerializeField]
     private float Velocidad = 0.03f;//velocidad del texto
     [SerializeField]
     private string Nombre; //nombre del npc
+    [SerializeField]
+    private string Archivo;//Nombre del archivo + .txt
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -64,14 +66,14 @@ public class Dialogo : MonoBehaviour
     /// sistema de dialogo, usa un archivo de texto y lee el contenido y lo muestra linea por linea
     void Start()
     {
-        Canvas.SetActive(false);
+        Canvas.GetComponent<Canvas>().enabled = false;
         _talk = InputSystem.actions.FindAction("Interact");
         if (_talk == null )
         {
             Debug.Log("Error con la acción talk");
         }
        
-        string ruta = Path.Combine(Application.streamingAssetsPath, "Dialogo.txt");
+        string ruta = Path.Combine(Application.streamingAssetsPath,Archivo);
 
         if (File.Exists(ruta))
         {
@@ -93,16 +95,16 @@ public class Dialogo : MonoBehaviour
     {
         if (_talking) 
         { 
-            if (_line == _script.GetLength(0)+1) { Canvas.SetActive(false); _line = 0; } //si avanza dialogo en la ultima linea regresa al estado de entrar
+            if (_line == _script.GetLength(0)+1) { Canvas.GetComponent<Canvas>().enabled = false; _line = 0; } //si avanza dialogo en la ultima linea regresa al estado de entrar
             if (_talk.ReadValue<float>() > 0.5f&&_talk.WasPressedThisFrame()) //detecta solo un frame de input
             {
-                Canvas.SetActive(true);
+                Canvas.GetComponent<Canvas>().enabled = true;
                 if (_line < _script.GetLength(0)) MostrarLinea();  //comprueba que estas dentro del array de dialogo
                 _line++;
             }
             
          }
-        else { Canvas.SetActive(false); _line = 0; } //una vez se aleja el dialogo regresa al estado inicial
+        else { Canvas.GetComponent<Canvas>().enabled = false; _line = 0; } //una vez se aleja el dialogo regresa al estado inicial
         
     }
     #endregion
