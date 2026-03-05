@@ -14,6 +14,7 @@ using UnityEngine.UI;
 
 
 
+
 public class Inventory_Manager : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
@@ -24,9 +25,9 @@ public class Inventory_Manager : MonoBehaviour
     [SerializeField]
     private GameObject jugador;
     [SerializeField]
-    private Image image; //Sprite del inventario por si quieres otra foto
+    private UnityEngine.UI.Image image; //Sprite del inventario por si quieres otra foto
     [SerializeField]
-    private Image cursor; 
+    private UnityEngine.UI.Image cursor; 
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -173,6 +174,7 @@ public class Inventory_Manager : MonoBehaviour
         if (itemType < (int)Object.ItemType.numItemTypes) //comprobamos que el indice del enum es valido
         {
             RemoveObj((Object.ItemType)itemType);
+            jugador.GetComponent<Object_use>().RemoveFromHand();
         }
         else
         {
@@ -183,7 +185,7 @@ public class Inventory_Manager : MonoBehaviour
 
     public void IntentamoUsar(int n)
     {
-        if (n < 0 || n >= _inv.Length || _inv[n] == null)
+        if (n < 0 || n >= _inv.Length || _inv[n] == null || !_inventoryIsOpen)
         {
             return;
         }
@@ -194,10 +196,13 @@ public class Inventory_Manager : MonoBehaviour
 
     public void UsarObjeto(int n)
     {
-        var item = _inv[n];
-        jugador.GetComponent<Object_use>().ObjetoRecojido(item);
-        RemoveObj(item.GetItem());
-
+        if (_inventoryIsOpen)
+        {
+            var item = _inv[n];
+            jugador.GetComponent<Object_use>().ObjetoRecogido(item);
+            //Quitado ya que al usar un objeto NO hace falta quitarlo del inventario
+            //RemoveObj(item.GetItem());
+        }
     }
 
     #endregion
@@ -207,18 +212,21 @@ public class Inventory_Manager : MonoBehaviour
    
    private void InvMov()
     {
-        if (_invMov.WasPressedThisFrame())
-        {
-            Index += Mathf.RoundToInt(_invMov.ReadValue<Vector2>().x);
-        }
+        if (_inventoryIsOpen)
+            {
+            if (_invMov.WasPressedThisFrame())
+            {
+                Index += Mathf.RoundToInt(_invMov.ReadValue<Vector2>().x);
+            }
 
-        if (Index < 0)
-        {
-            Index = _invLenght - 1; 
-        }
-        if (Index >= _invLenght)
-        {
-            Index = 0;
+            if (Index < 0)
+            {
+                Index = _invLenght - 1;
+            }
+            if (Index >= _invLenght)
+            {
+                Index = 0;
+            }
         }
     }
     private void RemoveObj(Object.ItemType obj)
@@ -231,18 +239,31 @@ public class Inventory_Manager : MonoBehaviour
             {
                 encontrao = true;
                 //TODO: añadir el objeto a la mano
+                //No hay que quitar el objeto del inventario (Este método sería para buscar el objeto en el inv y quitarlo)
+                //DONE EN OBJECT USE :D
             }
             else
             {
                 i++;
             }
         }
-
-        for (int j = i; j < _nObj; j++) //desplazamos todos los objetos para rellenar el hueco del objeto borrado
+        if (encontrao)
         {
-            _inv[j] = _inv[j + 1];
+            //Ponemos a nulo los sprites y objetos de la posición del inventario (ya no está)
+            _inv[i] = null;
+            _invHudSpaces[i].sprite = null;
+            for (int j = i; j < _nObj; j++) //desplazamos todos los objetos para rellenar el hueco del objeto borrado
+            {
+                _inv[j] = _inv[j + 1];
+            }
+            _nObj--;
         }
-        _nObj--;
+        else
+        {
+            Debug.Log("No esta el objeto");
+        }
+        
+      
     }
     #endregion
 

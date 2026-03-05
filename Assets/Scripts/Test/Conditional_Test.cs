@@ -5,10 +5,9 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using System.ComponentModel;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
-
+using UnityEngine.Events;
 // Añadir aquí el resto de directivas using
 
 
@@ -16,7 +15,7 @@ using UnityEngine.Rendering;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Teleport : MonoBehaviour
+public class Conditional_Test : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -25,16 +24,16 @@ public class Teleport : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+  
+    [SerializeField]
+    private UnityEvent code;
+    [SerializeField]
+    private UnityEvent negativeCode;
+    [SerializeField]
+    private Object.ItemType NeededType;
+    [SerializeField]
+    private GameObject mano;
 
-    [SerializeField]
-    Vector3 TargetDestination;
-    [SerializeField]
-    Player_Controller player;
-    [SerializeField]
-    Camera camera;
-    // En caso de que  queramos en algún momento teletrasportar automáticamente al jugador
-    [SerializeField]
-    bool AutomaticTelepor;
 
     #endregion
 
@@ -48,8 +47,7 @@ public class Teleport : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     #endregion
-    private InputAction Tele;
-    private bool InteractPuss; 
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
@@ -61,73 +59,52 @@ public class Teleport : MonoBehaviour
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-
-    private void Start()
+    void Start()
     {
-        if (player == null)
-        { Debug.Log("NO HAY JUGADOR CONFIGURADO EN ESTE TP"); }
-        if (camera == null)
-        { Debug.Log("NO HAY CÁMARA CONFIGURADA EN ESTE TP"); }
-        Tele = InputSystem.actions.FindAction("Interact");
-        if (Tele == null)
+        if (mano == null)
         {
-             Debug.Log("No encontrada acción interact"); 
+            Debug.Log("No hay configurada Mano");
         }
-
+        
     }
-    //private void Update()
-    //{
-    //    if (!AutomaticTelepor)
-    //    {
-    //        if (Tele.WasPressedThisFrame())
-    //        {
-    //            Debug.Log("pulsar ha sido pulsado");
-    //            InteractPuss = true;
-    //        }
-    //    }
-       
-    //}
 
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        
+    }
     #endregion
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    Debug.Log("entran");
-    //    if (!collision.GetComponent<Player_Controller>())
-    //    {
-    //        return; 
-    //    }
-    //    else if (InteractPuss && !AutomaticTelepor)
-    //    {
-    //        Debug.Log("pulsar ha sido pulsado");
-    //        Tp();
-    //        InteractPuss = false;
-    //    }
-    //    else if (AutomaticTelepor)
-    //    {
-    //        Tp();
-    //    }
-    //}
-   
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
-
-    public void Tp()
+    
+    public void Check()
     {
-        player.transform.position = TargetDestination;
-        Vector3 camAux = camera.transform.position;
-        camAux.x = TargetDestination.x;
-        camAux.y = TargetDestination.y+2;
-        camera.transform.position = camAux;
+        //Ponemos un tipo que nunca va a poder ser
+        Object.ItemType type = Object.ItemType.numItemTypes;
+
+        //Revisamos en el componente Object use de mano el objeto que es (sprite + tipo), y de ahí sacamos el tipo de item.
+        //IMPORTANTE (si usabamos directamente el item type nos daba un no instance of an object, ya que los enum no pueden ser nulos)
+        //Resumen, si hay objeto, sacamos el tipo de objeto
+        if (mano.GetComponent<Object_use>().GetHandItem() != null)
+        {
+         type = mano.GetComponent<Object_use>().GetHandItem().GetItem();
+        }
+
+        if (type == NeededType)
+        {
+            code.Invoke();
+        }
+        else
+        {
+            negativeCode.Invoke();
+            Debug.Log("MAAAAAAAL");
+        }
     }
-
-    #endregion
-
+#endregion
+    
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -135,7 +112,7 @@ public class Teleport : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion
+    #endregion   
 
-} // class Teleport 
+} // class Conditional_Test 
 // namespace

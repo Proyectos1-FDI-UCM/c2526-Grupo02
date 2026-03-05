@@ -23,6 +23,9 @@ public class Object_use : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
+    [SerializeField]
+    private UnityEngine.UI.Image Mano;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -35,22 +38,30 @@ public class Object_use : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     // Objeto selecionado por el jugador
-    private Object ObjetoEnUso; 
+    private Object ObjetoEnUso;
 
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-   
+
+    private void Start()
+    {
+        if (Mano == null)
+        {
+            Debug.Log("No hay mano configurada");
+        }
+    }
+
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -61,24 +72,36 @@ public class Object_use : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    // Método que señala al jugador que obejto a recojido 
-    public void ObjetoRecojido ( Object objeto)
+    // Método que señala al jugador que objeto a recogido 
+    public void ObjetoRecogido(Object objeto)
     {
-        Debug.Log("Estoy usando este objeto" + ObjetoEnUso); 
+        Debug.Log("Estoy usando " + objeto.GetItem().ToString());
         if (ObjetoEnUso == objeto)
         {
-            ObjetoEnUso = null;
-            
+            //hemos pasado esto a un método auxiliar ya que lo necesitamos para cuando usamos el objeto y nos lo quitan del inventario
+            RemoveFromHand();
+
         }
         else
         {
-            ObjetoEnUso= objeto;
+            ObjetoEnUso = objeto;
+            Mano.sprite = objeto.GetInventorySprite();
         }
-            
+
     }
 
+    public Object GetHandItem()
+    {
+        return ObjetoEnUso;
+    }
+    public void RemoveFromHand()
+    {
+        ObjetoEnUso = null;
+        Mano.sprite = null;
+    }
+        
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -86,7 +109,7 @@ public class Object_use : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
 } // class Object_use 
 // namespace
