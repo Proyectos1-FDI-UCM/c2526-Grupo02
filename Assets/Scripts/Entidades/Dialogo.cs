@@ -112,8 +112,10 @@ public class Dialogo : MonoBehaviour
         if (_talking) 
         { 
             if (_line == _script.GetLength(0)+1|| _line == _scriptCon.GetLength(0) + 1) { Canvas.GetComponent<Canvas>().enabled = false; _line = 0; _puzzle = false; } //si avanza dialogo en la ultima linea regresa al estado de entrar
-            if (_talk.ReadValue<float>() > 0.5f&&_talk.WasPressedThisFrame()) //detecta solo un frame de input o la llamada de otro componente
+            if (_talk.ReadValue<float>() > 0.5f &&_talk.WasPressedThisFrame()) //detecta solo un frame de input o la llamada de otro componente
             {
+                this.gameObject.GetComponent<Conditional_Test>().Check();
+                Debug.Log(_puzzle);
                 if (!_puzzle)
                 {
                 Canvas.GetComponent<Canvas>().enabled = true;
@@ -140,7 +142,11 @@ public class Dialogo : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    
+
+    public void puzzleSwitch(bool sel)
+    {
+        _puzzle = sel;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

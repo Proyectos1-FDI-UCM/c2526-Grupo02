@@ -105,7 +105,7 @@ public class Inventory_Manager : MonoBehaviour
             {
                 Vector3 imgCrd = image.rectTransform.position;
                 Quaternion rot = image.rectTransform.rotation;
-                imgCrd.x += i * 60;
+                imgCrd.x += (i * (Screen.width/16));
                 _invHudSpaces[i] = Instantiate(image,imgCrd,rot,_inventoryHud.transform);
                 _invHudSpaces[i].rectTransform.localScale = image.rectTransform.localScale;
             }
@@ -127,6 +127,7 @@ public class Inventory_Manager : MonoBehaviour
 
         //Creamos el inventario (array de Object)
         _inv = new Object[_invLenght];
+         _inventoryHud.SetActive(_inventoryIsOpen);
     }
 
     private void Update()
