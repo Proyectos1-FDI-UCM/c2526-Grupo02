@@ -184,9 +184,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec7619ff7e1fe894b9816ddebfe1aa53, type: 3}
---- !u!1 &282727961 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6175499759418025804, guid: 175109bc4504d9b45b6e2c3ad2ae091e, type: 3}
+--- !u!223 &282727965 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2047885792657370305, guid: 175109bc4504d9b45b6e2c3ad2ae091e, type: 3}
   m_PrefabInstance: {fileID: 782284435595610052}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &329382810
@@ -252,10 +252,14 @@ PrefabInstance:
     - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: Canvas
       value: 
-      objectReference: {fileID: 282727961}
+      objectReference: {fileID: 282727965}
     - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: Nombre
       value: Chamito
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
+      propertyPath: Archivo
+      value: Dialogo.txt
       objectReference: {fileID: 0}
     - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: Jugador
@@ -265,6 +269,10 @@ PrefabInstance:
       propertyPath: dialogo
       value: 
       objectReference: {fileID: 908006785}
+    - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
+      propertyPath: ArchivoCon
+      value: Level1Test.txt
+      objectReference: {fileID: 0}
     - target: {fileID: 9076730456491123190, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: m_Name
       value: Provisional
