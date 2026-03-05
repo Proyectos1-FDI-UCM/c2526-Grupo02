@@ -36,6 +36,8 @@ public class Dialogo : MonoBehaviour
     private string Nombre; //nombre del npc
     [SerializeField]
     private string Archivo;//Nombre del archivo + .txt
+    [SerializeField]
+    private string ArchivoCon; // Dialogo secundario
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -49,7 +51,9 @@ public class Dialogo : MonoBehaviour
     private InputAction _talk; //la accion
     private bool _talking; //indica la posibilidad de hablar
     private string [] _script; //las lineas de dialogo
+    private string[] _scriptCon; //lineas del dialogo alternativo
     private int _line; //el indice para las lineas de dialogo
+    private bool _puzzle; //activa el dialogo fuera del input
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -74,6 +78,7 @@ public class Dialogo : MonoBehaviour
         }
        
         string ruta = Path.Combine(Application.streamingAssetsPath,Archivo);
+        string rutacon = Path.Combine(Application.streamingAssetsPath,ArchivoCon);
 
         if (File.Exists(ruta))
         {
@@ -85,7 +90,18 @@ public class Dialogo : MonoBehaviour
         {
             Debug.LogError("No se encontró el archivo en: " + ruta);
         }
+        if (File.Exists(rutacon))
+        {
+            string textocon = File.ReadAllText(rutacon); // lee el archivo
+            _scriptCon = textocon.Split('\n'); //lo separa por lineas
+            Debug.Log(textocon.Length);
+        }
+        else
+        {
+            Debug.LogError("No se encontró el archivo en: " + rutacon);
+        }
         _line = 0;
+        _puzzle = false;
     }
 
     /// <summary>
@@ -95,17 +111,25 @@ public class Dialogo : MonoBehaviour
     {
         if (_talking) 
         { 
-            if (_line == _script.GetLength(0)+1) { Canvas.GetComponent<Canvas>().enabled = false; _line = 0; } //si avanza dialogo en la ultima linea regresa al estado de entrar
-            if (_talk.ReadValue<float>() > 0.5f&&_talk.WasPressedThisFrame()) //detecta solo un frame de input
+            if (_line == _script.GetLength(0)+1|| _line == _scriptCon.GetLength(0) + 1) { Canvas.GetComponent<Canvas>().enabled = false; _line = 0; _puzzle = false; } //si avanza dialogo en la ultima linea regresa al estado de entrar
+            if (_talk.ReadValue<float>() > 0.5f&&_talk.WasPressedThisFrame()) //detecta solo un frame de input o la llamada de otro componente
             {
+                if (!_puzzle)
+                {
                 Canvas.GetComponent<Canvas>().enabled = true;
-                if (_line < _script.GetLength(0)) MostrarLinea();  //comprueba que estas dentro del array de dialogo
+                if (_line < _script.GetLength(0)) MostrarLinea(_script);  //comprueba que estas dentro del array de dialogo
                 _line++;
+                }
+                else
+                {
+                    Canvas.GetComponent<Canvas>().enabled = true;
+                    if (_line < _scriptCon.GetLength(0)) MostrarLinea(_scriptCon);  //comprueba que estas dentro del array de dialogo
+                    _line++;
+                }
             }
             
          }
-        else { Canvas.GetComponent<Canvas>().enabled = false; _line = 0; } //una vez se aleja el dialogo regresa al estado inicial
-        
+        else { Canvas.GetComponent<Canvas>().enabled = false; _line = 0;_puzzle = false; } //una vez se aleja el dialogo regresa al estado inicial
     }
     #endregion
 
@@ -139,10 +163,10 @@ public class Dialogo : MonoBehaviour
             _talking=false; //prohibe empezar o seguir dialogo
         }
     }
-    private void MostrarLinea()
+    private void MostrarLinea(string[] log)
     {
         StopAllCoroutines();
-        StartCoroutine(EscribirLinea(_script[_line]));
+        StartCoroutine(EscribirLinea(log[_line]));
     }
 
     IEnumerator EscribirLinea(string linea) //animacion de escribir por letra, el nombre del personaje se queda afuera del bucle para que no cambie
