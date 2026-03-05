@@ -7,6 +7,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 /// <summary>
@@ -31,6 +32,8 @@ public class GameManager : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField]
+    private int BuildScene;
 
     #endregion
 
@@ -170,6 +173,14 @@ public class GameManager : MonoBehaviour
     {
         // De momento no hay que transferir ningún setup
         // a otro manager
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Player_Controller>() != null)
+        {
+            ChangeScene(BuildScene);
+        }
     }
 
     #endregion
