@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo - Maneja el inventario
-// Responsable de la creación de este archivo - Alejandra 
+// Breve descripción del contenido del archivo - Alejandra
+// Responsable de la creación de este archivo - Maneja el inventario
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -10,8 +10,8 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-
-
+using UnityEngine.UIElements;
+// Añadir aquí el resto de directivas using
 
 
 
@@ -20,37 +20,28 @@ public class Inventory_Manager : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
 
+    //objet de la ui que tiene todo el inventario abierto (mas facil de ocultar/mostrar asi)
     [SerializeField]
-    private GameObject InvHud;
+    private GameObject _inventoryHud;
+
+    //los huecos donde van los objetos en el hud del inventario 
     [SerializeField]
-    private GameObject jugador;
-    [SerializeField]
-    private UnityEngine.UI.Image image; //Sprite del inventario por si quieres otra foto
-    [SerializeField]
-    private UnityEngine.UI.Image cursor; 
+    private UnityEngine.UI.Image[] _invHudSpaces;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
+
 
     //longitud del inventario
     private int _invLenght = 5;
 
     //indice del ultimo hueco vacio
     private int _nObj = 0;
-    
-    //input para poder usar el objeto selecionado
-    private InputAction usar;
-    private InputAction _invMov;
 
     //array donde se guardan los objetos
-    //[SerializeField] //por si se quiere ver que objetos hay en el inventario
+    [SerializeField] //por si se quiere ver que objetos hay en el inventario
     private Object[] _inv;
 
     //input de abrir/cerrar el inventario
@@ -58,76 +49,29 @@ public class Inventory_Manager : MonoBehaviour
 
     //booleano que indica si el inventario esta abierto
     private bool _inventoryIsOpen = false;
-
-    // El índice de la posición actual en la que estoy
-    private int Index = 0; 
-
-    //objet de la ui que tiene todo el inventario abierto (mas facil de ocultar/mostrar asi)
-    private GameObject _inventoryHud;
-    
-    //los huecos donde van los objetos en el hud del inventario 
-    private Image[] _invHudSpaces;
-    
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
+
     void Start()
     {
-        //Programación defensiva para  ver que la hud del inventario este configurada
-        if (InvHud == null)
+        //Programación defensiva para ver que la hud del inventario esté configurada
+        if (_invHudSpaces.Length != _invLenght)
         {
-            Debug.Log("No hay ningún hud configurado para el inventario");
-        }
-        //mu feo pero asi te quitas asignarlo en el inspector
-        // _inventoryHud = _invHudSpaces[0].transform.parent.gameObject.transform.parent.gameObject;
-        _inventoryHud = InvHud;
-
-        if (cursor == null)
-        {
-            Debug.Log("No hay configurado cursor para el hud");
-        }
-        _invMov = InputSystem.actions.FindAction("MoveInv");
-        if (_invMov == null)
-        {
-            Debug.Log("No hay configurado MoveInv");
+            Debug.Log("Hud no configurado para el inventario");
         }
 
-        _invHudSpaces = new Image[_invLenght];
-        for (int i = 0; i < _invLenght; i++)
-        {
-            if(i == 0)
-            {
-                _invHudSpaces[i] = image;
-            }
-            else
-            {
-                Vector3 imgCrd = image.rectTransform.position;
-                Quaternion rot = image.rectTransform.rotation;
-                imgCrd.x += (i * (Screen.width/16));
-                _invHudSpaces[i] = Instantiate(image,imgCrd,rot,_inventoryHud.transform);
-                _invHudSpaces[i].rectTransform.localScale = image.rectTransform.localScale;
-            }
-        }
         _openInvAction = InputSystem.actions.FindAction("Inventory"); //asignamos la accion
-
-        if (_openInvAction == null) //no se encuentra
+        if (_openInvAction == null)
         {
-            Debug.Log("No se ha encontrado la acción Inventory");
+            Debug.Log("No se ha encontrado la acción Inventario");
             return;
-        }
-
-        usar = InputSystem.actions.FindAction("Interact"); 
-        if (usar == null)
-        {
-            Debug.Log("acción Interact no encontrado"); 
-            Destroy(this);
         }
 
         //Creamos el inventario (array de Object)
         _inv = new Object[_invLenght];
-         _inventoryHud.SetActive(_inventoryIsOpen);
     }
 
     private void Update()
@@ -137,45 +81,34 @@ public class Inventory_Manager : MonoBehaviour
             _inventoryIsOpen = !_inventoryIsOpen;
             _inventoryHud.SetActive(_inventoryIsOpen);
         }
-        InvMov();
-        Vector3 cursorCrd = cursor.rectTransform.position;
-        cursorCrd = _invHudSpaces[Index].rectTransform.position;
-        cursor.rectTransform.position = cursorCrd;
-        if (usar.WasPressedThisFrame())
-        {
-            IntentamoUsar(Index);
-        }
     }
+
     #endregion
+
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
 
-    /// <Summary>
-    /// Método que busca un espacio libre en el inventario 
-    /// (Dado por el último nObj) 
-    /// y añade el objeto que se le pasa
-    /// <Summary>
+    //Método que busca un espacio libre en el inventario (Dado por el último nObj) y añade el objeto que se le pasa
     public void AddObj(Object Object)
     {
         if (_nObj < _invLenght) //para no coger objetos con el inventario lleno, despues lo añadimos y quitamos del mundo
         {
             _inv[_nObj] = Object;
             _invHudSpaces[_nObj].sprite = Object.GetInventorySprite();
+            _invHudSpaces[_nObj].gameObject.SetActive(true);
             _nObj++;
             Object.RemoveFromWorld(); //lo quitamos del mundo
         }
     }
 
-    /// <Summary>
-    ///Al usar UnityEvents serializados, no se pueden usar funciones que tengan como parametro un enum,
-    ///por lo que pasamos un int y casteamos al enum
-    /// <Summary>
+    //Al usar UnityEvents serializados, no se pueden usar funciones que tengan como parametro un enum,
+    //por lo que pasamos un int y casteamos al enum
     public void RemoveFromInv(int itemType)
     {
-        if (itemType < (int)Object.ItemType.numItemTypes) //comprobamos que el indice del enum es valido
+        if (itemType < (int)Object.ItemType.numItemTypes) //comprobamos que el indice del enum ea valido
         {
+            //Debug.Log((Object.ItemType)itemType);
             RemoveObj((Object.ItemType)itemType);
-            jugador.GetComponent<Object_use>().RemoveFromHand();
         }
         else
         {
@@ -183,53 +116,14 @@ public class Inventory_Manager : MonoBehaviour
         }
     }
 
-
-    public void IntentamoUsar(int n)
-    {
-        if (n < 0 || n >= _inv.Length || _inv[n] == null || !_inventoryIsOpen)
-        {
-            return;
-        }
-        UsarObjeto(n);
-
-    }
-
-
-    public void UsarObjeto(int n)
-    {
-        if (_inventoryIsOpen)
-        {
-            var item = _inv[n];
-            jugador.GetComponent<Object_use>().ObjetoRecogido(item);
-            //Quitado ya que al usar un objeto NO hace falta quitarlo del inventario
-            //RemoveObj(item.GetItem());
-        }
-    }
-
     #endregion
+
+
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-   
-   private void InvMov()
-    {
-        if (_inventoryIsOpen)
-            {
-            if (_invMov.WasPressedThisFrame())
-            {
-                Index += Mathf.RoundToInt(_invMov.ReadValue<Vector2>().x);
-            }
 
-            if (Index < 0)
-            {
-                Index = _invLenght - 1;
-            }
-            if (Index >= _invLenght)
-            {
-                Index = 0;
-            }
-        }
-    }
+    //Método que busca un tipo de objeto en el inventario y si lo encuentra lo borra y desplaza todos los posteriores hacia delante
     private void RemoveObj(Object.ItemType obj)
     {
         bool encontrao = false;
@@ -238,33 +132,33 @@ public class Inventory_Manager : MonoBehaviour
         {
             if (_inv[i].GetItem() == obj)
             {
+                Debug.Log("Soy: " + _inv[i].GetItem());
                 encontrao = true;
                 //TODO: añadir el objeto a la mano
-                //No hay que quitar el objeto del inventario (Este método sería para buscar el objeto en el inv y quitarlo)
-                //DONE EN OBJECT USE :D
             }
             else
             {
                 i++;
             }
         }
-        if (encontrao)
+
+        if (encontrao) //si no encontramos el objeto no lo podemos borrar
         {
-            //Ponemos a nulo los sprites y objetos de la posición del inventario (ya no está)
-            _inv[i] = null;
-            _invHudSpaces[i].sprite = null;
-            for (int j = i; j < _nObj; j++) //desplazamos todos los objetos para rellenar el hueco del objeto borrado
+            //desplazamos los objetos hacia la izquierda y cuando llegamos al ultimo objeto que haya en el inventario paramos
+            //(porque no podemos copiar a ese algo vacio/que se sale del array)
+            for (int j = i; j < _nObj - 1; j++)
             {
                 _inv[j] = _inv[j + 1];
+                _invHudSpaces[j].sprite = _inv[j].GetInventorySprite();
             }
+
+            //actualizamos el numero de objetos en el inventario y liberamos el ultimo objeto que ahora es un hueco
+            //(porque lo desplazamos a la izquierda antes)
             _nObj--;
+            _inv[_nObj] = null;
+            _invHudSpaces[_nObj].sprite = null;
+            _invHudSpaces[_nObj].gameObject.SetActive(false);
         }
-        else
-        {
-            Debug.Log("No esta el objeto");
-        }
-        
-      
     }
     #endregion
 
