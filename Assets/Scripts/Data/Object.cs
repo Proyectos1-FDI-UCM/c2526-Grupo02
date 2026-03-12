@@ -49,7 +49,7 @@ public class Object : MonoBehaviour
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
 
-    public ItemType GetItem() {  return itemType; }
+    public ItemType GetItem() { return itemType; }
     public Sprite GetInventorySprite() { return inventorySprite; }
 
     public void RemoveFromWorld() 

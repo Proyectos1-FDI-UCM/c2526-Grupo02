@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int BuildScene;
 
+    [SerializeField]
+    private GameObject Player;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -118,6 +121,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public GameObject GetPlayer() {  return Player; }
+
     /// <summary>
     /// Devuelve cierto si la instancia del singleton está creada y
     /// falso en otro caso.
@@ -126,6 +131,8 @@ public class GameManager : MonoBehaviour
     /// destruído antes de tiempo.
     /// </summary>
     /// <returns>Cierto si hay instancia creada.</returns>
+    /// 
+
     public static bool HasInstance()
     {
         return _instance != null;

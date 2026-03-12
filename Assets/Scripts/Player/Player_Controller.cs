@@ -18,11 +18,7 @@ public class Player_Controller : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
+
 
     //Atributo que nos dice la velocidad máxima del jugador.
     [SerializeField]
@@ -31,12 +27,7 @@ public class Player_Controller : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
+
 
     private InputAction _move;
     private Rigidbody2D _rb;
@@ -46,10 +37,6 @@ public class Player_Controller : MonoBehaviour
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
@@ -99,11 +86,6 @@ public class Player_Controller : MonoBehaviour
             rot.y = 0;
         }
         transform.rotation = rot;
-
-
-
-
-
 
     }
     #endregion
