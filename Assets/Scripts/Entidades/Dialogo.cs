@@ -54,6 +54,8 @@ public class Dialogo : MonoBehaviour
     private string[] _scriptCon; //lineas del dialogo alternativo
     private int _line; //el indice para las lineas de dialogo
     private bool _puzzle; //activa el dialogo fuera del input
+    private bool _type = false; //está escribiendo la linea
+    private bool _typeAll = false; //escirbe la linea completa
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -109,29 +111,35 @@ public class Dialogo : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (_talking) 
-        { 
-            if (_line == _script.GetLength(0)+1|| _line == _scriptCon.GetLength(0) + 1) { Canvas.GetComponent<Canvas>().enabled = false; _line = 0; _puzzle = false; } //si avanza dialogo en la ultima linea regresa al estado de entrar
-            if (_talk.ReadValue<float>() > 0.5f &&_talk.WasPressedThisFrame()) //detecta solo un frame de input o la llamada de otro componente
+        if (_talking)
+        {
+            if (_line == _script.GetLength(0) + 1 || _line == _scriptCon.GetLength(0) + 1) { Canvas.GetComponent<Canvas>().enabled = false; _line = 0; _puzzle = false; } //si avanza dialogo en la ultima linea regresa al estado de entrar
+
+            if (_talk.ReadValue<float>() > 0.5f && _talk.WasPressedThisFrame()) //detecta solo un frame de input o la llamada de otro componente
             {
-                this.gameObject.GetComponent<Conditional_Test>().Check();
                 Debug.Log(_puzzle);
-                if (!_puzzle)
+                if (_type)
                 {
-                Canvas.GetComponent<Canvas>().enabled = true;
-                if (_line < _script.GetLength(0)) MostrarLinea(_script);  //comprueba que estas dentro del array de dialogo
-                _line++;
+                    _typeAll = true; // si le da otra vez escribe la linea completa
                 }
                 else
                 {
-                    Canvas.GetComponent<Canvas>().enabled = true;
-                    if (_line < _scriptCon.GetLength(0)) MostrarLinea(_scriptCon);  //comprueba que estas dentro del array de dialogo
-                    _line++;
+                    if (!_puzzle)
+                    {
+                        Canvas.GetComponent<Canvas>().enabled = true;
+                        if (_line < _script.GetLength(0)) MostrarLinea(_script);  //comprueba que estas dentro del array de dialogo                    }
+                        else
+                        {
+                            Canvas.GetComponent<Canvas>().enabled = true;
+                            if (_line < _scriptCon.GetLength(0)) MostrarLinea(_scriptCon);  //comprueba que estas dentro del array de dialogo
+                        }
+                        _line++;
+                    }
                 }
+
             }
-            
-         }
-        else { Canvas.GetComponent<Canvas>().enabled = false; _line = 0;_puzzle = false; } //una vez se aleja el dialogo regresa al estado inicial
+        }
+        else { Canvas.GetComponent<Canvas>().enabled = false; _line = 0; _puzzle = false; } //una vez se aleja el dialogo regresa al estado inicial
     }
     #endregion
 
@@ -143,7 +151,7 @@ public class Dialogo : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    public void puzzleSwitch(bool sel)
+    public void puzzleSwitch(bool sel) 
     {
         _puzzle = sel;
     }
@@ -177,13 +185,23 @@ public class Dialogo : MonoBehaviour
 
     IEnumerator EscribirLinea(string linea) //animacion de escribir por letra, el nombre del personaje se queda afuera del bucle para que no cambie
     {
+        _type = true;
+
         dialogo.text = $"{Nombre}: ";
 
         foreach (char letra in linea)
         {
-            dialogo.text += letra;
-            yield return new WaitForSeconds(Velocidad);
+            if (_typeAll) 
+            { dialogo.text = $"{Nombre}: {linea}"; break; } // cierra la corrutina para que no reviente todo
+            else 
+            {
+                dialogo.text += letra;
+                yield return new WaitForSeconds(Velocidad);
+            }
         }
+
+        _type = false;
+        _typeAll = false;
     }
 }
     
