@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Responsable de la creación de este archivo ALEJANDRO, SARA, JESUS
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -17,23 +17,27 @@ public class Follow_Player : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
+    
+    // Transform del jugador que la cámara debe seguir
     [SerializeField]
     private Transform Target;
     //[SerializeField]
     //private float TargetEyes = 0.5f;
+    
+    // Velocidad de suavizado del movimiento de la cámara
     [SerializeField]
     private float SpringFactor = 5f;
+
+    // Distancia a la que el raycast detecta paredes
     [SerializeField]
     private float DistanceToWall = 8.5f;
+
+    // Altura desde la que se lanza el raycast
     [SerializeField]
     private float rayHeight = 3f;
     //[SerializeField]
     //private float rotationspringFactor = 5f;
 
-
-    //private Vector3 offset; //Distancia entre punto A y B. (El juagdor y la cámara)
-    //private Vector3 currentPos; // Posicion actual con el movimiento 'suave' de la cámara
-    //private Vector3 expectedPos;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -44,6 +48,8 @@ public class Follow_Player : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+
+    // Distancia mínima del raycast para considerar colisión
     private float _minRayDist = 0.00f;
 
     #endregion
@@ -56,6 +62,7 @@ public class Follow_Player : MonoBehaviour
     // - Hay que borrar los que no se usen 
     void Start()
     {
+        // Comprobamos que el jugador está asignado
         if (Target == null)
         {
             Debug.Log("No has asignado ningún target a la cámara");
@@ -64,24 +71,27 @@ public class Follow_Player : MonoBehaviour
     }
     private void Update()
     {
+        // Posición actual del jugador
         Vector3 playerAct = Target.transform.position;
+
+        // Posición desde la que se lanza el raycast
         Vector3 rayPos = Target.transform.position;
         rayPos.y += rayHeight;
+
+        // Posición actual de la cámara
         Vector3 targetPos = transform.position;
 
+        // Raycast a derecha e izquierda para detectar paredes
         bool _collidingR = Physics2D.Raycast(rayPos, Vector2.right, DistanceToWall).distance > _minRayDist;
         bool _collidingL = Physics2D.Raycast(rayPos, Vector2.left, DistanceToWall).distance > _minRayDist;
 
+
+        // Si no hay colisiones, la cámara sigue al jugador suavemente
         if (!_collidingR && !_collidingL)
         {
             targetPos.x = Mathf.Lerp(targetPos.x, playerAct.x, (SpringFactor * Time.deltaTime));
             transform.position = targetPos;
         }
-
-
-        /* Vector3 dir = (targetEyes - transform.position).normalized; *///Calculamos la dirección hacia los ojos
-                                                                         //Quaternion lookAtRotation = Quaternion.LookRotation(dir, Vector3.up);
-                                                                         //transform.rotation = Quaternion.Lerp(transform.rotation, lookAtRotation, rotationspringFactor * Time.deltaTime);
     }
 
     #endregion
