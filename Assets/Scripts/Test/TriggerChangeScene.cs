@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo ALEJANDRO, SARA, JESUS
+// Responsable de la creación de este archivo
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -13,30 +13,15 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Follow_Player : MonoBehaviour
+public class TriggerChangeScene : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    
-    // Transform del jugador que la cámara debe seguir
-    [SerializeField]
-    private Transform Target;
-    //[SerializeField]
-    //private float TargetEyes = 0.5f;
-    
-    // Velocidad de suavizado del movimiento de la cámara
-    [SerializeField]
-    private float SpringFactor = 5f;
-
-    // Distancia a la que el raycast detecta paredes
-    [SerializeField]
-    private float DistanceToWall = 8.5f;
-
-    // Altura desde la que se lanza el raycast
-    [SerializeField]
-    private float rayHeight = 3f;
-    //[SerializeField]
-    //private float rotationspringFactor = 5f;
+    // Documentar cada atributo que aparece aquí.
+    // El convenio de nombres de Unity recomienda que los atributos
+    // públicos y de inspector se nombren en formato PascalCase
+    // (palabras con primera letra mayúscula, incluida la primera letra)
+    // Ejemplo: MaxHealthPoints
 
     #endregion
 
@@ -48,9 +33,8 @@ public class Follow_Player : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
-    // Distancia mínima del raycast para considerar colisión
-    private float _minRayDist = 0.00f;
+    [SerializeField]
+    private int BuildScene;
 
     #endregion
 
@@ -60,40 +44,23 @@ public class Follow_Player : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
     void Start()
     {
-        // Comprobamos que el jugador está asignado
-        if (Target == null)
-        {
-            Debug.Log("No has asignado ningún target a la cámara");
-            return;
-        }
+        
     }
-    private void Update()
+
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
     {
-        // Posición actual del jugador
-        Vector3 playerAct = Target.transform.position;
-
-        // Posición desde la que se lanza el raycast
-        Vector3 rayPos = Target.transform.position;
-        rayPos.y += rayHeight;
-
-        // Posición actual de la cámara
-        Vector3 targetPos = transform.position;
-
-        // Raycast a derecha e izquierda para detectar paredes
-        bool _collidingR = Physics2D.Raycast(rayPos, Vector2.right, DistanceToWall).distance > _minRayDist;
-        bool _collidingL = Physics2D.Raycast(rayPos, Vector2.left, DistanceToWall).distance > _minRayDist;
-
-
-        // Si no hay colisiones, la cámara sigue al jugador suavemente
-        if (!_collidingR && !_collidingL)
-        {
-            targetPos.x = Mathf.Lerp(targetPos.x, playerAct.x, (SpringFactor * Time.deltaTime));
-            transform.position = targetPos;
-        }
+        
     }
-
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -103,6 +70,16 @@ public class Follow_Player : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+
+    
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Player_Controller>() != null)
+        {
+            GameManager.Instance.ChangeScene(BuildScene);
+        }
+    }
+
 
     #endregion
 
@@ -115,5 +92,5 @@ public class Follow_Player : MonoBehaviour
 
     #endregion
 
-} // class Follow_Player 
+} // class TriggerChangeScene 
 // namespace
