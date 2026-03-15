@@ -888,35 +888,6 @@ MonoBehaviour:
       m_Calls: []
   NeededType: 1
   mano: {fileID: 1843685278}
---- !u!114 &611144804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611144795}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9005e4dc3aa1597499a00d571d674a13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LookUpComponent: {fileID: 731205862}
-  OnInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
-        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: callScript
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1617609905}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Canvas, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  cameraInteracts: 0
 --- !u!1001 &623435382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1930,9 +1901,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9076730456491123190, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 611144800}
-    - targetCorrespondingSourceObject: {fileID: 9076730456491123190, guid: 25364da18e6d3694288037c4787484bb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 611144804}
   m_SourcePrefab: {fileID: 100100000, guid: 25364da18e6d3694288037c4787484bb, type: 3}
 --- !u!20 &1168011575 stripped
 Camera:

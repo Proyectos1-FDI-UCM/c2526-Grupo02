@@ -114,6 +114,7 @@ public class Dialogo : MonoBehaviour
             if (_talk.ReadValue<float>() > 0.5f && _talk.WasPressedThisFrame()) //detecta solo un frame de input o la llamada de otro componente
             {
                 Debug.Log(_puzzle);
+                this.gameObject.GetComponent<Conditional_Test>().Check();
                 if (_type) { _typeAll = true; }
                 else
                 {
