@@ -61,6 +61,7 @@ public class Interactuable : MonoBehaviour
         {
             Debug.Log("Falta asignar el lookUp de la camara");
         }
+
     }
 
 
