@@ -51,6 +51,8 @@ public class Interactuable : MonoBehaviour
     /// <summary>
     void Start()
     {
+        //Programación defensiva para evitar pequeños despistes
+        //Si no está ninguna de las acciones se avisa mediante consola
         _Interact = InputSystem.actions.FindAction("Interact"); //asignamos la accion
         if (_Interact == null)
         {
