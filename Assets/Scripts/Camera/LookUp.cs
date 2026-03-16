@@ -106,6 +106,8 @@ public class LookUp : MonoBehaviour
         {
             // Ajuste de altura sobre el jugador
             yObj = alturaElevada + Jugador.transform.position.y;
+            //El stop Si se pone en el update porque otro script podría llegar a permitir al jugador moverse pero por este no se debería poder.
+            Jugador.GetComponent<Player_Controller>().Stop();
         }
         else
         {

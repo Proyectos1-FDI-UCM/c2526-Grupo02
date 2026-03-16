@@ -77,11 +77,6 @@ public class Player_Controller : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-
-    public int GetSpeed()
-    {
-        return Speed;
-    }
     public void Stop()
     {
         //Ponemos la velocidad a 0 para que no se mueva el jugador (RECORDAR QUE NO SE LLAME CONSTANTEMENTE)
