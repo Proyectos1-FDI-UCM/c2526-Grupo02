@@ -89,6 +89,15 @@ public class LookUp : MonoBehaviour
             _nextMov = Time.time + 1;
             // Alterna entre altura normal y elevada
             _alturaAlta = !_alturaAlta;
+            if (_alturaAlta)
+            {
+                Jugador.GetComponent<Player_Controller>().Stop();
+            }
+            else
+            {
+                Jugador.GetComponent<Player_Controller>().Resume();
+            }
+
         }
         Vector3 act = transform.position;// Posición actual de la cámara
         float yObj = alturaNormal; // Altura objetivo por defecto
@@ -97,16 +106,11 @@ public class LookUp : MonoBehaviour
         {
             // Ajuste de altura sobre el jugador
             yObj = alturaElevada + Jugador.transform.position.y;
-            // Detiene el movimiento del jugador
-            Jugador.GetComponent<Player_Controller>().Stop();
         }
         else
         {
             // Altura normal sobre el jugador
             yObj = alturaNormal + Jugador.transform.position.y;
-            // Reanuda el movimiento del jugador
-            Jugador.GetComponent<Player_Controller>().Resume();
-            
         }
 
         // Interpolación suave (Lerp) hacia la altura objetivo

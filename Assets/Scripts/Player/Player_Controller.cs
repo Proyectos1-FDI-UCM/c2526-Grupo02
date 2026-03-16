@@ -1,29 +1,17 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
-// Nombre del juego
+// Script que maneja el movimiento del jugador
+// Responsable de la creación de este archivo: Alejandro Jiménez Rojo
+// Dont go up
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
 using UnityEngine.InputSystem;
-// Añadir aquí el resto de directivas using
 
-
-/// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
-/// </summary>
 public class Player_Controller : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
-
     //Atributo que nos dice la velocidad máxima del jugador.
     [SerializeField]
     int Speed = 5;
@@ -31,30 +19,18 @@ public class Player_Controller : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
-
+  
+    //Atributo de la acción para moverse
     private InputAction _move;
+    //Atributo que coje el rigidBody del jugador.
     private Rigidbody2D _rb;
+    //atributo donde guardamos la velocidad que hemos metido en el inspector,
     private int SpeedRecord;
 
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
     void Start()
     {
         SpeedRecord = Speed;
@@ -71,10 +47,6 @@ public class Player_Controller : MonoBehaviour
             return;
         }
     }
-
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
     void Update()
     {
         //Calculamos la dirección del movimiento y se la sumamos a la posición x multiplicandolo por la velocidad y el time.deltatime
@@ -99,43 +71,30 @@ public class Player_Controller : MonoBehaviour
             rot.y = 0;
         }
         transform.rotation = rot;
-
-
-
-
-
-
     }
     #endregion
 
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
 
+    public int GetSpeed()
+    {
+        return Speed;
+    }
     public void Stop()
     {
+        //Ponemos la velocidad a 0 para que no se mueva el jugador (RECORDAR QUE NO SE LLAME CONSTANTEMENTE)
         Speed = 0;
     }
-
     public void Resume()
     {
+        //Ponemos la velocidad a la que tenia anterior mente para que se mueva el jugador (RECORDAR QUE NO SE LLAME CONSTANTEMENTE)
         Speed = SpeedRecord;
     }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
     #endregion
-
-} // class Player_Controller 
-// namespace
+} 
