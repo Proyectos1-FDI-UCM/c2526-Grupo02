@@ -62,15 +62,19 @@ public class Player_Controller : MonoBehaviour
         //Calculamos la dirección a la que mira el jugador
         rot.x = 0;
         rot.z = 0;
-        if (HorizontalDir == -1)
+        if(Speed != 0)
         {
-            rot.y = 180;
+            if (HorizontalDir == -1)
+            {
+                rot.y = 180;
+            }
+            else if (HorizontalDir == 1)
+            {
+                rot.y = 0;
+            }
+            transform.rotation = rot;
         }
-        else if (HorizontalDir == 1)
-        {
-            rot.y = 0;
-        }
-        transform.rotation = rot;
+        
     }
     #endregion
 
