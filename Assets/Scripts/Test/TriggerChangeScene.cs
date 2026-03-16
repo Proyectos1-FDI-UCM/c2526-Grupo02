@@ -1,17 +1,19 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo - JESUS DIEZ 
+// Responsable de la creación de este archivo
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
 // Añadir aquí el resto de directivas using
+
+
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class InventoryItem : MonoBehaviour
+public class TriggerChangeScene : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -20,21 +22,11 @@ public class InventoryItem : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    public string itemName;
-    public ItemType type;  // <-- aquí se usa ItemType
-    public Sprite icon;
 
-    // Enumerador que define los tipos de items
-    public enum ItemType
-    {
-        None,
-        flor,
-        mariposa,
-        llave,
-        libro,
-        lapicero
-        // puedes añadir más tipos
-    }
+    //Crea una variable visible en el editor que permite seleccionar la escena a la que se quiere ir
+    [SerializeField]
+    private int BuildScene;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -45,6 +37,7 @@ public class InventoryItem : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+
 
     #endregion
 
@@ -80,15 +73,17 @@ public class InventoryItem : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public ItemType GetItem()
+
+    //Método que en colisión con el Player llama al GameManager para cambiar de escena
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        return type;
+        if (collision.gameObject.GetComponent<Player_Controller>() != null)
+        {
+            GameManager.Instance.ChangeScene(BuildScene);
+        }
     }
 
-    public void RemoveFromWorld()
-    {
-        gameObject.SetActive(false);
-    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -100,5 +95,5 @@ public class InventoryItem : MonoBehaviour
 
     #endregion
 
-} // class NewMonoBehaviourScript 
+} // class TriggerChangeScene 
 // namespace

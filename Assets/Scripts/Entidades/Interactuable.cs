@@ -51,6 +51,8 @@ public class Interactuable : MonoBehaviour
     /// <summary>
     void Start()
     {
+        //Programación defensiva para evitar pequeños despistes
+        //Si no está ninguna de las acciones se avisa mediante consola
         _Interact = InputSystem.actions.FindAction("Interact"); //asignamos la accion
         if (_Interact == null)
         {
@@ -61,6 +63,7 @@ public class Interactuable : MonoBehaviour
         {
             Debug.Log("Falta asignar el lookUp de la camara");
         }
+
     }
 
 
