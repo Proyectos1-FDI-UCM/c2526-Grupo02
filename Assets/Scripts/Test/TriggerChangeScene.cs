@@ -23,6 +23,10 @@ public class TriggerChangeScene : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
+    //Crea una variable visible en el editor que permite seleccionar la escena a la que se quiere ir
+    [SerializeField]
+    private int BuildScene;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -33,8 +37,7 @@ public class TriggerChangeScene : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    [SerializeField]
-    private int BuildScene;
+
 
     #endregion
 
@@ -71,7 +74,7 @@ public class TriggerChangeScene : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    
+    //Método que en colisión con el Player llama al GameManager para cambiar de escena
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Player_Controller>() != null)

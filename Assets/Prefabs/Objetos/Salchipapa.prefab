@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &525337955400031088
 Transform:
   m_ObjectHideFlags: 0
@@ -148,4 +148,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 0}
-  Jugador: {fileID: 2460893897635827811, guid: b09c55b748697f24d8824adcd974f68d, type: 3}

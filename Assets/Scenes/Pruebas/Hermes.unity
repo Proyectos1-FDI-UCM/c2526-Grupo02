@@ -281,8 +281,25 @@ PrefabInstance:
     - {fileID: 692505875085616641, guid: 25364da18e6d3694288037c4787484bb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9076730456491123190, guid: 25364da18e6d3694288037c4787484bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 755602598}
+    - targetCorrespondingSourceObject: {fileID: 9076730456491123190, guid: 25364da18e6d3694288037c4787484bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 755602597}
   m_SourcePrefab: {fileID: 100100000, guid: 25364da18e6d3694288037c4787484bb, type: 3}
+--- !u!114 &501735983 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8745099721723881016, guid: fdc3b92a468881b4f80bd7062fa2fd4e, type: 3}
+  m_PrefabInstance: {fileID: 1377844800}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef6a062928c6d1240a31dd5cd9f68243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &544571092
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,6 +379,96 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &755602592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9076730456491123190, guid: 25364da18e6d3694288037c4787484bb, type: 3}
+  m_PrefabInstance: {fileID: 329382810}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &755602597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755602592}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d19b12259ae7724d946da99d8a445b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  code:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: puzzleSwitch
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Inventory_Manager, Assembly-CSharp
+        m_MethodName: RemoveFromInv
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Inventory_Manager, Assembly-CSharp
+        m_MethodName: AddObj
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: Object, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  negativeCode:
+    m_PersistentCalls:
+      m_Calls: []
+  NeededType: 1
+  mano: {fileID: 0}
+--- !u!114 &755602598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755602592}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9005e4dc3aa1597499a00d571d674a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LookUpComponent: {fileID: 501735983}
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: CallScript
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  cameraInteracts: 0
 --- !u!114 &908006785 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 126041551737120243, guid: 175109bc4504d9b45b6e2c3ad2ae091e, type: 3}

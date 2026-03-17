@@ -9,6 +9,7 @@ using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
 
@@ -72,7 +73,7 @@ public class Dialogo : MonoBehaviour
     /// sistema de dialogo, usa un archivo de texto y lee el contenido y lo muestra linea por linea
     void Start()
     {
-        Canvas.GetComponent<Canvas>().enabled = false;
+        Canvas.enabled = false;
         _talk = InputSystem.actions.FindAction("Interact");
         if (_talk == null )
         {
@@ -105,42 +106,38 @@ public class Dialogo : MonoBehaviour
         _line = 0;
         _puzzle = false;
     }
-
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
     void Update()
     {
         if (_talking)
         {
             if (_line == _script.GetLength(0) + 1 || _line == _scriptCon.GetLength(0) + 1) { Canvas.GetComponent<Canvas>().enabled = false; _line = 0; _puzzle = false; } //si avanza dialogo en la ultima linea regresa al estado de entrar
-
             if (_talk.ReadValue<float>() > 0.5f && _talk.WasPressedThisFrame()) //detecta solo un frame de input o la llamada de otro componente
             {
                 Debug.Log(_puzzle);
-                if (_type)
-                {
-                    _typeAll = true; // si le da otra vez escribe la linea completa
-                }
+                this.gameObject.GetComponent<Conditional_Test>().Check();
+                if (_type) { _typeAll = true; }
                 else
                 {
                     if (!_puzzle)
                     {
                         Canvas.GetComponent<Canvas>().enabled = true;
-                        if (_line < _script.GetLength(0)) MostrarLinea(_script);  //comprueba que estas dentro del array de dialogo                    }
-                        else
-                        {
-                            Canvas.GetComponent<Canvas>().enabled = true;
-                            if (_line < _scriptCon.GetLength(0)) MostrarLinea(_scriptCon);  //comprueba que estas dentro del array de dialogo
-                        }
+                        if (_line < _script.GetLength(0)) MostrarLinea(_script);  //comprueba que estas dentro del array de dialogo
+                        _line++;
+                    }
+                    else
+                    {
+                        Canvas.GetComponent<Canvas>().enabled = true;
+                        if (_line < _scriptCon.GetLength(0)) MostrarLinea(_scriptCon);  //comprueba que estas dentro del array de dialogo
                         _line++;
                     }
                 }
 
             }
+
         }
         else { Canvas.GetComponent<Canvas>().enabled = false; _line = 0; _puzzle = false; } //una vez se aleja el dialogo regresa al estado inicial
     }
+
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -155,6 +152,25 @@ public class Dialogo : MonoBehaviour
     {
         _puzzle = sel;
     }
+  /*  public void callScript(Canvas canvas)
+    {   canvas.enabled = true;
+        Debug.Log("evento");
+       //if (!_talking) { canvas.enabled = false; _line = 0; _puzzle = false; return; } //una vez se aleja el dialogo regresa al estado inicial
+       
+            if (_line == _script.GetLength(0) + 1 || _line == _scriptCon.GetLength(0) + 1) { canvas.enabled = false; _line = 0; _puzzle = false; return; } //si avanza dialogo en la ultima linea regresa al estado de entrar
+            if (_type) { _typeAll = true; }
+                Debug.Log(_puzzle);
+                if (!_puzzle)
+                {
+                    if (_line < _script.GetLength(0)) MostrarLinea(_script);  //comprueba que estas dentro del array de dialogo
+                }
+                else
+                {
+                    if (_line < _scriptCon.GetLength(0)) MostrarLinea(_scriptCon);  //comprueba que estas dentro del array de dialogo
+                }
+                _line++;
+    }*/
+   
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -163,7 +179,7 @@ public class Dialogo : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-    private void OnTriggerEnter2D(Collider2D collision)
+   private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Player_Controller>() != null)
         {
