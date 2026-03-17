@@ -180,7 +180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f59f329bc0b4a36bc8d02c6710a226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuildScene: 0
   Player: {fileID: 194068694}
 --- !u!4 &448557578
 Transform:
@@ -472,11 +471,20 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -1.5001831
       objectReference: {fileID: 0}
+    - target: {fileID: 8627791515019816041, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
+--- !u!224 &713423305 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6592956867207363725, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
+  m_PrefabInstance: {fileID: 694698353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &735577029
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,6 +536,10 @@ MonoBehaviour:
   - {fileID: 1314102561}
   - {fileID: 144917489}
   - {fileID: 1762066793}
+  _currentItemIndex: 0
+  _sujetado: {fileID: 0}
+  _delayTime: 0.4
+  _selection: {fileID: 713423305}
   _inv: []
 --- !u!114 &755027200 stripped
 MonoBehaviour:
@@ -711,7 +723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 2
-  inventorySprite: {fileID: 0}
+  inventorySprite: {fileID: -5060089017191073257, guid: 883f870ae2c16eb4986613d3be39276b, type: 3}
 --- !u!114 &1301499170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,6 +802,17 @@ BoxCollider2D:
 --- !u!114 &1314102561 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 38245558492651438, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
+  m_PrefabInstance: {fileID: 694698353}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1670869949 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5369849014205508632, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
   m_PrefabInstance: {fileID: 694698353}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -930,6 +953,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3787825909870468965, guid: b09c55b748697f24d8824adcd974f68d, type: 3}
+      propertyPath: Mano
+      value: 
+      objectReference: {fileID: 1670869949}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

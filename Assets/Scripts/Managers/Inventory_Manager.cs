@@ -32,10 +32,14 @@ public class Inventory_Manager : MonoBehaviour
     [SerializeField]
     private int _currentItemIndex = 0;
     [SerializeField]
-    private Object sujetado;
+    private Object _sujetado;
 
+    [SerializeField]
+    private float _delayTime = 0.5f;
+
+    [SerializeField]
+    private RectTransform _selection;
     #endregion
-
 
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -64,7 +68,9 @@ public class Inventory_Manager : MonoBehaviour
     //ref al jugador
     private GameObject _player;
 
+    private float _timer = 0.0f;
     #endregion
+
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
@@ -112,6 +118,7 @@ public class Inventory_Manager : MonoBehaviour
             if (_inventoryIsOpen)
             {
                 _currentItemIndex = 0;
+                _timer = _delayTime;
                 _player.GetComponent<Player_Controller>().Stop();
             }
             else
@@ -121,29 +128,47 @@ public class Inventory_Manager : MonoBehaviour
 
         }
 
-        //logica inputs inventario aqui
-        Vector2 dir = _move.ReadValue<Vector2>();
-        float HorizontalDir = Mathf.Round(dir.x);
-        if(_currentItemIndex > 0 && HorizontalDir == -1)
+        if (_inventoryIsOpen)
         {
-            _currentItemIndex--;
-        }
-        else if(_currentItemIndex < _invLenght - 1 && HorizontalDir == 1)
-        {
-            _currentItemIndex++;
-        }
+            //logica inputs inventario aqui
+            Vector2 dir = _move.ReadValue<Vector2>();
+            float HorizontalDir = Mathf.Round(dir.x);
 
-        //logica interfaz mover al seleccionado
+            if(dir.x != 0)
+            {
+                if (_timer >= _delayTime)
+                {
+                    if (_currentItemIndex > 0 && HorizontalDir == -1)
+                    {
+                        _currentItemIndex--;
+                    }
+                    else if (_currentItemIndex < _invLenght - 1 && HorizontalDir == 1)
+                    {
+                        _currentItemIndex++;
+                    }
+                    _selection.position = _invHudSpaces[_currentItemIndex].GetComponent<RectTransform>().position;
 
-        //buscar algun metodo parecido al Input.getkeyDown
-        if (_Interact.WasPressedThisFrame() && _currentItemIndex < _nObj)
-        {
-            _player.GetComponent<Object_use>().ObjetoRecogido(_inv[_currentItemIndex]);
-            sujetado = _inv[_currentItemIndex];
+                    _timer = 0;
+                }
+                else
+                {
+                    _timer += Time.deltaTime;
+                }
+            }
+
+            //logica interfaz mover al seleccionado
+
+            if (_Interact.WasPressedThisFrame() && _currentItemIndex < _nObj)
+            {
+
+                _player.GetComponent<Object_use>().ObjetoRecogido(_inv[_currentItemIndex]);
+                _sujetado = _inv[_currentItemIndex];
+            }
         }
     }
 
     #endregion
+
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -183,7 +208,6 @@ public class Inventory_Manager : MonoBehaviour
     }
 
     #endregion
-
 
 
     // ---- MÉTODOS PRIVADOS ----
