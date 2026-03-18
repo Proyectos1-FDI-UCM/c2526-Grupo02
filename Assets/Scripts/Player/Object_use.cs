@@ -40,6 +40,7 @@ public class Object_use : MonoBehaviour
     // Objeto selecionado por el jugador
     private Object ObjetoEnUso;
 
+    private Sprite _emptyHand;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -60,6 +61,7 @@ public class Object_use : MonoBehaviour
         {
             Debug.Log("No hay mano configurada");
         }
+        _emptyHand = Mano.sprite;
     }
 
     #endregion
@@ -97,7 +99,7 @@ public class Object_use : MonoBehaviour
     public void RemoveFromHand()
     {
         ObjetoEnUso = null;
-        Mano.sprite = null;
+        Mano.sprite = _emptyHand;
     }
         
     #endregion

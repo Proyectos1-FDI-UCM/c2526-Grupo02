@@ -20,11 +20,6 @@ public class Object : MonoBehaviour
 
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
 
     #endregion
     [SerializeField]
@@ -53,12 +48,8 @@ public class Object : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
-    public ItemType GetItem() {  return itemType; }
+
+    public ItemType GetItem() { return itemType; }
     public Sprite GetInventorySprite() { return inventorySprite; }
 
     public void RemoveFromWorld() 
