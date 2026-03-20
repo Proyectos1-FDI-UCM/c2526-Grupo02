@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f59f329bc0b4a36bc8d02c6710a226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuildScene: 2
+  Player: {fileID: 0}
 --- !u!4 &83888026
 Transform:
   m_ObjectHideFlags: 0
@@ -440,7 +440,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  cameraInteracts: 1
+  cameraInteracts: 0
 --- !u!61 &1124217193
 BoxCollider2D:
   m_ObjectHideFlags: 0

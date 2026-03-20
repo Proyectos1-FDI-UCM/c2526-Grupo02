@@ -12,8 +12,8 @@ using UnityEngine.InputSystem;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// El bool cameraInteracts sive para que si esta en true, solo se pueda interactuar con el objeto cuando se está mirando hacia arriba. Sin embargo, si
+/// este está desactivado permite interactuar con el objecto, en este caso al interactuar, permite llamar a una función cualquiera para que se ejecute.
 /// </summary>
 public class Interactuable : MonoBehaviour
 {
