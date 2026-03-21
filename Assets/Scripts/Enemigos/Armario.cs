@@ -23,13 +23,13 @@ public class Armario : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField]
-    private float TiempoDeDesactivar;
+    private float TiempoDeDesactivar; // Tiempo que tarda el armario en apagar su campo de visión
     [SerializeField]
-    private float DuracionDeDesactivacion;
+    private float DuracionDeDesactivacion; // Tiempo que tarda en volver a activarlo 
     [SerializeField]
-    private GameObject PanelVisual;
+    private GameObject PanelVisual; // Panel que señaliza la visión del enemigo
     [SerializeField]
-    private Collider2D Visión;
+    private Collider2D Visión; //Collider aparte que representa el campo visual del enemigo.
 
 
 
@@ -86,11 +86,11 @@ public class Armario : MonoBehaviour
     private void OnTriggerStay(Collider2D collision)
     {
         var player = collision.GetComponent<Player_Controller>();
-       
-        //Revisamos si el objeto que ha salido es un jugador (tiene el player_Controller)
+
+
         if (player != null)
         {
-            int fase = detect.GetState(); 
+            int fase = detect.GetState();
             switch (fase)
             {
                 case 0:
@@ -101,19 +101,20 @@ public class Armario : MonoBehaviour
                     break;
                 case 2:
                     GetComponent<Renderer>().material.color = Color.red;
-                    GameManager.Instance.MuerteJugador(); 
+                    GameManager.Instance.MuerteJugador();
                     break;
 
 
             }
-          
+
 
         }
 
-        /// <summary>
-        /// Update is called every frame, if the MonoBehaviour is enabled.
-        /// </summary>
-        void Update()
+    }
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
     {
         Temporizador += Time.deltaTime; 
         if (estado == Estado.activo && Temporizador >= TiempoDeDesactivar)
@@ -157,5 +158,5 @@ public class Armario : MonoBehaviour
 
 }
 
-} // class Armario 
+ // class Armario 
 // namespace
