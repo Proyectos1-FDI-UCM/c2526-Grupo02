@@ -63,7 +63,7 @@ public class Armario : MonoBehaviour
     {
         Visión.enabled = Acti;
     }
-
+    private Enemy_Detect detect; 
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -79,14 +79,41 @@ public class Armario : MonoBehaviour
     /// </summary>
     void Start()
     {
-        estado = Estado.activo; 
+        estado = Estado.activo;
+        detect = GetComponent<Enemy_Detect>();
 
     }
+    private void OnTriggerStay(Collider2D collision)
+    {
+        var player = collision.GetComponent<Player_Controller>();
+       
+        //Revisamos si el objeto que ha salido es un jugador (tiene el player_Controller)
+        if (player != null)
+        {
+            int fase = detect.GetState(); 
+            switch (fase)
+            {
+                case 0:
+                    GetComponent<Renderer>().material.color = Color.blue;
+                    break;
+                case 1:
+                    GetComponent<Renderer>().material.color = Color.yellow;
+                    break;
+                case 2:
+                    GetComponent<Renderer>().material.color = Color.red;
+                    GameManager.Instance.MuerteJugador(); 
+                    break;
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
+
+            }
+          
+
+        }
+
+        /// <summary>
+        /// Update is called every frame, if the MonoBehaviour is enabled.
+        /// </summary>
+        void Update()
     {
         Temporizador += Time.deltaTime; 
         if (estado == Estado.activo && Temporizador >= TiempoDeDesactivar)
@@ -104,7 +131,10 @@ public class Armario : MonoBehaviour
             ControlVision(true); 
         }
     }
+
+    
     #endregion
+    
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -124,6 +154,8 @@ public class Armario : MonoBehaviour
     // mayúscula, incluida la primera letra)
 
     #endregion   
+
+}
 
 } // class Armario 
 // namespace
