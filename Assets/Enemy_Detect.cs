@@ -34,6 +34,9 @@ public class Enemy_Detect : MonoBehaviour
     private float _stateInBetweenTime = 0;
     //Atributo que nos señala si el jugador esta dentro o no
     private bool _playerIsInside;
+    //Variable para esconderse
+    private HideSystem HideSystem;
+    
   
     #endregion
 
@@ -47,6 +50,14 @@ public class Enemy_Detect : MonoBehaviour
         {
             //El jugador está dentro
             _playerIsInside = true;
+            if (collision.GetComponent<HideSystem>() == null)
+            {
+                Debug.Log("No has metido el HIDE SYSTEM");
+            }
+            else
+            {
+                HideSystem = collision.GetComponent<HideSystem>();
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -56,6 +67,8 @@ public class Enemy_Detect : MonoBehaviour
         {
             //El jugador ya no está dentro
             _playerIsInside = false;
+            HideSystem = null;
+           
         }
     }
 
@@ -65,11 +78,12 @@ public class Enemy_Detect : MonoBehaviour
         //Calculamos el tiempo entre estados según el número de estados que hay y el tiempo entre el estado 0 y el N
         //Con esto TODOS LOS ESTADOS DURAN LO MISMO
         _stateInBetweenTime = MaxStateTime / NumStates;
+
     }
     void Update()
     {
         // si el jugador está dentro vamos contando el tiempo hacia arriba
-        if (_playerIsInside)
+        if (_playerIsInside && !HideSystem.IsHiding)
         {
             //Si el tiempo es menor que el máximo, se sigue contando hacia arriba
             if (_time <= MaxStateTime)
