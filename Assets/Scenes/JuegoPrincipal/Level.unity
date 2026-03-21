@@ -1284,6 +1284,35 @@ MonoBehaviour:
   Nombre: Cocinero
   Archivo: CocineroAntes.txt
   ArchivoCon: CocineroDespues.txt
+--- !u!114 &1078449565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078449562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9005e4dc3aa1597499a00d571d674a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LookUpComponent: {fileID: 731205862}
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1078449562}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  cameraInteracts: 1
 --- !u!1001 &1142400397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2001,6 +2030,35 @@ MonoBehaviour:
   Nombre: Segurata
   Archivo: SegurataAntes.txt
   ArchivoCon: SegurataDespues.txt
+--- !u!114 &1768110778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768110775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9005e4dc3aa1597499a00d571d674a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LookUpComponent: {fileID: 731205862}
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1768110775}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  cameraInteracts: 1
 --- !u!1 &1792275949
 GameObject:
   m_ObjectHideFlags: 0
@@ -2562,6 +2620,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2854372717920814992, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1078449563}
+    - targetCorrespondingSourceObject: {fileID: 2854372717920814992, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1078449565}
   m_SourcePrefab: {fileID: 100100000, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
 --- !u!1001 &4367660402806243294
 PrefabInstance:
@@ -2625,6 +2686,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4082793434466057598, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1768110776}
+    - targetCorrespondingSourceObject: {fileID: 4082793434466057598, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1768110778}
   m_SourcePrefab: {fileID: 100100000, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
 --- !u!1001 &5805244147865208433
 PrefabInstance:

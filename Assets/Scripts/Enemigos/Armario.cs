@@ -22,9 +22,19 @@ public class Armario : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField]
+    private float TiempoDeDesactivar;
+    [SerializeField]
+    private float DuracionDeDesactivacion;
+    [SerializeField]
+    private GameObject PanelVisual;
+    [SerializeField]
+    private Collider2D Visión;
+
+
 
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -34,22 +44,43 @@ public class Armario : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    private float Temporizador; 
+
+    enum Estado
+    {
+        activo,
+        inactivo
+    }
+    private Estado estado; 
+
+    private void ControlPanel (bool Acti)
+    {
+        PanelVisual.SetActive(Acti); 
+       
+    }
+
+    private void ControlVision (bool Acti)
+    {
+        Visión.enabled = Acti;
+    }
+
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-        
+        estado = Estado.activo; 
+
     }
 
     /// <summary>
@@ -57,7 +88,21 @@ public class Armario : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
+        Temporizador += Time.deltaTime; 
+        if (estado == Estado.activo && Temporizador >= TiempoDeDesactivar)
+        {
+            estado = Estado.inactivo;
+            Temporizador = 0; 
+            ControlPanel(false);
+            ControlVision(false); 
+        }
+        else if (estado == Estado.inactivo && Temporizador >=DuracionDeDesactivacion)
+        {
+            estado =Estado.activo;
+            Temporizador = 0;
+            ControlPanel(true);
+            ControlVision(true); 
+        }
     }
     #endregion
 
