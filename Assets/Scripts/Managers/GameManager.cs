@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject Player;
+    [SerializeField]
+    private GameObject PanelMuerte;
 
     #endregion
 
@@ -120,6 +122,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void MuerteJugador()
+    {
+        PanelMuerte.SetActive(true);
+    }
     public GameObject GetPlayer() {  return Player; }
 
     /// <summary>
