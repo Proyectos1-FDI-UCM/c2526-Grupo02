@@ -206,6 +206,25 @@ public class Inventory_Manager : MonoBehaviour
             Debug.Log("Tipo de item no válido");
         }
     }
+    public int IniState ()
+    {
+        return _invLenght;
+    }
+    public Object RetState(int n) // regresa el estado del inventario
+    {
+        return _inv[n];
+    }
+    public void LoadState(Object[] old)
+    {
+        _nObj = 0;
+        for (int i = 0; i < _invLenght; i++)
+        {
+            _inv[i] = old [i];
+            _invHudSpaces[i].sprite = old[i].GetInventorySprite();
+            _invHudSpaces[i].gameObject.SetActive(true);
+            if (old[i]!=null)_nObj++;
+        }
+    }
 
     #endregion
 
