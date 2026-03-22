@@ -13,7 +13,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Armario : MonoBehaviour
+public class SaveState : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -22,16 +22,6 @@ public class Armario : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField]
-    private float TiempoDeDesactivar; // Tiempo que tarda el armario en apagar su campo de visión
-    [SerializeField]
-    private float DuracionDeDesactivacion; // Tiempo que tarda en volver a activarlo 
-    [SerializeField]
-    private GameObject PanelVisual; // Panel que señaliza la visión del enemigo
-    [SerializeField]
-    private Collider2D Visión; //Collider aparte que representa el campo visual del enemigo.
-
-
 
     #endregion
 
@@ -43,99 +33,37 @@ public class Armario : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+    private Object[] _objState;
+    private bool[] _puzState;
+    private GameObject _player;
+    private Vector3 _playerTransform;
 
-    private float Temporizador;  // Temporizador que se usara para llevar los dos tiempos.
-
-    enum Estado  // enum para indicar en que estado se encuentra el armario
-    {
-        activo,
-        inactivo
-    }
-    private Estado estado;  // el estado
-
-    private void ControlPanel (bool Acti) // Controlo el panel que me indica el radio visual del enemigo
-    {
-        PanelVisual.SetActive(Acti); 
-       
-    }
-
-    private void ControlVision (bool Acti) // Controlo el propio collider para activarlo y desactivarlo
-    {
-        Visión.enabled = Acti;
-    }
-    private Enemy_Detect detect;  // llamo al detect
     #endregion
-
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
+    
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-        estado = Estado.activo;
-        detect = GetComponent<Enemy_Detect>();
-
+        _objState = new Object[GameManager.Instance.GetInv().gameObject.GetComponent<Inventory_Manager>().IniState()];
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        var player = collision.GetComponent<Player_Controller>();
 
-
-        if (player != null)
-        {
-            int fase = detect.GetState();
-            switch (fase)
-            {
-                case 0:
-                    GetComponent<Renderer>().material.color = Color.blue;
-                    break;
-                case 1:
-                    GetComponent<Renderer>().material.color = Color.yellow;
-                    break;
-                case 2:
-                    //GetComponent<Renderer>().material.color = Color.red;
-                    GameManager.Instance.GameOver();
-                    break;
-
-
-            }
-
-
-        }
-
-    }
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
     {
-        Temporizador += Time.deltaTime; 
-        if (estado == Estado.activo && Temporizador >= TiempoDeDesactivar)
-        {
-            estado = Estado.inactivo;
-            Temporizador = 0; 
-            ControlPanel(false);
-            ControlVision(false); 
-        }
-        else if (estado == Estado.inactivo && Temporizador >=DuracionDeDesactivacion)
-        {
-            estado =Estado.activo;
-            Temporizador = 0;
-            ControlPanel(true);
-            ControlVision(true); 
-        }
+        
     }
-
-    
     #endregion
-    
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -144,19 +72,41 @@ public class Armario : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    public void Respawn ()
+    {
+        _player.transform.position = _playerTransform;
+        //GameManager.Instance.GetInv().gameObject.GetComponent<Inventory_Manager>().LoadState( _objState );
+        GameManager.Instance.NewGame();
+        GameManager.Instance.Teleport();
+    }
 
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Player_Controller>()!=null)
+        { 
+        _player = collision.gameObject;
+        _playerTransform = _player.transform.position;
+        for (int i = 0; i < _objState.Length; i++)
+        {
+            _objState[i] = GameManager.Instance.GetInv().gameObject.GetComponent<Inventory_Manager>().RetState(i);
+        }
+        //for (int i = 0; i < _puzState.Length; i++)
+        {
+            //Aqui irian las cosas de los puzzles cuando se hagan
+        }
+        Destroy(this.GetComponent<Collider2D>());
+        }
+    }
 
     #endregion   
 
-}
-
- // class Armario 
+} // class SaveState 
 // namespace

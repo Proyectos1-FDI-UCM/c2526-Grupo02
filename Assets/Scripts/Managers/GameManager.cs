@@ -6,6 +6,8 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using JetBrains.Annotations;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -37,8 +39,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject Player;
     [SerializeField]
-    private GameObject PanelMuerte;
-
+    private GameObject Inv;
+    [SerializeField]
+    private GameObject DeathScreen;
+    [SerializeField]
+    private GameObject Camera;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -128,6 +133,18 @@ public class GameManager : MonoBehaviour
     }
     public GameObject GetPlayer() {  return Player; }
 
+    public GameObject GetInv() { return Inv; }
+
+    public void GameOver () { DeathScreen.SetActive(true); Player.SetActive(false); }
+    public void NewGame() { DeathScreen.SetActive(false); Player.SetActive(true); }
+    public void Teleport() 
+            {
+        Vector3 pos = Camera.transform.position;
+        pos.x = Player.transform.position.x;
+        pos.y = Player.transform.position.y;
+        Camera.transform.position = pos;
+            }
+        
     /// <summary>
     /// Devuelve cierto si la instancia del singleton está creada y
     /// falso en otro caso.
