@@ -485,7 +485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944600ba58e4b5248b75d07426421fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hidePoint: {fileID: 0}
 --- !u!114 &840245794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,9 +501,9 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 840245793}
-        m_TargetAssemblyTypeName: HideSpot, Assembly-CSharp
-        m_MethodName: Interact
+      - m_Target: {fileID: 5796866008607972152}
+        m_TargetAssemblyTypeName: HideSystem, Assembly-CSharp
+        m_MethodName: ToggleHide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

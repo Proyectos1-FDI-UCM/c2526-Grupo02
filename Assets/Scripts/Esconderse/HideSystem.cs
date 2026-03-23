@@ -104,18 +104,18 @@ public class HideSystem : MonoBehaviour
     /// Se llama desde un HideSpot al interactuar.
     /// </summary>
     /// <param name="hideSpot">Transform del punto donde esconderse</param>
-    public void ToggleHide(Transform hideSpot)
+    public void ToggleHide()
     {
         // Evita spam de interacción
-        if (Time.time - _lastInputTime < inputCooldown)
-            return;
+        //if (Time.time - _lastInputTime < inputCooldown)
+        //    return;
 
         _isHiding = !_isHiding;
-        _lastInputTime = Time.time;
+        //_lastInputTime = Time.time;
 
         if (_isHiding)
         {
-            EnterHide(hideSpot);
+            EnterHide();
         }
         else
         {
@@ -139,13 +139,10 @@ public class HideSystem : MonoBehaviour
     /// <summary>
     /// Ejecuta la lógica al entrar en un escondite
     /// </summary>
-    private void EnterHide(Transform hideSpot)
+    private void EnterHide()
     {
         // Mover al jugador al punto de escondite
-        if (hidePositionOffset != null)
-            transform.position = hideSpot.position + hidePositionOffset.position;
-        else
-            transform.position = hideSpot.position;
+        
 
         // Ocultar visualmente al jugador
         if (_renderer != null)

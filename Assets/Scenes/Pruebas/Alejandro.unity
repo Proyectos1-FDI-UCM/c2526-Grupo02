@@ -672,7 +672,6 @@ GameObject:
   - component: {fileID: 741858770}
   - component: {fileID: 741858769}
   - component: {fileID: 741858768}
-  - component: {fileID: 741858767}
   - component: {fileID: 741858766}
   m_Layer: 0
   m_Name: libro_collider
@@ -697,9 +696,9 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 741858767}
-        m_TargetAssemblyTypeName: HideSpot, Assembly-CSharp
-        m_MethodName: Interact
+      - m_Target: {fileID: 1019795791}
+        m_TargetAssemblyTypeName: HideSystem, Assembly-CSharp
+        m_MethodName: ToggleHide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -710,19 +709,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   cameraInteracts: 0
---- !u!114 &741858767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 741858765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 944600ba58e4b5248b75d07426421fc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hidePoint: {fileID: 741858770}
 --- !u!61 &741858768
 BoxCollider2D:
   m_ObjectHideFlags: 0
