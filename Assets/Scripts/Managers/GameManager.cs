@@ -127,6 +127,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void MuerteJugador()
+    {
+        PanelMuerte.SetActive(true);
+    }
     public GameObject GetPlayer() {  return Player; }
 
     public GameObject GetInv() { return Inv; }

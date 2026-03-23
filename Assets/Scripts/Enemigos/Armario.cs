@@ -44,26 +44,26 @@ public class Armario : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private float Temporizador; 
+    private float Temporizador;  // Temporizador que se usara para llevar los dos tiempos.
 
-    enum Estado
+    enum Estado  // enum para indicar en que estado se encuentra el armario
     {
         activo,
         inactivo
     }
-    private Estado estado; 
+    private Estado estado;  // el estado
 
-    private void ControlPanel (bool Acti)
+    private void ControlPanel (bool Acti) // Controlo el panel que me indica el radio visual del enemigo
     {
         PanelVisual.SetActive(Acti); 
        
     }
 
-    private void ControlVision (bool Acti)
+    private void ControlVision (bool Acti) // Controlo el propio collider para activarlo y desactivarlo
     {
         Visión.enabled = Acti;
     }
-    private Enemy_Detect detect; 
+    private Enemy_Detect detect;  // llamo al detect
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
