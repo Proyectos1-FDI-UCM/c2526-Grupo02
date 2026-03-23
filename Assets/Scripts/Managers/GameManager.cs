@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
 
     public void MuerteJugador()
     {
-        PanelMuerte.SetActive(true);
+        DeathScreen.SetActive(true);
     }
     public GameObject GetPlayer() {  return Player; }
 
