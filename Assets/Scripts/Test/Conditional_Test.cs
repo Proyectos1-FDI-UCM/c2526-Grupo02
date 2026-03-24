@@ -24,7 +24,10 @@ public class Conditional_Test : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-  
+    [Header("Configuramos el tipo de objeto y la flag que queremos, " +
+        "en INTERACTUABLE llamaremos a alguna de las tres " +
+        "funciones que nos permtie ver si tenemos el objeto" +
+        ", si se cumple la condición o ambas")]
     [SerializeField]
     private UnityEvent code;
     [SerializeField]
@@ -33,6 +36,8 @@ public class Conditional_Test : MonoBehaviour
     private Object.ItemType NeededType;
     [SerializeField]
     private GameObject mano;
+    [SerializeField]
+    private Flags.Conditions condition;
 
 
     #endregion
@@ -50,11 +55,6 @@ public class Conditional_Test : MonoBehaviour
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
@@ -65,14 +65,10 @@ public class Conditional_Test : MonoBehaviour
         {
             Debug.Log("No hay configurada Mano");
         }
-        
-    }
-
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
+        if(GameManager.Instance == null)
+        {
+            Debug.Log("No hay gameManager");
+        }
         
     }
     #endregion
@@ -96,23 +92,55 @@ public class Conditional_Test : MonoBehaviour
         if (type == NeededType)
         {
             code.Invoke();
+            Debug.Log("Bien");
+        }
+        else
+        {
+            Debug.Log("Mal");
+            negativeCode.Invoke();
+           
+        }
+    }
+    //Se llama a la Flag correspondiente y se ve si es verdadera y falsa, entonces se ejecuta un código u otro
+    public void Check_Condition()
+    {
+        Flags flag = GameManager.Instance.GetFlags();
+        if (flag.GetPos(condition))
+        {
+            code.Invoke();
         }
         else
         {
             negativeCode.Invoke();
-            Debug.Log("MAAAAAAAL");
+
+        }
+    }
+
+    public void Check_Both()
+    {
+        //Ponemos un tipo que nunca va a poder ser
+        Object.ItemType type = Object.ItemType.numItemTypes;
+
+        //Revisamos en el componente Object use de mano el objeto que es (sprite + tipo), y de ahí sacamos el tipo de item.
+        //IMPORTANTE (si usabamos directamente el item type nos daba un no instance of an object, ya que los enum no pueden ser nulos)
+        //Resumen, si hay objeto, sacamos el tipo de objeto
+        if (mano.GetComponent<Object_use>().GetHandItem() != null)
+        {
+            type = mano.GetComponent<Object_use>().GetHandItem().GetItem();
+        }
+        Flags flag = GameManager.Instance.GetFlags();
+        if (type == NeededType && flag.GetPos(condition))
+        {
+            code.Invoke();
+        }
+        else
+        {
+            negativeCode.Invoke();
+
         }
     }
 #endregion
     
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
-    #endregion   
 
 } // class Conditional_Test 
 // namespace

@@ -28,16 +28,11 @@ public class HideSystem : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     [Header("Configuración")]
 
-    [SerializeField]
-    [Tooltip("Tiempo mínimo entre interacciones para evitar spam")]
-    private float inputCooldown = 0.3f;
 
     //Permite acceder al Player_Controler para para el jugador cuando está escondido
     [SerializeField] private Player_Controller movement;
 
-    [SerializeField]
-    [Tooltip("Offset opcional para ajustar la posición dentro del escondite")]
-    private Transform hidePositionOffset;
+   
 
     #endregion
 

@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     private GameObject DeathScreen;
     [SerializeField]
     private GameObject Camera;
+    [SerializeField]
+    private Flags FlagManager;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -127,6 +129,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public Flags GetFlags()
+    {
+        return FlagManager;
+    }
     public void MuerteJugador()
     {
         DeathScreen.SetActive(true);
