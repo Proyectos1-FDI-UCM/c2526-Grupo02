@@ -1,0 +1,64 @@
+DIÁLOGOS SECUENCIADOS (PUZZLE 2)
+1. SUBE A LA SEGUNDA PLANTA (trigger: entrar)
+Niño
+* “Ya estoy arriba…”
+* “Esto… no estaba así antes…”
+* “Está demasiado oscuro…”
+2. PRIMER CONTACTO CON LA LÁMPARA (trigger: entrar al pasillo)
+Lámpara (susurros automáticos)
+* “Te veo…”
+* “No mires arriba…”
+Niño
+* “¿Quién… ha dicho eso?”
+* “Tengo que pasar sin que me vea…”
+3. MECÁNICA DE ESCONDERSE (trigger: jugador detectado / cerca)
+Lámpara
+* “Más cerca…”
+* “No puedes esconderte…”
+Niño
+* “¡No… no mires!”
+* “Si me quedo quieto… quizá no me vea…”
+4. LLEGAR A LA HABITACIÓN (trigger: entrar habitación)
+Niña
+* “...”
+* “No deberías estar aquí…”
+Niño
+* “Necesito subir al ático…”
+* “¿Sabes cómo hacerlo?”
+
+5. DIÁLOGO PRINCIPAL (clave del puzzle)
+Niña
+* “La puerta está cerrada…”
+* “La llave está en la oficina…”
+* “Pero no puedes entrar…”
+* “Siempre hay adultos dentro…”
+Niño
+* “Entonces… ¿qué hago?”
+Niña
+* “Apaga las luces…”
+* “En el sótano… hay una caja…”
+* “Si la activas… no podrán verte…”
+* “Pero solo por un rato…”
+6. AVISO DE PELIGRO
+Niña
+* “Si te ven…”
+* “No volverás aquí…”
+7. SALIR DE LA HABITACIÓN
+Niño
+* “Tengo que bajar otra vez…”
+* “No me gusta esto…”
+8. OPCIONAL – INTERACTUAR CON LA PUERTA DEL ÁTICO (cerrada)
+Niño
+* “Está cerrada…”
+* “Necesito una llave…”
+9. OPCIONAL – BIBLIOTECA (lore)
+* “El ático no existe.”
+* “Los niños obedecen.”
+* “Mirar arriba está prohibido.”
+Niño (opcional)
+* “Eso no tiene sentido…”
+10. BAJAR DE NUEVO
+Niño
+* “Otra vez abajo…”
+* “Tengo que darme prisa…”
+
