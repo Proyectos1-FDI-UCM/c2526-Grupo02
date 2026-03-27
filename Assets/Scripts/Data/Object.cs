@@ -16,7 +16,7 @@ using UnityEngine;
 public class Object : MonoBehaviour
 {
     //numItemTypes se utiliza para saber el tamaño del enum, SIEMPRE debe estar al final
-    public enum ItemType { flor, pelota, salchipapa, numItemTypes} 
+    public enum ItemType { flor, pelota, salchipapa, llave, numItemTypes} 
 
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
