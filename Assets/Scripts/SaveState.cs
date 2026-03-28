@@ -53,7 +53,10 @@ public class SaveState : MonoBehaviour
     /// </summary>
     void Start()
     {
+        if (GameManager.Instance.GetInv() != null)
+        {
         _objState = new Object[GameManager.Instance.GetInv().gameObject.GetComponent<Inventory_Manager>().IniState()];
+        }
     }
 
     /// <summary>

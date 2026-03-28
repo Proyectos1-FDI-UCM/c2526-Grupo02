@@ -49,14 +49,17 @@ public class Dialogo : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    private InputAction _talk; //la accion
-    private bool _talking; //indica la posibilidad de hablar
-    private string [] _script; //las lineas de dialogo
+    private string[] _script; //las lineas de dialogo
     private string[] _scriptCon; //lineas del dialogo alternativo
-    private int _line; //el indice para las lineas de dialogo
+    private string _currentScript;
+    private int _line = 0; //el indice para las lineas de dialogo
     private bool _puzzle; //activa el dialogo fuera del input
     private bool _type = false; //está escribiendo la linea
     private bool _typeAll = false; //escirbe la linea completa
+    private float _time;
+    private InputAction _talk;
+    private bool _talking;
+    private int _index = 0;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -74,14 +77,9 @@ public class Dialogo : MonoBehaviour
     void Start()
     {
         Canvas.enabled = false;
-        _talk = InputSystem.actions.FindAction("Interact");
-        if (_talk == null )
-        {
-            Debug.Log("Error con la acción talk");
-        }
-       
-        string ruta = Path.Combine(Application.streamingAssetsPath,Archivo);
-        string rutacon = Path.Combine(Application.streamingAssetsPath,ArchivoCon);
+
+        string ruta = Path.Combine(Application.streamingAssetsPath, Archivo);
+        string rutacon = Path.Combine(Application.streamingAssetsPath, ArchivoCon);
 
         if (File.Exists(ruta))
         {
@@ -103,39 +101,71 @@ public class Dialogo : MonoBehaviour
         {
             Debug.LogError("No se encontró el archivo en: " + rutacon);
         }
-        _line = 0;
+        _talk = InputSystem.actions.FindAction("Interact"); //asignamos la accion
         _puzzle = false;
     }
     void Update()
     {
         if (_talking)
         {
-            if (_line == _script.GetLength(0) + 1 || _line == _scriptCon.GetLength(0) + 1) { Canvas.GetComponent<Canvas>().enabled = false; _line = 0; _puzzle = false; } //si avanza dialogo en la ultima linea regresa al estado de entrar
-            if (_talk.ReadValue<float>() > 0.5f && _talk.WasPressedThisFrame()) //detecta solo un frame de input o la llamada de otro componente
+            _time += Time.deltaTime;
+            if (_talk.ReadValue<float>() > 0f && _talk.WasPressedThisFrame())
             {
-                Debug.Log(_puzzle);
-                this.gameObject.GetComponent<Conditional_Test>().Check();
-                if (_type) { _typeAll = true; }
+                Canvas.enabled = true;
+                if (_line == _script.GetLength(0) + 1 || _line == _scriptCon.GetLength(0) + 1)
+                {
+                    Canvas.GetComponent<Canvas>().enabled = false;
+                    _line = 0;
+                    _puzzle = false;
+                } //si avanza dialogo en la ultima linea regresa al estado de entrar
                 else
                 {
-                    if (!_puzzle)
-                    {
-                        Canvas.GetComponent<Canvas>().enabled = true;
-                        if (_line < _script.GetLength(0)) MostrarLinea(_script);  //comprueba que estas dentro del array de dialogo
-                        _line++;
-                    }
+                    if (_type) _typeAll = true;
                     else
                     {
-                        Canvas.GetComponent<Canvas>().enabled = true;
-                        if (_line < _scriptCon.GetLength(0)) MostrarLinea(_scriptCon);  //comprueba que estas dentro del array de dialogo
-                        _line++;
+                        if (!_puzzle)
+                        {
+                            EscribirLinea(_script[_line]);
+                        }
+                        else EscribirLinea(_scriptCon[_line]);
                     }
                 }
-
             }
-
         }
-        else { Canvas.GetComponent<Canvas>().enabled = false; _line = 0; _puzzle = false; } //una vez se aleja el dialogo regresa al estado inicial
+        else
+        {
+            Canvas.GetComponent<Canvas>().enabled = false;
+            _line = 0;
+            _puzzle = false;
+        }
+        if (_type)
+        {
+            if (_typeAll)
+            {
+                dialogo.text = $"{Nombre}: {_currentScript}";
+                _type = false;
+                _typeAll = false;
+                _line++;
+                return;
+            }
+            else
+            {
+                _time += Time.deltaTime;
+
+                if (_time >= Velocidad && _index < _currentScript.Length)
+                {
+                    dialogo.text += _currentScript[_index];
+                    _index++;
+                    _time = 0;
+                }
+
+                if (_index >= _currentScript.Length)
+                {
+                    _type = false;
+                    _line++;
+                }
+            }
+        }
     }
 
     #endregion
@@ -148,29 +178,12 @@ public class Dialogo : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    public void puzzleSwitch(bool sel) 
+    public void puzzleSwitch(bool sel)
     {
         _puzzle = sel;
     }
-  /*  public void callScript(Canvas canvas)
-    {   canvas.enabled = true;
-        Debug.Log("evento");
-       //if (!_talking) { canvas.enabled = false; _line = 0; _puzzle = false; return; } //una vez se aleja el dialogo regresa al estado inicial
-       
-            if (_line == _script.GetLength(0) + 1 || _line == _scriptCon.GetLength(0) + 1) { canvas.enabled = false; _line = 0; _puzzle = false; return; } //si avanza dialogo en la ultima linea regresa al estado de entrar
-            if (_type) { _typeAll = true; }
-                Debug.Log(_puzzle);
-                if (!_puzzle)
-                {
-                    if (_line < _script.GetLength(0)) MostrarLinea(_script);  //comprueba que estas dentro del array de dialogo
-                }
-                else
-                {
-                    if (_line < _scriptCon.GetLength(0)) MostrarLinea(_scriptCon);  //comprueba que estas dentro del array de dialogo
-                }
-                _line++;
-    }*/
-   
+
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -179,45 +192,23 @@ public class Dialogo : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-   private void OnTriggerEnter2D(Collider2D collision)
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Player_Controller>() != null)
-        {
-            _talking = true; //indica que es posible empezar dialogo
-        }
+        if (collision.GetComponent<Player_Controller>() != null) { _talking = true; }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Player_Controller>() != null)
-        {
-            _talking=false; //prohibe empezar o seguir dialogo
-        }
+        if (collision.GetComponent<Player_Controller>() != null) { _talking = false; }
     }
-    private void MostrarLinea(string[] log)
+    private void EscribirLinea(string linea) //animacion de escribir por letra, el nombre del personaje se queda afuera del bucle para que no cambie
     {
-        StopAllCoroutines();
-        StartCoroutine(EscribirLinea(log[_line]));
-    }
-
-    IEnumerator EscribirLinea(string linea) //animacion de escribir por letra, el nombre del personaje se queda afuera del bucle para que no cambie
-    {
-        _type = true;
-
+        _index = 0;
+        _time = 0;
+        _currentScript = linea;
         dialogo.text = $"{Nombre}: ";
-
-        foreach (char letra in linea)
-        {
-            if (_typeAll) 
-            { dialogo.text = $"{Nombre}: {linea}"; break; } // cierra la corrutina para que no reviente todo
-            else 
-            {
-                dialogo.text += letra;
-                yield return new WaitForSeconds(Velocidad);
-            }
-        }
-
-        _type = false;
-        _typeAll = false;
+        _type = true;
     }
 }
     
