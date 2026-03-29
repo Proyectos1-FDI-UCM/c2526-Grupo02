@@ -103,7 +103,12 @@ public class Follow_Player : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-
+    public void Teleport(Vector3 pos)
+    { 
+    Vector3 tp = pos;
+        tp.z = this.GetComponent<Transform>().position.z;
+        this.GetComponent<Transform>().position = tp;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

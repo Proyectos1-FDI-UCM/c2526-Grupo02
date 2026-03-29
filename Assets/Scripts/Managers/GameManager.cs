@@ -56,6 +56,9 @@ public class GameManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static GameManager _instance;
+    private Vector3 _playerTransform;
+    private bool[] _puzzleState;
+    private Object[] _invState;
 
     #endregion
 
@@ -141,15 +144,36 @@ public class GameManager : MonoBehaviour
 
     public GameObject GetInv() { return Inv; }
 
-    public void GameOver () { DeathScreen.SetActive(true); Player.SetActive(false); }
-    public void NewGame() { DeathScreen.SetActive(false); Player.SetActive(true); }
-    public void Teleport() 
-            {
-        Vector3 pos = Camera.transform.position;
-        pos.x = Player.transform.position.x;
-        pos.y = Player.transform.position.y;
-        Camera.transform.position = pos;
-            }
+    public void GameOver () 
+    { 
+        DeathScreen.SetActive(true); 
+        Player.SetActive(false); 
+    }
+    public void Respawn() 
+    { 
+        DeathScreen.SetActive(false);
+        Inv.GetComponent<Inventory_Manager>().LoadState(_invState);
+        for ( int i = 0; i < 3; i++)
+        {
+            FlagManager.CambiaFlag((Flags.Conditions)i, _puzzleState[i]);
+        }
+        Player.GetComponent<Transform>().position = _playerTransform;
+        Camera.GetComponent<Follow_Player>().Teleport(_playerTransform);
+        Player.SetActive(true); 
+    }
+
+    public void SaveInv( int i)
+    {
+        _invState[i] = Inv.GetComponent<Inventory_Manager>().RetState(i);
+    }
+    public void SavePuz ( int i)
+    {
+        _puzzleState[i] = FlagManager.GetPos((Flags.Conditions)i);
+    }
+    public void SavePos(Vector3 pos)
+    {
+        _playerTransform = pos;
+    }
         
     /// <summary>
     /// Devuelve cierto si la instancia del singleton está creada y

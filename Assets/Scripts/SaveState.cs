@@ -33,10 +33,7 @@ public class SaveState : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    private Object[] _objState;
-    private bool[] _puzState;
-    private GameObject _player;
-    private Vector3 _playerTransform;
+    
 
     #endregion
     
@@ -53,10 +50,6 @@ public class SaveState : MonoBehaviour
     /// </summary>
     void Start()
     {
-        if (GameManager.Instance.GetInv() != null)
-        {
-        _objState = new Object[GameManager.Instance.GetInv().gameObject.GetComponent<Inventory_Manager>().IniState()];
-        }
     }
 
     /// <summary>
@@ -75,14 +68,6 @@ public class SaveState : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public void Respawn ()
-    {
-        _player.transform.position = _playerTransform;
-        //GameManager.Instance.GetInv().gameObject.GetComponent<Inventory_Manager>().LoadState( _objState );
-        GameManager.Instance.NewGame();
-        GameManager.Instance.Teleport();
-    }
-
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -94,16 +79,15 @@ public class SaveState : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Player_Controller>()!=null)
-        { 
-        _player = collision.gameObject;
-        _playerTransform = _player.transform.position;
-        for (int i = 0; i < _objState.Length; i++)
         {
-            _objState[i] = GameManager.Instance.GetInv().gameObject.GetComponent<Inventory_Manager>().RetState(i);
+            GameManager.Instance.SavePos(collision.gameObject.transform.position);
+        for (int i = 0; i < GameManager.Instance.GetInv().gameObject.GetComponent<Inventory_Manager>().IniState(); i++)
+        {
+            GameManager.Instance.SaveInv(i);
         }
-        //for (int i = 0; i < _puzState.Length; i++)
+        for (int i = 0; i < 3; i++)
         {
-            //Aqui irian las cosas de los puzzles cuando se hagan
+                GameManager.Instance.SavePuz(i);
         }
         Destroy(this.GetComponent<Collider2D>());
         }
