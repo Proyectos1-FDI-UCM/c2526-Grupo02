@@ -1,6 +1,8 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
+// Este script sirve para tener controlado que tiene el jugador en la mano en cada momento
 // Responsable de la creación de este archivo
+//Sara Quilez Martinez
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -24,7 +26,7 @@ public class Object_use : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     [SerializeField]
-    private UnityEngine.UI.Image Mano;
+    private UnityEngine.UI.Image Mano; //objeto que nos indicará visualmente el objeto que se lleva
 
     #endregion
 
@@ -38,7 +40,7 @@ public class Object_use : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     // Objeto selecionado por el jugador
-    private Object ObjetoEnUso;
+    private Object ObjetoEnUso; // objeto en uso que se lleva ahora mismo
 
     private Sprite _emptyHand;
     #endregion
@@ -75,7 +77,7 @@ public class Object_use : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     // Método que señala al jugador que objeto a recogido 
-    public void ObjetoRecogido(Object objeto)
+    public void ObjetoRecogido(Object objeto) // cuando esto es llamado desde el inventario se asigna el objeto que el jugador haya selecionado
     {
         Debug.Log("Estoy usando " + objeto.GetItem().ToString());
         if (ObjetoEnUso == objeto)

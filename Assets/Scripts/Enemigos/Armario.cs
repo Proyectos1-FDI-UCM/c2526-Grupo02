@@ -1,6 +1,8 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
+// Este archivo contiene todo el comportamiento del enemigo armario
 // Responsable de la creación de este archivo
+// Sara Quilez Martinez
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -28,8 +30,9 @@ public class Armario : MonoBehaviour
     private float DuracionDeDesactivacion; // Tiempo que tarda en volver a activarlo 
     [SerializeField]
     private GameObject PanelVisual; // Panel que señaliza la visión del enemigo
-    [SerializeField]
-    private Collider2D Visión; //Collider aparte que representa el campo visual del enemigo.
+   
+   // [SerializeField]
+   // private Collider2D Visión; //Collider aparte que representa el campo visual del enemigo.
 
 
 
@@ -45,7 +48,7 @@ public class Armario : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private float Temporizador;  // Temporizador que se usara para llevar los dos tiempos.
-
+    Collider2D Vision; // Collider interno del enemigo
     enum Estado  // enum para indicar en que estado se encuentra el armario
     {
         activo,
@@ -59,20 +62,14 @@ public class Armario : MonoBehaviour
        
     }
 
-    private void ControlVision (bool Acti) // Controlo el propio collider para activarlo y desactivarlo
-    {
-        Visión.enabled = Acti;
-    }
-    private Enemy_Detect detect;  // llamo al detect
+    
+    private Enemy_Detect detect;  // llamo al detect que tiene que estar dentro del armario
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-
+ 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
@@ -80,10 +77,25 @@ public class Armario : MonoBehaviour
     void Start()
     {
         estado = Estado.activo;
-        detect = GetComponent<Enemy_Detect>();
+        
+        detect = GetComponent<Enemy_Detect>(); // llamo a los componentes que me harán falta más adelante
+        if (detect == null)
+        {
+            Destroy(this); 
+        }
+         Vision = GetComponent<Collider2D>();
+        if (Vision == null)
+        {
+            Destroy(this);
+        }
+
 
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    private void ControlVision(bool Acti) // Controlo el propio collider para activarlo y desactivarlo
+    {
+        Vision.enabled = Acti;
+    }
+    private void OnTriggerStay2D(Collider2D collision) // Mientras el jugador este dentro  del enemigo se irá comprobando en que fase se encuentra
     {
         var player = collision.GetComponent<Player_Controller>();
 
@@ -114,7 +126,7 @@ public class Armario : MonoBehaviour
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
-    void Update()
+    void Update() // Voy cambiado los estados y además apagando y encendiendo la vista del enemigo
     {
         Temporizador += Time.deltaTime; 
         if (estado == Estado.activo && Temporizador >= TiempoDeDesactivar)
