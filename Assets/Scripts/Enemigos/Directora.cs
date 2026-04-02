@@ -85,7 +85,8 @@ public class Directora : MonoBehaviour
 
     private void ControlVision(bool Acti, int i) //Desactiva y activa progresivamente los colliders en el patrón deseado
     {
-        Posiciones[i].enabled = Acti;
+        //Posiciones[i].enabled = Acti;
+        Vector3 p = PanelVisual.transform.position;
     }
     private void OnTriggerStay2D(Collider2D collision) // Mientras el jugador este dentro del enemigo se irá comprobando en que fase se encuentra
     {
