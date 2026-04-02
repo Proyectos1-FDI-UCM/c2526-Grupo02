@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Responsable de la creación de este archivo  JESUS
-// Nombre del juego  
+// Responsable de la creación de este archivo  JESUS DIEZ
+// Nombre del juego - Dont go up
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -56,7 +56,7 @@ public class LookUp : MonoBehaviour
         // Buscar la acción "LookUP" definida en el Input System
         // Aviso de falta de asignar al jugador en el inspector
         // o que la falta el componente Player_Controller
-        //o que falta de asiganr la accion "mirar arriba"
+        //o que falta de asigar la accion "mirar arriba"
         //Programación defensiva
         _lookUp = InputSystem.actions.FindAction("LookUP");
         if (Jugador == null)
