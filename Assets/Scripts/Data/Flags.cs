@@ -18,7 +18,7 @@ using UnityEngine;
 public class Flags : MonoBehaviour
 {
 
-    public enum Conditions { puzzle1, puzzle2, puzzle3}
+    public enum Conditions {CocineroDistraido, puzzle1, HablarConChiquilla, ContadorApagado, puzzle2, puzzle3}
 
 
     // ---- ATRIBUTOS DEL INSPECTOR ----
