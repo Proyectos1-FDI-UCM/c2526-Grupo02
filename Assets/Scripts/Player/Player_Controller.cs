@@ -58,17 +58,6 @@ public class Player_Controller : MonoBehaviour
     void Update()
     {
 
-        if (_pausa.WasPressedThisFrame())
-        {
-            if (Pausa_controller.IsGamePaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Stop();
-            }
-        }
 
         //Calculamos la dirección del movimiento y se la sumamos a la posición x multiplicandolo por la velocidad y el time.deltatime
         Vector2 dir = _move.ReadValue<Vector2>();

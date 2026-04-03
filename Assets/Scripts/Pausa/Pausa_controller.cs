@@ -34,6 +34,7 @@ public class Pausa_controller : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+
     
     #endregion
 
