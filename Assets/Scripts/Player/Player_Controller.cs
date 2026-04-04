@@ -19,7 +19,9 @@ public class Player_Controller : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-  
+
+    //Atributo de la acción para pausar el juego
+    private InputAction _pausa;
     //Atributo de la acción para moverse
     private InputAction _move;
     //Atributo que coje el rigidBody del jugador.
@@ -46,9 +48,17 @@ public class Player_Controller : MonoBehaviour
             Debug.Log("No se ha encontrado la acción move");
             return;
         }
+        _pausa = InputSystem.actions.FindAction("Pausa");
+        if (_pausa == null)
+        {
+            Debug.Log("No se ha encontrado la acción pausa");
+            return;
+        }
     }
     void Update()
     {
+
+
         //Calculamos la dirección del movimiento y se la sumamos a la posición x multiplicandolo por la velocidad y el time.deltatime
         Vector2 dir = _move.ReadValue<Vector2>();
         float HorizontalDir = Mathf.Round(dir.x);

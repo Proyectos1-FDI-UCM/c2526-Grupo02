@@ -1,56 +1,55 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
 // Responsable de la creación de este archivo
-// Don't Go Up
+// Don't go up
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 // Añadir aquí el resto de directivas using
 
 
-    #ROOTNAMESPACEBEGIN#
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class #SCRIPTNAME# : MonoBehaviour
+public class MenuController : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
 
+    [SerializeField]
+    private GameObject _menuCanvas;
+    [SerializeField]
+    private Button boton;
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
+    //Atributo de la acción para menu
+    private InputAction _pausa;
+    //ref al jugador
+    private GameObject _player;
 
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-    
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
+
+
     void Start()
     {
-        #NOTRIM#
+        _pausa = InputSystem.actions.FindAction("Pausa");
+        if (_pausa == null)
+        {
+            Debug.Log("No se ha encontrado la acción pausa");
+            return;
+        }
+        _player = GameManager.Instance.GetPlayer();
+        _menuCanvas.SetActive(false);
     }
 
     /// <summary>
@@ -58,7 +57,20 @@ public class #SCRIPTNAME# : MonoBehaviour
     /// </summary>
     void Update()
     {
-        #NOTRIM#
+        if (_pausa.WasPressedThisFrame())
+        {
+            _menuCanvas.SetActive(!_menuCanvas.activeSelf); //devuelve lo contrario a como entre
+            Pausa_controller.SetPause(_menuCanvas.activeSelf);
+
+            if (Pausa_controller.IsGamePaused)
+            {
+                _player.GetComponent<Player_Controller>().Stop();
+            }
+            else
+            {
+                _player.GetComponent<Player_Controller>().Resume();
+            }
+        }
     }
     #endregion
 
@@ -70,8 +82,14 @@ public class #SCRIPTNAME# : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    public void CerrarCanvas()
+    {
+        _menuCanvas.SetActive(false);
+        _player.GetComponent<Player_Controller>().Resume();
+    }
+
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -79,8 +97,7 @@ public class #SCRIPTNAME# : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
-} // class #SCRIPTNAME# 
-#NOTRIM#
-#ROOTNAMESPACEEND# // namespace
+} // class MenuController 
+  // namespace

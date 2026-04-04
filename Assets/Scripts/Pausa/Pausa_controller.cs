@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
 // AlejandrA
-// Nombre del juego
+// Don't go up
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -13,20 +13,19 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Object : MonoBehaviour
+public class Pausa_controller : MonoBehaviour
 {
-    //numItemTypes se utiliza para saber el tamaño del enum, SIEMPRE debe estar al final
-    public enum ItemType { flor, pelota, salchipapa, llave, numItemTypes} 
-
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
+    // Documentar cada atributo que aparece aquí.
+    // El convenio de nombres de Unity recomienda que los atributos
+    // públicos y de inspector se nombren en formato PascalCase
+    // (palabras con primera letra mayúscula, incluida la primera letra)
+    // Ejemplo: MaxHealthPoints
 
     #endregion
-    [SerializeField]
-    private ItemType itemType; //tipo del item
-    [SerializeField]
-    private Sprite inventorySprite; //sprite que usara en el inventario
-    
+
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -36,27 +35,44 @@ public class Object : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    #endregion
     
+    #endregion
+
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
+
+
     #endregion
+
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
 
-    public ItemType GetItem() { return itemType; }
-    public Sprite GetInventorySprite() { return inventorySprite; }
+    /// <summary>
+    ///  Se puede mirar si el juego está en pausa desde cualquier sitio,
+    ///  pero solo aquí se puede cambiar el valor
+    /// </summary>
+    public static bool IsGamePaused { get; private set; }
 
-    public void RemoveFromWorld() 
+    /// <summary>
+    /// Cambia el estado de pausa del juego
+    /// </summary>
+    public static void SetPause(bool paused)
     {
-        gameObject.SetActive(false); //lo desactivamos en el mundo
+        IsGamePaused = paused;
+
+        Enemy_Detect[] enemigos = Object.FindObjectsByType<Enemy_Detect>(FindObjectsSortMode.None);
+
+        foreach (Enemy_Detect enemy in enemigos)
+        {
+            enemy.gameObject.SetActive(!paused);
+        }
     }
+   
+
     #endregion
+
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
@@ -67,5 +83,5 @@ public class Object : MonoBehaviour
 
     #endregion
 
-} // class Object 
+} // class Pausa_controller 
 // namespace
