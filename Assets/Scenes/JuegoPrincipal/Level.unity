@@ -595,7 +595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fffaf03330fd6d489184910dd1a1297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canvas: {fileID: 0}
+  Canvas: {fileID: 1709524641}
 --- !u!114 &180551986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1089,7 +1089,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1000
   m_Sprite: {fileID: -3938124139834843739, guid: e4f4d21a41a9ffd4eb4f6989fc5611b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1199,7 +1199,7 @@ PrefabInstance:
     - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: Canvas
       value: 
-      objectReference: {fileID: 1617609905}
+      objectReference: {fileID: 0}
     - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: Nombre
       value: Directora
@@ -1215,7 +1215,7 @@ PrefabInstance:
     - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: dialogo
       value: 
-      objectReference: {fileID: 1387251030}
+      objectReference: {fileID: 0}
     - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: ArchivoCon
       value: 
@@ -1265,8 +1265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bcb73d03e7e154faabfd77ce56fc75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxStateTime: 0
-  NumStates: 0
+  MaxStateTime: 5
+  NumStates: 3
 --- !u!114 &336075247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1401,7 +1401,7 @@ GameObject:
   - component: {fileID: 366052081}
   - component: {fileID: 366052080}
   m_Layer: 0
-  m_Name: Visual
+  m_Name: VisualArmario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1594,9 +1594,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 611144795}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   negativeCode:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 611144808}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: talk
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   NeededType: 1
   mano: {fileID: 1843685278}
   condition: 0
@@ -1634,6 +1658,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1236896271845714361, guid: 25364da18e6d3694288037c4787484bb, type: 3}
   m_PrefabInstance: {fileID: 1142400397}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &611144808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611144795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b64a8458d7de41647a7766035c14a7c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Canvas: {fileID: 1617609905}
+  dialogo: {fileID: 1387251030}
+  Velocidad: 0.03
+  Nombre: Gemelos
+  Archivo: GemelosAntes.txt
+  ArchivoCon: GemelosDespues.txt
 --- !u!1 &647274647
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,7 +1936,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10000
   m_Sprite: {fileID: 2157964151716659508, guid: 23e9d2726fcf34143ab191a65d9d75cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2004,7 +2046,7 @@ PrefabInstance:
     - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: Canvas
       value: 
-      objectReference: {fileID: 1617609905}
+      objectReference: {fileID: 0}
     - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: Nombre
       value: Directora
@@ -2020,7 +2062,7 @@ PrefabInstance:
     - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: dialogo
       value: 
-      objectReference: {fileID: 1387251030}
+      objectReference: {fileID: 0}
     - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: ArchivoCon
       value: 
@@ -2082,6 +2124,7 @@ MonoBehaviour:
   TiempoDeDesactivar: 1
   DuracionDeDesactivacion: 1
   PanelVisual: {fileID: 366052079}
+  "Visi\xF3n": {fileID: 366052080}
 --- !u!4 &827304275 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1236896271845714361, guid: 25364da18e6d3694288037c4787484bb, type: 3}
@@ -2781,7 +2824,7 @@ PrefabInstance:
     - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: Canvas
       value: 
-      objectReference: {fileID: 1617609905}
+      objectReference: {fileID: 0}
     - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: Nombre
       value: "Ni\xF1o Juget\xF3n"
@@ -2797,7 +2840,7 @@ PrefabInstance:
     - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: dialogo
       value: 
-      objectReference: {fileID: 1387251030}
+      objectReference: {fileID: 0}
     - target: {fileID: 5952689939715440893, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: ArchivoCon
       value: GemelosDespues.txt
@@ -2816,6 +2859,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9076730456491123190, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 611144801}
+    - targetCorrespondingSourceObject: {fileID: 9076730456491123190, guid: 25364da18e6d3694288037c4787484bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 611144808}
   m_SourcePrefab: {fileID: 100100000, guid: 25364da18e6d3694288037c4787484bb, type: 3}
 --- !u!1 &1157956637
 GameObject:
@@ -4995,6 +5041,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1661374063}
+    - target: {fileID: 2047885792657370305, guid: 175109bc4504d9b45b6e2c3ad2ae091e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2047885792657370305, guid: 175109bc4504d9b45b6e2c3ad2ae091e, type: 3}
       propertyPath: m_RenderMode
       value: 1
