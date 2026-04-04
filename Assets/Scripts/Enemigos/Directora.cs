@@ -27,7 +27,7 @@ public class Directora : MonoBehaviour
     [SerializeField]
     private float TiempoQueMira; //Tiempo que mira en una dirección
     [SerializeField]
-    private Collider2D[] Posiciones; //Array de colliders que mira
+    private Vector3[] Posiciones; //Array de coordenadas que mira
     [SerializeField]
     private GameObject PanelVisual; // Panel que señaliza la visión del enemigo
 
@@ -46,6 +46,7 @@ public class Directora : MonoBehaviour
     // enum para indicar en que estado se encuentra el armario
     enum Estado {activo, inactivo}
     private Estado estado;  // el estado
+    private int i = 0;
 
     private void ControlPanel(bool Acti) // Controlo el panel que me indica el radio visual del enemigo
     {
@@ -81,12 +82,12 @@ public class Directora : MonoBehaviour
             UnityEngine.Debug.Log("Tiene que haber como mínimo 2 colliders entre los que alternar");
             Destroy(this);
         }
+     
     }
 
-    private void ControlVision(bool Acti, int i) //Desactiva y activa progresivamente los colliders en el patrón deseado
+    private void ControlVision(int i) //Desactiva y activa progresivamente los colliders en el patrón deseado
     {
-        //Posiciones[i].enabled = Acti;
-        Vector3 p = PanelVisual.transform.position;
+        PanelVisual.transform.localPosition = Posiciones[i];
     }
     private void OnTriggerStay2D(Collider2D collision) // Mientras el jugador este dentro del enemigo se irá comprobando en que fase se encuentra
     {
@@ -117,13 +118,13 @@ public class Directora : MonoBehaviour
     void Update()
     {
         Temporizador += Time.deltaTime;
-        int i = 0;
+        //int i = 0;
         if (estado == Estado.activo && Temporizador >= TiempoQueMira)
         {
             estado = Estado.inactivo;
             Temporizador = 0;
             ControlPanel(false);
-            ControlVision(false, i);
+            ControlVision(i);
             i++;
         }
         else if (estado == Estado.inactivo && Temporizador >= TiempoDeCambio)
@@ -131,8 +132,6 @@ public class Directora : MonoBehaviour
             estado = Estado.activo;
             Temporizador = 0;
             ControlPanel(true);
-            ControlVision(true, i);
-            i++;
         }
         if (i == Posiciones.Length) i = i - i;
     }
