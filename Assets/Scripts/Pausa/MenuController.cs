@@ -23,16 +23,12 @@ public class MenuController : MonoBehaviour
 
     [SerializeField]
     private GameObject _menuCanvas;
-    [SerializeField]
-    private Button boton;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     //Atributo de la acción para menu
     private InputAction _pausa;
-    //ref al jugador
-    private GameObject _player;
 
     #endregion
 
@@ -48,7 +44,6 @@ public class MenuController : MonoBehaviour
             Debug.Log("No se ha encontrado la acción pausa");
             return;
         }
-        _player = GameManager.Instance.GetPlayer();
         _menuCanvas.SetActive(false);
     }
 
@@ -61,15 +56,6 @@ public class MenuController : MonoBehaviour
         {
             _menuCanvas.SetActive(!_menuCanvas.activeSelf); //devuelve lo contrario a como entre
             Pausa_controller.SetPause(_menuCanvas.activeSelf);
-
-            if (Pausa_controller.IsGamePaused)
-            {
-                _player.GetComponent<Player_Controller>().Stop();
-            }
-            else
-            {
-                _player.GetComponent<Player_Controller>().Resume();
-            }
         }
     }
     #endregion
@@ -85,7 +71,7 @@ public class MenuController : MonoBehaviour
     public void CerrarCanvas()
     {
         _menuCanvas.SetActive(false);
-        _player.GetComponent<Player_Controller>().Resume();
+        Pausa_controller.SetPause(false);
     }
 
     #endregion

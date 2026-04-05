@@ -6,6 +6,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 // Añadir aquí el resto de directivas using
 
 
@@ -34,14 +35,11 @@ public class Pausa_controller : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
-    
     #endregion
 
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
 
     #endregion
 
@@ -64,12 +62,22 @@ public class Pausa_controller : MonoBehaviour
 
         Enemy_Detect[] enemigos = Object.FindObjectsByType<Enemy_Detect>(FindObjectsSortMode.None);
 
+
         foreach (Enemy_Detect enemy in enemigos)
         {
             enemy.gameObject.SetActive(!paused);
         }
+
+        if (IsGamePaused)
+        {
+            GameManager.Instance.GetPlayer().GetComponent<Player_Controller>().Stop();
+        }
+        else
+        {
+            GameManager.Instance.GetPlayer().GetComponent<Player_Controller>().Resume();
+        }
     }
-   
+
 
     #endregion
 
