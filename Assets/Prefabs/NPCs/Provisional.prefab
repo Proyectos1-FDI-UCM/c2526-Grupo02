@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1236896271845714361}
   - component: {fileID: 6836105273065632634}
-  - component: {fileID: -6073008681870241296}
   - component: {fileID: 692505875085616641}
+  - component: {fileID: 3384713834671782072}
   m_Layer: 0
   m_Name: Provisional
   m_TagString: Untagged
@@ -89,8 +89,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &-6073008681870241296
-BoxCollider2D:
+--- !u!114 &692505875085616641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076730456491123190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fffaf03330fd6d489184910dd1a1297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Canvas: {fileID: 0}
+--- !u!60 &3384713834671782072
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -123,7 +136,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.03206247, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -133,18 +146,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.5382028, y: 3.94}
-  m_EdgeRadius: 0
---- !u!114 &692505875085616641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9076730456491123190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fffaf03330fd6d489184910dd1a1297, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Canvas: {fileID: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 4, y: 6}
+      - {x: -4, y: 6}
+      - {x: -4, y: 4}
+      - {x: -2, y: 4}
+      - {x: -2, y: -2}
+      - {x: 2, y: -2}
+      - {x: 2, y: 4}
+      - {x: 4, y: 4}
+  m_UseDelaunayMesh: 0
