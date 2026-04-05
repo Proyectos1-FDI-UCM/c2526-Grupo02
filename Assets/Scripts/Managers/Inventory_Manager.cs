@@ -111,7 +111,7 @@ public class Inventory_Manager : MonoBehaviour
 
     private void Update()
     {
-        if (_openInvAction.WasPressedThisFrame()) //si pulsamos el boton de inventario lo mostramos/ocultamos
+        if (_openInvAction.WasPressedThisFrame()&& !Pausa_controller.IsGamePaused) //si pulsamos el boton de inventario lo mostramos/ocultamos
         {
             _inventoryIsOpen = !_inventoryIsOpen;
             _inventoryHud.SetActive(_inventoryIsOpen);
@@ -128,7 +128,7 @@ public class Inventory_Manager : MonoBehaviour
 
         }
 
-        if (_inventoryIsOpen)
+        if (_inventoryIsOpen && !Pausa_controller.IsGamePaused)
         {
             //logica inputs inventario aqui
             Vector2 dir = _move.ReadValue<Vector2>();
