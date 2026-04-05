@@ -72,7 +72,7 @@ public class Directora : MonoBehaviour
     {
         estado = Estado.activo;
 
-        detect = GetComponent<Enemy_Detect>(); // llamo a los componentes que me harán falta más adelante
+        detect = PanelVisual.GetComponent<Enemy_Detect>(); // llamo a los componentes que me harán falta más adelante
         if (detect == null)
         {
             Destroy(this);
@@ -100,10 +100,10 @@ public class Directora : MonoBehaviour
             switch (fase)
             {
                 case 0:
-                    GetComponent<Renderer>().material.color = Color.white;
+                    this.GetComponent<SpriteRenderer>().color = Color.white;
                     break;
                 case 1:
-                    GetComponent<Renderer>().material.color = Color.red;
+                    this.GetComponent<SpriteRenderer>().color = Color.red;
                     break;
                 case 2:
                     GameManager.Instance.GameOver();

@@ -60,6 +60,8 @@ public class Dialogo : MonoBehaviour
     private InputAction _talk;
     private bool _talking;
     private int _index = 0;
+    private bool _pressed;
+    private bool _first;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -109,13 +111,28 @@ public class Dialogo : MonoBehaviour
         if (_talking)
         {
             _time += Time.deltaTime;
-            if (_talk.ReadValue<float>() > 0f && _talk.WasPressedThisFrame())
+            //Código para que la primera línea se ejecute sin tener que "interactuar"
+            if (_first)
+            {
+                Debug.Log("PRIMERA");
+                _pressed = true;
+                _first = false;
+                
+                
+            }
+            else
+            {
+                _pressed = _talk.ReadValue<float>() > 0f && _talk.WasPressedThisFrame();
+            }
+           
+            if (_pressed)
             {
                 Canvas.enabled = true;
                 if (_line == _script.GetLength(0) || _line == _scriptCon.GetLength(0))
                 {
                     Canvas.GetComponent<Canvas>().enabled = false;
                     _line = 0;
+                    _talking = false;
                     _puzzle = false;
                 } //si avanza dialogo en la ultima linea regresa al estado de entrar
                 else
@@ -194,13 +211,22 @@ public class Dialogo : MonoBehaviour
     // mayúscula, incluida la primera letra)
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.GetComponent<Player_Controller>() != null) { _talking = true; }
+    //}
+    public void talk()
     {
-        if (collision.GetComponent<Player_Controller>() != null) { _talking = true; }
+        if (!_talking)
+        {
+            _talking = true;
+            _first = true;
+            _currentScript = "";
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<Player_Controller>() != null) { _talking = false; Canvas.enabled = false; }
+        if (collision.GetComponent<Test_detect_correction>() != null) { _talking = false; Canvas.enabled = false; _currentScript = ""; }
     }
     private void EscribirLinea(string linea) //animacion de escribir por letra, el nombre del personaje se queda afuera del bucle para que no cambie
     {

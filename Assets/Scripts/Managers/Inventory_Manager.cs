@@ -190,6 +190,7 @@ public class Inventory_Manager : MonoBehaviour
         }
     }
 
+
     /// <Summary>
     ///Al usar UnityEvents serializados, no se pueden usar funciones que tengan como parametro un enum,
     ///por lo que pasamos un int y casteamos al enum
@@ -200,6 +201,7 @@ public class Inventory_Manager : MonoBehaviour
         {
             //Debug.Log((Object.ItemType)itemType);
             RemoveObj((Object.ItemType)itemType);
+            _player.GetComponent<Object_use>().RemoveFromHand();
         }
         else
         {
@@ -219,10 +221,14 @@ public class Inventory_Manager : MonoBehaviour
         _nObj = 0;
         for (int i = 0; i < _invLenght; i++)
         {
-            _inv[i] = old [i];
-            _invHudSpaces[i].sprite = old[i].GetInventorySprite();
+            _inv[i] = old[i];
             _invHudSpaces[i].gameObject.SetActive(true);
-            if (old[i]!=null)_nObj++;
+            _invHudSpaces[i].sprite = null;
+            if (old[i] != null)
+            {  
+                _invHudSpaces[i].sprite = old[i].GetInventorySprite();
+                _nObj++;
+            }
         }
     }
 

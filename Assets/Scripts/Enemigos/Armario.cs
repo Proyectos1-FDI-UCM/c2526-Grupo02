@@ -80,7 +80,11 @@ public class Armario : MonoBehaviour
     void Start()
     {
         estado = Estado.activo;
-        detect = GetComponent<Enemy_Detect>();
+        detect = PanelVisual.GetComponent<Enemy_Detect>();
+        if (detect == null)
+        {
+            Debug.Log("No hay enemyDetect en el panelvisual");
+        }
 
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -94,17 +98,15 @@ public class Armario : MonoBehaviour
             switch (fase)
             {
                 case 0:
-                    GetComponent<Renderer>().material.color = Color.blue;
+                    GetComponent<SpriteRenderer>().color = Color.white;
                     break;
                 case 1:
-                    GetComponent<Renderer>().material.color = Color.yellow;
+                    GetComponent<SpriteRenderer>().color = Color.yellow;
                     break;
                 case 2:
                     //GetComponent<Renderer>().material.color = Color.red;
                     GameManager.Instance.GameOver();
                     break;
-
-
             }
 
 
