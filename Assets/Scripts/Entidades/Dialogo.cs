@@ -112,7 +112,7 @@ public class Dialogo : MonoBehaviour
             if (_talk.ReadValue<float>() > 0f && _talk.WasPressedThisFrame())
             {
                 Canvas.enabled = true;
-                if (_line == _script.GetLength(0) + 1 || _line == _scriptCon.GetLength(0) + 1)
+                if (_line == _script.GetLength(0) || _line == _scriptCon.GetLength(0))
                 {
                     Canvas.GetComponent<Canvas>().enabled = false;
                     _line = 0;
@@ -134,7 +134,7 @@ public class Dialogo : MonoBehaviour
         }
         else
         {
-            Canvas.GetComponent<Canvas>().enabled = false;
+          //  Canvas.GetComponent<Canvas>().enabled = false;
             _line = 0;
             _puzzle = false;
         }
@@ -200,7 +200,7 @@ public class Dialogo : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<Player_Controller>() != null) { _talking = false; }
+        if (collision.GetComponent<Player_Controller>() != null) { _talking = false; Canvas.enabled = false; }
     }
     private void EscribirLinea(string linea) //animacion de escribir por letra, el nombre del personaje se queda afuera del bucle para que no cambie
     {

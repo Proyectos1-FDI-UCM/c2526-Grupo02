@@ -1358,17 +1358,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9005e4dc3aa1597499a00d571d674a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LookUpComponent: {fileID: 0}
+  LookUpComponent: {fileID: 731205862}
   OnInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 224788882}
-        m_TargetAssemblyTypeName: Inventory_Manager, Assembly-CSharp
-        m_MethodName: AddObj
-        m_Mode: 2
+      - m_Target: {fileID: 363286534}
+        m_TargetAssemblyTypeName: Conditional_Test, Assembly-CSharp
+        m_MethodName: Check_Both
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 363286536}
-          m_ObjectArgumentAssemblyTypeName: Object, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1570,10 +1570,10 @@ MonoBehaviour:
   code:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 224788882}
-        m_TargetAssemblyTypeName: Inventory_Manager, Assembly-CSharp
-        m_MethodName: RemoveFromInv
-        m_Mode: 3
+      - m_Target: {fileID: 611144808}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: puzzleSwitch
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1592,35 +1592,23 @@ MonoBehaviour:
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 611144795}
-        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  negativeCode:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 611144808}
-        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: talk
-        m_Mode: 1
+      - m_Target: {fileID: 1770872516}
+        m_TargetAssemblyTypeName: Flags, Assembly-CSharp
+        m_MethodName: CambiaFlagINSPECTOR
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
+  negativeCode:
+    m_PersistentCalls:
+      m_Calls: []
   NeededType: 1
   mano: {fileID: 1843685278}
   condition: 0
@@ -2486,7 +2474,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1078449564}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: puzzleSwitch
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   negativeCode:
     m_PersistentCalls:
       m_Calls: []
@@ -2529,7 +2529,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1078449563}
         m_TargetAssemblyTypeName: Conditional_Test, Assembly-CSharp
-        m_MethodName: Check
+        m_MethodName: Check_Condition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2849,6 +2849,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gemelos_juguetones
       objectReference: {fileID: 0}
+    - target: {fileID: 9076730456491123190, guid: 25364da18e6d3694288037c4787484bb, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2979,7 +2983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9005e4dc3aa1597499a00d571d674a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LookUpComponent: {fileID: 0}
+  LookUpComponent: {fileID: 731205862}
   OnInteract:
     m_PersistentCalls:
       m_Calls:
@@ -4170,6 +4174,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1455591147377963512, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
   m_PrefabInstance: {fileID: 4367660402806243294}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1770872513 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7185659503691708486, guid: 8675562c0a2f7e246a934bb1cb586a9e, type: 3}
+  m_PrefabInstance: {fileID: 5805244147865208433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1770872516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770872513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1afc09f2afa744749b1cf1de150be3d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1792275949
 GameObject:
   m_ObjectHideFlags: 0
@@ -5179,9 +5200,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 757110884}
     m_Modifications:
+    - target: {fileID: 1576334521834428110, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576334521834428110, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: m_Size.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576334521834428110, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2854372717920814992, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: m_Name
       value: Cocinero
+      objectReference: {fileID: 0}
+    - target: {fileID: 2854372717920814992, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2854372717920814992, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3750760314989961095, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5223,7 +5264,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 790140632321144198, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -5289,7 +5331,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: Segurata
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4082793434466057598, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4082793434466057598, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+      propertyPath: m_Size.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2878175612080231695, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -5362,7 +5425,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7185659503691708486, guid: 8675562c0a2f7e246a934bb1cb586a9e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1770872516}
   m_SourcePrefab: {fileID: 100100000, guid: 8675562c0a2f7e246a934bb1cb586a9e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

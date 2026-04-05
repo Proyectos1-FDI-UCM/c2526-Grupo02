@@ -75,14 +75,20 @@ public class Flags : MonoBehaviour
         return flags[i];
     }
 
+    //Versión compatible con UNITY EVENTS de CAMBIAFLAG
+    public void CambiaFlagINSPECTOR(int n)
+    {
+        int i = (int)n;
+        flags[i] = true;
+    }
+
     public void CambiaFlag(Conditions n, bool Cambio) 
     {
         int i = (int)n;
         flags[i] = Cambio;
     }
-
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -90,7 +96,7 @@ public class Flags : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
 } // class Flags 
 // namespace
