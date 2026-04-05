@@ -54,10 +54,10 @@ public class Flags : MonoBehaviour
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-    void Start()
+    void Awake()
     {
         flags = new bool[Conditions.GetNames(typeof(Conditions)).Length];
-        UnityEngine.Debug.Log(flags.Length);
+        UnityEngine.Debug.Log(flags.Length + " BANDERAS");
     }
     #endregion
 
@@ -74,15 +74,25 @@ public class Flags : MonoBehaviour
         int i = (int) n;
         return flags[i];
     }
+    public int GetFlagLenght()
+    {
+        return Conditions.GetNames(typeof(Conditions)).Length;
+    }
+
+    //Versión compatible con UNITY EVENTS de CAMBIAFLAG
+    public void CambiaFlagINSPECTOR(int n)
+    {
+        int i = (int)n;
+        flags[i] = true;
+    }
 
     public void CambiaFlag(Conditions n, bool Cambio) 
     {
         int i = (int)n;
         flags[i] = Cambio;
     }
-
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -90,7 +100,7 @@ public class Flags : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
 } // class Flags 
 // namespace

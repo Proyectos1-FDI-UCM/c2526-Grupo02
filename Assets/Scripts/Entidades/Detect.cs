@@ -51,7 +51,7 @@ public class Detect : MonoBehaviour
     /// </summary>
     void Start()
     {
-        Canvas.SetActive(false);
+        Canvas.GetComponent<Canvas>().enabled = false;
     }
 
     /// <summary>
@@ -83,14 +83,14 @@ public class Detect : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Test_detect_correction>() != null)
         {
-            Canvas.SetActive(true);
+            Canvas.GetComponent<Canvas>().enabled = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Test_detect_correction>() != null) 
         {
-            Canvas.SetActive(false);
+            Canvas.GetComponent<Canvas>().enabled = false;
         }
     }
     #endregion   

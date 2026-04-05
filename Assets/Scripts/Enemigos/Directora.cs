@@ -46,6 +46,7 @@ public class Directora : MonoBehaviour
     // enum para indicar en que estado se encuentra el armario
     enum Estado {activo, inactivo}
     private Estado estado;  // el estado
+    private int i = 0;
 
     private void ControlPanel(bool Acti) // Controlo el panel que me indica el radio visual del enemigo
     {
@@ -71,7 +72,7 @@ public class Directora : MonoBehaviour
     {
         estado = Estado.activo;
 
-        detect = GetComponent<Enemy_Detect>(); // llamo a los componentes que me harán falta más adelante
+        detect = PanelVisual.GetComponent<Enemy_Detect>(); // llamo a los componentes que me harán falta más adelante
         if (detect == null)
         {
             Destroy(this);
@@ -81,11 +82,12 @@ public class Directora : MonoBehaviour
             UnityEngine.Debug.Log("Tiene que haber como mínimo 2 colliders entre los que alternar");
             Destroy(this);
         }
+     
     }
 
     private void ControlVision(int i) //Desactiva y activa progresivamente los colliders en el patrón deseado
     {
-        PanelVisual.transform.position = Posiciones[i];
+        PanelVisual.transform.localPosition = Posiciones[i];
     }
     private void OnTriggerStay2D(Collider2D collision) // Mientras el jugador este dentro del enemigo se irá comprobando en que fase se encuentra
     {
@@ -98,10 +100,10 @@ public class Directora : MonoBehaviour
             switch (fase)
             {
                 case 0:
-                    GetComponent<Renderer>().material.color = Color.white;
+                    this.GetComponent<SpriteRenderer>().color = Color.white;
                     break;
                 case 1:
-                    GetComponent<Renderer>().material.color = Color.red;
+                    this.GetComponent<SpriteRenderer>().color = Color.red;
                     break;
                 case 2:
                     GameManager.Instance.GameOver();
@@ -116,7 +118,7 @@ public class Directora : MonoBehaviour
     void Update()
     {
         Temporizador += Time.deltaTime;
-        int i = 0;
+        //int i = 0;
         if (estado == Estado.activo && Temporizador >= TiempoQueMira)
         {
             estado = Estado.inactivo;

@@ -85,7 +85,7 @@ public class SaveState : MonoBehaviour
         {
             GameManager.Instance.SaveInv(i);
         }
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i <  GameManager.Instance.GetFlags().GetFlagLenght(); i++)
         {
                 GameManager.Instance.SavePuz(i);
         }

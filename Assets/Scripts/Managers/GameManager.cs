@@ -56,8 +56,11 @@ public class GameManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static GameManager _instance;
+    [SerializeField]
     private Vector3 _playerTransform;
+    [SerializeField]
     private bool[] _puzzleState;
+    [SerializeField]
     private Object[] _invState;
 
     #endregion
@@ -150,25 +153,31 @@ public class GameManager : MonoBehaviour
         Player.SetActive(false); 
     }
     public void Respawn() 
-    { 
+    {
+        Player.SetActive(true);
+        Player.transform.position = _playerTransform;
+        Vector3 Cam = _playerTransform;
+        Cam.z = -10;
+        Camera.transform.position = Cam;
         DeathScreen.SetActive(false);
         Inv.GetComponent<Inventory_Manager>().LoadState(_invState);
-        for ( int i = 0; i < 3; i++)
+        for ( int i = 0; i < FlagManager.GetFlagLenght(); i++)
         {
             FlagManager.CambiaFlag((Flags.Conditions)i, _puzzleState[i]);
         }
-        Player.GetComponent<Transform>().position = _playerTransform;
-        Camera.GetComponent<Follow_Player>().Teleport(_playerTransform);
-        Player.SetActive(true); 
+       
     }
 
     public void SaveInv( int i)
     {
-        _invState[i] = Inv.GetComponent<Inventory_Manager>().RetState(i);
+            _invState[i] = Inv.GetComponent<Inventory_Manager>().RetState(i);
     }
     public void SavePuz ( int i)
     {
-        _puzzleState[i] = FlagManager.GetPos((Flags.Conditions)i);
+       
+            bool flag = FlagManager.GetComponent<Flags>().GetPos((Flags.Conditions)i);
+            _puzzleState[i] = flag;
+        
     }
     public void SavePos(Vector3 pos)
     {
@@ -225,7 +234,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Init()
     {
-        // De momento no hay nada que inicializar
+        _puzzleState = new bool[FlagManager.GetFlagLenght()];
+        _invState = new Object[Inv.GetComponent<Inventory_Manager>().IniState()];
     }
 
     private void TransferManagerSetup()
