@@ -6,7 +6,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 // Añadir aquí el resto de directivas using
 
 

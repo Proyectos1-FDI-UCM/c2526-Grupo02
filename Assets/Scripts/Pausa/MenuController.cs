@@ -8,7 +8,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 // Añadir aquí el resto de directivas using
 
 

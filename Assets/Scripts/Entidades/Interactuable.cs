@@ -69,11 +69,16 @@ public class Interactuable : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
+        if(!Pausa_controller.IsGamePaused)
+        {
+
+        
         if (((!cameraInteracts && !LookUpComponent.GetAlturaAlta() && other.GetComponent<Player_Controller>()) //Interaccion del jugador, la camara no esta mirando arriba y el jugador esta en rango
             || (cameraInteracts && LookUpComponent.GetAlturaAlta() && other.GetComponentInParent<Camera>())) //Interaccion de la camara, la camara esta mirando arriba y esta en rango
             && _Interact.WasPressedThisFrame()) //Si el jugador esta pulsando el boton de interaccion
         {
             OnInteract.Invoke(); //llamamos a la funcion asignada en el inspector
+        }
         }
     }
     #endregion

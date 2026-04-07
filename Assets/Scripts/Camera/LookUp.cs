@@ -83,7 +83,7 @@ public class LookUp : MonoBehaviour
         bool teclaActual = _lookUp.ReadValue<float>() > 0.5f;
 
         //  Detecta solo la pulsación inicial, evitando que se active continuamente
-        if (teclaActual && _nextMov < Time.time)
+        if (teclaActual && _nextMov < Time.time && !Pausa_controller.IsGamePaused)
         {
             // Se añade un retraso de 1 segundo antes de permitir otra acción
             _nextMov = Time.time + 1;

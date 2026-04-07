@@ -83,7 +83,7 @@ public class Enemy_Detect : MonoBehaviour
     void Update()
     {
         // si el jugador está dentro vamos contando el tiempo hacia arriba
-        if (_playerIsInside && !HideSystem.IsHiding)
+        if (_playerIsInside && !HideSystem.IsHiding && !Pausa_controller.IsGamePaused)
         {
             //Si el tiempo es menor que el máximo, se sigue contando hacia arriba
             if (_time <= MaxStateTime)
@@ -104,7 +104,7 @@ public class Enemy_Detect : MonoBehaviour
         else
         {
             //Manejamos el contador en reversa 
-            if (_time > 0)
+            if (_time > 0 && !Pausa_controller.IsGamePaused)
             {
                 _time -= Time.deltaTime;
 

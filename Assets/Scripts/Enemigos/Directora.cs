@@ -94,7 +94,7 @@ public class Directora : MonoBehaviour
         var player = collision.GetComponent<Player_Controller>();
 
 
-        if (player != null)
+        if (player != null && !Pausa_controller.IsGamePaused)
         {
             int fase = detect.GetState();
             switch (fase)
@@ -119,7 +119,7 @@ public class Directora : MonoBehaviour
     {
         Temporizador += Time.deltaTime;
         //int i = 0;
-        if (estado == Estado.activo && Temporizador >= TiempoQueMira)
+        if (estado == Estado.activo && Temporizador >= TiempoQueMira && !Pausa_controller.IsGamePaused)
         {
             estado = Estado.inactivo;
             Temporizador = 0;
@@ -127,7 +127,7 @@ public class Directora : MonoBehaviour
             ControlVision(i);
             i++;
         }
-        else if (estado == Estado.inactivo && Temporizador >= TiempoDeCambio)
+        else if (estado == Estado.inactivo && Temporizador >= TiempoDeCambio && !Pausa_controller.IsGamePaused)
         {
             estado = Estado.activo;
             Temporizador = 0;
