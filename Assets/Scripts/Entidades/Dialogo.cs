@@ -200,6 +200,11 @@ public class Dialogo : MonoBehaviour
         _puzzle = sel;
     }
 
+    public bool istalking()
+    {
+        return _talking;
+    }
+
 
     #endregion
 
