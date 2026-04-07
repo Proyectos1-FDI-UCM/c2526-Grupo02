@@ -37,6 +37,8 @@ public class LookUp : MonoBehaviour
     #region Atributos Privados
     // Indica si la cámara está en altura elevada
     private bool _alturaAlta = false;
+    // Objeto de interacción
+    private GameObject interactionCollider;
 
     // Acción de input para mirar hacia arriba
     private InputAction _lookUp;
@@ -74,6 +76,8 @@ public class LookUp : MonoBehaviour
             Debug.Log("No se encontró la acción para mirar hacia arriba");
             return;
         }
+        interactionCollider = Jugador.GetComponentInChildren<Test_detect_correction>().gameObject;
+
 
     }
 
@@ -101,11 +105,14 @@ public class LookUp : MonoBehaviour
         }
         Vector3 act = transform.position;// Posición actual de la cámara
         float yObj = alturaNormal; // Altura objetivo por defecto
+        Vector3 interactpos = interactionCollider.transform.position;
 
         if (_alturaAlta)
         {
             // Ajuste de altura sobre el jugador
             yObj = alturaElevada + Jugador.transform.position.y;
+            
+
             //El stop Si se pone en el update porque otro script podría llegar a permitir al jugador moverse pero por este no se debería poder.
             Jugador.GetComponent<Player_Controller>().Stop();
         }
@@ -123,6 +130,8 @@ public class LookUp : MonoBehaviour
         );
         // Actualiza la posición de la cámara
         transform.position = act;
+        interactpos.y = yObj;
+        interactionCollider.transform.position = interactpos;
     }
 
     #endregion
