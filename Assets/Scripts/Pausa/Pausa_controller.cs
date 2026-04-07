@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
+// Maneja la pausa, es decir, cuando se pausa el juego se encarga de manejar eso
 // AlejandrA
 // Don't go up
 // Proyectos 1 - Curso 2025-26
@@ -60,15 +60,17 @@ public class Pausa_controller : MonoBehaviour
     {
         IsGamePaused = paused;
 
+        //Busca todos los objetos activos en la escena que tengan el componente Enemy_Detect,
+        //no los ordena y los guarda en el array enemigos
         Enemy_Detect[] enemigos = Object.FindObjectsByType<Enemy_Detect>(FindObjectsSortMode.None);
 
-
-        foreach (Enemy_Detect enemy in enemigos)
+        //
+        foreach (Enemy_Detect enemy in enemigos) //por cada enemigo dentro del array enemigos 
         {
-            enemy.gameObject.SetActive(!paused);
+            enemy.gameObject.SetActive(!paused); //Desactiva a los enemigos, para que no te puedan atacar
         }
 
-        if (IsGamePaused)
+        if (IsGamePaused) //si está pausao el jugador no se mueve
         {
             GameManager.Instance.GetPlayer().GetComponent<Player_Controller>().Stop();
         }
