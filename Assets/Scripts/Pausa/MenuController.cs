@@ -22,7 +22,10 @@ public class MenuController : MonoBehaviour
     #region Atributos del Inspector (serialized fields)
 
     [SerializeField]
-    private GameObject _menuCanvas;
+    private GameObject _menuCanvas; //Canvas general
+
+    [SerializeField]
+    private GameObject _panelControles; //Panel controles
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -67,9 +70,17 @@ public class MenuController : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    public void AbrirControles() 
+    {
+        _panelControles.SetActive(true);
 
+    }
+    /// <summary>
+    /// Cierra el Canvasy ya
+    /// </summary>
     public void CerrarCanvas()
     {
+        _panelControles.SetActive(false);
         _menuCanvas.SetActive(false);
         Pausa_controller.SetPause(false);
     }
