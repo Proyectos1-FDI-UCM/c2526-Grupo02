@@ -39,6 +39,10 @@ public class Interactuable : MonoBehaviour
     //Variable que guarda la accion de interact
     private InputAction _Interact;
 
+    //variables para frenar el interactuable con diálogo;
+    private Dialogo _dialogo;
+    private bool _hayDialogo;
+
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -63,17 +67,31 @@ public class Interactuable : MonoBehaviour
         {
             Debug.Log("Falta asignar el lookUp de la camara");
         }
+        _dialogo = GetComponent<Dialogo>();
+        if (_dialogo == null)
+        {
+            Debug.Log("Falta el componente dialogo, asegurese de que no lo necesita en este interactuable");
+        }
+        
 
     }
 
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (((!cameraInteracts && !LookUpComponent.GetAlturaAlta() && other.GetComponent<Player_Controller>()) //Interaccion del jugador, la camara no esta mirando arriba y el jugador esta en rango
-            || (cameraInteracts && LookUpComponent.GetAlturaAlta() && other.GetComponentInParent<Camera>())) //Interaccion de la camara, la camara esta mirando arriba y esta en rango
-            && _Interact.WasPressedThisFrame()) //Si el jugador esta pulsando el boton de interaccion
+        _hayDialogo = _dialogo != null;
+        if(!Pausa_controller.IsGamePaused)
         {
-            OnInteract.Invoke(); //llamamos a la funcion asignada en el inspector
+            if (!_hayDialogo || !_dialogo.istalking())
+            {
+
+                if (((!cameraInteracts && !LookUpComponent.GetAlturaAlta() && other.GetComponent<Player_Controller>()) //Interaccion del jugador, la camara no esta mirando arriba y el jugador esta en rango
+                    || (cameraInteracts && LookUpComponent.GetAlturaAlta() && other.GetComponentInParent<Player_Controller>())) //Interaccion de la camara, la camara esta mirando arriba y esta en rango
+                    && _Interact.WasPressedThisFrame()) //Si el jugador esta pulsando el boton de interaccion
+                {
+                    OnInteract.Invoke(); //llamamos a la funcion asignada en el inspector
+                }
+            }
         }
     }
     #endregion

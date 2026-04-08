@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Se encarga de manejar el menu de la pausa
+// AlejandrA
 // Don't go up
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -8,7 +8,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 // Añadir aquí el resto de directivas using
 
 
@@ -22,7 +22,10 @@ public class MenuController : MonoBehaviour
     #region Atributos del Inspector (serialized fields)
 
     [SerializeField]
-    private GameObject _menuCanvas;
+    private GameObject _menuCanvas; //Canvas general
+
+    [SerializeField]
+    private GameObject _panelControles; //Panel controles
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -45,6 +48,7 @@ public class MenuController : MonoBehaviour
             return;
         }
         _menuCanvas.SetActive(false);
+        _panelControles.SetActive(false);
     }
 
     /// <summary>
@@ -54,6 +58,7 @@ public class MenuController : MonoBehaviour
     {
         if (_pausa.WasPressedThisFrame())
         {
+            _panelControles.SetActive(false);
             _menuCanvas.SetActive(!_menuCanvas.activeSelf); //devuelve lo contrario a como entre
             Pausa_controller.SetPause(_menuCanvas.activeSelf);
         }
@@ -67,9 +72,17 @@ public class MenuController : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    public void AbrirControles() 
+    {
+        _panelControles.SetActive(true);
 
+    }
+    /// <summary>
+    /// Cierra el Canvas y ya
+    /// </summary>
     public void CerrarCanvas()
     {
+        _panelControles.SetActive(false);
         _menuCanvas.SetActive(false);
         Pausa_controller.SetPause(false);
     }

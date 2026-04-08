@@ -56,11 +56,8 @@ public class GameManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static GameManager _instance;
-    [SerializeField]
     private Vector3 _playerTransform;
-    [SerializeField]
     private bool[] _puzzleState;
-    [SerializeField]
     private Object[] _invState;
 
     #endregion
@@ -100,7 +97,7 @@ public class GameManager : MonoBehaviour
             // Somos el primer GameManager.
             // Queremos sobrevivir a cambios de escena.
             _instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
             Init();
         } // if-else somos instancia nueva o no.
     }

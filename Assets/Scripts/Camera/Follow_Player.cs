@@ -52,7 +52,7 @@ public class Follow_Player : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     // Distancia mínima del raycast para considerar colisión
-    private float _minRayDist = 0.01f;
+    private float _minRayDist = 0.1f;
     private InputAction _move;
     #endregion
 
@@ -79,36 +79,45 @@ public class Follow_Player : MonoBehaviour
     }
     private void Update()
     {
-        Vector2 dir = _move.ReadValue<Vector2>();
-        float HorizontalDir = Mathf.Round(dir.x);
-        // Posición actual del jugador
-        Vector3 playerAct = Target.transform.position;
-
-        // Posición desde la que se lanza el raycast
-        Vector3 rayPos = Target.transform.position;
-        rayPos.y += rayHeight;
-
-        // Posición actual de la cámara
-        Vector3 targetPos = transform.position;
-
-        // Raycast a derecha e izquierda para detectar paredes
-        bool _collidingL = true;
-        bool _collidingR = true;
-      
-        if (HorizontalDir == 1)
+        if (!Pausa_controller.IsGamePaused)
         {
-            _collidingR = Physics2D.Raycast(rayPos, Vector2.right, DistanceToWall).distance > _minRayDist;
-        }
-        else if (HorizontalDir == -1)
-        {
-            _collidingL = Physics2D.Raycast(rayPos, Vector2.left, DistanceToWall).distance > _minRayDist;
-        }
+            Vector2 dir = _move.ReadValue<Vector2>();
+            float HorizontalDir = Mathf.Round(dir.x);
+            // Posición actual del jugador
+            Vector3 playerAct = Target.transform.position;
 
-        // Si no hay colisiones, la cámara sigue al jugador suavemente
-        if (!_collidingR || !_collidingL)
-        {
-            targetPos.x = Mathf.Lerp(targetPos.x, playerAct.x, (SpringFactor * Time.deltaTime));
-            transform.position = targetPos;
+            // Posición desde la que se lanza el raycast
+            Vector3 rayPos = Target.transform.position;
+            rayPos.y += rayHeight;
+
+            // Posición actual de la cámara
+            Vector3 targetPos = transform.position;
+
+            // Raycast a derecha e izquierda para detectar paredes
+
+
+            bool _collidingR = Physics2D.Raycast(rayPos, Vector2.right, DistanceToWall);
+           bool _collidingL = Physics2D.Raycast(rayPos, Vector2.left, DistanceToWall);
+
+            if (HorizontalDir == 1)
+            {
+                _collidingR = Physics2D.Raycast(rayPos, Vector2.right, DistanceToWall);
+                _collidingL = Physics2D.Raycast(rayPos, Vector2.left, _minRayDist);
+            }
+            else if(HorizontalDir == -1)
+            {
+                _collidingL = Physics2D.Raycast(rayPos, Vector2.left, DistanceToWall);
+                _collidingR = Physics2D.Raycast(rayPos, Vector2.right, _minRayDist);
+            }
+           
+
+
+            // Si no hay colisiones, la cámara sigue al jugador suavemente
+            if (!_collidingR && !_collidingL)
+            {
+                targetPos.x = Mathf.Lerp(targetPos.x, playerAct.x, (SpringFactor * Time.deltaTime));
+                transform.position = targetPos;
+            }
         }
     }
 

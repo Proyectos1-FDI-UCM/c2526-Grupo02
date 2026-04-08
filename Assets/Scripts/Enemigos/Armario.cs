@@ -89,49 +89,54 @@ public class Armario : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        var player = collision.GetComponent<Player_Controller>();
-
-
-        if (player != null)
+        if (!Pausa_controller.IsGamePaused)
         {
-            int fase = detect.GetState();
-            switch (fase)
+            var player = collision.GetComponent<Player_Controller>();
+
+
+            if (player != null)
             {
-                case 0:
-                    GetComponent<SpriteRenderer>().color = Color.white;
-                    break;
-                case 1:
-                    GetComponent<SpriteRenderer>().color = Color.yellow;
-                    break;
-                case 2:
-                    //GetComponent<Renderer>().material.color = Color.red;
-                    GameManager.Instance.GameOver();
-                    break;
+                int fase = detect.GetState();
+                switch (fase)
+                {
+                    case 0:
+                        GetComponent<SpriteRenderer>().color = Color.white;
+                        break;
+                    case 1:
+                        GetComponent<SpriteRenderer>().color = Color.yellow;
+                        break;
+                    case 2:
+                        //GetComponent<Renderer>().material.color = Color.red;
+                        GameManager.Instance.GameOver();
+                        break;
+                }
+
+
             }
-
-
         }
-
     }
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
     {
-        Temporizador += Time.deltaTime; 
-        if (estado == Estado.activo && Temporizador >= TiempoDeDesactivar)
+        if (!Pausa_controller.IsGamePaused)
         {
-            estado = Estado.inactivo;
-            Temporizador = 0; 
-            ControlPanel(false);
-            ControlVision(false); 
-        }
-        else if (estado == Estado.inactivo && Temporizador >=DuracionDeDesactivacion)
-        {
-            estado =Estado.activo;
-            Temporizador = 0;
-            ControlPanel(true);
-            ControlVision(true); 
+            Temporizador += Time.deltaTime;
+            if (estado == Estado.activo && Temporizador >= TiempoDeDesactivar)
+            {
+                estado = Estado.inactivo;
+                Temporizador = 0;
+                ControlPanel(false);
+                ControlVision(false);
+            }
+            else if (estado == Estado.inactivo && Temporizador >= DuracionDeDesactivacion)
+            {
+                estado = Estado.activo;
+                Temporizador = 0;
+                ControlPanel(true);
+                ControlVision(true);
+            }
         }
     }
 

@@ -131,6 +131,7 @@ public class Inventory_Manager : MonoBehaviour
         if (_inventoryIsOpen && !Pausa_controller.IsGamePaused)
         {
             //logica inputs inventario aqui
+            _player.GetComponent<Player_Controller>().Stop();
             Vector2 dir = _move.ReadValue<Vector2>();
             float HorizontalDir = Mathf.Round(dir.x);
 
