@@ -485,7 +485,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4040606826010260916, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_text
-      value: Escena1
+      value: 'Jugar
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154362846689707760, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8606664896545888718, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_Pivot.x
@@ -549,11 +555,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8606664896545888718, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -22
+      value: -276.10004
       objectReference: {fileID: 0}
     - target: {fileID: 8606664896545888718, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -38
+      value: -312.3328
       objectReference: {fileID: 0}
     - target: {fileID: 8606664896545888718, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -73,7 +73,6 @@ public class Interactuable : MonoBehaviour
             Debug.Log("Falta el componente dialogo, asegurese de que no lo necesita en este interactuable");
         }
         
-
     }
 
 

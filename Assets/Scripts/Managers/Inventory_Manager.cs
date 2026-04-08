@@ -20,7 +20,7 @@ public class Inventory_Manager : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
 
-    //objet de la ui que tiene todo el inventario abierto (mas facil de ocultar/mostrar asi)
+    //objet de la ui que tiene todo el inventario abierto (más fácil de ocultar/mostrar así)
     [SerializeField]
     private GameObject _inventoryHud;
 
@@ -38,7 +38,7 @@ public class Inventory_Manager : MonoBehaviour
     private float _delayTime = 0.5f;
 
     [SerializeField]
-    private RectTransform _selection;
+    private RectTransform _selection; //índice visual
     #endregion
 
 
@@ -125,7 +125,7 @@ public class Inventory_Manager : MonoBehaviour
             {
                 _player.GetComponent<Player_Controller>().Resume();
             }
-
+            _selection.position = _invHudSpaces[0].GetComponent<RectTransform>().position;
         }
 
         if (_inventoryIsOpen && !Pausa_controller.IsGamePaused)
@@ -191,7 +191,6 @@ public class Inventory_Manager : MonoBehaviour
         }
     }
 
-
     /// <Summary>
     ///Al usar UnityEvents serializados, no se pueden usar funciones que tengan como parametro un enum,
     ///por lo que pasamos un int y casteamos al enum
@@ -209,15 +208,18 @@ public class Inventory_Manager : MonoBehaviour
             Debug.Log("Tipo de item no válido");
         }
     }
+
     public int IniState ()
     {
         return _invLenght;
     }
+
     public Object RetState(int n) // regresa el estado del inventario
     {
         return _inv[n];
     }
-    public void LoadState(Object[] old)
+  
+    public void LoadState(Object[] old) 
     {
         _nObj = 0;
         for (int i = 0; i < _invLenght; i++)
