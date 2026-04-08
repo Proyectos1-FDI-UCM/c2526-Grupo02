@@ -11193,11 +11193,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1576334521834428110, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: m_Size.x
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1576334521834428110, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: m_Size.y
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1576334521834428110, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: m_IsTrigger
@@ -11233,7 +11233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3750760314989961095, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.6012135
+      value: 2.84
       objectReference: {fileID: 0}
     - target: {fileID: 3750760314989961095, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11383,7 +11383,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 18, y: 10}
+  m_Size: {x: 10, y: 10}
   m_EdgeRadius: 0
 --- !u!114 &3838993934725981296
 MonoBehaviour:
@@ -11518,11 +11518,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
       propertyPath: m_Size.x
-      value: 3
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
       propertyPath: m_Size.y
-      value: 6
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
       propertyPath: m_IsTrigger
