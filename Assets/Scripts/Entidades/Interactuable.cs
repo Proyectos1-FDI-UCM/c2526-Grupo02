@@ -82,8 +82,7 @@ public class Interactuable : MonoBehaviour
         _hayDialogo = _dialogo != null;
         if(!Pausa_controller.IsGamePaused)
         {
-            if (!_hayDialogo || !_dialogo.istalking())
-            {
+         
 
                 if (((!cameraInteracts && !LookUpComponent.GetAlturaAlta() && other.GetComponent<Player_Controller>()) //Interaccion del jugador, la camara no esta mirando arriba y el jugador esta en rango
                     || (cameraInteracts && LookUpComponent.GetAlturaAlta() && other.GetComponentInParent<Player_Controller>())) //Interaccion de la camara, la camara esta mirando arriba y esta en rango
@@ -91,7 +90,7 @@ public class Interactuable : MonoBehaviour
                 {
                     OnInteract.Invoke(); //llamamos a la funcion asignada en el inspector
                 }
-            }
+            
         }
     }
     #endregion
