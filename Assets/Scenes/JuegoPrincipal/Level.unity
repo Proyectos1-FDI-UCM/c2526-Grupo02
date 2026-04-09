@@ -1317,6 +1317,7 @@ MonoBehaviour:
   Nombre: "Ni\xF1a"
   Archivo: LittleGirlAntes.txt
   ArchivoCon: LittleGirlAntes.txt
+  Huye: 0
 --- !u!61 &123836870
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2467,23 +2468,31 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
-      propertyPath: m_Size.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
-      propertyPath: m_Size.y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+    - target: {fileID: 6859383397986576990, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.8076923
       objectReference: {fileID: 0}
-    - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+    - target: {fileID: 6859383397986576990, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.6730769
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.8076923
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.6730769
       objectReference: {fileID: 0}
@@ -2493,7 +2502,7 @@ PrefabInstance:
       objectReference: {fileID: -8909987091062915374, guid: f2cd92ca89942764db93f03635da4c4e, type: 3}
     m_RemovedComponents:
     - {fileID: 2878175612080231695, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
-    - {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2626,6 +2635,7 @@ MonoBehaviour:
   Nombre: Segurata
   Archivo: Toilet.txt
   ArchivoCon: Toilet.txt
+  Huye: 0
 --- !u!1 &326477954
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,6 +3200,7 @@ MonoBehaviour:
   Nombre: 
   Archivo: SalchipapaHelp.txt
   ArchivoCon: SalchipapaHelp.txt
+  Huye: 0
 --- !u!1 &366052079
 GameObject:
   m_ObjectHideFlags: 0
@@ -3912,6 +3923,7 @@ MonoBehaviour:
   Nombre: Gemelos
   Archivo: GemelosAntes.txt
   ArchivoCon: GemelosDespues.txt
+  Huye: 0
 --- !u!1 &647274647
 GameObject:
   m_ObjectHideFlags: 0
@@ -5131,6 +5143,7 @@ MonoBehaviour:
   Nombre: Cocinero
   Archivo: CocineroAntes.txt
   ArchivoCon: CocineroDespues.txt
+  Huye: 0
 --- !u!114 &1078449565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6118,19 +6131,19 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1576334521834428110, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_Size.y
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1576334521834428110, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1576334521834428110, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.59375
       objectReference: {fileID: 0}
-    - target: {fileID: 1576334521834428110, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 3.28125
       objectReference: {fileID: 0}
@@ -7861,6 +7874,7 @@ MonoBehaviour:
   Nombre: 
   Archivo: fusiblesA.txt
   ArchivoCon: fusiblesB.txt
+  Huye: 0
 --- !u!114 &1603544401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8299,6 +8313,7 @@ MonoBehaviour:
   Nombre: 
   Archivo: Escalera.txt
   ArchivoCon: Escalera.txt
+  Huye: 0
 --- !u!1 &1656987005
 GameObject:
   m_ObjectHideFlags: 0
@@ -8524,6 +8539,7 @@ MonoBehaviour:
   Nombre: Segurata
   Archivo: SegurataAntes.txt
   ArchivoCon: SegurataDespues.txt
+  Huye: 1
 --- !u!114 &1768110778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10821,6 +10837,7 @@ MonoBehaviour:
   Nombre: 
   Archivo: NoOffice.txt
   ArchivoCon: NoOffice.txt
+  Huye: 0
 --- !u!1 &2141424547
 GameObject:
   m_ObjectHideFlags: 0
@@ -11313,23 +11330,23 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 757110884}
     m_Modifications:
-    - target: {fileID: 1576334521834428110, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_Size.x
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1576334521834428110, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_Size.y
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1576334521834428110, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1576334521834428110, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 2.34375
       objectReference: {fileID: 0}
-    - target: {fileID: 1576334521834428110, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 3.46875
       objectReference: {fileID: 0}
@@ -11638,27 +11655,27 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_Size.x
       value: 2.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_Size.y
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_Offset.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 2.46875
       objectReference: {fileID: 0}
-    - target: {fileID: 4758897105520505862, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 2.625
       objectReference: {fileID: 0}
