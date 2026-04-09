@@ -150,8 +150,8 @@ Transform:
   m_GameObject: {fileID: 1780492}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.945902, y: -31.608088, z: 2}
-  m_LocalScale: {x: 3, y: 4, z: 1}
+  m_LocalPosition: {x: 7, y: -30, z: 0}
+  m_LocalScale: {x: -3.4926, y: 6.9812, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 269026316}
@@ -303,7 +303,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -1317,6 +1317,7 @@ MonoBehaviour:
   Nombre: "Ni\xF1a"
   Archivo: LittleGirlAntes.txt
   ArchivoCon: LittleGirlAntes.txt
+  Huye: 0
 --- !u!61 &123836870
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2626,6 +2627,7 @@ MonoBehaviour:
   Nombre: Segurata
   Archivo: Toilet.txt
   ArchivoCon: Toilet.txt
+  Huye: 0
 --- !u!1 &326477954
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,6 +3192,7 @@ MonoBehaviour:
   Nombre: 
   Archivo: SalchipapaHelp.txt
   ArchivoCon: SalchipapaHelp.txt
+  Huye: 0
 --- !u!1 &366052079
 GameObject:
   m_ObjectHideFlags: 0
@@ -3539,6 +3542,93 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &554235740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 554235742}
+  - component: {fileID: 554235741}
+  m_Layer: 0
+  m_Name: FINAL_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &554235741
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554235740}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 1947119457985424567, guid: 2479fdc93ccd65a4d845de456dd234e3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 10.91, y: 6.13}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &554235742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554235740}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.3882, y: 38.2027, z: 0}
+  m_LocalScale: {x: 1.6222315, y: 1.5772176, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &564258544
 GameObject:
   m_ObjectHideFlags: 0
@@ -3912,6 +4002,7 @@ MonoBehaviour:
   Nombre: Gemelos
   Archivo: GemelosAntes.txt
   ArchivoCon: GemelosDespues.txt
+  Huye: 0
 --- !u!1 &647274647
 GameObject:
   m_ObjectHideFlags: 0
@@ -4238,7 +4329,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 692505875085616641, guid: 25364da18e6d3694288037c4787484bb, type: 3}
-    - {fileID: -6073008681870241296, guid: 25364da18e6d3694288037c4787484bb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1236896271845714361, guid: 25364da18e6d3694288037c4787484bb, type: 3}
@@ -5131,6 +5221,7 @@ MonoBehaviour:
   Nombre: Cocinero
   Archivo: CocineroAntes.txt
   ArchivoCon: CocineroDespues.txt
+  Huye: 0
 --- !u!114 &1078449565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6034,6 +6125,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8548740692460103036, guid: 9de0dfe00064fc945a17c828a8525f37, type: 3}
   m_PrefabInstance: {fileID: 1025181822}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1307993816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1307993817}
+  m_Layer: 0
+  m_Name: Final_provisional
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1307993817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307993816}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.088889, y: 39.71884, z: 0.362258}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1328149338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7861,6 +7983,7 @@ MonoBehaviour:
   Nombre: 
   Archivo: fusiblesA.txt
   ArchivoCon: fusiblesB.txt
+  Huye: 0
 --- !u!114 &1603544401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8299,6 +8422,7 @@ MonoBehaviour:
   Nombre: 
   Archivo: Escalera.txt
   ArchivoCon: Escalera.txt
+  Huye: 0
 --- !u!1 &1656987005
 GameObject:
   m_ObjectHideFlags: 0
@@ -8524,6 +8648,7 @@ MonoBehaviour:
   Nombre: Segurata
   Archivo: SegurataAntes.txt
   ArchivoCon: SegurataDespues.txt
+  Huye: 0
 --- !u!114 &1768110778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9249,11 +9374,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7216491046037799834, guid: ec2fbeedb8b2faa4b8d08b4668076099, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.341323
+      value: 4.33
       objectReference: {fileID: 0}
     - target: {fileID: 7216491046037799834, guid: ec2fbeedb8b2faa4b8d08b4668076099, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.009039
+      value: -11.25
       objectReference: {fileID: 0}
     - target: {fileID: 7216491046037799834, guid: ec2fbeedb8b2faa4b8d08b4668076099, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9821,7 +9946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f44c06f0ac3d1e844862a9bf144bc57d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetDestination: {x: -15, y: -18, z: -10}
+  TargetDestination: {x: 5, y: -17, z: -10}
   player: {fileID: 1843685286}
   camera: {fileID: 3273536040159281517}
   AutomaticTelepor: 0
@@ -10821,6 +10946,7 @@ MonoBehaviour:
   Nombre: 
   Archivo: NoOffice.txt
   ArchivoCon: NoOffice.txt
+  Huye: 0
 --- !u!1 &2141424547
 GameObject:
   m_ObjectHideFlags: 0
@@ -11875,3 +12001,5 @@ SceneRoots:
   - {fileID: 1514718757}
   - {fileID: 965314887}
   - {fileID: 105712198}
+  - {fileID: 1307993817}
+  - {fileID: 554235742}
