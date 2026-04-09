@@ -63,7 +63,7 @@ public class Door_Tp_Test : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if (collision.GetComponent<Player_Controller>() == true)
+        if (collision.GetComponent<Player_Controller>())
         {
             Debug.Log(collision);
 
