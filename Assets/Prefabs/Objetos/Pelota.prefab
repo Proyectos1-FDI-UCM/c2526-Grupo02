@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7216491046037799834}
   - component: {fileID: 6937336093212231536}
-  - component: {fileID: 5894512896743045766}
+  - component: {fileID: 475307447167709376}
   m_Layer: 0
   m_Name: Pelota
   m_TagString: Untagged
@@ -88,8 +88,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &5894512896743045766
-PolygonCollider2D:
+--- !u!61 &475307447167709376
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -132,14 +132,5 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 5, y: 8}
-      - {x: -5, y: 8}
-      - {x: -5, y: 6}
-      - {x: -2, y: 6}
-      - {x: -2, y: -2}
-      - {x: 2, y: -2}
-      - {x: 2, y: 6}
-      - {x: 5, y: 6}
-  m_UseDelaunayMesh: 0
+  m_Size: {x: 4, y: 4}
+  m_EdgeRadius: 0

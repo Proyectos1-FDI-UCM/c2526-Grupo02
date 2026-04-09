@@ -39,8 +39,6 @@ public class Dialogo : MonoBehaviour
     private string Archivo;//Nombre del archivo + .txt
     [SerializeField]
     private string ArchivoCon; // Dialogo secundario
-    [SerializeField]
-    private bool Huye;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -111,18 +109,7 @@ public class Dialogo : MonoBehaviour
     void Update()
     {
         if (_talking)
-        {   if (_line == _script.GetLength(0) + 1 || _line == _scriptCon.GetLength(0) + 1)
-                {
-                    Canvas.GetComponent<Canvas>().enabled = false;
-                    _line = 0;
-                    _talking = false;
-                    _puzzle = false;
-                    
-                }//si avanza dialogo en la ultima linea regresa al estado de entrar
-                 if (_puzzle&&Huye) {
-                Destroy(this.gameObject.GetComponent<PolygonCollider2D>());
-                        _talking=true;
-                    }
+        {
             _time += Time.deltaTime;
             //Código para que la primera línea se ejecute sin tener que "interactuar"
             if (_first)
@@ -141,18 +128,25 @@ public class Dialogo : MonoBehaviour
             if (_pressed)
             {
                 Canvas.enabled = true;
-                
-               
+                if (_line == _script.GetLength(0) || _line == _scriptCon.GetLength(0))
+                {
+                    Canvas.GetComponent<Canvas>().enabled = false;
+                    _line = 0;
+                    _talking = false;
+                    _puzzle = false;
+                } //si avanza dialogo en la ultima linea regresa al estado de entrar
+                else
+                {
                     if (_type) _typeAll = true;
                     else
                     {
-                        if (!_puzzle&&_line< _script.GetLength(0))
+                        if (!_puzzle)
                         {
                             EscribirLinea(_script[_line]);
                         }
-                        else if (_puzzle&&_line< _scriptCon.GetLength(0)) EscribirLinea(_scriptCon[_line]);
-                        _line++;
+                        else EscribirLinea(_scriptCon[_line]);
                     }
+                }
             }
         }
         else
@@ -168,6 +162,7 @@ public class Dialogo : MonoBehaviour
                 dialogo.text = $"{Nombre}: {_currentScript}";
                 _type = false;
                 _typeAll = false;
+                _line++;
                 return;
             }
             else
@@ -184,6 +179,7 @@ public class Dialogo : MonoBehaviour
                 if (_index >= _currentScript.Length)
                 {
                     _type = false;
+                    _line++;
                 }
             }
         }
