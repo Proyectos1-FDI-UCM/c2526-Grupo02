@@ -87,7 +87,12 @@ public class Interactuable : MonoBehaviour
                     || (cameraInteracts && LookUpComponent.GetAlturaAlta() && other.GetComponentInParent<Player_Controller>())) //Interaccion de la camara, la camara esta mirando arriba y esta en rango
                     && _Interact.WasPressedThisFrame()) //Si el jugador esta pulsando el boton de interaccion
                 {
-                    OnInteract.Invoke(); //llamamos a la funcion asignada en el inspector
+                //Me han regalado un reloj
+                //Qué marca?
+                //Pues la hora!
+                //La finalidad del chiste es que no detecte dos veces el TP y no puedas salir del sótano
+
+                OnInteract.Invoke(); //llamamos a la funcion asignada en el inspector
                 }
             
         }
