@@ -1,27 +1,21 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Lógica detrás del funcionamiento de la Directora
+// Responsable de la creación de este archivo - Pablo
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
-// Añadir aquí el resto de directivas using
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Es la lógica que hace que la Directora funcione de la manera esperada.
 /// </summary>
 public class Directora : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
+
     [SerializeField]
     private float TiempoDeCambio; //Tiempo que tarda en cambiar de mirar un lado a otro
     [SerializeField]
@@ -29,19 +23,14 @@ public class Directora : MonoBehaviour
     [SerializeField]
     private Vector3[] Posiciones; //Array de coordenadas que mira
     [SerializeField]
-    private GameObject PanelVisual; // Panel que señaliza la visión del enemigo
+    private GameObject PanelVisual; //Panel que señaliza la visión del enemigo
 
 
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
+
     private float Temporizador;  // Temporizador que se usara para llevar los dos tiempos.
     // enum para indicar en que estado se encuentra el armario
     enum Estado {activo, inactivo}
@@ -60,14 +49,6 @@ public class Directora : MonoBehaviour
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
     void Start()
     {
         estado = Estado.activo;
@@ -77,15 +58,15 @@ public class Directora : MonoBehaviour
         {
             Destroy(this);
         }
-        if(Posiciones.Length <= 1) //Por ahora puedes tener colliders vacios, MAL AHÍ
+        if(Posiciones.Length <= 1) //Revisa que haya más de una coordenada donde cambiar
         {
-            UnityEngine.Debug.Log("Tiene que haber como mínimo 2 colliders entre los que alternar");
+            UnityEngine.Debug.Log("Tiene que haber como mínimo 2 coordenadas entre los que alternar");
             Destroy(this);
         }
      
     }
 
-    private void ControlVision(int i) //Desactiva y activa progresivamente los colliders en el patrón deseado
+    private void ControlVision(int i) //Cambia progresivamente las coordenadas en el patrón deseado
     {
         PanelVisual.transform.localPosition = Posiciones[i];
     }
@@ -102,23 +83,20 @@ public class Directora : MonoBehaviour
                 case 0:
                     this.GetComponent<SpriteRenderer>().color = Color.white;
                     break;
-                case 1:
+                case 1: case 2:
                     this.GetComponent<SpriteRenderer>().color = Color.red;
                     break;
-                case 2:
+                case 3:
                     GameManager.Instance.GameOver();
                     break;
             }
         }
     }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
+
     void Update()
     {
         Temporizador += Time.deltaTime;
-        //int i = 0;
         if (estado == Estado.activo && Temporizador >= TiempoQueMira && !Pausa_controller.IsGamePaused)
         {
             estado = Estado.inactivo;
@@ -139,20 +117,11 @@ public class Directora : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
 
     #endregion
     
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
 
     #endregion   
 
