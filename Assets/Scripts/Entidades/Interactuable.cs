@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo - Alejandra 
+// Gestiona la interacción entre el jugador y objetos del juego y permite ejecutar un evento configurable
+// Alejandra 
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
