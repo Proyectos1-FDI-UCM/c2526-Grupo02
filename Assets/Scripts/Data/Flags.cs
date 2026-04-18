@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Lleva una cuenta del progreso
 // Responsable de la creación de este archivo - Pablo
-// Nombre del juego
+// Don´t Go Up
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -28,7 +28,7 @@ public class Flags : MonoBehaviour
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
 
-    private bool[] flags;
+    private bool[] _flags;
 
     #endregion
 
@@ -37,35 +37,36 @@ public class Flags : MonoBehaviour
 
     void Awake()
     {
-        flags = new bool[Conditions.GetNames(typeof(Conditions)).Length];
-        UnityEngine.Debug.Log(flags.Length + " BANDERAS");
+        //Crea un array de bools del tamaño del enumerado Conditions
+        _flags = new bool[Conditions.GetNames(typeof(Conditions)).Length];
+        UnityEngine.Debug.Log(_flags.Length + " BANDERAS");
     }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
 
-    public bool GetPos(Conditions n)
+    public bool GetPos(Conditions n) //Comprueba la posicion de n en Conditions para buscarla en flags
     {
         int i = (int) n;
-        return flags[i];
+        return _flags[i];
     }
-    public int GetFlagLenght()
+    public int GetFlagLenght() //Busca el tamaño de Flags
     {
         return Conditions.GetNames(typeof(Conditions)).Length;
     }
 
     //Versión compatible con UNITY EVENTS de CAMBIAFLAG
-    public void CambiaFlagINSPECTOR(int n)
+    public void CambiaFlagINSPECTOR(int n) //Cambia a true flag
     {
         int i = (int)n;
-        flags[i] = true;
+        _flags[i] = true;
     }
 
-    public void CambiaFlag(Conditions n, bool Cambio) 
+    public void CambiaFlag(Conditions n, bool Cambio) //Cambia el valor de flag
     {
         int i = (int)n;
-        flags[i] = Cambio;
+        _flags[i] = Cambio;
     }
     #endregion
 
