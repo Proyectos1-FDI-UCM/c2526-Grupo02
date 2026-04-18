@@ -64,6 +64,7 @@ public class Dialogo : MonoBehaviour
     private int _index = 0;
     private bool _pressed;
     private bool _first;
+    private bool _fleed = false;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -110,82 +111,80 @@ public class Dialogo : MonoBehaviour
     }
     void Update()
     {
-        if (_talking)
+        if (!_fleed)
         {
-            if (_line == _script.GetLength(0) + 1 || _line == _scriptCon.GetLength(0) + 1)
+            if (_talking)
             {
-                Canvas.GetComponent<Canvas>().enabled = false;
-                _line = 0;
-                _talking = false;
-                _puzzle = false;
+                if (_line == _script.GetLength(0) + 1 || _line == _scriptCon.GetLength(0) + 1)
+                {
+                    Canvas.GetComponent<Canvas>().enabled = false;
+                    _line = 0;
+                    _talking = false;
+                    _fleed = _puzzle && Huye;
 
-            }//si avanza dialogo en la ultima linea regresa al estado de entrar
-            if (_puzzle && Huye)
-            {
-                Destroy(this.gameObject.GetComponent<PolygonCollider2D>());
-                _talking = true;
-            }
-            _time += Time.deltaTime;
-            //Código para que la primera línea se ejecute sin tener que "interactuar"
-            if (_first)
-            {
-                Debug.Log("PRIMERA");
-                _pressed = true;
-                _first = false;
+                }//si avanza dialogo en la ultima linea regresa al estado de entrar
+                _time += Time.deltaTime;
+                //Código para que la primera línea se ejecute sin tener que "interactuar"
+                if (_first)
+                {
+                    Debug.Log("PRIMERA");
+                    _pressed = true;
+                    _first = false;
 
 
-            }
-            else
-            {
-                _pressed = _talk.ReadValue<float>() > 0f && _talk.WasPressedThisFrame();
-            }
-
-            if (_pressed)
-            {
-                Canvas.enabled = true;
-
-
-                if (_type) _typeAll = true;
+                }
                 else
                 {
-                    if (!_puzzle && _line < _script.GetLength(0))
-                    {
-                        EscribirLinea(_script[_line]);
-                    }
-                    else if (_puzzle && _line < _scriptCon.GetLength(0)) EscribirLinea(_scriptCon[_line]);
-                    _line++;
+                    _pressed = _talk.ReadValue<float>() > 0f && _talk.WasPressedThisFrame();
                 }
-            }
-        }
-        else
-        {
-            //  Canvas.GetComponent<Canvas>().enabled = false;
-            _line = 0;
-            _puzzle = false;
-        }
-        if (_type)
-        {
-            if (_typeAll)
-            {
-                dialogo.text = $"{Nombre}: {_currentScript}";
-                _type = false;
-                _typeAll = false;
-                return;
+
+                if (_pressed)
+                {
+                    Canvas.enabled = true;
+
+
+                    if (_type) _typeAll = true;
+                    else
+                    {
+                        if (!_puzzle && _line < _script.GetLength(0))
+                        {
+                            EscribirLinea(_script[_line]);
+                        }
+                        else if (_puzzle && _line < _scriptCon.GetLength(0)) EscribirLinea(_scriptCon[_line]);
+                        _line++;
+                    }
+                }
             }
             else
             {
-                _time += Time.deltaTime;
-
-                if (_time >= Velocidad && _index < _currentScript.Length)
+                //  Canvas.GetComponent<Canvas>().enabled = false;
+                _line = 0;
+                
+            }
+            if (_type)
+            {
+                if (_typeAll)
                 {
-                    dialogo.text += _currentScript[_index];
-                    _index++;
-                    _time = 0;
-                }
-
-                if (_index >= _currentScript.Length)
-                {
+                    dialogo.text = $"{Nombre}: {_currentScript}";
                     _type = false;
+                    _typeAll = false;
+                    return;
+                }
+                else
+                {
+                    _time += Time.deltaTime;
+
+                    if (_time >= Velocidad && _index < _currentScript.Length)
+                    {
+                        dialogo.text += _currentScript[_index];
+                        _index++;
+                        _time = 0;
+                    }
+
+                    if (_index >= _currentScript.Length)
+                    {
+                        _type = false;
+                    }
                 }
             }
         }
