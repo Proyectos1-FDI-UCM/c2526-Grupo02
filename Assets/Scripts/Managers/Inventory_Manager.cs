@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo - Alejandra
-// Responsable de la creación de este archivo - Maneja el inventario
+// Maneja el inventario 
+// Alejandra  
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
