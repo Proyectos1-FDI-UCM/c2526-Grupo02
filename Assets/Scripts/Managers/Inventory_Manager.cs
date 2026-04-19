@@ -162,7 +162,7 @@ public class Inventory_Manager : MonoBehaviour
             if (_Interact.WasPressedThisFrame() && _currentItemIndex < _nObj)
             {
 
-                _player.GetComponent<Object_use>().ObjetoRecogido(_inv[_currentItemIndex]);
+                _player.GetComponent<Object_use>().SetPickedObject(_inv[_currentItemIndex]);
                 _sujetado = _inv[_currentItemIndex];
             }
         }

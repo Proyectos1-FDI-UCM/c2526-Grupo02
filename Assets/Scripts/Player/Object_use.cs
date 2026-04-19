@@ -3,7 +3,7 @@
 // Este script sirve para tener controlado que tiene el jugador en la mano en cada momento
 // Responsable de la creación de este archivo
 //Sara Quilez Martinez
-// Nombre del juego
+// Dont look up
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -26,7 +26,7 @@ public class Object_use : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     [SerializeField]
-    private UnityEngine.UI.Image Mano; //objeto que nos indicará visualmente el objeto que se lleva
+    private UnityEngine.UI.Image handImage; //item que nos indicará visualmente el item que se lleva
 
     #endregion
 
@@ -40,7 +40,7 @@ public class Object_use : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     // Objeto selecionado por el jugador
-    private Object ObjetoEnUso; // objeto en uso que se lleva ahora mismo
+    private Object _currentItem; // item en uso que se lleva ahora mismo
 
     private Sprite _emptyHand;
     #endregion
@@ -59,11 +59,11 @@ public class Object_use : MonoBehaviour
 
     private void Start()
     {
-        if (Mano == null)
+        if (handImage == null)
         {
             Debug.Log("No hay mano configurada");
         }
-        _emptyHand = Mano.sprite;
+        _emptyHand = handImage.sprite;
     }
 
     #endregion
@@ -76,32 +76,32 @@ public class Object_use : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    // Método que señala al jugador que objeto a recogido 
-    public void ObjetoRecogido(Object objeto) // cuando esto es llamado desde el inventario se asigna el objeto que el jugador haya selecionado
+    // Método que señala al jugador que item a recogido 
+    public void SetPickedObject(Object item) // cuando esto es llamado desde el inventario se asigna el item que el jugador haya selecionado
     {
-        Debug.Log("Estoy usando " + objeto.GetItem().ToString());
-        if (ObjetoEnUso == objeto)
+        Debug.Log("Estoy usando " + item.GetItem().ToString());
+        if (_currentItem == item)
         {
-            //hemos pasado esto a un método auxiliar ya que lo necesitamos para cuando usamos el objeto y nos lo quitan del inventario
+            //hemos pasado esto a un método auxiliar ya que lo necesitamos para cuando usamos el item y nos lo quitan del inventario
             RemoveFromHand();
 
         }
         else
         {
-            ObjetoEnUso = objeto;
-            Mano.sprite = objeto.GetInventorySprite();
+            _currentItem = item;
+            handImage.sprite = item.GetInventorySprite();
         }
 
     }
 
     public Object GetHandItem()
     {
-        return ObjetoEnUso;
+        return _currentItem;
     }
     public void RemoveFromHand()
     {
-        ObjetoEnUso = null;
-        Mano.sprite = _emptyHand;
+        _currentItem = null;
+        handImage.sprite = _emptyHand;
     }
         
     #endregion

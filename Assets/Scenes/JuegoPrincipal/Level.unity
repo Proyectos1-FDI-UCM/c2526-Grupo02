@@ -2831,7 +2831,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 692505875085616641, guid: 25364da18e6d3694288037c4787484bb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1236896271845714361, guid: 25364da18e6d3694288037c4787484bb, type: 3}
@@ -4355,10 +4356,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6847d6a2af1947049bb8aed50600eb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TiempoDeDesactivar: 1
-  DuracionDeDesactivacion: 1
-  PanelVisual: {fileID: 366052079}
-  "Visi\xF3n": {fileID: 366052080}
+  timeToDeactivate: 1
+  deactivationDuration: 1
+  visualPanel: {fileID: 366052079}
+  visionCollider: {fileID: 366052080}
 --- !u!4 &827304275 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1236896271845714361, guid: 25364da18e6d3694288037c4787484bb, type: 3}
@@ -9508,6 +9509,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3787825909870468965, guid: b09c55b748697f24d8824adcd974f68d, type: 3}
       propertyPath: Mano
+      value: 
+      objectReference: {fileID: 2036581439}
+    - target: {fileID: 3787825909870468965, guid: b09c55b748697f24d8824adcd974f68d, type: 3}
+      propertyPath: handImage
       value: 
       objectReference: {fileID: 2036581439}
     - target: {fileID: 5796866007303315036, guid: b09c55b748697f24d8824adcd974f68d, type: 3}

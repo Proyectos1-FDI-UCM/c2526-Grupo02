@@ -1,7 +1,8 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
-// Nombre del juego
+// Este archivo sirve para contener el comportamiengto del enemigo armario
+// Responsable de la creación de este archivo - Sara Quilez Martinez
+// Don't look up
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -23,13 +24,13 @@ public class Armario : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField]
-    private float TiempoDeDesactivar; // Tiempo que tarda el armario en apagar su campo de visión
+    private float timeToDeactivate; // Tiempo que tarda el armario en apagar su campo de visión
     [SerializeField]
-    private float DuracionDeDesactivacion; // Tiempo que tarda en volver a activarlo 
+    private float deactivationDuration; // Tiempo que tarda en volver a activarlo 
     [SerializeField]
-    private GameObject PanelVisual; // Panel que señaliza la visión del enemigo
+    private GameObject visualPanel; // Panel que señaliza la visión del enemigo
     [SerializeField]
-    private Collider2D Visión; //Collider aparte que representa el campo visual del enemigo.
+    private Collider2D visionCollider; //Collider aparte que representa el campo visual del enemigo.
 
 
 
@@ -44,26 +45,26 @@ public class Armario : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private float Temporizador;  // Temporizador que se usara para llevar los dos tiempos.
+    private float _timer;  // _timer que se usara para llevar los dos tiempos.
 
-    enum Estado  // enum para indicar en que estado se encuentra el armario
+    enum CabinetState  // enum para indicar en que _currentState se encuentra el armario
     {
-        activo,
-        inactivo
+        Active,
+        Inactive
     }
-    private Estado estado;  // el estado
+    private CabinetState _currentState;  // el _currentState sirve para el estado en el que nos encontramos
 
-    private void ControlPanel (bool Acti) // Controlo el panel que me indica el radio visual del enemigo
+    private void SetVisualPanelActive (bool Acti) // Controlo el panel que me indica el radio visual del enemigo
     {
-        PanelVisual.SetActive(Acti); 
+        visualPanel.SetActive(Acti); 
        
     }
 
-    private void ControlVision (bool Acti) // Controlo el propio collider para activarlo y desactivarlo
+    private void SetVisionActive (bool Acti) // Controlo el propio collider para activarlo y desactivarlo
     {
-        Visión.enabled = Acti;
+        visionCollider.enabled = Acti;
     }
-    private Enemy_Detect detect;  // llamo al detect
+    private Enemy_Detect _enemyDetect;  // llamo al _enemyDetect que tiene el propio enemigo
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -79,9 +80,9 @@ public class Armario : MonoBehaviour
     /// </summary>
     void Start()
     {
-        estado = Estado.activo;
-        detect = PanelVisual.GetComponent<Enemy_Detect>();
-        if (detect == null)
+        _currentState = CabinetState.Active;
+        _enemyDetect = visualPanel.GetComponent<Enemy_Detect>();
+        if (_enemyDetect == null)
         {
             Debug.Log("No hay enemyDetect en el panelvisual");
         }
@@ -96,17 +97,17 @@ public class Armario : MonoBehaviour
 
             if (player != null)
             {
-                int fase = detect.GetState();
+                int fase = _enemyDetect.GetState();
                 switch (fase)
                 {
                     case 0:
-                        GetComponent<SpriteRenderer>().color = Color.white;
+                        visualPanel.GetComponent<SpriteRenderer>().color = Color.white;
                         break;
                     case 1:
-                        GetComponent<SpriteRenderer>().color = Color.yellow;
+                        visualPanel.GetComponent<SpriteRenderer>().color = Color.yellow;
                         break;
                     case 2:
-                        //GetComponent<Renderer>().material.color = Color.red;
+                        visualPanel.GetComponent<Renderer>().material.color = Color.red;
                         GameManager.Instance.GameOver();
                         break;
                 }
@@ -122,20 +123,20 @@ public class Armario : MonoBehaviour
     {
         if (!Pausa_controller.IsGamePaused)
         {
-            Temporizador += Time.deltaTime;
-            if (estado == Estado.activo && Temporizador >= TiempoDeDesactivar)
+            _timer += Time.deltaTime;
+            if (_currentState == CabinetState.Active && _timer >= timeToDeactivate)
             {
-                estado = Estado.inactivo;
-                Temporizador = 0;
-                ControlPanel(false);
-                ControlVision(false);
+                _currentState = CabinetState.Inactive;
+                _timer = 0;
+                SetVisualPanelActive(false);
+                SetVisionActive(false);
             }
-            else if (estado == Estado.inactivo && Temporizador >= DuracionDeDesactivacion)
+            else if (_currentState == CabinetState.Inactive && _timer >= deactivationDuration)
             {
-                estado = Estado.activo;
-                Temporizador = 0;
-                ControlPanel(true);
-                ControlVision(true);
+                _currentState = CabinetState.Active;
+                _timer = 0;
+                SetVisualPanelActive(true);
+                SetVisionActive(true);
             }
         }
     }
