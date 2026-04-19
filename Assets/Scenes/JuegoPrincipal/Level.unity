@@ -1168,12 +1168,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1617609905}
-  dialogo: {fileID: 1387251030}
-  Velocidad: 0.03
-  Nombre: "Ni\xF1a"
-  Archivo: LittleGirlAntes.txt
-  ArchivoCon: LittleGirlAntes.txt
-  Huye: 0
+  Dialogue: {fileID: 0}
+  Speed: 0.03
+  Name: 
+  Archive: 
+  ArchiveCon: 
+  Flee: 0
 --- !u!61 &123836870
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2478,12 +2478,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1617609905}
-  dialogo: {fileID: 1387251030}
-  Velocidad: 0.03
-  Nombre: Segurata
-  Archivo: Toilet.txt
-  ArchivoCon: Toilet.txt
-  Huye: 0
+  Dialogue: {fileID: 1387251030}
+  Speed: 0.03
+  Name: Segurata
+  Archive: Toilet.txt
+  ArchiveCon: 
+  Flee: 0
 --- !u!1 &326477954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2771,7 +2771,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 363286540}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: talk
+        m_MethodName: Talk
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2886,12 +2886,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1617609905}
-  dialogo: {fileID: 1387251030}
-  Velocidad: 0.03
-  Nombre: 
-  Archivo: SalchipapaHelp.txt
-  ArchivoCon: SalchipapaHelp.txt
-  Huye: 0
+  Dialogue: {fileID: 1387251030}
+  Speed: 0.03
+  Name: ' '
+  Archive: SalchipapaHelp.txt
+  ArchiveCon: 
+  Flee: 0
 --- !u!1 &366052079
 GameObject:
   m_ObjectHideFlags: 0
@@ -3585,7 +3585,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 611144808}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: talk
+        m_MethodName: Talk
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3609,7 +3609,7 @@ MonoBehaviour:
         m_CallState: 1
       - m_Target: {fileID: 611144808}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: puzzleSwitch
+        m_MethodName: PuzzleSwitch
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3636,7 +3636,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 611144808}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: talk
+        m_MethodName: Talk
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3696,12 +3696,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1617609905}
-  dialogo: {fileID: 1387251030}
-  Velocidad: 0.03
-  Nombre: Gemelos
-  Archivo: GemelosAntes.txt
-  ArchivoCon: GemelosDespues.txt
-  Huye: 0
+  Dialogue: {fileID: 1387251030}
+  Speed: 0.03
+  Name: Gemelos Juguetones
+  Archive: GemelosAntes.txt
+  ArchiveCon: GemelosDespues.txt
+  Flee: 0
 --- !u!1 &647274647
 GameObject:
   m_ObjectHideFlags: 0
@@ -4877,7 +4877,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1078449564}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: puzzleSwitch
+        m_MethodName: PuzzleSwitch
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4889,7 +4889,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1078449564}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: talk
+        m_MethodName: Talk
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4904,7 +4904,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1078449564}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: talk
+        m_MethodName: Talk
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4930,12 +4930,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1617609905}
-  dialogo: {fileID: 1387251030}
-  Velocidad: 0.03
-  Nombre: Cocinero
-  Archivo: CocineroAntes.txt
-  ArchivoCon: CocineroDespues.txt
-  Huye: 0
+  Dialogue: {fileID: 1387251030}
+  Speed: 0.03
+  Name: Cocinero
+  Archive: CocineroAntes.txt
+  ArchiveCon: CocineroDespues.txt
+  Flee: 0
 --- !u!114 &1078449565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5915,6 +5915,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 915151343110610499, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: code.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PuzzleSwitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 915151343110610499, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: code.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: CambiaFlagINSPECTOR
       objectReference: {fileID: 0}
@@ -5926,6 +5930,10 @@ PrefabInstance:
       propertyPath: negativeCode.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1328149344}
+    - target: {fileID: 915151343110610499, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: negativeCode.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Talk
+      objectReference: {fileID: 0}
     - target: {fileID: 915151343110610499, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: code.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Flags, Assembly-CSharp
@@ -6039,13 +6047,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5560217850347027247, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: Name
+      value: Chamito
+      objectReference: {fileID: 0}
+    - target: {fileID: 5560217850347027247, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: Canvas
       value: 
       objectReference: {fileID: 1617609905}
     - target: {fileID: 5560217850347027247, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: Archive
+      value: SotanoA.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 5560217850347027247, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: dialogo
       value: 
       objectReference: {fileID: 1387251030}
+    - target: {fileID: 5560217850347027247, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: Dialogue
+      value: 
+      objectReference: {fileID: 1387251030}
+    - target: {fileID: 5560217850347027247, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: ArchiveCon
+      value: SotanoB.txt
+      objectReference: {fileID: 0}
     - target: {fileID: 7329565725301060994, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: LookUpComponent
       value: 
@@ -7691,12 +7715,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1617609905}
-  dialogo: {fileID: 1387251030}
-  Velocidad: 0.03
-  Nombre: 
-  Archivo: fusiblesA.txt
-  ArchivoCon: fusiblesB.txt
-  Huye: 0
+  Dialogue: {fileID: 1387251030}
+  Speed: 0.03
+  Name: ' '
+  Archive: fusiblesA.txt
+  ArchiveCon: fusiblesB.txt
+  Flee: 0
 --- !u!114 &1603544401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8130,12 +8154,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1617609905}
-  dialogo: {fileID: 1387251030}
-  Velocidad: 0.03
-  Nombre: 
-  Archivo: Escalera.txt
-  ArchivoCon: Escalera.txt
-  Huye: 0
+  Dialogue: {fileID: 0}
+  Speed: 0.03
+  Name: 
+  Archive: 
+  ArchiveCon: 
+  Flee: 0
 --- !u!1 &1656987005
 GameObject:
   m_ObjectHideFlags: 0
@@ -8255,7 +8279,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1768110777}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: puzzleSwitch
+        m_MethodName: PuzzleSwitch
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8267,7 +8291,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1768110777}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: talk
+        m_MethodName: Talk
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8330,7 +8354,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1768110777}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: talk
+        m_MethodName: Talk
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8356,12 +8380,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1617609905}
-  dialogo: {fileID: 1387251030}
-  Velocidad: 0.03
-  Nombre: Segurata
-  Archivo: SegurataAntes.txt
-  ArchivoCon: SegurataDespues.txt
-  Huye: 0
+  Dialogue: {fileID: 1387251030}
+  Speed: 0.03
+  Name: Segurata
+  Archive: SegurataAntes.txt
+  ArchiveCon: SegurataDespues.txt
+  Flee: 1
 --- !u!114 &1768110778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10660,12 +10684,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1617609905}
-  dialogo: {fileID: 1387251030}
-  Velocidad: 0.03
-  Nombre: 
-  Archivo: NoOffice.txt
-  ArchivoCon: NoOffice.txt
-  Huye: 0
+  Dialogue: {fileID: 1387251030}
+  Speed: 0.03
+  Name: ' '
+  Archive: NoOffice.txt
+  ArchiveCon: 
+  Flee: 0
 --- !u!1 &2141424547
 GameObject:
   m_ObjectHideFlags: 0

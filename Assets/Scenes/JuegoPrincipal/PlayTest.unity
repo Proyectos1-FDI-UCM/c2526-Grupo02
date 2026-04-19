@@ -4547,12 +4547,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1478285109}
-  dialogo: {fileID: 800089257}
-  Velocidad: 0.03
-  Nombre: 
-  Archivo: fusiblesA.txt
-  ArchivoCon: fusiblesB.txt
-  Huye: 0
+  Dialogue: {fileID: 0}
+  Speed: 0.03
+  Name: 
+  Archive: 
+  ArchiveCon: 
+  Flee: 0
 --- !u!114 &1292141411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5869,6 +5869,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1478789815}
     - target: {fileID: 915151343110610499, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: negativeCode.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Talk
+      objectReference: {fileID: 0}
+    - target: {fileID: 915151343110610499, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: code.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Flags, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -6005,6 +6009,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1478285109}
     - target: {fileID: 5560217850347027247, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: Archive
+      value: SotanoA.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 5560217850347027247, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: Archivo
       value: TutPT.txt
       objectReference: {fileID: 0}
@@ -6012,6 +6020,14 @@ PrefabInstance:
       propertyPath: dialogo
       value: 
       objectReference: {fileID: 800089257}
+    - target: {fileID: 5560217850347027247, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: Dialogue
+      value: 
+      objectReference: {fileID: 800089257}
+    - target: {fileID: 5560217850347027247, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: ArchiveCon
+      value: SotanoB.txt
+      objectReference: {fileID: 0}
     - target: {fileID: 7329565725301060994, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: LookUpComponent
       value: 
@@ -7300,12 +7316,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1478285109}
-  dialogo: {fileID: 800089257}
-  Velocidad: 0.03
-  Nombre: "Ni\xF1a"
-  Archivo: LittleGirlAntes.txt
-  ArchivoCon: LittleGirlAntes.txt
-  Huye: 0
+  Dialogue: {fileID: 0}
+  Speed: 0.03
+  Name: 
+  Archive: 
+  ArchiveCon: 
+  Flee: 0
 --- !u!114 &1749742476
 MonoBehaviour:
   m_ObjectHideFlags: 0

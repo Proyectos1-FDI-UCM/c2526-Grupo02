@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     private Vector3 _playerTransform;
     private bool[] _puzzleState;
     private Object[] _invState;
+    private const int _offsetCam = -10;
 
     #endregion
 
@@ -144,18 +145,18 @@ public class GameManager : MonoBehaviour
 
     public GameObject GetInv() { return Inv; }
 
-    public void GameOver () 
+    public void GameOver () //activa la pantalla de game over y desactiva al jugador
     { 
         DeathScreen.SetActive(true); 
         Player.SetActive(false); 
     }
-    public void Respawn() 
+    public void Respawn() //activa al jugador, lo mueve a el y a la camara al ultimo checkpoint con el ultimo estado guardado
     {
         Player.SetActive(true);
         Player.transform.position = _playerTransform;
         Vector3 Cam = _playerTransform;
-        Cam.z = -10;
-        Camera.transform.position = Cam;
+        Cam.z = _offsetCam;
+        Camera.GetComponent<Follow_Player>().Teleport(Cam);
         DeathScreen.SetActive(false);
         Inv.GetComponent<Inventory_Manager>().LoadState(_invState);
         for ( int i = 0; i < FlagManager.GetFlagLenght(); i++)
@@ -165,18 +166,18 @@ public class GameManager : MonoBehaviour
        
     }
 
-    public void SaveInv( int i)
+    public void SaveInv( int i) //carga el estado del inventario
     {
             _invState[i] = Inv.GetComponent<Inventory_Manager>().RetState(i);
     }
-    public void SavePuz ( int i)
+    public void SavePuz ( int i) // carga el estado de las flags
     {
        
             bool flag = FlagManager.GetComponent<Flags>().GetPos((Flags.Conditions)i);
             _puzzleState[i] = flag;
         
     }
-    public void SavePos(Vector3 pos)
+    public void SavePos(Vector3 pos) // carga la pos del jugador
     {
         _playerTransform = pos;
     }
