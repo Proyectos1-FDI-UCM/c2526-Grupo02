@@ -107,7 +107,7 @@ public class HideSystem : MonoBehaviour
             _renderer.enabled = false;
         
             // Detiene al jugador
-            movement?.Stop(); 
+            movement.Stop(); 
         }
     }
 
@@ -118,7 +118,7 @@ public class HideSystem : MonoBehaviour
         if (_renderer != null)
         {
             _renderer.enabled = true;
-            movement?.Resume(); // Vuelve a permitir el movimiento
+            movement.Resume(); // Vuelve a permitir el movimiento
         }
     }
     #endregion
