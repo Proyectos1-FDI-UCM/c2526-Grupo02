@@ -36,6 +36,7 @@ public class Directora : MonoBehaviour
     enum Estado {activo, inactivo}
     private Estado _estado;  // el estado
     private int i = 0;
+    private Phases Phase;
 
     private void ControlPanel(bool Acti) // Controlo el panel que me indica el radio visual del enemigo
     {
@@ -50,6 +51,12 @@ public class Directora : MonoBehaviour
 
     void Start()
     {
+        Phase = GetComponent<Phases>();
+        if (Phase == null)
+        {
+            Debug.Log("No esta el script phase en el enemigo");
+        }
+        Phase.SetVisualPanel(_visualPanel);
         _estado = Estado.activo;
 
         _detect = _visualPanel.GetComponent<Enemy_Detect>(); // llamo a los componentes que me harán falta más adelante
@@ -62,7 +69,6 @@ public class Directora : MonoBehaviour
             UnityEngine.Debug.Log("Tiene que haber como mínimo 2 coordenadas entre las que alternar");
             Destroy(this);
         }
-     
     }
 
     private void ControlVision(int i) //Cambia progresivamente las coordenadas en el patrón deseado
@@ -71,24 +77,7 @@ public class Directora : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision) // Mientras el jugador este dentro del enemigo se irá comprobando en que fase se encuentra
     {
-        var player = collision.GetComponent<Player_Controller>();
-
-        if (player != null && !Pausa_controller.IsGamePaused)
-        {
-            int fase = _detect.GetState();
-            switch (fase)
-            {
-                case 0:
-                    _visualPanel.GetComponent<SpriteRenderer>().color = Color.white;
-                    break;
-                case 1: case 2:
-                    _visualPanel.GetComponent<SpriteRenderer>().color = Color.red;
-                    break;
-                case 3:
-                    GameManager.Instance.GameOver();
-                    break;
-            }
-        }
+        Phase.EnemyPhases(collision);
     }
 
 

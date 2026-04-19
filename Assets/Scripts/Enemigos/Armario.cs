@@ -65,6 +65,7 @@ public class Armario : MonoBehaviour
         visionCollider.enabled = Acti;
     }
     private Enemy_Detect _enemyDetect;  // llamo al _enemyDetect que tiene el propio enemigo
+    private Phases Phase;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -80,6 +81,12 @@ public class Armario : MonoBehaviour
     /// </summary>
     void Start()
     {
+        Phase = GetComponent<Phases>();
+        if (Phase == null)
+        {
+            Debug.Log("No esta el script phase en el enemigo");
+        }
+        Phase.SetVisualPanel(visualPanel);
         _currentState = CabinetState.Active;
         _enemyDetect = visualPanel.GetComponent<Enemy_Detect>();
         if (_enemyDetect == null)
@@ -88,34 +95,11 @@ public class Armario : MonoBehaviour
         }
 
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision) // Mientras el jugador este dentro del enemigo se irá comprobando en que fase se encuentra
     {
-        if (!Pausa_controller.IsGamePaused)
-        {
-            var player = collision.GetComponent<Player_Controller>();
-
-
-            if (player != null)
-            {
-                int fase = _enemyDetect.GetState();
-                switch (fase)
-                {
-                    case 0:
-                        visualPanel.GetComponent<SpriteRenderer>().color = Color.white;
-                        break;
-                    case 1:
-                        visualPanel.GetComponent<SpriteRenderer>().color = Color.yellow;
-                        break;
-                    case 2:
-                        visualPanel.GetComponent<Renderer>().material.color = Color.red;
-                        GameManager.Instance.GameOver();
-                        break;
-                }
-
-
-            }
-        }
+        Phase.EnemyPhases(collision);
     }
+
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>

@@ -38,7 +38,7 @@ public class Phases : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
     private GameObject _visualPanel; //Panel que señaliza la visión del enemigo
-    private Enemy_Detect detect;  // llamo al detect
+    private Enemy_Detect _detect;  // llamo al detect
 
     #endregion
 
@@ -48,6 +48,17 @@ public class Phases : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+
+    private void Start()
+    {
+        
+        _detect = _visualPanel.GetComponent<Enemy_Detect>(); // llamo a los componentes que me harán falta más adelante
+        if (_detect == null)
+        {
+            Destroy(this);
+        }
+    }
+
 
     #endregion
 
@@ -59,16 +70,20 @@ public class Phases : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    public void EnemyPhases(Collider2D collision)
+    public void SetVisualPanel(GameObject panel)
+    {
+        _visualPanel = panel;
+    }
+
+    public void EnemyPhases(Collider2D collision) //Método que lleva las fases de los enemigos
     {
         if (!Pausa_controller.IsGamePaused)
         {
             var player = collision.GetComponent<Player_Controller>();
 
-
             if (player != null)
             {
-                int fase = detect.GetState();
+                int fase = _detect.GetState();
                 switch (fase)
                 {
                     case 0:
@@ -84,7 +99,6 @@ public class Phases : MonoBehaviour
                         GameManager.Instance.GameOver();
                         break;
                 }
-
             }
         }
     }
