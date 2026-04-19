@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Responsable de la creación de este archivo -Hermes -Alejandro
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -15,54 +15,43 @@ using UnityEngine.UI;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Lee un archivo elegido desde el editor y lo escribe línea por línea en un canvas.
 /// </summary>
 public class Dialogo : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
+    
     [SerializeField]
     private Canvas Canvas; //caja del texto
     [SerializeField]
-    private Text dialogo; //el texto
+    private Text Dialogue; //el texto
     [SerializeField]
-    private float Velocidad = 0.03f;//velocidad del texto
+    private float Speed = 0.03f;//velocidad del texto
     [SerializeField]
-    private string Nombre; //nombre del npc
+    private string Name; //nombre del npc
     [SerializeField]
-    private string Archivo;//Nombre del archivo + .txt
+    private string Archive;//Nombre del archivo + .txt
     [SerializeField]
-    private string ArchivoCon; // Dialogo secundario
+    private string ArchiveCon; // Dialogo secundario
     [SerializeField]
-    private bool Huye;
+    private bool Flee; //si el npc desaparece después de terminar su dialogo
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
     private string[] _script; //las lineas de dialogo
     private string[] _scriptCon; //lineas del dialogo alternativo
-    private string _currentScript;
+    private string _currentLine;
     private int _line = 0; //el indice para las lineas de dialogo
     private bool _puzzle; //activa el dialogo fuera del input
     private bool _type = false; //está escribiendo la linea
     private bool _typeAll = false; //escirbe la linea completa
-    private float _time;
-    private InputAction _talk;
-    private bool _talking;
-    private int _index = 0;
-    private bool _pressed;
+    private float _time;    //contador
+    private InputAction _talk;  //input de interactuar
+    private bool _talking;  //permite interactuar cuando el jufgador se encuentra en el area indicada
+    private int _index = 0; // puntero para recorrer cada línea
+    private bool _pressed;  
     private bool _first;
     private bool _fleed = false;
     #endregion
@@ -70,21 +59,13 @@ public class Dialogo : MonoBehaviour
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
     /// sistema de dialogo, usa un archivo de texto y lee el contenido y lo muestra linea por linea
     void Start()
     {
         Canvas.enabled = false;
 
-        string ruta = Path.Combine(Application.streamingAssetsPath, Archivo);
-        string rutacon = Path.Combine(Application.streamingAssetsPath, ArchivoCon);
+        string ruta = Path.Combine(Application.streamingAssetsPath, Archive);
+        string rutacon = Path.Combine(Application.streamingAssetsPath, ArchiveCon);
 
         if (File.Exists(ruta))
         {
@@ -117,10 +98,10 @@ public class Dialogo : MonoBehaviour
             {
                 if (_line == _script.GetLength(0) + 1 || _line == _scriptCon.GetLength(0) + 1)
                 {
-                    Canvas.GetComponent<Canvas>().enabled = false;
+                    Canvas.enabled = false;
                     _line = 0;
                     _talking = false;
-                    _fleed = _puzzle && Huye;
+                    _fleed = _puzzle && Flee;
 
                 }//si avanza dialogo en la ultima linea regresa al estado de entrar
                 _time += Time.deltaTime;
@@ -148,16 +129,19 @@ public class Dialogo : MonoBehaviour
                     {
                         if (!_puzzle && _line < _script.GetLength(0))
                         {
-                            EscribirLinea(_script[_line]);
+                            WriteLine(_script[_line]);
                         }
-                        else if (_puzzle && _line < _scriptCon.GetLength(0)) EscribirLinea(_scriptCon[_line]);
+                        else if (_puzzle && _line < _scriptCon.GetLength(0))
+                        {
+                            WriteLine(_scriptCon[_line]); 
+                        }
                         _line++;
-                    }
+                    }// comprueba cual archivo debe mostrar y pasa la linea a un método privado, después suma uno al puntero
                 }
             }
             else
             {
-                //  Canvas.GetComponent<Canvas>().enabled = false;
+                //  Canvas.enabled = false;
                 _line = 0;
                 
             }
@@ -165,7 +149,7 @@ public class Dialogo : MonoBehaviour
             {
                 if (_typeAll)
                 {
-                    dialogo.text = $"{Nombre}: {_currentScript}";
+                    Dialogue.text = $"{Name}: {_currentLine}";
                     _type = false;
                     _typeAll = false;
                     return;
@@ -174,14 +158,14 @@ public class Dialogo : MonoBehaviour
                 {
                     _time += Time.deltaTime;
 
-                    if (_time >= Velocidad && _index < _currentScript.Length)
+                    if (_time >= Speed && _index < _currentLine.Length)
                     {
-                        dialogo.text += _currentScript[_index];
+                        Dialogue.text += _currentLine[_index];
                         _index++;
                         _time = 0;
                     }
 
-                    if (_index >= _currentScript.Length)
+                    if (_index >= _currentLine.Length)
                     {
                         _type = false;
                     }
@@ -194,56 +178,52 @@ public class Dialogo : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
 
-    public void puzzleSwitch(bool sel)
+    public void PuzzleSwitch(bool sel) // altera el valor de _puzzle para cambiar de archivo desde otros componentes 
     {
         _puzzle = sel;
     }
 
-    public bool istalking()
+    public bool IsTalking() // avisa a otros componentes si el jugador está hablando
     {
         return _talking;
     }
 
-
-    #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.GetComponent<Player_Controller>() != null) { _talking = true; }
-    //}
-    public void talk()
+    public void Talk() // inicializa las variables necesarias para empezar el dialogo
     {
         if (!_talking)
         {
             _talking = true;
             _first = true;
-            _currentScript = "";
+            _currentLine = "";
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
+
+    #endregion
+
+    // ---- MÉTODOS PRIVADOS ----
+    #region Métodos Privados
+    
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.GetComponent<Player_Controller>() != null) { _talking = true; }
+    //}
+    private void OnTriggerExit2D(Collider2D collision) // resetea todo  al alejarse del npc
     {
-        if (collision.GetComponent<Test_detect_correction>() != null) { _talking = false; Canvas.enabled = false; _currentScript = ""; }
+        if (collision.GetComponent<Test_detect_correction>() != null) 
+        {
+            _talking = false; 
+            Canvas.enabled = false; 
+            _currentLine = ""; 
+        }
     }
-    private void EscribirLinea(string linea) //animacion de escribir por letra, el nombre del personaje se queda afuera del bucle para que no cambie
+    private void WriteLine(string linea) //animacion de escribir por letra, el nombre del personaje se queda afuera del bucle para que no cambie
     {
         _index = 0;
         _time = 0;
-        _currentScript = linea;
-        dialogo.text = $"{Nombre}: ";
+        _currentLine = linea;
+        Dialogue.text = $"{Name}: ";
         _type = true;
     }
 }

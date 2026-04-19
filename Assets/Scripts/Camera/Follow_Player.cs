@@ -132,9 +132,7 @@ public class Follow_Player : MonoBehaviour
     // Ejemplo: GetPlayerController
     public void Teleport(Vector3 pos)
     { 
-    Vector3 tp = pos;
-        tp.z = this.GetComponent<Transform>().position.z;
-        this.GetComponent<Transform>().position = tp;
+        this.GetComponent<Transform>().position = pos;
     }
     #endregion
 
