@@ -76,6 +76,7 @@ public class Dialogo : MonoBehaviour
         else
         {
             Debug.LogError("No se encontró el archivo en: " + ruta);
+            Debug.Log(this.gameObject.name);
         }
         if (File.Exists(rutacon))
         {

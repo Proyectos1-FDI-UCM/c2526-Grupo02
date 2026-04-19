@@ -3527,12 +3527,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1478285109}
-  dialogo: {fileID: 800089257}
-  Velocidad: 0.03
-  Nombre: 
-  Archivo: NoAbandonar.txt
-  ArchivoCon: NoAbandonar.txt
-  Huye: 1
+  Dialogue: {fileID: 800089257}
+  Speed: 0.03
+  Name: ' '
+  Archive: NoKey.txt
+  ArchiveCon: 
+  Flee: 0
 --- !u!1 &1097235387
 GameObject:
   m_ObjectHideFlags: 0
@@ -4547,11 +4547,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1478285109}
-  Dialogue: {fileID: 0}
+  Dialogue: {fileID: 800089257}
   Speed: 0.03
-  Name: 
-  Archive: 
-  ArchiveCon: 
+  Name: ' '
+  Archive: fusiblesA.txt
+  ArchiveCon: fusiblesB.txt
   Flee: 0
 --- !u!114 &1292141411
 MonoBehaviour:
@@ -4869,12 +4869,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1478285109}
-  dialogo: {fileID: 800089257}
-  Velocidad: 0.03
-  Nombre: 
-  Archivo: Office.txt
-  ArchivoCon: Office.txt
-  Huye: 1
+  Dialogue: {fileID: 800089257}
+  Speed: 0.03
+  Name: ' '
+  Archive: Office.txt
+  ArchiveCon: 
+  Flee: 0
 --- !u!114 &1325583691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6005,6 +6005,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5560217850347027247, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
+      propertyPath: Name
+      value: Chamito
+      objectReference: {fileID: 0}
+    - target: {fileID: 5560217850347027247, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: Canvas
       value: 
       objectReference: {fileID: 1478285109}
@@ -6117,12 +6121,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1478285109}
-  dialogo: {fileID: 800089257}
-  Velocidad: 0.03
-  Nombre: 
-  Archivo: Escalera.txt
-  ArchivoCon: Escalera.txt
-  Huye: 0
+  Dialogue: {fileID: 800089257}
+  Speed: 0.03
+  Name: 
+  Archive: 
+  ArchiveCon: 
+  Flee: 0
 --- !u!114 &1491238446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7316,10 +7320,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1478285109}
-  Dialogue: {fileID: 0}
+  Dialogue: {fileID: 800089257}
   Speed: 0.03
-  Name: 
-  Archive: 
+  Name: "Ni\xF1a"
+  Archive: LittleGirlAntes.txt
   ArchiveCon: 
   Flee: 0
 --- !u!114 &1749742476
@@ -7340,7 +7344,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1749742475}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: talk
+        m_MethodName: Talk
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7482,12 +7486,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1478285109}
-  dialogo: {fileID: 800089257}
-  Velocidad: 0.03
-  Nombre: 
-  Archivo: NoOffice.txt
-  ArchivoCon: NoOffice.txt
-  Huye: 1
+  Dialogue: {fileID: 800089257}
+  Speed: 0.03
+  Name: ' '
+  Archive: NoOffice.txt
+  ArchiveCon: 
+  Flee: 0
 --- !u!114 &1786162392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7556,7 +7560,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1786162391}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: talk
+        m_MethodName: Talk
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
