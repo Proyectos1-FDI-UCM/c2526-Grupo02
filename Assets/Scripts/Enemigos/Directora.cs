@@ -42,7 +42,6 @@ public class Directora : MonoBehaviour
         _visualPanel.SetActive(Acti);
     }
 
-
     private Enemy_Detect _detect;  // llamo al detect que tiene que estar dentro del armario
     #endregion
 
@@ -80,10 +79,10 @@ public class Directora : MonoBehaviour
             switch (fase)
             {
                 case 0:
-                    this.GetComponent<SpriteRenderer>().color = Color.white;
+                    _visualPanel.GetComponent<SpriteRenderer>().color = Color.white;
                     break;
                 case 1: case 2:
-                    this.GetComponent<SpriteRenderer>().color = Color.red;
+                    _visualPanel.GetComponent<SpriteRenderer>().color = Color.red;
                     break;
                 case 3:
                     GameManager.Instance.GameOver();
