@@ -54,6 +54,7 @@ public class Dialogo : MonoBehaviour
     private bool _pressed;  
     private bool _first;
     private bool _fleed = false;
+    private Player_Controller _playerController;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -62,6 +63,7 @@ public class Dialogo : MonoBehaviour
     /// sistema de dialogo, usa un archivo de texto y lee el contenido y lo muestra linea por linea
     void Start()
     {
+        _playerController = GameManager.Instance.GetPlayer().GetComponent<Player_Controller>();
         Canvas.enabled = false;
 
         string ruta = Path.Combine(Application.streamingAssetsPath, Archive);
@@ -97,11 +99,14 @@ public class Dialogo : MonoBehaviour
         {
             if (_talking)
             {
+                _playerController.Stop();
+               
                 if (_line == _script.GetLength(0) + 1 || _line == _scriptCon.GetLength(0) + 1)
                 {
                     Canvas.enabled = false;
                     _line = 0;
                     _talking = false;
+                    _playerController.Resume();
                     _fleed = _puzzle && Flee;
 
                 }//si avanza dialogo en la ultima linea regresa al estado de entrar
@@ -143,6 +148,7 @@ public class Dialogo : MonoBehaviour
             else
             {
                 //  Canvas.enabled = false;
+
                 _line = 0;
                 
             }
