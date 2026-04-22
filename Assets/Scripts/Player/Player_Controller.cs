@@ -15,6 +15,7 @@ public class Player_Controller : MonoBehaviour
     //Atributo que nos dice la velocidad máxima del jugador.
     [SerializeField]
     int Speed = 5;
+    
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -57,8 +58,6 @@ public class Player_Controller : MonoBehaviour
     }
     void Update()
     {
-
-
         //Calculamos la dirección del movimiento y se la sumamos a la posición x multiplicandolo por la velocidad y el time.deltatime
         Vector2 dir = _move.ReadValue<Vector2>();
         float HorizontalDir = Mathf.Round(dir.x);
@@ -103,7 +102,4 @@ public class Player_Controller : MonoBehaviour
     }
     #endregion
 
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    #endregion
 } 
