@@ -32,7 +32,7 @@ public class Directora : MonoBehaviour
     #region Atributos Privados (private fields)
 
     private float _temporizador;  // Temporizador que se usara para llevar los dos tiempos.
-    // enum para indicar en que estado se encuentra el armario
+    // enum para indicar en que estado se encuentra la Directora
     enum Estado {activo, inactivo}
     private Estado _estado;  // el estado
     private int i = 0;
@@ -43,7 +43,7 @@ public class Directora : MonoBehaviour
         _visualPanel.SetActive(Acti);
     }
 
-    private Enemy_Detect _detect;  // llamo al detect que tiene que estar dentro del armario
+    private Enemy_Detect _detect;  // llamo al detect que tiene que estar dentro de la Directora
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----

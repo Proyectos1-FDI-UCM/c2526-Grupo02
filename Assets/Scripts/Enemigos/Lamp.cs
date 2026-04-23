@@ -6,6 +6,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 // Añadir aquí el resto de directivas using
 
 
@@ -17,66 +18,103 @@ public class Lamp : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
+    [SerializeField]
+    private float _lookingTime; //Tiempo que mira en una dirección
+    [SerializeField]
+    private Vector3[] _limits; //Array de coordenadas que se para
+    [SerializeField]
+    private GameObject _visualPanel; //Panel que señaliza la visión del enemigo
+    [SerializeField]
+    private float SpringFactor = 5f; // Velocidad de suavizado del movimiento del enemigo
 
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
+
+    private float _temporizador;  // Temporizador que se usara para llevar los dos tiempos.
+    // enum para indicar en que estado se encuentra la Lámpara
+    enum Estado { activo, inactivo }
+    private Estado _estado;  // el estado
+    private int i = 0;
+    private Phases Phase;
+    private Transform Target;
+
+    private Enemy_Detect _detect;  // llamo al detect que tiene que estar dentro de la Lámpara
 
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-    
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
+
     void Start()
     {
-        
+        _visualPanel.SetActive(true);
+        Phase = GetComponent<Phases>();
+        if (Phase == null)
+        {
+            Debug.Log("No esta el script phase en el enemigo");
+        }
+        Phase.SetVisualPanel(_visualPanel);
+        _estado = Estado.activo;
+
+        _detect = _visualPanel.GetComponent<Enemy_Detect>(); // llamo a los componentes que me harán falta más adelante
+        if (_detect == null)
+        {
+            Destroy(this);
+        }
     }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
+    private void ControlVision(int i) //Cambia progresivamente las coordenadas en el patrón deseado
+    {
+        _visualPanel.transform.localPosition = _limits[i];
+    }
+
+    private void OnTriggerStay2D(Collider2D collision) // Mientras el jugador este dentro del enemigo se irá comprobando en que fase se encuentra
+    {
+        Phase.EnemyPhases(collision);
+    }
+
     void Update()
     {
-        
+        _temporizador += Time.deltaTime;
+        if (_estado == Estado.activo && _temporizador >= _lookingTime && !Pausa_controller.IsGamePaused)
+        {
+            _estado = Estado.inactivo;
+            _temporizador = 0;
+            ControlVision(i);
+            i++;
+        }
+        else if (_estado == Estado.inactivo && !Pausa_controller.IsGamePaused)
+        {
+            _estado = Estado.activo;
+            _temporizador = 0;
+        }
+        if (!Pausa_controller.IsGamePaused)
+        {
+            // Posición actual de la coordenada
+            Vector3 tarPos = Target.transform.position;
+
+            // Posición actual de la lámpara
+            Vector3 pos = transform.position;
+
+            // Si no hay colisiones, la cámara sigue al jugador suavemente
+            if (tarPos != pos)
+            {
+                pos.x = Mathf.Lerp(pos.x, tarPos.x, (SpringFactor * Time.deltaTime));
+                transform.position = pos;
+            }
+        }
     }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
 
     #endregion
     
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
 
     #endregion   
 
