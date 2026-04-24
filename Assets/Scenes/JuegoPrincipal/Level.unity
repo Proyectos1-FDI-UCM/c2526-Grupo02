@@ -11722,7 +11722,7 @@ MonoBehaviour:
   alturaElevada: 5
   velocidadTransicionAltura: 3
   Jugador: {fileID: 1843685278}
-  CanLookUp: 0
+  CanLookUp: 1
 --- !u!1 &9078941738004448985
 GameObject:
   m_ObjectHideFlags: 0
