@@ -75,7 +75,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.34375, y: 3.46875}
+    oldSize: {x: 2.17, y: 2.65}
     newSize: {x: 1.6, y: 3.63}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -127,7 +127,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6747742435798004096, guid: 62f586e0e358cea4ca6ea9918068a681, type: 3}
+  m_Sprite: {fileID: -1796524783436439161, guid: a6ac494652492c4449381abb599dec4c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -151,11 +151,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 0}
-  dialogo: {fileID: 0}
-  Velocidad: 0.03
-  Nombre: "N\xF1o S\xF3tano"
-  Archivo: SotanoA.txt
-  ArchivoCon: SotanoB.txt
+  Dialogue: {fileID: 0}
+  Speed: 0.03
+  Name: 
+  Archive: 
+  ArchiveCon: 
+  Flee: 0
 --- !u!114 &915151343110610499
 MonoBehaviour:
   m_ObjectHideFlags: 0

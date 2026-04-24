@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 76346d93aaf879d478b50a9af8790f6d
+guid: 11e60838124c03240a66ebef1c824217
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1462874628380888676
-    second: "Ni\xF1a_0"
+      213: -5633476815793901926
+    second: Cocina 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Ni\xF1a_0"
+      name: Cocina 1_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 15
-        width: 47
-        height: 48
+        x: 0
+        y: 0
+        width: 640
+        height: 360
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 46e039f49bc2d4410800000000000000
-      internalID: 1462874628380888676
+      spriteID: a9ea438feaed1d1b0800000000000000
+      internalID: -5633476815793901926
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "Ni\xF1a_0": 1462874628380888676
+      Cocina 1_0: -5633476815793901926
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

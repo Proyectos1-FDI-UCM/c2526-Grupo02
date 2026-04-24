@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 76346d93aaf879d478b50a9af8790f6d
+guid: 82f875d69b7e12643af54d6a681c2d03
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1462874628380888676
-    second: "Ni\xF1a_0"
+      213: 4217047528020313779
+    second: Directora_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 40
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Ni\xF1a_0"
+      name: Directora_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 15
-        width: 47
-        height: 48
+        x: 284
+        y: 94
+        width: 88
+        height: 147
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 46e039f49bc2d4410800000000000000
-      internalID: 1462874628380888676
+      spriteID: 3b607944266f58a30800000000000000
+      internalID: 4217047528020313779
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "Ni\xF1a_0": 1462874628380888676
+      Directora_0: 4217047528020313779
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

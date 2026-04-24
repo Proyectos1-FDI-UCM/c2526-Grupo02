@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 76346d93aaf879d478b50a9af8790f6d
+guid: 84e45dc9382e1f74fba039aebec7fda9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1462874628380888676
-    second: "Ni\xF1a_0"
+      213: 3043447112872090625
+    second: Los Gemelos_0
+  - first:
+      213: 9151266106837461923
+    second: Los Gemelos_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Ni\xF1a_0"
+      name: Los Gemelos_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 15
-        width: 47
-        height: 48
+        x: 188
+        y: 18
+        width: 74
+        height: 149
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 46e039f49bc2d4410800000000000000
-      internalID: 1462874628380888676
+      spriteID: 10cdd67360f7c3a20800000000000000
+      internalID: 3043447112872090625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Los Gemelos_1
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 17
+        width: 91
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ab6e17e904dffe70800000000000000
+      internalID: 9151266106837461923
       vertices: []
       indices: 
       edges: []
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "Ni\xF1a_0": 1462874628380888676
+      Los Gemelos_0: 3043447112872090625
+      Los Gemelos_1: 9151266106837461923
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

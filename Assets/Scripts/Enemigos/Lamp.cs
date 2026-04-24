@@ -39,6 +39,7 @@ public class Lamp : MonoBehaviour
     private int i = 0;
     private Phases Phase;
     private Transform Target;
+    private bool inv = false;
 
     private Enemy_Detect _detect;  // llamo al detect que tiene que estar dentro de la Lámpara
 
@@ -47,7 +48,7 @@ public class Lamp : MonoBehaviour
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
-    void Start()
+    void Awake()
     {
         _visualPanel.SetActive(true);
         Phase = GetComponent<Phases>();
@@ -83,7 +84,8 @@ public class Lamp : MonoBehaviour
             _estado = Estado.inactivo;
             _temporizador = 0;
             ControlVision(i);
-            i++;
+            if (!inv) i++;
+            else i--;
         }
         else if (_estado == Estado.inactivo && !Pausa_controller.IsGamePaused)
         {
@@ -105,6 +107,7 @@ public class Lamp : MonoBehaviour
                 transform.position = pos;
             }
         }
+        if (i == _limits.Length) inv = true; 
     }
     #endregion
 

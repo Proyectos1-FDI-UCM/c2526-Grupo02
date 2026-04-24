@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 76346d93aaf879d478b50a9af8790f6d
+guid: b73f54cf675aec241b8ceedb0664df8f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1462874628380888676
-    second: "Ni\xF1a_0"
+      213: 6259440379094813346
+    second: Guille_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Ni\xF1a_0"
+      name: Guille_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 15
-        width: 47
-        height: 48
+        x: 476
+        y: 10
+        width: 117
+        height: 146
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 46e039f49bc2d4410800000000000000
-      internalID: 1462874628380888676
+      spriteID: 2aacea06cdffdd650800000000000000
+      internalID: 6259440379094813346
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "Ni\xF1a_0": 1462874628380888676
+      Guille_0: 6259440379094813346
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

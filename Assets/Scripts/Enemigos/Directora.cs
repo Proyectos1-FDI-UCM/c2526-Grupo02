@@ -49,7 +49,7 @@ public class Directora : MonoBehaviour
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
-    void Start()
+    void Awake()
     {
         Phase = GetComponent<Phases>();
         if (Phase == null)

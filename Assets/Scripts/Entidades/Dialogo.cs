@@ -89,6 +89,7 @@ public class Dialogo : MonoBehaviour
         else
         {
             Debug.LogError("No se encontró el archivo en: " + rutacon);
+            Debug.Log(this.gameObject.name +" con");
         }
         _talk = InputSystem.actions.FindAction("Interact"); //asignamos la accion
         _puzzle = false;

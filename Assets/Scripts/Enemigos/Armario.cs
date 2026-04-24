@@ -79,7 +79,7 @@ public class Armario : MonoBehaviour
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-    void Start()
+    void Awake()
     {
         Phase = GetComponent<Phases>();
         if (Phase == null)
