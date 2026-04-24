@@ -36,11 +36,12 @@ public class Lamp : MonoBehaviour
     // enum para indicar en que estado se encuentra la Lámpara
     enum Estado { activo, inactivo }
     private Estado _estado;  // el estado
-    private int i = 0;
-    private Phases Phase;
-    private Transform Target;
-    private bool inv = false;
 
+    private int i = 0;
+    private bool inv = false;
+    private bool _come = false; // true cuando el panel ya alcanzó el punto actual
+
+    private Phases _phase;
     private Enemy_Detect _detect;  // llamo al detect que tiene que estar dentro de la Lámpara
 
     #endregion
@@ -51,63 +52,49 @@ public class Lamp : MonoBehaviour
     void Awake()
     {
         _visualPanel.SetActive(true);
-        Phase = GetComponent<Phases>();
-        if (Phase == null)
+        _phase = GetComponent<Phases>();
+        if (_phase == null)
         {
             Debug.Log("No esta el script phase en el enemigo");
         }
-        Phase.SetVisualPanel(_visualPanel);
-        _estado = Estado.activo;
+        else _phase.SetVisualPanel(_visualPanel);
 
         _detect = _visualPanel.GetComponent<Enemy_Detect>(); // llamo a los componentes que me harán falta más adelante
         if (_detect == null)
         {
             Destroy(this);
         }
-    }
 
-    private void ControlVision(int i) //Cambia progresivamente las coordenadas en el patrón deseado
-    {
-        _visualPanel.transform.localPosition = _limits[i];
-    }
-
-    private void OnTriggerStay2D(Collider2D collision) // Mientras el jugador este dentro del enemigo se irá comprobando en que fase se encuentra
-    {
-        Phase.EnemyPhases(collision);
+        _estado = Estado.activo;
     }
 
     void Update()
     {
-        _temporizador += Time.deltaTime;
-        if (_estado == Estado.activo && _temporizador >= _lookingTime && !Pausa_controller.IsGamePaused)
-        {
-            _estado = Estado.inactivo;
-            _temporizador = 0;
-            ControlVision(i);
-            if (!inv) i++;
-            else i--;
-        }
-        else if (_estado == Estado.inactivo && !Pausa_controller.IsGamePaused)
-        {
-            _estado = Estado.activo;
-            _temporizador = 0;
-        }
-        if (!Pausa_controller.IsGamePaused)
-        {
-            // Posición actual de la coordenada
-            Vector3 tarPos = Target.transform.position;
+        if (Pausa_controller.IsGamePaused) return;
+        if (_limits == null || _limits.Length == 0) return;
 
-            // Posición actual de la lámpara
-            Vector3 pos = transform.position;
+        switch (_estado)
+        {
+            case Estado.activo:
+                MoverPanel();
+                break;
 
-            // Si no hay colisiones, la cámara sigue al jugador suavemente
-            if (tarPos != pos)
-            {
-                pos.x = Mathf.Lerp(pos.x, tarPos.x, (SpringFactor * Time.deltaTime));
-                transform.position = pos;
-            }
+            case Estado.inactivo:
+                _temporizador += Time.deltaTime;
+                if (_temporizador >= _lookingTime)
+                {
+                    _temporizador = 0f;
+                    _come = false;
+                    AvanzarIndice();
+                    _estado = Estado.activo;
+                }
+                break;
         }
-        if (i == _limits.Length) inv = true; 
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        _phase.EnemyPhases(collision);
     }
     #endregion
 
@@ -115,11 +102,57 @@ public class Lamp : MonoBehaviour
     #region Métodos públicos
 
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
 
-    #endregion   
+    private void MoverPanel()
+    {
+        Vector3 destino = _limits[i];
+        Vector3 posActual = _visualPanel.transform.localPosition;
+
+        // Mueve el panel suavemente hacia el punto actual del array
+        _visualPanel.transform.localPosition = Vector3.Lerp(
+            posActual,
+            destino,
+            SpringFactor * Time.deltaTime
+        );
+
+        // Comprueba si llegó suficientemente cerca
+        if (!_come && Vector3.Distance(posActual, destino) < 0.05f)
+        {
+            _visualPanel.transform.localPosition = destino; // Cuadra el panel en la posición
+            _come = true;
+            _estado = Estado.inactivo;
+            _temporizador = 0f;
+        }
+    }
+
+    private void AvanzarIndice()
+    {
+        if (!inv)
+        {
+            if (i < _limits.Length - 1)
+                i++;
+            else
+            {
+                inv = true;
+                i--;
+            }
+        }
+        else
+        {
+            if (i > 0)
+                i--;
+            else
+            {
+                inv = false;
+                i++;
+            }
+        }
+    }
+
+    #endregion
 
 } // class Lampara 
 // namespace
