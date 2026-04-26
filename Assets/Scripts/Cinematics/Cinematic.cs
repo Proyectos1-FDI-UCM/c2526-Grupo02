@@ -1,19 +1,15 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Script que nos permite mover una imagen en un canvas dandole unas coordenadas para "animar" los comics
+// Alejandro Jiménez ROjo
 // Don't Go Up
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
 using UnityEngine.InputSystem;
-// Añadir aquí el resto de directivas using
 
 
-/// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
-/// </summary>
+
 public class Cinematic : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
@@ -41,11 +37,10 @@ public class Cinematic : MonoBehaviour
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
-
    void Start()
     {
         _Interact = InputSystem.actions.FindAction("Interact"); //asignamos la accion de interact
+        //Programación defensiva
         if (_Interact != null)
         {
             Debug.Log("No se encontró la acción Interact");
@@ -64,22 +59,28 @@ public class Cinematic : MonoBehaviour
     /// </summary>
     void Update()
     {
+        //Si está activa la cinemática
         if (_active)
         {
+            //Se activa la imagen
             comic.enabled = true;
+            //si se presiona la tecla de interactuar y no ha sido demasiado rápido se cambia de panel del comic (coordenadas)
             if (_Interact.WasPressedThisFrame() && _timer <= 0)
             {
                 _timer = 1;
                 i++;
             }
+            //Si terminamos el array de coordenadas nos teletransporta a la siguiente habitación
             if (i >= Coords.Length)
             {
                 GameManager.Instance.ChangeScene(NextRoom);
             }
+            //Manejo del temporizador que evita que presionemos demasiado rápido
             if (_timer >= 0)
             {
                 _timer -= Time.deltaTime;
             }
+            //Ajustamos las coordenadas del comic con un lerp mientras no sea la objetivo
             if (comic.rectTransform.localPosition != Coords[i])
             {
                 comic.rectTransform.localPosition = Vector3.Lerp(comic.rectTransform.localPosition, Coords[i], Speed);
@@ -87,6 +88,7 @@ public class Cinematic : MonoBehaviour
         }
         else
         {
+            //Se desactiva el comic
             comic.enabled = false;
         }
     }

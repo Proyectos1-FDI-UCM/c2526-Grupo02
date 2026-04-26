@@ -6,13 +6,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-// Añadir aquí el resto de directivas using
 
-
-/// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
-/// </summary>
 public class PopUp : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
@@ -52,9 +46,11 @@ public class PopUp : MonoBehaviour
     void Start()
     {
         
+        //Asignamos los atributos
         _obj = this.gameObject;
         _spr = _obj.GetComponent<SpriteRenderer>();
         _collider = _obj.GetComponent<Collider2D>();
+        //Programación defensiva
         if(_spr == null)
         {
             Debug.Log("No hay sprite renderer");
@@ -65,11 +61,13 @@ public class PopUp : MonoBehaviour
             Debug.Log("No hay collider configurado en el PopUp / no esta puesto en modo trigger");
             return;
         }
+        //Asignamos los atributos que deben ser asignados después de la programación defensiva
         _alpha = _spr.color;
         _spr.color = _alpha;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Si entramos en el trigger se hace visible el objeto
         if (collision.GetComponent<Player_Controller>() != null)
         {
             _visible = true;
@@ -77,6 +75,7 @@ public class PopUp : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        //Si entramos en el trigger se hace invisible el objeto
         if (collision.GetComponent<Player_Controller>() != null)
         {
             _visible = false;
@@ -85,6 +84,7 @@ public class PopUp : MonoBehaviour
 
      void Update()
     {
+        //Manejo de el fundido a visible/ invisible, la variable _visible es controlada por los métodos OnTrigger
         if (_visible)
         {
             //Si el alpha no es el máximo hacemos un lerp y vamos ajustando el alpha para hacerlo visibles

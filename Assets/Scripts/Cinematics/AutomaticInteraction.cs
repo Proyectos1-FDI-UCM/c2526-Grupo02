@@ -7,12 +7,7 @@
 
 using UnityEngine;
 using UnityEngine.Events;
-// Añadir aquí el resto de directivas using
 
-
-/// <summary>
-/// Clase en la que tenemos una interacción automática que nos permite realizar diálogos automáticos, animaciones, etc, cuando el jugador colisiona con cierto punto.
-/// </summary>
 public class AutomaticInteraction : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
@@ -33,6 +28,7 @@ public class AutomaticInteraction : MonoBehaviour
     #region Métodos de MonoBehaviour
     private void Start()
     {
+        //Programación defensiva
         if(this.GetComponent<Collider2D>() == null)
         {
             Debug.Log("Falta un trigger");
@@ -40,6 +36,8 @@ public class AutomaticInteraction : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //SI entramos en el trigger se activan los métodos que asignemos a CODE
+        //_active nos permite que no se vuelva a activar una vez activado (es decir, podemso desactivar _active en Code, para que no se vuelva a repetir)
         if(_active)
         {
             Code.Invoke();
@@ -50,7 +48,7 @@ public class AutomaticInteraction : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos Públicos
-    // Permite cambiar el estado de _active
+    // Permite cambiar el estado de _active (ha sido usado o no)
     public void SetActive(bool active)
     { _active = active; }
     #endregion
