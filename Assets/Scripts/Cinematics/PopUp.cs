@@ -21,12 +21,14 @@ public class PopUp : MonoBehaviour
    
     [SerializeField]
     float PopUpSpeed; //Atributo de la velocidad a la que queremos que aparezca
+    [SerializeField]
+    float MaxAlpha; //Atributo que controla el valor máximo de la transparencia
 
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    
+
 
     private Collider2D _collider; // el collider del objeto a usar
     private bool _visible = false; //booleana con la que controlaremos el popup
@@ -49,7 +51,7 @@ public class PopUp : MonoBehaviour
     /// </summary>
     void Start()
     {
-        _alpha = new Color(1,1,0,0);
+        
         _obj = this.gameObject;
         _spr = _obj.GetComponent<SpriteRenderer>();
         _collider = _obj.GetComponent<Collider2D>();
@@ -63,23 +65,30 @@ public class PopUp : MonoBehaviour
             Debug.Log("No hay collider configurado en el PopUp / no esta puesto en modo trigger");
             return;
         }
+        _alpha = _spr.color;
         _spr.color = _alpha;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _visible = true;
+        if (collision.GetComponent<Player_Controller>() != null)
+        {
+            _visible = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _visible = false;
+        if (collision.GetComponent<Player_Controller>() != null)
+        {
+            _visible = false;
+        }
     }
 
      void Update()
     {
         if (_visible)
         {
-            //Si el alpha no es 1 (255) hacemos un lerp y vamos ajustando el alpha para hacerlo visibles
-            if (_alpha.a < 1)
+            //Si el alpha no es el máximo hacemos un lerp y vamos ajustando el alpha para hacerlo visibles
+            if (_alpha.a < MaxAlpha)
             {
                 _alpha.a += PopUpSpeed;
                  _spr.color = _alpha;
