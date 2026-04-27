@@ -1,19 +1,21 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
 // Responsable de la creación de este archivo ALEJANDRO, SARA, JESUS
+//JESUS (lo adapta finalmente para usarse con la corrección de la cámara errática)
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 using static UnityEngine.Rendering.DebugUI.Table;
-// Añadir aquí el resto de directivas using
+
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Controla el movimiento de la cámara respecto al jugador,
+/// Hacer que la cámara le siga.
+/// Tiene un método público que teletransporta al jugador
+/// a una nueva posición.
 /// </summary>
 public class Follow_Player : MonoBehaviour
 {
@@ -23,54 +25,27 @@ public class Follow_Player : MonoBehaviour
     // Transform del jugador que la cámara debe seguir
     [SerializeField]
     private Transform Target;
-    //[SerializeField]
-    //private float TargetEyes = 0.5f;
-    
+ 
     // Velocidad de suavizado del movimiento de la cámara
     [SerializeField]
     private float SpringFactor = 5f;
 
-    // Distancia a la que el raycast detecta paredes
-    [SerializeField]
-    private float DistanceToWall = 8.5f;
-
-    // Altura desde la que se lanza el raycast
-    [SerializeField]
-    private float rayHeight = 3f;
-    //[SerializeField]
-    //private float rotationspringFactor = 5f;
+    
 
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
-
-    // Distancia mínima del raycast para considerar colisión
-    private float _minRayDist = 0.1f;
-    private InputAction _move;
+    
+  
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
     void Start()
     {
-        _move = InputSystem.actions.FindAction("Move");
-        if (_move == null)
-        {
-            Debug.Log("No se ha encontrado la acción move");
-            return;
-        }
-        // Comprobamos que el jugador está asignado
+        // Comprobamos que el jugador está asignado en el inspector
         if (Target == null)
         {
             Debug.Log("No has asignado ningún target a la cámara");
@@ -79,57 +54,31 @@ public class Follow_Player : MonoBehaviour
     }
     private void Update()
     {
+
+       //La camara siga el jugador
+        ///de forma suave
+        ///Paro al jugador si el script Pausa_controller informa que el jugador esta 
+        ///parado es falso
+        ///!Pausa_controller.IsGamePaused
+        
         if (!Pausa_controller.IsGamePaused)
         {
-            Vector2 dir = _move.ReadValue<Vector2>();
-            float HorizontalDir = Mathf.Round(dir.x);
-            // Posición actual del jugador
             Vector3 playerAct = Target.transform.position;
-
-            // Posición desde la que se lanza el raycast
-            Vector3 rayPos = Target.transform.position;
-            rayPos.y += rayHeight;
-
-            // Posición actual de la cámara
             Vector3 targetPos = transform.position;
 
-            // Raycast a derecha e izquierda para detectar paredes
+            targetPos.x = Mathf.Lerp(targetPos.x, playerAct.x, SpringFactor * Time.deltaTime);
+            targetPos.y = Mathf.Lerp(targetPos.y, playerAct.y, SpringFactor * Time.deltaTime);
 
-
-            bool _collidingR = Physics2D.Raycast(rayPos, Vector2.right, DistanceToWall);
-           bool _collidingL = Physics2D.Raycast(rayPos, Vector2.left, DistanceToWall);
-
-            if (HorizontalDir == 1)
-            {
-                _collidingR = Physics2D.Raycast(rayPos, Vector2.right, DistanceToWall);
-                _collidingL = Physics2D.Raycast(rayPos, Vector2.left, _minRayDist);
-            }
-            else if(HorizontalDir == -1)
-            {
-                _collidingL = Physics2D.Raycast(rayPos, Vector2.left, DistanceToWall);
-                _collidingR = Physics2D.Raycast(rayPos, Vector2.right, _minRayDist);
-            }
-           
-
-
-            // Si no hay colisiones, la cámara sigue al jugador suavemente
-            if (!_collidingR && !_collidingL)
-            {
-                targetPos.x = Mathf.Lerp(targetPos.x, playerAct.x, (SpringFactor * Time.deltaTime));
-                transform.position = targetPos;
-            }
+            transform.position = targetPos;
         }
+
     }
 
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
+    // Teletransporte del jugador 
     public void Teleport(Vector3 pos)
     { 
         this.GetComponent<Transform>().position = pos;
@@ -138,10 +87,7 @@ public class Follow_Player : MonoBehaviour
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
+    
 
     #endregion
 
