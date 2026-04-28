@@ -231,10 +231,6 @@ MonoBehaviour:
   Canvas: {fileID: 834853811}
   Dialogue: {fileID: 1938915369}
   Speed: 0.03
-  Name: Player
-  Archive: RecuerdaEquipar.txt
-  ArchiveCon: RecuerdaEquipar.txt
-  Flee: 0
   High: {fileID: 0}
   Middle: {fileID: 0}
   Low: {fileID: 0}
@@ -292,16 +288,28 @@ MonoBehaviour:
   negativeCode:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 69663485}
+      - m_Target: {fileID: 1233836134}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: Talk
-        m_Mode: 1
+        m_MethodName: SetName
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Player
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1233836134}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: Talk
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: NoKey.txt
           m_BoolArgument: 0
         m_CallState: 2
   NeededType: 3
@@ -1686,9 +1694,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4082793434466057598, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 683333165}
-    - targetCorrespondingSourceObject: {fileID: 4082793434466057598, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 683333164}
     - targetCorrespondingSourceObject: {fileID: 4082793434466057598, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
       insertIndex: -1
@@ -1826,41 +1831,31 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 683333165}
+      - m_Target: {fileID: 1233836134}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: Talk
-        m_Mode: 1
+        m_MethodName: SetName
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Jugador
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1233836134}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: Talk
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: NoBiblioteca.txt
           m_BoolArgument: 0
         m_CallState: 2
   cameraInteracts: 0
---- !u!114 &683333165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683333160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b64a8458d7de41647a7766035c14a7c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Canvas: {fileID: 834853811}
-  Dialogue: {fileID: 1938915369}
-  Speed: 0.03
-  Name: Segurata
-  Archive: NoBiblioteca.txt
-  ArchiveCon: NoBiblioteca.txt
-  Flee: 0
-  High: {fileID: 0}
-  Middle: {fileID: 0}
-  Low: {fileID: 0}
 --- !u!1 &764710391
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,7 +1866,6 @@ GameObject:
   m_Component:
   - component: {fileID: 764710395}
   - component: {fileID: 764710393}
-  - component: {fileID: 764710392}
   - component: {fileID: 764710396}
   m_Layer: 0
   m_Name: DialogoAuto
@@ -1880,28 +1874,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &764710392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764710391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b64a8458d7de41647a7766035c14a7c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Canvas: {fileID: 834853811}
-  Dialogue: {fileID: 1938915369}
-  Speed: 0.03
-  Name: Player
-  Archive: LLaveSuelo.txt
-  ArchiveCon: LLaveSuelo.txt
-  Flee: 0
-  High: {fileID: 0}
-  Middle: {fileID: 0}
-  Low: {fileID: 0}
 --- !u!61 &764710393
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1978,16 +1950,28 @@ MonoBehaviour:
   Code:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 764710392}
+      - m_Target: {fileID: 1233836134}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: Talk
-        m_Mode: 1
+        m_MethodName: SetName
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Player
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1233836134}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: Talk
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: LLaveSuelo.txt
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 764710396}
@@ -3835,6 +3819,56 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8627791515019816041, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
   m_PrefabInstance: {fileID: 1230991320}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1233836133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1233836135}
+  - component: {fileID: 1233836134}
+  m_Layer: 0
+  m_Name: DialogManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1233836134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233836133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b64a8458d7de41647a7766035c14a7c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Canvas: {fileID: 834853811}
+  Dialogue: {fileID: 1938915369}
+  Speed: 0.03
+  High: {fileID: 8300000, guid: 8c1bb40d7f59f7d479f69a27e52f9967, type: 3}
+  Middle: {fileID: 8300000, guid: eead35fe8d5860b43827c024fbf19c11, type: 3}
+  Low: {fileID: 8300000, guid: e69af7d767d088240bc1e3323bd7bf7d, type: 3}
+--- !u!4 &1233836135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233836133}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.2278464, y: -10.734178, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1252440964
 GameObject:
   m_ObjectHideFlags: 0
@@ -4023,7 +4057,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1280881153}
   - component: {fileID: 1280881152}
-  - component: {fileID: 1280881151}
   - component: {fileID: 1280881150}
   m_Layer: 0
   m_Name: DialogoAuto (1)
@@ -4047,16 +4080,28 @@ MonoBehaviour:
   Code:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1280881151}
+      - m_Target: {fileID: 1233836134}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: Talk
-        m_Mode: 1
+        m_MethodName: SetName
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Player
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1233836134}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: Talk
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: RecuerdaEquipar.txt
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1280881150}
@@ -4071,28 +4116,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1280881151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280881149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b64a8458d7de41647a7766035c14a7c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Canvas: {fileID: 834853811}
-  Dialogue: {fileID: 1938915369}
-  Speed: 0.03
-  Name: Player
-  Archive: RecuerdaEquipar.txt
-  ArchiveCon: RecuerdaEquipar.txt
-  Flee: 0
-  High: {fileID: 0}
-  Middle: {fileID: 0}
-  Low: {fileID: 0}
 --- !u!61 &1280881152
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4687,7 +4710,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1337854299}
   - component: {fileID: 1337854298}
-  - component: {fileID: 1337854297}
   - component: {fileID: 1337854296}
   m_Layer: 0
   m_Name: DialogoAuto (2)
@@ -4711,16 +4733,28 @@ MonoBehaviour:
   Code:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1337854297}
+      - m_Target: {fileID: 1233836134}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: Talk
-        m_Mode: 1
+        m_MethodName: SetName
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Player
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1233836134}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: Talk
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: HideTutorial.txt
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1337854296}
@@ -4735,28 +4769,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1337854297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1337854295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b64a8458d7de41647a7766035c14a7c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Canvas: {fileID: 834853811}
-  Dialogue: {fileID: 1938915369}
-  Speed: 0.03
-  Name: Player
-  Archive: HideTutorial.txt
-  ArchiveCon: HideTutorial.txt
-  Flee: 0
-  High: {fileID: 0}
-  Middle: {fileID: 0}
-  Low: {fileID: 0}
 --- !u!61 &1337854298
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5948,3 +5960,4 @@ SceneRoots:
   - {fileID: 852340029}
   - {fileID: 69663492}
   - {fileID: 6142541333858805554}
+  - {fileID: 1233836135}

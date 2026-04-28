@@ -31,7 +31,7 @@ public class Teleport : MonoBehaviour
     [SerializeField]
     Player_Controller player;
     [SerializeField]
-    Camera camera;
+    Camera Camera;
     // En caso de que  queramos en algún momento teletrasportar automáticamente al jugador
     [SerializeField]
     bool AutomaticTelepor;
@@ -67,7 +67,7 @@ public class Teleport : MonoBehaviour
     {
         if (player == null)
         { Debug.Log("NO HAY JUGADOR CONFIGURADO EN ESTE TP"); }
-        if (camera == null)
+        if (Camera == null)
         { Debug.Log("NO HAY CÁMARA CONFIGURADA EN ESTE TP"); }
         Tele = InputSystem.actions.FindAction("Interact");
         if (Tele == null)
@@ -128,10 +128,10 @@ public class Teleport : MonoBehaviour
     public void Tp()
     {
         player.transform.position = TargetDestination;
-        Vector3 camAux = camera.transform.position;
+        Vector3 camAux = GetComponent<Camera>().transform.position;
         camAux.x = TargetDestination.x;
         camAux.y = TargetDestination.y+2;
-        camera.transform.position = camAux;
+        GetComponent<Camera>().transform.position = camAux;
         _clip.Play();
     }
 

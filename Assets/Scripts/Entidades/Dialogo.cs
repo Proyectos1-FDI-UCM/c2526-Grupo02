@@ -28,14 +28,7 @@ public class Dialogo : MonoBehaviour
     private Text Dialogue; //el texto
     [SerializeField]
     private float Speed = 0.03f;//velocidad del texto
-    [SerializeField]
-    private string Name; //nombre del npc
-    [SerializeField]
-    private string Archive;//Nombre del archivo + .txt
-    [SerializeField]
-    private string ArchiveCon; // Dialogo secundario
-    [SerializeField]
-    private bool Flee; //si el npc desaparece después de terminar su dialogo
+    //Atributos para los distintos audios
     [SerializeField]
     private AudioClip High;
     [SerializeField]
@@ -47,10 +40,10 @@ public class Dialogo : MonoBehaviour
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     private string[] _script; //las lineas de dialogo
-    private string[] _scriptCon; //lineas del dialogo alternativo
+    //private string[] _scriptCon; //lineas del dialogo alternativo
     private string _currentLine;
     private int _line = 0; //el indice para las lineas de dialogo
-    private bool _puzzle; //activa el dialogo fuera del input
+    //private bool _puzzle; //activa el dialogo fuera del input
     private bool _type = false; //está escribiendo la linea
     private bool _typeAll = false; //escirbe la linea completa
     private float _time;    //contador
@@ -59,9 +52,11 @@ public class Dialogo : MonoBehaviour
     private int _index = 0; // puntero para recorrer cada línea
     private bool _pressed;  
     private bool _first;
-    private bool _fleed = false;
+    private string _name = string.Empty;
     private Player_Controller _playerController;
     private AudioSource _clip;
+    private string _archive;
+    private string _ruta;
 
     #endregion
 
@@ -74,59 +69,30 @@ public class Dialogo : MonoBehaviour
         _playerController = GameManager.Instance.GetPlayer().GetComponent<Player_Controller>();
         Canvas.enabled = false;
 
-        string ruta = Path.Combine(Application.streamingAssetsPath, Archive);
-        string rutacon = Path.Combine(Application.streamingAssetsPath, ArchiveCon);
-
-        if (File.Exists(ruta))
+        //Con esto llamamos al componente que hará el ruido cuando se hable (como siempre que hablemos con alguien estaremos cerca, ponemos el audio source al propio del jugador)
+        if (_playerController.GetComponent<AudioSource>() != null)
         {
-            string texto = File.ReadAllText(ruta); // lee el archivo
-            _script = texto.Split('\n'); //lo separa por lineas
-            Debug.Log(texto.Length);
-        }
-        else
-        {
-            Debug.LogError("No se encontró el archivo en: " + ruta);
-            Debug.Log(this.gameObject.name);
-        }
-        if (File.Exists(rutacon))
-        {
-            string textocon = File.ReadAllText(rutacon); // lee el archivo
-            _scriptCon = textocon.Split('\n'); //lo separa por lineas
-            Debug.Log(textocon.Length);
-        }
-        else
-        {
-            Debug.LogError("No se encontró el archivo en: " + rutacon);
-            Debug.Log(this.gameObject.name +" con");
-        }
-        if (this.GetComponent<AudioSource>() != null)
-        {
-            _clip = this.GetComponent<AudioSource>();
+            _clip = _playerController.GetComponent<AudioSource>();
         }
         else
         {
             Debug.Log("y el audio carnal?");
         }
         _talk = InputSystem.actions.FindAction("Interact"); //asignamos la accion
-        _puzzle = false;
     }
     void Update()
     {
-        if (!_fleed)
-        {
             if (_talking)
             {
                 _playerController.Stop();
                
-                if (_line == _script.GetLength(0) + 1 || _line == _scriptCon.GetLength(0) + 1)
+                if (_line == _script.GetLength(0) + 1 )
                 {
                     Canvas.enabled = false;
                     _line = 0;
                     _talking = false;
                     _playerController.Resume();
-                    _fleed = _puzzle && Flee;
-
-                }//si avanza dialogo en la ultima linea regresa al estado de entrar
+                }//si avanza dialogo en la ultima linea regresa al estado de entrada
                 _time += Time.deltaTime;
                 //Código para que la primera línea se ejecute sin tener que "interactuar"
                 if (_first)
@@ -134,8 +100,6 @@ public class Dialogo : MonoBehaviour
                     Debug.Log("PRIMERA");
                     _pressed = true;
                     _first = false;
-
-
                 }
                 else
                 {
@@ -145,27 +109,19 @@ public class Dialogo : MonoBehaviour
                 if (_pressed)
                 {
                     Canvas.enabled = true;
-
-
                     if (_type) _typeAll = true;
                     else
                     {
-                        if (!_puzzle && _line < _script.GetLength(0))
+                        if (_line < _script.GetLength(0))
                         {
                             WriteLine(_script[_line]);
                         }
-                        else if (_puzzle && _line < _scriptCon.GetLength(0))
-                        {
-                            WriteLine(_scriptCon[_line]); 
-                        }
                         _line++;
-                    }// comprueba cual archivo debe mostrar y pasa la linea a un método privado, después suma uno al puntero
+                    }
                 }
             }
             else
             {
-                //  Canvas.enabled = false;
-
                 _line = 0;
                 
             }
@@ -173,7 +129,7 @@ public class Dialogo : MonoBehaviour
             {
                 if (_typeAll)
                 {
-                    Dialogue.text = $"{Name} {_currentLine}";
+                    Dialogue.text = $"{_name} {_currentLine}";
                     _type = false;
                     _typeAll = false;
                     return;
@@ -185,12 +141,10 @@ public class Dialogo : MonoBehaviour
                     if (_time >= Speed && _index < _currentLine.Length)
                     {
                         Dialogue.text += _currentLine[_index];
-                        if (this.GetComponent<AudioSource>() != null)
-                        {
                         if (_index % 2 == 0) _clip.PlayOneShot(High);
                         else if (_index % 3 == 0) _clip.PlayOneShot(Middle);
                         else _clip.PlayOneShot(Low);
-                        }
+                        
                         
                         _index++;
                         _time = 0;
@@ -202,31 +156,53 @@ public class Dialogo : MonoBehaviour
                     }
                 }
             }
-        }
+        
     }
 
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-
-    public void PuzzleSwitch(bool sel) // altera el valor de _puzzle para cambiar de archivo desde otros componentes 
-    {
-        _puzzle = sel;
-    }
-
     public bool IsTalking() // avisa a otros componentes si el jugador está hablando
     {
         return _talking;
     }
 
-    public void Talk() // inicializa las variables necesarias para empezar el dialogo
+    //Necesitamso dividirlo en dos scripts porque los unity events no permiten más de un parámetro
+    //MÉTODOS NECESARIOS PARA EL DIALOG MANAGER
+
+    //Método con el que ponemos el nombre del personaje que habla
+    public void SetName(string inputName)
+    {
+        _name = inputName;
+    }
+    //Método con el que ponemos la velocidad a la que habla
+    public void SetSpeed(float spd)
+    {
+        Speed = spd;
+    }
+    //Método al que le pasamos el nombre del archivo y hace que hable
+    public void Talk(string fileName) // inicializa las variables necesarias para empezar el dialogo
     {
         if (!_talking)
         {
             _talking = true;
             _first = true;
             _currentLine = "";
+             _ruta = Path.Combine(Application.streamingAssetsPath, fileName);
+            if (File.Exists(_ruta))
+            {
+                string texto = File.ReadAllText(_ruta); // lee el archivo
+                _script = texto.Split('\n'); //lo separa por lineas
+                Debug.Log(texto.Length);
+            }
+            else
+            {
+                Debug.LogError("No se encontró el archivo en: " + _ruta);
+                Debug.Log(this.gameObject.name);
+            }
+           
+
         }
     }
 
@@ -254,7 +230,7 @@ public class Dialogo : MonoBehaviour
         _index = 0;
         _time = 0;
         _currentLine = linea;
-        Dialogue.text = $"{Name}: ";
+        Dialogue.text = $"{_name}: ";
         _type = true;
     }
 }

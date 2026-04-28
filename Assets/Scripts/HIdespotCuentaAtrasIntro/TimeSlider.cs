@@ -6,8 +6,6 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-// Añadir aquí el resto de directivas using
-using UnityEngine;
 using UnityEngine.UI;
 // Librería para usar textos de TextMeshPro
 using TMPro;
