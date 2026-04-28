@@ -36,6 +36,12 @@ public class Dialogo : MonoBehaviour
     private string ArchiveCon; // Dialogo secundario
     [SerializeField]
     private bool Flee; //si el npc desaparece después de terminar su dialogo
+    [SerializeField]
+    private AudioClip High;
+    [SerializeField]
+    private AudioClip Middle;
+    [SerializeField]
+    private AudioClip Low;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -55,6 +61,8 @@ public class Dialogo : MonoBehaviour
     private bool _first;
     private bool _fleed = false;
     private Player_Controller _playerController;
+    private AudioSource _clip;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -90,6 +98,14 @@ public class Dialogo : MonoBehaviour
         {
             Debug.LogError("No se encontró el archivo en: " + rutacon);
             Debug.Log(this.gameObject.name +" con");
+        }
+        if (this.GetComponent<AudioSource>() != null)
+        {
+            _clip = this.GetComponent<AudioSource>();
+        }
+        else
+        {
+            Debug.Log("y el audio carnal?");
         }
         _talk = InputSystem.actions.FindAction("Interact"); //asignamos la accion
         _puzzle = false;
@@ -157,7 +173,7 @@ public class Dialogo : MonoBehaviour
             {
                 if (_typeAll)
                 {
-                    Dialogue.text = $"{Name}: {_currentLine}";
+                    Dialogue.text = $"{Name} {_currentLine}";
                     _type = false;
                     _typeAll = false;
                     return;
@@ -169,6 +185,13 @@ public class Dialogo : MonoBehaviour
                     if (_time >= Speed && _index < _currentLine.Length)
                     {
                         Dialogue.text += _currentLine[_index];
+                        if (this.GetComponent<AudioSource>() != null)
+                        {
+                        if (_index % 2 == 0) _clip.PlayOneShot(High);
+                        else if (_index % 3 == 0) _clip.PlayOneShot(Middle);
+                        else _clip.PlayOneShot(Low);
+                        }
+                        
                         _index++;
                         _time = 0;
                     }
