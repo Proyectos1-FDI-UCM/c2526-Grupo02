@@ -235,6 +235,9 @@ MonoBehaviour:
   Archive: RecuerdaEquipar.txt
   ArchiveCon: RecuerdaEquipar.txt
   Flee: 0
+  High: {fileID: 0}
+  Middle: {fileID: 0}
+  Low: {fileID: 0}
 --- !u!114 &69663486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1855,6 +1858,9 @@ MonoBehaviour:
   Archive: NoBiblioteca.txt
   ArchiveCon: NoBiblioteca.txt
   Flee: 0
+  High: {fileID: 0}
+  Middle: {fileID: 0}
+  Low: {fileID: 0}
 --- !u!1 &764710391
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,6 +1899,9 @@ MonoBehaviour:
   Archive: LLaveSuelo.txt
   ArchiveCon: LLaveSuelo.txt
   Flee: 0
+  High: {fileID: 0}
+  Middle: {fileID: 0}
+  Low: {fileID: 0}
 --- !u!61 &764710393
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2318,6 +2327,10 @@ PrefabInstance:
       propertyPath: Speed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -5743491052801104406, guid: b09c55b748697f24d8824adcd974f68d, type: 3}
+      propertyPath: Clip_Frecuence
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1097421077091011243, guid: b09c55b748697f24d8824adcd974f68d, type: 3}
       propertyPath: m_Size.x
       value: 1.2
@@ -2432,6 +2445,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2460893897635827811, guid: b09c55b748697f24d8824adcd974f68d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 919640135}
+    - targetCorrespondingSourceObject: {fileID: 2460893897635827811, guid: b09c55b748697f24d8824adcd974f68d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 919640140}
   m_SourcePrefab: {fileID: 100100000, guid: b09c55b748697f24d8824adcd974f68d, type: 3}
 --- !u!4 &919640132 stripped
 Transform:
@@ -2467,6 +2483,103 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 919640133}
+--- !u!82 &919640140
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919640134}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: c16cdc864923d4c4aa734eadd2a10760, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &936297877
 GameObject:
   m_ObjectHideFlags: 0
@@ -3323,8 +3436,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 919640132}
   SpringFactor: 5
-  DistanceToWall: 8
-  rayHeight: 5
 --- !u!114 &1164850669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3979,6 +4090,9 @@ MonoBehaviour:
   Archive: RecuerdaEquipar.txt
   ArchiveCon: RecuerdaEquipar.txt
   Flee: 0
+  High: {fileID: 0}
+  Middle: {fileID: 0}
+  Low: {fileID: 0}
 --- !u!61 &1280881152
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4640,6 +4754,9 @@ MonoBehaviour:
   Archive: HideTutorial.txt
   ArchiveCon: HideTutorial.txt
   Flee: 0
+  High: {fileID: 0}
+  Middle: {fileID: 0}
+  Low: {fileID: 0}
 --- !u!61 &1337854298
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5587,7 +5704,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1831500585682453011, guid: 9bc0878de74f6b3418e1d9d65bdb0f90, type: 3}
   m_PrefabInstance: {fileID: 2004723058}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
 --- !u!1 &2061662589
 GameObject:
   m_ObjectHideFlags: 0
@@ -5737,7 +5853,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 12, y: 15}
   m_EdgeRadius: 0
-=======
 --- !u!1001 &6142541333858805554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5799,7 +5914,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 800933d2d97b3fe48a32da1e7d5675bd, type: 3}
->>>>>>> Stashed changes
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5824,7 +5938,6 @@ SceneRoots:
   - {fileID: 359654059}
   - {fileID: 1020591595}
   - {fileID: 764710395}
-<<<<<<< Updated upstream
   - {fileID: 1280881153}
   - {fileID: 1337854299}
   - {fileID: 1108150534}
@@ -5834,7 +5947,4 @@ SceneRoots:
   - {fileID: 1252440968}
   - {fileID: 852340029}
   - {fileID: 69663492}
-=======
-  - {fileID: 842899884}
   - {fileID: 6142541333858805554}
->>>>>>> Stashed changes
