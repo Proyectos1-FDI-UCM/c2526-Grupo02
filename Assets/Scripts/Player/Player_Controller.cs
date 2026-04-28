@@ -15,6 +15,8 @@ public class Player_Controller : MonoBehaviour
     //Atributo que nos dice la velocidad máxima del jugador.
     [SerializeField]
     int Speed = 5;
+    [SerializeField]
+    private float Clip_Frecuence;
     
     #endregion
 
@@ -29,6 +31,12 @@ public class Player_Controller : MonoBehaviour
     private Rigidbody2D _rb;
     //atributo donde guardamos la velocidad que hemos metido en el inspector,
     private int SpeedRecord;
+    // aquí guardamos la fuente de audio
+    private AudioSource _clip;
+    //permite al clip reproducirse
+    private bool _allowClip;
+    private float _time;
+    
 
     #endregion
 
@@ -54,6 +62,14 @@ public class Player_Controller : MonoBehaviour
         {
             Debug.Log("No se ha encontrado la acción pausa");
             return;
+        }
+        if (this.GetComponent<AudioSource>() != null)
+        {
+            _clip = this.GetComponent<AudioSource>();
+        }
+        else
+        {
+            Debug.Log("y el audio carnal?");
         }
     }
     void Update()
@@ -83,7 +99,18 @@ public class Player_Controller : MonoBehaviour
             }
             transform.rotation = rot;
         }
-        
+
+        _time += Time.deltaTime;
+        if ((dir.x > 0f || dir.x < 0f) && _allowClip)
+        {
+            _clip.Play();
+            _allowClip = false;
+        }
+        if (_time > Clip_Frecuence)
+        {
+            _allowClip = true;
+            _time = 0;
+        }
     }
     #endregion
 

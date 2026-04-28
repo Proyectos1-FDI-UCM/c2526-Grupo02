@@ -49,7 +49,8 @@ public class Teleport : MonoBehaviour
 
     #endregion
     private InputAction Tele;
-    private bool InteractPuss; 
+    private bool InteractPuss;
+    private AudioSource _clip;
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
@@ -73,7 +74,14 @@ public class Teleport : MonoBehaviour
         {
              Debug.Log("No encontrada acción interact"); 
         }
-
+        if (this.GetComponent<AudioSource>() != null)
+        {
+            _clip = this.GetComponent<AudioSource>();
+        }
+        else
+        {
+            Debug.Log("y el audio carnal?");
+        }
     }
     //private void Update()
     //{
@@ -124,6 +132,7 @@ public class Teleport : MonoBehaviour
         camAux.x = TargetDestination.x;
         camAux.y = TargetDestination.y+2;
         camera.transform.position = camAux;
+        _clip.Play();
     }
 
     #endregion
