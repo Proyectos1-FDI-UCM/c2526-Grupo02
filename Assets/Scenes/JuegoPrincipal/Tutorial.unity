@@ -208,7 +208,6 @@ GameObject:
   - component: {fileID: 69663488}
   - component: {fileID: 69663487}
   - component: {fileID: 69663486}
-  - component: {fileID: 69663485}
   m_Layer: 2
   m_Name: Puerta
   m_TagString: Untagged
@@ -216,24 +215,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &69663485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69663484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b64a8458d7de41647a7766035c14a7c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Canvas: {fileID: 834853811}
-  Dialogue: {fileID: 1938915369}
-  Speed: 0.03
-  High: {fileID: 0}
-  Middle: {fileID: 0}
-  Low: {fileID: 0}
 --- !u!114 &69663486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,9 +293,10 @@ MonoBehaviour:
           m_StringArgument: NoKey.txt
           m_BoolArgument: 0
         m_CallState: 2
+  Mano: {fileID: 919640134}
   NeededType: 3
-  mano: {fileID: 919640134}
   condition: 6
+  Repeateable: 0
 --- !u!114 &69663487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,8 +373,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 69663486}
-        m_TargetAssemblyTypeName: Conditional_Test, Assembly-CSharp
-        m_MethodName: Check
+        m_TargetAssemblyTypeName: Conditional, Assembly-CSharp
+        m_MethodName: CheckInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
