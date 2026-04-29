@@ -36,6 +36,8 @@ public class Player_Controller : MonoBehaviour
     //permite al clip reproducirse
     private bool _allowClip;
     private float _time;
+    //Para la animcaicón
+    private Animator _animator; 
     
 
     #endregion
@@ -71,6 +73,11 @@ public class Player_Controller : MonoBehaviour
         {
             Debug.Log("y el audio carnal?");
         }
+        _animator = GetComponent<Animator>(); 
+        if (_animator == null)
+        {
+            Debug.Log("No se ha encontrado las animaciones"); 
+        }
     }
     void Update()
     {
@@ -83,6 +90,11 @@ public class Player_Controller : MonoBehaviour
         //Redondeamos el valor de dir.x para que en todas las plataformas y controladores el movimiento sea igual.
         pos.x += HorizontalDir * Speed * Time.deltaTime;
         transform.position = pos;
+        // Le pasamos el valor absoluto del movimiento
+        if (_animator != null)
+        {
+            _animator.SetFloat("Speed", Mathf.Abs(HorizontalDir)); 
+        }
 
         //Calculamos la dirección a la que mira el jugador
         rot.x = 0;
