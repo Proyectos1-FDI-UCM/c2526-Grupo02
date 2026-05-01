@@ -30,7 +30,7 @@ public class Conditional : MonoBehaviour
     [SerializeField]
     private UnityEvent negativeCode;//Métodos a los que llamar cuando no se cumple la condición
     [SerializeField]
-    private GameObject Mano; //Mano de la que revisar que objeto tenemos equipado
+    private Object_use Mano; //Mano de la que revisar que objeto tenemos equipado, es del tipo Object_use ya que necesitamos el componente bject_use y asi no tenemos que hacer GetComponent<>
     [SerializeField]
     private Object.ItemType NeededType; //Objeto necesitado
     //Usa condiciones y que condición usa
@@ -42,7 +42,10 @@ public class Conditional : MonoBehaviour
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
 
-    private bool _used = false; //variable que nos dice si ha sido usado una vez
+    private bool _used = false; //atributo que nos dice si ha sido usado una vez
+    private Flags _flags; //atributo que nos da el compoennte _flags del level manager (cachear)
+    private Object.ItemType _type; //atributo que nos define un objeto que vamso a usar para revisar que obejto tenemos en la mano (para no crearla cada vez que llamemos a la función)
+    private Inventory_Manager _inv; //atributo en el que almacenaremos el inventario, para no llamarlo cada vez que llamemos al método que lo necesita.
     #endregion
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
@@ -53,12 +56,25 @@ public class Conditional : MonoBehaviour
         if (Mano == null)
         {
             Debug.Log("No hay configurada Mano");
+            return;
         }
         if(GameManager.Instance == null)
         {
             Debug.Log("No hay gameManager");
+            return;
         }
-        
+        //Cogemos el inventario del level manager y si no hay avisamos
+        _inv = GameManager.Instance.GetInv().GetComponent<Inventory_Manager>();
+        if (_inv == null)
+        {
+            Debug.Log("No hay inventory manager en el level manager");
+        }
+        //Cogemos el componente _flags del level manager y si no hay avisamos
+        _flags = GameManager.Instance.GetFlags();
+        if (_flags == null)
+        {
+            Debug.Log("No hay flags configuradas, revisar LevelManager");
+        }
     }
     #endregion
 
@@ -67,35 +83,27 @@ public class Conditional : MonoBehaviour
     //Método para revisar si tenemos un objeto concreto seleccionado en la mano
     public void CheckObjectInHand()
     {
-        //Ponemos un tipo que nunca va a poder ser
-        Object.ItemType type = Object.ItemType.numItemTypes;
-
         //Revisamos en el componente Object use de mano el objeto que es (sprite + tipo), y de ahí sacamos el tipo de item.
         //IMPORTANTE (si usabamos directamente el item type nos daba un no instance of an object, ya que los enum no pueden ser nulos)
         //Resumen, si hay objeto, sacamos el tipo de objeto
-        if (Mano.GetComponent<Object_use>().GetHandItem() != null)
-        {
-         type = Mano.GetComponent<Object_use>().GetHandItem().GetItem();
-        }
+        
+         _type = Mano.GetHandItem().GetItem();
+        
 
-        if (type == NeededType || (!Repeateable && _used))
+        if (_type == NeededType || (!Repeateable && _used))
         {
             code.Invoke();
-            Debug.Log("Bien");
             _used = true;
         }
         else
         {
-            Debug.Log("Mal");
             negativeCode.Invoke();
-           
         }
     }
     //Se revisa si la flag correspondiente es válida
     public void CheckCondition()
     {
-        Flags flag = GameManager.Instance.GetFlags();
-        if (flag.GetPos(condition) || (!Repeateable && _used))
+        if (_flags.GetPos(condition) || (!Repeateable && _used))
         {
             code.Invoke();
             _used = true;
@@ -103,14 +111,22 @@ public class Conditional : MonoBehaviour
         else
         {
             negativeCode.Invoke();
-
         }
     }
 
     //Método que revisa si tienes un objeto en el inventario
     public void CheckInventory()
     {
-
+       
+        if (_inv.CheckObject(NeededType) || (!Repeateable && _used))
+        {
+            code.Invoke();
+            _used = true;
+        }
+        else
+        {
+            negativeCode.Invoke();
+        }
     }
 #endregion
     

@@ -67,7 +67,7 @@ public class PopUp : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Si entramos en el trigger se hace visible el objeto
+        //Si entramos en el trigger con el jugador se hace visible el objeto
         if (collision.GetComponent<Player_Controller>() != null)
         {
             _visible = true;
@@ -75,7 +75,7 @@ public class PopUp : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //Si entramos en el trigger se hace invisible el objeto
+        //Si salimos del trigger con el jugador  se hace invisible el objeto
         if (collision.GetComponent<Player_Controller>() != null)
         {
             _visible = false;

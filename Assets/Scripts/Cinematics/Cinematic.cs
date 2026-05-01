@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Script que nos permite mover una imagen en un canvas dandole unas coordenadas para "animar" los comics
-// Alejandro Jiménez ROjo
+// Alejandro Jiménez Rojo
 // Don't Go Up
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------

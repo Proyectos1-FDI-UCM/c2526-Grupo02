@@ -131,15 +131,7 @@ public class Enemy_Detect : MonoBehaviour
     public int GetState()
         { return _state; }
     #endregion
-    
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
 
-    #endregion   
 
 } // class Enemy_Detect 
 

@@ -191,6 +191,19 @@ public class Inventory_Manager : MonoBehaviour
         }
     }
 
+    public bool CheckObject(Object.ItemType item)
+    {
+        bool valid = false;
+        int i = 0;
+
+        while (i < _inv.GetLength(0) && !valid)
+        {
+            valid = _inv[i].GetItem() == item;
+        }
+
+        return valid;
+    }
+
     /// <Summary>
     ///Al usar UnityEvents serializados, no se pueden usar funciones que tengan como parametro un enum,
     ///por lo que pasamos un int y casteamos al enum
