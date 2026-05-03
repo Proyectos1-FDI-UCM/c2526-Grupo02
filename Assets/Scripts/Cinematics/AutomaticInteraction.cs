@@ -38,7 +38,7 @@ public class AutomaticInteraction : MonoBehaviour
     {
         //SI entramos en el trigger se activan los métodos que asignemos a CODE
         //_active nos permite que no se vuelva a activar una vez activado (es decir, podemso desactivar _active en Code, para que no se vuelva a repetir)
-        if(_active)
+        if(_active && collision.GetComponent<Player_Controller>())
         {
             Code.Invoke();
         }
