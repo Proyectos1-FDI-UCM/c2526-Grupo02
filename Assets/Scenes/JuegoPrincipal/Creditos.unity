@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -376.10004, y: -126.600006}
+  m_AnchoredPosition: {x: -376.10004, y: -95}
   m_SizeDelta: {x: 277.5515, y: 177.1948}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &40336386
@@ -178,7 +178,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "GRUPO  2 \nEQUIPO DE DESARROLLO\nPablo Polegre Mart\xEDn\r\nJes\xFAs Diez
     Rodriguez\r\nSara Quilez Mart\xEDnez\r\nAlejandro Jim\xE9nez Rojo\r\nHermes Gonz\xE1lez
-    Mart\xEDn\r\nAlejandra Mart\xEDnez Barjollo"
+    Mart\xEDn\r\nAlejandra Mart\xEDnez Barjollo\nCREDITOS DE ASSETS\nHorror Ambience
+    by AtlasAudio from Pixabay\nBeautiful Piano. Misterious Piano Piece by Fidel
+    Fortune from Pixabay\nDocumentary Sad  by Nikita Kondrashev from Pixabay"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -212,7 +214,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -243,7 +245,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.4874878, y: 0, z: 0, w: 0.69566345}
+  m_margin: {x: -143.32294, y: 0, z: -121.45331, w: 0.69566345}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

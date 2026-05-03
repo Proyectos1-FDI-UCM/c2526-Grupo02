@@ -30,7 +30,7 @@ public class Player_Controller : MonoBehaviour
     //Atributo que coje el rigidBody del jugador.
     private Rigidbody2D _rb;
     //atributo donde guardamos la velocidad que hemos metido en el inspector,
-    private int SpeedRecord;
+    private int _speedRecord;
     // aquí guardamos la fuente de audio
     private AudioSource _clip;
     //permite al clip reproducirse
@@ -46,7 +46,7 @@ public class Player_Controller : MonoBehaviour
     #region Métodos de MonoBehaviour
     void Start()
     {
-        SpeedRecord = Speed;
+        _speedRecord = Speed;
         _rb = GetComponent<Rigidbody2D>();
         if (_rb == null)
         {
@@ -91,10 +91,9 @@ public class Player_Controller : MonoBehaviour
         pos.x += HorizontalDir * Speed * Time.deltaTime;
         transform.position = pos;
         // Le pasamos el valor absoluto del movimiento
-        if (_animator != null)
-        {
+        
             _animator.SetFloat("Speed", Mathf.Abs(HorizontalDir)); 
-        }
+        
 
         //Calculamos la dirección a la que mira el jugador
         rot.x = 0;
@@ -137,7 +136,7 @@ public class Player_Controller : MonoBehaviour
     public void Resume()
     {
         //Ponemos la velocidad a la que tenia anterior mente para que se mueva el jugador (RECORDAR QUE NO SE LLAME CONSTANTEMENTE)
-        Speed = SpeedRecord;
+        Speed = _speedRecord;
     }
     #endregion
 

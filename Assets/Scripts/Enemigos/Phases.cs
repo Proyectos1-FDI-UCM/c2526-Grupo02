@@ -39,6 +39,9 @@ public class Phases : MonoBehaviour
     // Ejemplo: _maxHealthPoints
     private GameObject _visualPanel; //Panel que señaliza la visión del enemigo
     private Enemy_Detect _detect;  // llamo al detect
+    private Color _white = new Color(1, 1, 1, 0.5f);
+    private Color _yellow = new Color(1, 0.92f, 0.016f, 0.5f);
+    private Color _red = new Color(1, 0, 0, 0.5f);
 
     #endregion
 
@@ -87,13 +90,13 @@ public class Phases : MonoBehaviour
                 switch (fase)
                 {
                     case 0:
-                        _visualPanel.GetComponent<SpriteRenderer>().color = Color.white;
+                        _visualPanel.GetComponent<SpriteRenderer>().color = _white;
                         break;
                     case 1:
-                        _visualPanel.GetComponent<SpriteRenderer>().color = Color.yellow;
+                        _visualPanel.GetComponent<SpriteRenderer>().color = _yellow;
                         break;
                     case 2:
-                        _visualPanel.GetComponent<SpriteRenderer>().color = Color.red;
+                        _visualPanel.GetComponent<SpriteRenderer>().color = _red;
                         break;
                     case 3:
                         GameManager.Instance.GameOver();

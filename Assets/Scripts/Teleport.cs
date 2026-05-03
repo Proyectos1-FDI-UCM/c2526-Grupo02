@@ -128,10 +128,10 @@ public class Teleport : MonoBehaviour
     public void Tp()
     {
         player.transform.position = TargetDestination;
-        Vector3 camAux = GetComponent<Camera>().transform.position;
+        Vector3 camAux = Camera.transform.position;
         camAux.x = TargetDestination.x;
         camAux.y = TargetDestination.y+2;
-        GetComponent<Camera>().transform.position = camAux;
+        Camera.transform.position = camAux;
         _clip.Play();
     }
 

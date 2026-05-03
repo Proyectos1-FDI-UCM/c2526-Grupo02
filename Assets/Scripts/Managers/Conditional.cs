@@ -44,7 +44,7 @@ public class Conditional : MonoBehaviour
 
     private bool _used = false; //atributo que nos dice si ha sido usado una vez
     private Flags _flags; //atributo que nos da el compoennte _flags del level manager (cachear)
-    private Object.ItemType _type; //atributo que nos define un objeto que vamso a usar para revisar que obejto tenemos en la mano (para no crearla cada vez que llamemos a la función)
+    private Object.ItemType _type; //atributo que nos define un objeto que vamos a usar para revisar que objeto tenemos en la mano (para no crearla cada vez que llamemos a la función)
     private Inventory_Manager _inv; //atributo en el que almacenaremos el inventario, para no llamarlo cada vez que llamemos al método que lo necesita.
     #endregion
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -86,9 +86,21 @@ public class Conditional : MonoBehaviour
         //Revisamos en el componente Object use de mano el objeto que es (sprite + tipo), y de ahí sacamos el tipo de item.
         //IMPORTANTE (si usabamos directamente el item type nos daba un no instance of an object, ya que los enum no pueden ser nulos)
         //Resumen, si hay objeto, sacamos el tipo de objeto
-        
-         _type = Mano.GetHandItem().GetItem();
-        
+
+        //Si no hay un objeto en la mano no lo asigna
+        if (Mano.GetHandItem() != null)
+        {
+            _type = Mano.GetHandItem().GetItem();
+        }
+        else
+        {
+            //asignamos un tipo de item que nunca será
+            _type = Object.ItemType.numItemTypes;
+        }
+            
+
+
+
 
         if (_type == NeededType || (!Repeateable && _used))
         {
@@ -103,7 +115,7 @@ public class Conditional : MonoBehaviour
     //Se revisa si la flag correspondiente es válida
     public void CheckCondition()
     {
-        if (_flags.GetPos(condition) || (!Repeateable && _used))
+        if ((!Repeateable && _used) || _flags.GetPos(condition))
         {
             code.Invoke();
             _used = true;
@@ -118,7 +130,7 @@ public class Conditional : MonoBehaviour
     public void CheckInventory()
     {
        
-        if (_inv.CheckObject(NeededType) || (!Repeateable && _used))
+        if ((!Repeateable && _used) || _inv.CheckObject(NeededType))
         {
             code.Invoke();
             _used = true;

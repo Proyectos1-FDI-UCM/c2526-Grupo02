@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using System;
 using System.Collections.Specialized;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -196,9 +197,10 @@ public class Inventory_Manager : MonoBehaviour
         bool valid = false;
         int i = 0;
 
-        while (i < _inv.GetLength(0) && !valid)
+        while (i < _nObj && !valid)
         {
-            valid = _inv[i].GetItem() == item;
+                valid = _inv[i].GetItem() == item;
+                 i++;
         }
 
         return valid;

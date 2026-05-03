@@ -81,7 +81,7 @@ public class Cinematic : MonoBehaviour
                 _timer -= Time.deltaTime;
             }
             //Ajustamos las coordenadas del comic con un lerp mientras no sea la objetivo
-            if (comic.rectTransform.localPosition != Coords[i])
+            if (i < Coords.GetLength(0) && comic.rectTransform.localPosition != Coords[i])
             {
                 comic.rectTransform.localPosition = Vector3.Lerp(comic.rectTransform.localPosition, Coords[i], Speed);
             }
