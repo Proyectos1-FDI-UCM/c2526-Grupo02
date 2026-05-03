@@ -42,7 +42,7 @@ public class Phases : MonoBehaviour
     private Color _white = new Color(1, 1, 1, 0.5f);
     private Color _yellow = new Color(1, 0.92f, 0.016f, 0.5f);
     private Color _red = new Color(1, 0, 0, 0.5f);
-
+    private Animator _animator; 
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -54,7 +54,11 @@ public class Phases : MonoBehaviour
 
     private void Start()
     {
-        
+        _animator = GetComponent<Animator>(); 
+        if (_animator == null)
+        {
+            Destroy(this); 
+        }
         _detect = _visualPanel.GetComponent<Enemy_Detect>(); // llamo a los componentes que me harán falta más adelante
         if (_detect == null)
         {
@@ -86,7 +90,11 @@ public class Phases : MonoBehaviour
 
             if (player != null)
             {
+               
+                   
+                
                 int fase = _detect.GetState();
+                _animator.SetInteger("Fase", fase);
                 switch (fase)
                 {
                     case 0:
