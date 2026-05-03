@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetDestination: {x: 18, y: 2.5, z: -10}
   player: {fileID: 1843685286}
-  camera: {fileID: 3273536040159281517}
+  Camera: {fileID: 0}
   AutomaticTelepor: 0
 --- !u!114 &1780497
 MonoBehaviour:
@@ -346,9 +346,10 @@ MonoBehaviour:
   negativeCode:
     m_PersistentCalls:
       m_Calls: []
+  Mano: {fileID: 0}
   NeededType: 0
-  mano: {fileID: 1843685278}
   condition: 6
+  Repeateable: 0
 --- !u!82 &1780500
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1268,10 +1269,6 @@ MonoBehaviour:
   Canvas: {fileID: 1617609905}
   Dialogue: {fileID: 1387251030}
   Speed: 0.03
-  Name: "ni\xF1a"
-  Archive: LittleGirlAntes.txt
-  ArchiveCon: LittleGirlAntes.txt
-  Flee: 0
   High: {fileID: 0}
   Middle: {fileID: 0}
   Low: {fileID: 0}
@@ -2585,10 +2582,6 @@ MonoBehaviour:
   Canvas: {fileID: 1617609905}
   Dialogue: {fileID: 1387251030}
   Speed: 0.03
-  Name: Segurata
-  Archive: Toilet.txt
-  ArchiveCon: Toilet.txt
-  Flee: 0
   High: {fileID: 8300000, guid: 8c1bb40d7f59f7d479f69a27e52f9967, type: 3}
   Middle: {fileID: 8300000, guid: eead35fe8d5860b43827c024fbf19c11, type: 3}
   Low: {fileID: 8300000, guid: e69af7d767d088240bc1e3323bd7bf7d, type: 3}
@@ -2974,9 +2967,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Mano: {fileID: 0}
   NeededType: 0
-  mano: {fileID: 1843685278}
   condition: 0
+  Repeateable: 0
 --- !u!114 &363286535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3081,10 +3075,6 @@ MonoBehaviour:
   Canvas: {fileID: 1617609905}
   Dialogue: {fileID: 1387251030}
   Speed: 0.03
-  Name: ' '
-  Archive: SalchipapaHelp.txt
-  ArchiveCon: SalchipapaHelp.txt
-  Flee: 0
   High: {fileID: 8300000, guid: 8c1bb40d7f59f7d479f69a27e52f9967, type: 3}
   Middle: {fileID: 8300000, guid: eead35fe8d5860b43827c024fbf19c11, type: 3}
   Low: {fileID: 8300000, guid: e69af7d767d088240bc1e3323bd7bf7d, type: 3}
@@ -3847,9 +3837,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+  Mano: {fileID: 0}
   NeededType: 1
-  mano: {fileID: 1843685278}
   condition: 0
+  Repeateable: 0
 --- !u!114 &611144801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3899,10 +3890,6 @@ MonoBehaviour:
   Canvas: {fileID: 1617609905}
   Dialogue: {fileID: 1387251030}
   Speed: 0.03
-  Name: 'Gemelos Juguetones :'
-  Archive: GemelosAntes.txt
-  ArchiveCon: GemelosDespues.txt
-  Flee: 0
   High: {fileID: 8300000, guid: 8c1bb40d7f59f7d479f69a27e52f9967, type: 3}
   Middle: {fileID: 8300000, guid: eead35fe8d5860b43827c024fbf19c11, type: 3}
   Low: {fileID: 8300000, guid: e69af7d767d088240bc1e3323bd7bf7d, type: 3}
@@ -5302,9 +5289,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Mano: {fileID: 0}
   NeededType: 0
-  mano: {fileID: 1843685278}
   condition: 0
+  Repeateable: 0
 --- !u!114 &1078449564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5320,10 +5308,6 @@ MonoBehaviour:
   Canvas: {fileID: 1617609905}
   Dialogue: {fileID: 1387251030}
   Speed: 0.03
-  Name: 'Cocinero :'
-  Archive: CocineroAntes.txt
-  ArchiveCon: CocineroDespues.txt
-  Flee: 0
   High: {fileID: 8300000, guid: 8c1bb40d7f59f7d479f69a27e52f9967, type: 3}
   Middle: {fileID: 8300000, guid: eead35fe8d5860b43827c024fbf19c11, type: 3}
   Low: {fileID: 8300000, guid: e69af7d767d088240bc1e3323bd7bf7d, type: 3}
@@ -6433,7 +6417,7 @@ PrefabInstance:
     - target: {fileID: 4001599730186967222, guid: 800933d2d97b3fe48a32da1e7d5675bd, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: b16398dea7b0f7e40a84ac25951c9a08, type: 3}
+      objectReference: {fileID: 8300000, guid: 157f7b343f58de147b486f9869d09b58, type: 3}
     - target: {fileID: 4018933032162986225, guid: 800933d2d97b3fe48a32da1e7d5675bd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.7230069
@@ -7515,7 +7499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetDestination: {x: -4, y: 2, z: 0}
   player: {fileID: 1843685286}
-  camera: {fileID: 3273536040159281517}
+  Camera: {fileID: 0}
   AutomaticTelepor: 0
 --- !u!114 &1456206412
 MonoBehaviour:
@@ -7894,7 +7878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetDestination: {x: 3, y: 17, z: 0}
   player: {fileID: 1843685286}
-  camera: {fileID: 3273536040159281517}
+  Camera: {fileID: 0}
   AutomaticTelepor: 0
 --- !u!114 &1519470636
 MonoBehaviour:
@@ -8313,10 +8297,6 @@ MonoBehaviour:
   Canvas: {fileID: 1617609905}
   Dialogue: {fileID: 1387251030}
   Speed: 0.03
-  Name: ' '
-  Archive: fusiblesA.txt
-  ArchiveCon: fusiblesB.txt
-  Flee: 0
   High: {fileID: 8300000, guid: 8c1bb40d7f59f7d479f69a27e52f9967, type: 3}
   Middle: {fileID: 8300000, guid: eead35fe8d5860b43827c024fbf19c11, type: 3}
   Low: {fileID: 8300000, guid: e69af7d767d088240bc1e3323bd7bf7d, type: 3}
@@ -8415,9 +8395,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+  Mano: {fileID: 0}
   NeededType: 4
-  mano: {fileID: 1843685278}
   condition: 2
+  Repeateable: 0
 --- !u!82 &1603544405
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8776,9 +8757,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Mano: {fileID: 0}
   NeededType: 3
-  mano: {fileID: 1843685278}
   condition: 0
+  Repeateable: 0
 --- !u!114 &1631099507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8822,7 +8804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetDestination: {x: 10, y: 31, z: 0}
   player: {fileID: 1843685286}
-  camera: {fileID: 3273536040159281517}
+  Camera: {fileID: 0}
   AutomaticTelepor: 0
 --- !u!114 &1631099509
 MonoBehaviour:
@@ -8852,10 +8834,6 @@ MonoBehaviour:
   Canvas: {fileID: 1617609905}
   Dialogue: {fileID: 1387251030}
   Speed: 0.03
-  Name: "\xC1tico"
-  Archive: Escalera.txt
-  ArchiveCon: Escalera.txt
-  Flee: 0
   High: {fileID: 0}
   Middle: {fileID: 0}
   Low: {fileID: 0}
@@ -9054,7 +9032,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1768110777}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
         m_MethodName: Talk
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9063,9 +9041,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Mano: {fileID: 0}
   NeededType: 2
-  mano: {fileID: 1843685278}
   condition: 0
+  Repeateable: 0
 --- !u!114 &1768110777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9081,10 +9060,6 @@ MonoBehaviour:
   Canvas: {fileID: 1617609905}
   Dialogue: {fileID: 1387251030}
   Speed: 0.03
-  Name: 'Segurata :'
-  Archive: SegurataAntes.txt
-  ArchiveCon: SegurataDespues.txt
-  Flee: 1
   High: {fileID: 8300000, guid: 8c1bb40d7f59f7d479f69a27e52f9967, type: 3}
   Middle: {fileID: 8300000, guid: eead35fe8d5860b43827c024fbf19c11, type: 3}
   Low: {fileID: 8300000, guid: e69af7d767d088240bc1e3323bd7bf7d, type: 3}
@@ -10306,9 +10281,10 @@ MonoBehaviour:
   negativeCode:
     m_PersistentCalls:
       m_Calls: []
+  Mano: {fileID: 0}
   NeededType: 0
-  mano: {fileID: 1843685278}
   condition: 6
+  Repeateable: 0
 --- !u!114 &1999277035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10382,7 +10358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetDestination: {x: 5, y: -17, z: -10}
   player: {fileID: 1843685286}
-  camera: {fileID: 3273536040159281517}
+  Camera: {fileID: 0}
   AutomaticTelepor: 0
 --- !u!114 &1999277038
 MonoBehaviour:
@@ -11313,9 +11289,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Mano: {fileID: 0}
   NeededType: 0
-  mano: {fileID: 1843685278}
   condition: 2
+  Repeateable: 0
 --- !u!114 &2132815820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11474,10 +11451,6 @@ MonoBehaviour:
   Canvas: {fileID: 1617609905}
   Dialogue: {fileID: 1387251030}
   Speed: 0.03
-  Name: 
-  Archive: NoOffice.txt
-  ArchiveCon: NoOffice.txt
-  Flee: 0
   High: {fileID: 0}
   Middle: {fileID: 0}
   Low: {fileID: 0}
