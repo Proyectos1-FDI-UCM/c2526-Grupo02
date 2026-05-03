@@ -107,7 +107,7 @@ public class Inventory_Manager : MonoBehaviour
 
         //Creamos el inventario (array de Object)
         _inv = new Object[_invLenght];
-        _player = GameManager.Instance.GetPlayer();
+        _player = LevelManager.Instance.GetPlayer();
     }
 
     private void Update()

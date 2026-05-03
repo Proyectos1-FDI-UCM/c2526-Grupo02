@@ -41,14 +41,14 @@ public class SaveState : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Player_Controller>()!=null)
         {
-            GameManager.Instance.SavePos(collision.gameObject.transform.position);
-        for (int i = 0; i < GameManager.Instance.GetInv().gameObject.GetComponent<Inventory_Manager>().IniState(); i++)
+           LevelManager.Instance.SavePos(collision.gameObject.transform.position);
+        for (int i = 0; i < LevelManager.Instance.GetInv().gameObject.GetComponent<Inventory_Manager>().IniState(); i++)
         {
-            GameManager.Instance.SaveInv(i);
+            LevelManager.Instance.SaveInv(i);
         }
-        for (int i = 0; i <  GameManager.Instance.GetFlags().GetFlagLenght(); i++)
+        for (int i = 0; i <  LevelManager.Instance.GetFlags().GetFlagLenght(); i++)
         {
-                GameManager.Instance.SavePuz(i);
+                LevelManager.Instance.SavePuz(i);
         }
         Destroy(this.GetComponent<Collider2D>());
         }

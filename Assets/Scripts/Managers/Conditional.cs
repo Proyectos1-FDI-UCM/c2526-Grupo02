@@ -64,13 +64,13 @@ public class Conditional : MonoBehaviour
             return;
         }
         //Cogemos el inventario del level manager y si no hay avisamos
-        _inv = GameManager.Instance.GetInv().GetComponent<Inventory_Manager>();
+       _inv = LevelManager.Instance.GetInv().GetComponent<Inventory_Manager>();
         if (_inv == null)
         {
             Debug.Log("No hay inventory manager en el level manager");
         }
         //Cogemos el componente _flags del level manager y si no hay avisamos
-        _flags = GameManager.Instance.GetFlags();
+       _flags = LevelManager.Instance.GetFlags();
         if (_flags == null)
         {
             Debug.Log("No hay flags configuradas, revisar LevelManager");

@@ -99,7 +99,7 @@ public class Phases : MonoBehaviour
                         _visualPanel.GetComponent<SpriteRenderer>().color = _red;
                         break;
                     case 3:
-                        GameManager.Instance.GameOver();
+                        LevelManager.Instance.GameOver();
                         break;
                 }
             }
