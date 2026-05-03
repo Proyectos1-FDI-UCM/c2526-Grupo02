@@ -66,7 +66,7 @@ public class Dialogo : MonoBehaviour
     /// sistema de dialogo, usa un archivo de texto y lee el contenido y lo muestra linea por linea
     void Start()
     {
-        _playerController = GameManager.Instance.GetPlayer().GetComponent<Player_Controller>();
+        _playerController = LevelManager.Instance.GetPlayer().GetComponent<Player_Controller>();
         Canvas.enabled = false;
 
         //Con esto llamamos al componente que hará el ruido cuando se hable (como siempre que hablemos con alguien estaremos cerca, ponemos el audio source al propio del jugador)

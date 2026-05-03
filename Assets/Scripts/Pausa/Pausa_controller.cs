@@ -72,11 +72,11 @@ public class Pausa_controller : MonoBehaviour
 
         if (IsGamePaused) //si está pausao el jugador no se mueve
         {
-            GameManager.Instance.GetPlayer().GetComponent<Player_Controller>().Stop();
+            LevelManager.Instance.GetPlayer().GetComponent<Player_Controller>().Stop();
         }
         else
         {
-            GameManager.Instance.GetPlayer().GetComponent<Player_Controller>().Resume();
+            LevelManager.Instance.GetPlayer().GetComponent<Player_Controller>().Resume();
         }
     }
 
