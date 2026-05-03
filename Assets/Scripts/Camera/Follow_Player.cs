@@ -34,12 +34,6 @@ public class Follow_Player : MonoBehaviour
 
     #endregion
 
-    // ---- ATRIBUTOS PRIVADOS ----
-    #region Atributos Privados (private fields)
-    
-  
-    #endregion
-
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
@@ -83,12 +77,6 @@ public class Follow_Player : MonoBehaviour
     { 
         this.GetComponent<Transform>().position = pos;
     }
-    #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    
-
     #endregion
 
 } // class Follow_Player 

@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Audio/Music/leberch-documentary-sad-254541.mp3.meta
+guid: 0a9b7b244038cac40937e8364de4ec6e
+========
+guid: fbe5916fd9594554ca6e75abe3dd66d0
+>>>>>>>> fd1c7b612ddfbef57e22b11fe3c644e1c6d3f16c:Assets/Audio/Music/Grand Dark Waltz Moderato.mp3.meta
+AudioImporter:
+  externalObjects: {}
+  serializedVersion: 8
+  defaultSettings:
+    serializedVersion: 2
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+    preloadAudioData: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  loadInBackground: 0
+  ambisonic: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

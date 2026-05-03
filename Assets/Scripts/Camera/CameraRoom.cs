@@ -81,7 +81,7 @@ public class CameraRoom : MonoBehaviour
     // se actualizan los limites de los collider de la habitación y se ajustan a el tamaño
     // donde se mueve el jugador teniendo en cuenta el tamaño de la cámara.
     // </summary>
-    public void SetBounds(float _minX, float _maxX, float _minY, float _maxY)
+    public void SetBounds(float _minX, float _maxX,float _minY,float _maxY)
     {
         // Tamaño vertical del visor de la cámara (ortográfica)  
         // de Unity,

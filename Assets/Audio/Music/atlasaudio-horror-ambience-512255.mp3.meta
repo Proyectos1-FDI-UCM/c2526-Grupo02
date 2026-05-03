@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Audio/Music/atlasaudio-horror-ambience-512255.mp3.meta
 guid: 3736d1fba2103364ab8620276e0bef39
+========
+guid: fe1140403dca2b04bb966c2a5082fa5f
+>>>>>>>> fd1c7b612ddfbef57e22b11fe3c644e1c6d3f16c:Assets/Audio/Music/Anguish.mp3.meta
 AudioImporter:
   externalObjects: {}
   serializedVersion: 8
