@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0fa0e823de3fd2540a9a22e083161867
+guid: 67de0402204089043acc656f4c0ca774
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5699104055798326421
-    second: Garden_0
+      213: -9141691868695453010
+    second: qhago_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Garden_0
+      name: qhago_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 800
-        height: 360
+        x: 7
+        y: 5
+        width: 50
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b6b17207e07b8e0b0800000000000000
-      internalID: -5699104055798326421
+      spriteID: ea2a4502eaf222180800000000000000
+      internalID: -9141691868695453010
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Garden_0: -5699104055798326421
+      qhago_0: -9141691868695453010
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
