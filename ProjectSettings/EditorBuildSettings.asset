@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/JuegoPrincipal/Menu.unity
     guid: b13e49dfc910045ba80034544cb5011b
   - enabled: 0
-    path: Assets/Scenes/JuegoPrincipal/PlayTest.unity
+    path: Assets/Scenes/Pruebas/PlayTest.unity
     guid: 4b73a92c1a71efd4789ba1903b93c3c9
   - enabled: 1
     path: Assets/Scenes/JuegoPrincipal/Creditos.unity

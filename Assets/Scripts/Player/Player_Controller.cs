@@ -91,10 +91,26 @@ public class Player_Controller : MonoBehaviour
         pos.x += HorizontalDir * Speed * Time.deltaTime;
         transform.position = pos;
         // Le pasamos el valor absoluto del movimiento
-        
-            _animator.SetFloat("Speed", Mathf.Abs(HorizontalDir)); 
-        
+        if (Speed != 0)
+        {
+            _animator.SetFloat("Speed", Mathf.Abs(HorizontalDir));
 
+            _time += Time.deltaTime;
+            if ((dir.x > 0f || dir.x < 0f) && _allowClip)
+            {
+                _clip.Play();
+                _allowClip = false;
+            }
+            if (_time > Clip_Frecuence)
+            {
+                _allowClip = true;
+                _time = 0;
+            }
+        }
+        else
+        {
+            _animator.SetFloat("Speed", 0);
+        }
         //Calculamos la dirección a la que mira el jugador
         rot.x = 0;
         rot.z = 0;
@@ -111,17 +127,7 @@ public class Player_Controller : MonoBehaviour
             transform.rotation = rot;
         }
 
-        _time += Time.deltaTime;
-        if ((dir.x > 0f || dir.x < 0f) && _allowClip)
-        {
-            _clip.Play();
-            _allowClip = false;
-        }
-        if (_time > Clip_Frecuence)
-        {
-            _allowClip = true;
-            _time = 0;
-        }
+     
     }
     #endregion
 
