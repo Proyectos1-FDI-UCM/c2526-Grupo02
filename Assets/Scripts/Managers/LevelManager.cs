@@ -7,6 +7,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 /// <summary>
@@ -32,6 +33,8 @@ public class LevelManager : MonoBehaviour
     private GameObject Inv;
     [SerializeField]
     private GameObject DeathScreen;
+    [SerializeField]
+    private GameObject RestartButton;
     [SerializeField]
     private GameObject Camera;
     [SerializeField]
@@ -77,10 +80,6 @@ public class LevelManager : MonoBehaviour
     {
         return FlagManager;
     }
-    public void MuerteJugador()
-    {
-        DeathScreen.SetActive(true);
-    }
     public GameObject GetPlayer() { return Player; }
 
     public GameObject GetInv() { return Inv; }
@@ -89,6 +88,7 @@ public class LevelManager : MonoBehaviour
     {
         DeathScreen.SetActive(true);
         Player.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(RestartButton);
     }
     public void Respawn() //activa al jugador, lo mueve a el y a la camara al ultimo checkpoint con el ultimo estado guardado
     {
