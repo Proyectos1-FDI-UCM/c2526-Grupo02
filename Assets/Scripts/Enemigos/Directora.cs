@@ -37,6 +37,7 @@ public class Directora : MonoBehaviour
     private Estado _estado;  // el estado
     private int i = 0;
     private Phases Phase;
+    private Animator _animator;
 
     private void ControlPanel(bool Acti) // Controlo el panel que me indica el radio visual del enemigo
     {
@@ -69,6 +70,11 @@ public class Directora : MonoBehaviour
             UnityEngine.Debug.Log("Tiene que haber como mínimo 2 coordenadas entre las que alternar");
             Destroy(this);
         }
+        _animator = GetComponent<Animator>();
+        if (_animator == null)
+        {
+            Debug.Log("No hay animator en el enemigo");
+        }
     }
 
     private void ControlVision(int i) //Cambia progresivamente las coordenadas en el patrón deseado
@@ -90,6 +96,7 @@ public class Directora : MonoBehaviour
             _temporizador = 0;
             ControlPanel(false);
             ControlVision(i);
+            _animator.SetInteger("State", i);
             i++;
         }
         else if (_estado == Estado.inactivo && _temporizador >= _changeTime && !Pausa_controller.IsGamePaused)
@@ -97,8 +104,10 @@ public class Directora : MonoBehaviour
             _estado = Estado.activo;
             _temporizador = 0;
             ControlPanel(true);
+            
         }
         if (i == _positions.Length) i = i - i;
+       
     }
     #endregion
 
