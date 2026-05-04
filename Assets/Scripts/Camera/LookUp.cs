@@ -88,57 +88,60 @@ public class LookUp : MonoBehaviour
 
     private void Update()
     {
-        if (CanLookUp)
+        if (!Pausa_controller.IsGamePaused)
         {
-            // Leer valor de la acción (0 = no presionada, 1 = presionada)
-            bool teclaActual = _lookUp.ReadValue<float>() > 0.5f;
-
-            //  Detecta solo la pulsación inicial, evitando que se active continuamente
-            if (teclaActual && _nextMov < Time.time && !Pausa_controller.IsGamePaused)
+            if (CanLookUp)
             {
-                // Se añade un retraso de 1 segundo antes de permitir otra acción
-                _nextMov = Time.time + 1;
-                // Alterna entre altura normal y elevada
-                _alturaAlta = !_alturaAlta;
+                // Leer valor de la acción (0 = no presionada, 1 = presionada)
+                bool teclaActual = _lookUp.ReadValue<float>() > 0.5f;
+
+                //  Detecta solo la pulsación inicial, evitando que se active continuamente
+                if (teclaActual && _nextMov < Time.time && !Pausa_controller.IsGamePaused)
+                {
+                    // Se añade un retraso de 1 segundo antes de permitir otra acción
+                    _nextMov = Time.time + 1;
+                    // Alterna entre altura normal y elevada
+                    _alturaAlta = !_alturaAlta;
+                    if (_alturaAlta)
+                    {
+                        Jugador.GetComponent<Player_Controller>().Stop();
+                    }
+                    else
+                    {
+                        Jugador.GetComponent<Player_Controller>().Resume();
+                    }
+
+                }
+                Vector3 act = transform.position;// Posición actual de la cámara
+                float yObj = alturaNormal; // Altura objetivo por defecto
+                Vector3 interactpos = interactionCollider.transform.position;
+
                 if (_alturaAlta)
                 {
+                    // Ajuste de altura sobre el jugador
+                    yObj = alturaElevada + Jugador.transform.position.y;
+
+
+                    //El stop Si se pone en el update porque otro script podría llegar a permitir al jugador moverse pero por este no se debería poder.
                     Jugador.GetComponent<Player_Controller>().Stop();
                 }
                 else
                 {
-                    Jugador.GetComponent<Player_Controller>().Resume();
+                    // Altura normal sobre el jugador
+                    yObj = alturaNormal + Jugador.transform.position.y;
                 }
 
+                // Interpolación suave (Lerp) hacia la altura objetivo
+                act.y = Mathf.Lerp(
+                    act.y,
+                    yObj,
+                    velocidadTransicionAltura * Time.deltaTime
+                );
+                // Actualiza la posición de la cámara
+                transform.position = act;
+                interactpos.y = yObj;
+                interactionCollider.transform.position = interactpos;
             }
-            Vector3 act = transform.position;// Posición actual de la cámara
-            float yObj = alturaNormal; // Altura objetivo por defecto
-            Vector3 interactpos = interactionCollider.transform.position;
-
-            if (_alturaAlta)
-            {
-                // Ajuste de altura sobre el jugador
-                yObj = alturaElevada + Jugador.transform.position.y;
-
-
-                //El stop Si se pone en el update porque otro script podría llegar a permitir al jugador moverse pero por este no se debería poder.
-                Jugador.GetComponent<Player_Controller>().Stop();
-            }
-            else
-            {
-                // Altura normal sobre el jugador
-                yObj = alturaNormal + Jugador.transform.position.y;
-            }
-
-            // Interpolación suave (Lerp) hacia la altura objetivo
-            act.y = Mathf.Lerp(
-                act.y,
-                yObj,
-                velocidadTransicionAltura * Time.deltaTime
-            );
-            // Actualiza la posición de la cámara
-            transform.position = act;
-            interactpos.y = yObj;
-            interactionCollider.transform.position = interactpos;
         }
     }
 
