@@ -7,7 +7,7 @@
 
 using UnityEngine;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
-using static UnityEditor.PlayerSettings;
+
 
 
 
