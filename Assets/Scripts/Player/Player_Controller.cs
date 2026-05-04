@@ -93,7 +93,9 @@ public class Player_Controller : MonoBehaviour
         // Le pasamos el valor absoluto del movimiento
         if (Speed != 0)
         {
-            _animator.SetFloat("Speed", Mathf.Abs(HorizontalDir));
+            
+
+            _animator.SetBool("Caminar", Mathf.Abs(dir.x) > 0.1f);
 
             _time += Time.deltaTime;
             if ((dir.x > 0f || dir.x < 0f) && _allowClip)
