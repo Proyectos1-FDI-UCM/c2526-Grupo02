@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Maneja el inventario 
+// Maneja el inventario, añade y elimina objetos del inventario
 // Alejandra  
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
@@ -69,6 +69,13 @@ public class Inventory_Manager : MonoBehaviour
     //ref al jugador
     private GameObject _player;
 
+    //cacheo de variables 
+    private Player_Controller _playerController;
+
+
+    private Object_use _objectUse;
+
+
     private float _timer = 0.0f;
     #endregion
 
@@ -104,6 +111,19 @@ public class Inventory_Manager : MonoBehaviour
             Debug.Log("No se ha encontrado la acción Interact");
             return;
         }
+        _playerController = _player.GetComponent<Player_Controller>(); 
+        if (_playerController == null)
+        {
+            Debug.Log("No se ha encontrado el Player Controller");
+            return;
+        }
+
+        _objectUse = _player.GetComponent<Object_use>();
+        if (_playerController == null)
+        {
+            Debug.Log("No se ha encontrado el Script Object_use");
+            return;
+        }
 
         //Creamos el inventario (array de Object)
         _inv = new Object[_invLenght];
@@ -120,11 +140,11 @@ public class Inventory_Manager : MonoBehaviour
             {
                 _currentItemIndex = 0;
                 _timer = _delayTime;
-                _player.GetComponent<Player_Controller>().Stop();
+                _playerController.Stop();
             }
             else
             {
-                _player.GetComponent<Player_Controller>().Resume();
+                _playerController.Resume();
             }
             _selection.position = _invHudSpaces[0].GetComponent<RectTransform>().position;
         }
@@ -132,7 +152,7 @@ public class Inventory_Manager : MonoBehaviour
         if (_inventoryIsOpen && !Pausa_controller.IsGamePaused)
         {
             //logica inputs inventario aqui
-            _player.GetComponent<Player_Controller>().Stop();
+            _playerController.Stop();
             Vector2 dir = _move.ReadValue<Vector2>();
             float HorizontalDir = Mathf.Round(dir.x);
 
@@ -163,7 +183,7 @@ public class Inventory_Manager : MonoBehaviour
             if (_Interact.WasPressedThisFrame() && _currentItemIndex < _nObj)
             {
 
-                _player.GetComponent<Object_use>().SetPickedObject(_inv[_currentItemIndex]);
+                _objectUse.SetPickedObject(_inv[_currentItemIndex]);
                 _sujetado = _inv[_currentItemIndex];
             }
         }
@@ -216,7 +236,7 @@ public class Inventory_Manager : MonoBehaviour
         {
             //Debug.Log((Object.ItemType)itemType);
             RemoveObj((Object.ItemType)itemType);
-            _player.GetComponent<Object_use>().RemoveFromHand();
+            _objectUse.RemoveFromHand();
         }
         else
         {

@@ -24,7 +24,7 @@ public class Pausa_controller : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    #endregion
+    #endregion  
 
 
     // ---- ATRIBUTOS PRIVADOS ----
