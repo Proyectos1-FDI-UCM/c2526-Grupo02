@@ -649,7 +649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 668544676134977136, guid: bd3e5e18ec4256340ac5943731d77c9c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 15.70095
+      value: 15.229921
       objectReference: {fileID: 0}
     - target: {fileID: 668544676134977136, guid: bd3e5e18ec4256340ac5943731d77c9c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -748,7 +748,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0030684173, y: 0.01707524}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -758,7 +758,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.0306842, y: 1.0341505}
   m_EdgeRadius: 0
 --- !u!1 &90643586
 GameObject:
@@ -941,6 +941,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2084379509}
     m_Modifications:
+    - target: {fileID: 479180712269842700, guid: 15e73870a3c41da4ba69d703d3df58f2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 901168515737215328, guid: 15e73870a3c41da4ba69d703d3df58f2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -979,7 +983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2872363820458809198, guid: 15e73870a3c41da4ba69d703d3df58f2, type: 3}
       propertyPath: m_Name
-      value: 'OtroCanvasmas '
+      value: PauseCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 2872363820458809198, guid: 15e73870a3c41da4ba69d703d3df58f2, type: 3}
       propertyPath: m_IsActive
@@ -3167,7 +3171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 2
-  inventorySprite: {fileID: 1050074082239399066, guid: 2a6db683ec7101245ba600dfd29a8fc8, type: 3}
+  inventorySprite: {fileID: 3005789171061474769, guid: 1d3a1a8c0ce3ee54aadaff914cc46a13, type: 3}
 --- !u!61 &363286539
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3206,7 +3210,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.99, y: 1.29}
+    oldSize: {x: 2.5, y: 3.0166667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5929,7 +5933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 4
-  inventorySprite: {fileID: -1886092231852112275, guid: 14afec8ae1bbb8d46b0edceccab0b4a4, type: 3}
+  inventorySprite: {fileID: 4420078082790108562, guid: cc4bc325f9a9e3c4e83b859b5bafb724, type: 3}
 --- !u!1 &1071246078 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1745851024823474265, guid: 15e73870a3c41da4ba69d703d3df58f2, type: 3}
@@ -6138,7 +6142,7 @@ PrefabInstance:
     - target: {fileID: 1149880607847191271, guid: 07979b7e388253a48a01b43704ad32a4, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 3005789171061474769, guid: 1d3a1a8c0ce3ee54aadaff914cc46a13, type: 3}
+      objectReference: {fileID: -2566392662691677572, guid: fbc34ce02950e384d8413433a71b7eac, type: 3}
     - target: {fileID: 4620894156081055835, guid: 07979b7e388253a48a01b43704ad32a4, type: 3}
       propertyPath: m_Name
       value: Salchipapa
@@ -6279,7 +6283,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.0017273426}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6289,7 +6293,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.99654496}
   m_EdgeRadius: 0
 --- !u!1001 &1142400397
 PrefabInstance:
@@ -6691,7 +6695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  inventorySprite: {fileID: -8902257600135560314, guid: 6da6b2d0e4fc9e143809a0ca87fcb311, type: 3}
+  inventorySprite: {fileID: -8902257600135560314, guid: c50936785f9b2c44097a1f75e7d1f525, type: 3}
 --- !u!4 &1207309817 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7216491046037799834, guid: ec2fbeedb8b2faa4b8d08b4668076099, type: 3}
@@ -6875,7 +6879,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.58431375, g: 0.48627454, b: 0.7803922, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9298,7 +9302,7 @@ GameObject:
   - component: {fileID: 1631099509}
   - component: {fileID: 1631099510}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: AtticDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9435,9 +9439,9 @@ MonoBehaviour:
   code:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1631099508}
-        m_TargetAssemblyTypeName: Teleport, Assembly-CSharp
-        m_MethodName: Tp
+      - m_Target: {fileID: 1631099506}
+        m_TargetAssemblyTypeName: Conditional, Assembly-CSharp
+        m_MethodName: CheckObjectInHand
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9450,16 +9454,28 @@ MonoBehaviour:
   negativeCode:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1631099510}
+      - m_Target: {fileID: 932304833}
         m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: talk
-        m_Mode: 1
+        m_MethodName: SetName
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Jugador
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 932304833}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: Talk
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: NoKey.txt
           m_BoolArgument: 0
         m_CallState: 2
   Mano: {fileID: 6329152183601729566}
@@ -9483,8 +9499,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1631099506}
-        m_TargetAssemblyTypeName: Conditional_Test, Assembly-CSharp
-        m_MethodName: 
+        m_TargetAssemblyTypeName: Conditional, Assembly-CSharp
+        m_MethodName: CheckInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9533,15 +9549,55 @@ MonoBehaviour:
   m_GameObject: {fileID: 1631099502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b64a8458d7de41647a7766035c14a7c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d19b12259ae7724d946da99d8a445b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canvas: {fileID: 1617609905}
-  Dialogue: {fileID: 1387251030}
-  Speed: 0.03
-  High: {fileID: 0}
-  Middle: {fileID: 0}
-  Low: {fileID: 0}
+  code:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1631099508}
+        m_TargetAssemblyTypeName: Teleport, Assembly-CSharp
+        m_MethodName: Tp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  negativeCode:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 932304833}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: SetName
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Jugador
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 932304833}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: Talk
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: KeyOnInv.txt
+          m_BoolArgument: 0
+        m_CallState: 2
+  Mano: {fileID: 6329152183601729566}
+  NeededType: 3
+  condition: 0
+  Repeateable: 0
 --- !u!1 &1656987005
 GameObject:
   m_ObjectHideFlags: 0
@@ -9654,8 +9710,8 @@ Transform:
   m_GameObject: {fileID: 1686820682}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.3946824, y: -16.688553, z: 5.762046}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -3.3947, y: -14.941, z: 5.762046}
+  m_LocalScale: {x: 1, y: 0.92, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2105875755}
@@ -10941,7 +10997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 668544676134977136, guid: bd3e5e18ec4256340ac5943731d77c9c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 15.83748
+      value: 15.307051
       objectReference: {fileID: 0}
     - target: {fileID: 668544676134977136, guid: bd3e5e18ec4256340ac5943731d77c9c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11040,7 +11096,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.013047397}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -11050,7 +11106,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.0260947}
   m_EdgeRadius: 0
 --- !u!4 &1999088340 stripped
 Transform:
@@ -13932,7 +13988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 668544676134977136, guid: bd3e5e18ec4256340ac5943731d77c9c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 12.9
+      value: 14.577
       objectReference: {fileID: 0}
     - target: {fileID: 668544676134977136, guid: bd3e5e18ec4256340ac5943731d77c9c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13940,7 +13996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 668544676134977136, guid: bd3e5e18ec4256340ac5943731d77c9c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 668544676134977136, guid: bd3e5e18ec4256340ac5943731d77c9c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14150,7 +14206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alturaNormal: 6
-  alturaElevada: 16
+  alturaElevada: 18
   velocidadTransicionAltura: 3
   Jugador: {fileID: 1843685278}
   CanLookUp: 1

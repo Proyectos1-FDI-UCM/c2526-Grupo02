@@ -111,6 +111,11 @@ public class Inventory_Manager : MonoBehaviour
             Debug.Log("No se ha encontrado la acción Interact");
             return;
         }
+        _player = LevelManager.Instance.GetPlayer();
+        if (_player == null)
+        {
+            Debug.Log("No hay Player en el levelManager");
+        }
         _playerController = _player.GetComponent<Player_Controller>(); 
         if (_playerController == null)
         {

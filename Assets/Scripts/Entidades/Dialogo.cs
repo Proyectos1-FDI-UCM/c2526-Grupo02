@@ -82,11 +82,13 @@ public class Dialogo : MonoBehaviour
     }
     void Update()
     {
+        if (!Pausa_controller.IsGamePaused)
+        {
             if (_talking)
             {
                 _playerController.Stop();
-               
-                if (_line == _script.GetLength(0) + 1 )
+
+                if (_line == _script.GetLength(0) + 1)
                 {
                     Canvas.enabled = false;
                     _line = 0;
@@ -123,7 +125,7 @@ public class Dialogo : MonoBehaviour
             else
             {
                 _line = 0;
-                
+
             }
             if (_type)
             {
@@ -144,8 +146,8 @@ public class Dialogo : MonoBehaviour
                         if (_index % 2 == 0) _clip.PlayOneShot(High);
                         else if (_index % 3 == 0) _clip.PlayOneShot(Middle);
                         else _clip.PlayOneShot(Low);
-                        
-                        
+
+
                         _index++;
                         _time = 0;
                     }
@@ -156,7 +158,8 @@ public class Dialogo : MonoBehaviour
                     }
                 }
             }
-        
+
+        }
     }
 
     #endregion

@@ -38,11 +38,7 @@ public class Interactuable : MonoBehaviour
     #region Atributos Privados (private fields)
     //Variable que guarda la accion de interact
     private InputAction _Interact;
-
-    //variables para frenar el interactuable con diálogo;
-    private Dialogo _dialogo;
-    private bool _hayDialogo;
-
+   
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -67,18 +63,15 @@ public class Interactuable : MonoBehaviour
         {
             Debug.Log("Falta asignar el lookUp de la camara");
         }
-        _dialogo = GetComponent<Dialogo>();
-        if (_dialogo == null)
-        {
-            Debug.Log("Falta el componente dialogo, asegurese de que no lo necesita en este interactuable");
-        }
+        
+        
         
     }
 
 
     void OnTriggerStay2D(Collider2D other)
     {
-        _hayDialogo = _dialogo != null;
+        
         if(!Pausa_controller.IsGamePaused)
         {
          
