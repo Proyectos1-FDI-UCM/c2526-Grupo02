@@ -6,6 +6,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -26,6 +27,12 @@ public class MenuController : MonoBehaviour
 
     [SerializeField]
     private GameObject _panelControles; //Panel controles
+
+    [SerializeField]
+    private GameObject _ControlsExitButton;
+
+    [SerializeField]
+    private GameObject _FirstButton;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -61,6 +68,7 @@ public class MenuController : MonoBehaviour
             _panelControles.SetActive(false);
             _menuCanvas.SetActive(!_menuCanvas.activeSelf); //devuelve lo contrario a como entre
             Pausa_controller.SetPause(_menuCanvas.activeSelf);
+            EventSystem.current.SetSelectedGameObject(_FirstButton);
         }
     }
     #endregion
@@ -75,6 +83,15 @@ public class MenuController : MonoBehaviour
     public void AbrirControles() 
     {
         _panelControles.SetActive(true);
+        _menuCanvas.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(_ControlsExitButton); 
+
+    }
+    public void CerrarControles()
+    {
+        _panelControles.SetActive(false);
+        _menuCanvas.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(_FirstButton);
 
     }
     /// <summary>

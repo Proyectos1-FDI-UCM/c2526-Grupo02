@@ -74,34 +74,15 @@ public class Interactuable : MonoBehaviour
         
         if(!Pausa_controller.IsGamePaused)
         {
-         
-
-                if (((!cameraInteracts && !LookUpComponent.GetAlturaAlta() && other.GetComponent<Player_Controller>()) //Interaccion del jugador, la camara no esta mirando arriba y el jugador esta en rango
-                    || (cameraInteracts && LookUpComponent.GetAlturaAlta() && other.GetComponentInParent<Player_Controller>())) //Interaccion de la camara, la camara esta mirando arriba y esta en rango
+                if (((!cameraInteracts && !LookUpComponent.GetAlturaAlta() && other.tag == "Player") //Interaccion del jugador, la camara no esta mirando arriba y el jugador esta en rango
+                    || (cameraInteracts && LookUpComponent.GetAlturaAlta() && other.tag == "Player")) //Interaccion de la camara, la camara esta mirando arriba y esta en rango
                     && _Interact.WasPressedThisFrame()) //Si el jugador esta pulsando el boton de interaccion
                 {
-                //Me han regalado un reloj
-                //Qué marca?
-                //Pues la hora!
-                //La finalidad del chiste es que no detecte dos veces el TP y no puedas salir del sótano
-
                 OnInteract.Invoke(); //llamamos a la funcion asignada en el inspector
                 }
             
         }
     }
     #endregion
-
-    // ---- MÉTODOS PÚBLICOS ----
-    #region Métodos públicos
-
-    #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    
-
-    #endregion
-
 } // class Interactuable 
 // namespace
