@@ -44,14 +44,25 @@ public class HideSystem : MonoBehaviour
     // Referencia al Collider del jugador
     private Collider2D _collider;
 
+    private float _counter = 0;
+    private float _maxCounter = 0.001f;
+
 
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
+    private void Update()
+    {
+       
+        if(_counter > 0)
+        { 
+        _counter -= Time.deltaTime;
+        }
+    }
     // Inicializa referencias necesarias
-    
+
     private void Start()
     {
         //Referencia al sprite
@@ -75,16 +86,23 @@ public class HideSystem : MonoBehaviour
     //Activa y desactiva si el jugdor esta escondido
     public void ToggleHide()
     {
-        _isHiding = !_isHiding;
-
-        if (_isHiding)
+        if (_counter <= 0)
         {
+            if (!_isHiding)
+            {
+            _isHiding = !_isHiding;
             EnterHide();
-        }
-        else
-        {
+                _counter = _maxCounter;
+           
+            }
+            else
+            {
+            _isHiding = !_isHiding;
             ExitHide();
+                _counter = _maxCounter;
+            }
         }
+    
     }
     
     //permite acceder a la variable privad isHIding a traves de propiedad
