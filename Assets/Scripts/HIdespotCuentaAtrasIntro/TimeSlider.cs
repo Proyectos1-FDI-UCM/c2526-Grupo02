@@ -90,49 +90,52 @@ public class TimeSlider : MonoBehaviour
 
     void Update()
     {
-        /// Control desde Inspector
-        if (activateTimerInInspector)
+        if (!Pausa_controller.IsGamePaused)
         {
-            if (!_isRunning) StartTimer();
-        }
-       
-        ///Lógica del temporizador
-        
-        // Si el temporizador está detenido, no ejecuta nada
-        if (!_isRunning) return;
-
-        // Suma el tiempo que ha pasado desde el último frame
-        // (esto hace que funcione correctamente sin importar los FPS)
-        _timePassed += Time.deltaTime;
-
-        // Calcula cuánto tiempo queda
-        float timeLeft = duration - _timePassed;
-
-        // Actualiza el slider (valor entre 0 y 1)
-        slider.value = _timePassed / duration;
-
-        // Actualiza el texto mostrando el tiempo restante
-        //  Redondea hacia arriba (ej: 2.3 -> 3)
-        timerText.text = Mathf.Round(timeLeft) + "s";
-
-        // Si el tiempo se ha terminado...
-        if (_timePassed >= duration)
-        {
-            // Detiene el temporizador
-            _isRunning = false;
-
-            // Cambia el texto final
-            timerText.text = "¡Demasiado tarde...!";
-            
-            // Para al jugador
-            if (player != null)
+            /// Control desde Inspector
+            if (activateTimerInInspector)
             {
-                player.Stop();
+                if (!_isRunning) StartTimer();
             }
 
-            // Llama a la función del final malo
-            BadEnding();
-            
+            ///Lógica del temporizador
+
+            // Si el temporizador está detenido, no ejecuta nada
+            if (!_isRunning) return;
+
+            // Suma el tiempo que ha pasado desde el último frame
+            // (esto hace que funcione correctamente sin importar los FPS)
+            _timePassed += Time.deltaTime;
+
+            // Calcula cuánto tiempo queda
+            float timeLeft = duration - _timePassed;
+
+            // Actualiza el slider (valor entre 0 y 1)
+            slider.value = _timePassed / duration;
+
+            // Actualiza el texto mostrando el tiempo restante
+            //  Redondea hacia arriba (ej: 2.3 -> 3)
+            timerText.text = Mathf.Round(timeLeft) + "s";
+
+            // Si el tiempo se ha terminado...
+            if (_timePassed >= duration)
+            {
+                // Detiene el temporizador
+                _isRunning = false;
+
+                // Cambia el texto final
+                timerText.text = "¡Demasiado tarde...!";
+
+                // Para al jugador
+                if (player != null)
+                {
+                    player.Stop();
+                }
+
+                // Llama a la función del final malo
+                BadEnding();
+
+            }
         }
     }
     #endregion

@@ -40,6 +40,9 @@ public class Inventory_Manager : MonoBehaviour
 
     [SerializeField]
     private RectTransform _selection; //índice visual
+
+    [SerializeField]
+    private bool Blocked = false;
     #endregion
 
 
@@ -98,6 +101,15 @@ public class Inventory_Manager : MonoBehaviour
             Debug.Log("No se ha encontrado la acción Inventario");
             return;
         }
+        if(!Blocked)
+        {
+            _openInvAction.Enable();
+        }
+        else
+        {
+            _openInvAction.Disable();
+        }
+        
         _move = InputSystem.actions.FindAction("Move");
         if (_move == null)
         {

@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -41,7 +42,7 @@ public class Cinematic : MonoBehaviour
     {
         _Interact = InputSystem.actions.FindAction("Interact"); //asignamos la accion de interact
         //Programación defensiva
-        if (_Interact != null)
+        if (_Interact == null)
         {
             Debug.Log("No se encontró la acción Interact");
             return;
@@ -62,10 +63,11 @@ public class Cinematic : MonoBehaviour
         //Si está activa la cinemática
         if (_active)
         {
+            
             //Se activa la imagen
             comic.enabled = true;
             //si se presiona la tecla de interactuar y no ha sido demasiado rápido se cambia de panel del comic (coordenadas)
-            if (_Interact.WasPressedThisFrame() && _timer <= 0)
+            if (_Interact.WasPressedThisFrame() && _timer <= 0 && !Pausa_controller.IsGamePaused)
             {
                 _timer = 1;
                 i++;
