@@ -8875,11 +8875,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6073008681870241296, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.8181819
+      value: 1.43
       objectReference: {fileID: 0}
     - target: {fileID: -6073008681870241296, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.3636363
+      value: 1.76
       objectReference: {fileID: 0}
     - target: {fileID: 692505875085616641, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: Canvas
@@ -11144,7 +11144,6 @@ GameObject:
   - component: {fileID: 1999277037}
   - component: {fileID: 1999277036}
   - component: {fileID: 1999277035}
-  - component: {fileID: 1999277034}
   - component: {fileID: 1999277040}
   m_Layer: 2
   m_Name: TpBasementDownstairs
@@ -11168,40 +11167,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 269026316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1999277034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999277032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d19b12259ae7724d946da99d8a445b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  code:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1999277037}
-        m_TargetAssemblyTypeName: Teleport, Assembly-CSharp
-        m_MethodName: Tp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  negativeCode:
-    m_PersistentCalls:
-      m_Calls: []
-  Mano: {fileID: 0}
-  NeededType: 0
-  condition: 6
-  Repeateable: 0
 --- !u!114 &1999277035
 MonoBehaviour:
   m_ObjectHideFlags: 0
