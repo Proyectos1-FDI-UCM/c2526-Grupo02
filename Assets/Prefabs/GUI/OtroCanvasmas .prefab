@@ -240,7 +240,6 @@ GameObject:
   - component: {fileID: 479180712269842700}
   - component: {fileID: 1384569768996665865}
   - component: {fileID: 5402944398277817719}
-  - component: {fileID: 4957833935837717264}
   m_Layer: 5
   m_Name: 'OtroCanvasmas '
   m_TagString: Untagged
@@ -333,19 +332,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4957833935837717264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2872363820458809198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e67665ea226d403ab8b32a4b067d8f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextScene: 0
 --- !u!1 &3392885061526819360
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,6 +561,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Inicio
       objectReference: {fileID: 0}
+    - target: {fileID: 8367459987240929699, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8606664896545888718, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -667,7 +657,8 @@ PrefabInstance:
       propertyPath: nextScene
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9149388496513041272, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
