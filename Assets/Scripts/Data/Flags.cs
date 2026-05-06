@@ -39,7 +39,6 @@ public class Flags : MonoBehaviour
     {
         //Crea un array de bools del tamaño del enumerado Conditions
         _flags = new bool[Conditions.GetNames(typeof(Conditions)).Length];
-        UnityEngine.Debug.Log(_flags.Length + " BANDERAS");
     }
     #endregion
 

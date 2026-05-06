@@ -59,7 +59,6 @@ public class LookUp : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Estoy funcionado"); 
         // Buscar la acción "LookUP" definida en el Input System
         // Aviso de falta de asignar al jugador en el inspector
         // o que la falta el componente Player_Controller
