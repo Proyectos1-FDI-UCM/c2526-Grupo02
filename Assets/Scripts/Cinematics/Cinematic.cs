@@ -27,7 +27,7 @@ public class Cinematic : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-
+    [SerializeField]
     private bool _active = false;//atributo que controla si está activado o no el canvas
     private int i = 0; //Puntero que mantiene la posición en la que estamos del comic
     private InputAction _Interact; //Acción interact

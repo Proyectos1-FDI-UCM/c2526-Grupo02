@@ -10,7 +10,8 @@ using UnityEngine.UI;
 // Librería para usar textos de TextMeshPro
 using TMPro;
 // Necesario para cambiar de escena
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 /// <summary>
 //Cronómetro, cuenta a tras configurable
@@ -44,6 +45,8 @@ public class TimeSlider : MonoBehaviour
 
     // Tiempo total que durará el cronómetro (en segundos)
     [SerializeField] private float duration = 10f;
+    [SerializeField]
+        private GameObject GameOver;
 
     // Referencia al texto que mostrará el tiempo en pantalla
     [SerializeField] private TMP_Text timerText;
@@ -51,8 +54,8 @@ public class TimeSlider : MonoBehaviour
     // Nombre de la escena de final malo
     //[SerializeField] private string badEndingSceneName = "BadEnding";
 
-    //Nombre del panel del final malo
-    [SerializeField] private GameObject badEndingPanel; // Panel del final malo
+    [SerializeField]
+    UnityEvent code;
 
     // Referencia al jugador, para llamar a su funcion "stop" para poder pararlo
     [SerializeField] private Player_Controller player;  
@@ -81,8 +84,6 @@ public class TimeSlider : MonoBehaviour
             timerCanvas.SetActive(false);
 
         //Panel del final malo apagado al iniciar la escena
-        if (badEndingPanel != null)
-            badEndingPanel.SetActive(false);
 
         // No empieza solo, espera StartTimer()
         _isRunning = false; 
@@ -90,7 +91,7 @@ public class TimeSlider : MonoBehaviour
 
     void Update()
     {
-        if (!Pausa_controller.IsGamePaused)
+        if (!Pausa_controller.IsGamePaused && !LevelManager.Instance.GetDeath())
         {
             /// Control desde Inspector
             if (activateTimerInInspector)
@@ -145,14 +146,7 @@ public class TimeSlider : MonoBehaviour
    //Lleva al final malo
     public void BadEnding()
     {
-        // Carga la escena que hayas puesto en el Inspector
-        //SceneManager.LoadScene(badEndingSceneName);
-        // Activa el panel de final malo
-        if (badEndingPanel != null)
-        {
-        badEndingPanel.SetActive(true);
-        }
-
+        code.Invoke();
     }
 
     // Función para iniciar el temporizador 
@@ -174,10 +168,6 @@ public class TimeSlider : MonoBehaviour
     public void StopTimer()
     {
         _isRunning = false;
-
-        // Oculta el panel de final malo
-        if (badEndingPanel != null)
-            badEndingPanel.SetActive(false);
 
         // Oculta el canvas del temporizador
         if (timerCanvas != null)

@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
     // ---- ATRIBUTOS PRIVADOS ----
 
     #region Atributos Privados (private fields)
-
+    private HideSystem _hideSystem;
     /// <summary>
     /// Instancia única de la clase (singleton).
     /// </summary>
@@ -54,6 +54,11 @@ public class LevelManager : MonoBehaviour
     private bool[] _puzzleState;
     private Object[] _invState;
     private const int _offsetCam = -10;
+    private bool _death
+    {
+        set; get;
+    }
+       
 
     #endregion
 
@@ -63,12 +68,14 @@ public class LevelManager : MonoBehaviour
 
     protected void Awake()
     {
+        _death = false;
         if (_instance == null)
         {
             // Somos la primera y única instancia
             _instance = this;
             Init();
         }
+        _hideSystem = Player.GetComponent<HideSystem>();
     }
 
     #endregion
@@ -86,13 +93,19 @@ public class LevelManager : MonoBehaviour
 
     public void GameOver() //activa la pantalla de game over y desactiva al jugador
     {
+        _death = true;
         DeathScreen.SetActive(true);
         Player.SetActive(false);
         EventSystem.current.SetSelectedGameObject(RestartButton);
     }
     public void Respawn() //activa al jugador, lo mueve a el y a la camara al ultimo checkpoint con el ultimo estado guardado
     {
+        _death = false;
         Player.SetActive(true);
+        if (_hideSystem.IsHiding)
+        {
+            _hideSystem.ToggleHide();
+        }
         Player.transform.position = _playerTransform;
         Vector3 Cam = _playerTransform;
         Cam.z = _offsetCam;
@@ -120,6 +133,10 @@ public class LevelManager : MonoBehaviour
     public void SavePos(Vector3 pos) // carga la pos del jugador
     {
         _playerTransform = pos;
+    }
+    public bool GetDeath()
+    {
+        return _death;
     }
 
 
