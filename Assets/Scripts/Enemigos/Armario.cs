@@ -46,7 +46,7 @@ public class Armario : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private float _timer;  // _timer que se usara para llevar los dos tiempos.
-
+    private Animator _animator;
     enum CabinetState  // enum para indicar en que _currentState se encuentra el armario
     {
         Active,
@@ -59,7 +59,16 @@ public class Armario : MonoBehaviour
         visualPanel.SetActive(Acti); 
        
     }
+    private void UpdateVisuals(bool active)
+    {
+        visualPanel.SetActive(active);
+        visionCollider.enabled = active;
 
+        if (_animator != null)
+        {
+            _animator.SetBool("Open", active);
+        }
+    }
     private void SetVisionActive (bool Acti) // Controlo el propio collider para activarlo y desactivarlo
     {
         visionCollider.enabled = Acti;
@@ -76,6 +85,7 @@ public class Armario : MonoBehaviour
     /// </summary>
     void Awake()
     {
+        _animator = GetComponent<Animator>();
         Phase = GetComponent<Phases>();
         if (Phase == null)
         {
@@ -88,11 +98,24 @@ public class Armario : MonoBehaviour
         {
             Debug.Log("No hay enemyDetect en el panelvisual");
         }
+        if (_animator == null)
+        {
+            Debug.LogError("No se encontró Animator en el Armario.");
+        }
+        UpdateVisuals(true);
+
+
 
     }
     private void OnTriggerStay2D(Collider2D collision) // Mientras el jugador este dentro del enemigo se irá comprobando en que fase se encuentra
     {
         Phase.EnemyPhases(collision);
+    }
+    private void ChangeState(CabinetState newState)
+    {
+        _currentState = newState;
+        _timer = 0;
+        UpdateVisuals(_currentState == CabinetState.Active);
     }
 
     /// <summary>
@@ -107,15 +130,13 @@ public class Armario : MonoBehaviour
             {
                 _currentState = CabinetState.Inactive;
                 _timer = 0;
-                SetVisualPanelActive(false);
-                SetVisionActive(false);
+                UpdateVisuals(false); 
             }
             else if (_currentState == CabinetState.Inactive && _timer >= deactivationDuration)
             {
                 _currentState = CabinetState.Active;
                 _timer = 0;
-                SetVisualPanelActive(true);
-                SetVisionActive(true);
+                UpdateVisuals(true);
             }
         }
     }
