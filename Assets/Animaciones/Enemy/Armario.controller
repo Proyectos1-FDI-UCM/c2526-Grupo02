@@ -61,7 +61,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ArmarioOpen
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 5944432768534551425}
@@ -146,7 +146,7 @@ AnimatorStateMachine:
     m_Position: {x: 560, y: -220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1770503118589345182}
-    m_Position: {x: 1120, y: -200, z: 0}
+    m_Position: {x: 1190, y: -190, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
