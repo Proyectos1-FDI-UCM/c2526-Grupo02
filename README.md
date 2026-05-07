@@ -11,6 +11,7 @@
   <img src="Assets/Images/escena4.png" width="300">
   <img src="Assets/Images/escena5.png" width="300">
 </p>
+
 ## 👥 Integrantes
 
 | Avatar | Miembro | Descripción / Rol |
