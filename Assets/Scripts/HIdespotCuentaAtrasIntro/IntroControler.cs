@@ -10,7 +10,8 @@ using UnityEngine;
 // Directiva de la IU
 using UnityEngine.UI;
 // Directiva textos TMP
-using TMPro; 
+using TMPro;
+using UnityEngine.InputSystem;
 
 /// <summary>
 ///Controla la escena que narra
@@ -26,10 +27,6 @@ public class IntroControler : MonoBehaviour
 
     // Tiempo (en segundos) que se muestra cada frase
     [SerializeField] private float tiempoEntreFrases = 3f;
-
-    // Referencia al botón para continuar (ir a la siguiente escena)
-    [SerializeField] private GameObject botonContinuar;
-
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -49,6 +46,7 @@ public class IntroControler : MonoBehaviour
 
     // Contador interno para medir el tiempo
     private float contadorTiempo = 0f;
+    private InputAction _interact;
 
     #endregion
 
@@ -57,8 +55,11 @@ public class IntroControler : MonoBehaviour
 
     void Start()
     {
-        //Desactiva el botón al comenzar la escena
-      
+        _interact = InputSystem.actions.FindAction("Interact");
+        if (_interact == null)
+        {
+            Debug.Log("No hay interact");
+        }
         // Muestra la primera frase de la historia
         textoUI.text = historia[indice];
     }
@@ -81,7 +82,7 @@ public class IntroControler : MonoBehaviour
         contadorTiempo += Time.deltaTime;
         // Si el contador ha alcanzado el tiempo que queremos esperar
         // (se puede configurar en el inspector¡)
-        if (contadorTiempo >= tiempoEntreFrases)
+        if (contadorTiempo >= tiempoEntreFrases || _interact.WasPressedThisFrame() )
         {
             // Reiniciamos el contador a 0 para empezar a contar otra vez
             contadorTiempo = 0f;
@@ -95,8 +96,8 @@ public class IntroControler : MonoBehaviour
             // Si después de avanzar hemos llegado a la última frase...
             if (indice == historia.Length - 1)
             {
-            // Activamos el botón para ir a la escena definida
-                botonContinuar.SetActive(true);
+                // Activamos el botón para ir a la escena definida
+                GameManager.Instance.ChangeToNextScene(3);
             }
         }
     }

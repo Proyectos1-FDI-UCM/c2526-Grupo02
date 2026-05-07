@@ -183,7 +183,7 @@ public class Dialogo : MonoBehaviour
             {
                 if (_typeAll)
                 {
-                    Dialogue.text = $"{_name} {_currentLine}";
+                    Dialogue.text = $"{_name}: {_currentLine}";
                     _type = false;
                     _typeAll = false;
                     return;
