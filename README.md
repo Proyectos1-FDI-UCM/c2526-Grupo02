@@ -1,5 +1,12 @@
 # Don't go up
+<p align="center">
+  <img src="Assets/Images/escena1.png" width="600">
+</p>
 
+<p align="center">
+  <img src="Assets/Images/escena1.png" width="300">
+  <img src="Assets/Images/escena1.png" width="300">
+</p>
 
 ## 👥 Integrantes
 
