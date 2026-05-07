@@ -58,7 +58,7 @@ public class Dialogo : MonoBehaviour
     private string _archive;
     private string _ruta;
     private float _timer;
-    private float _delayTime = 0.3f;
+    private float _delayTime = 0.05f;
 
     #endregion
 
