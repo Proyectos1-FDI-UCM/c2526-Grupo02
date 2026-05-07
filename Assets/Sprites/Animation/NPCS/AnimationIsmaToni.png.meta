@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: ae1a1b9922bb7d048917ccc6b24fffde
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2413546002211361066
+    second: AnimationIsmaToni_0
+  - first:
+      213: 8906646553894960381
+    second: AnimationIsmaToni_1
+  - first:
+      213: -5040955373531859755
+    second: AnimationIsmaToni_2
+  - first:
+      213: 4571676810041073484
+    second: AnimationIsmaToni_3
+  - first:
+      213: 4658313692973799405
+    second: AnimationIsmaToni_4
+  - first:
+      213: -5444547570576621441
+    second: AnimationIsmaToni_5
+  - first:
+      213: 1672760593072884930
+    second: AnimationIsmaToni_6
+  - first:
+      213: 1488164112646552866
+    second: AnimationIsmaToni_7
+  - first:
+      213: -6460807794527492007
+    second: AnimationIsmaToni_8
+  - first:
+      213: 3343530877612894749
+    second: AnimationIsmaToni_9
+  - first:
+      213: -3349093948241482307
+    second: AnimationIsmaToni_10
+  - first:
+      213: -921124221198146454
+    second: AnimationIsmaToni_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 70
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AnimationIsmaToni_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 185
+        width: 130
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a215fde2d43ae7120800000000000000
+      internalID: 2413546002211361066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationIsmaToni_1
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 185
+        width: 132
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfcbdd0f9d3ca9b70800000000000000
+      internalID: 8906646553894960381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationIsmaToni_2
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 185
+        width: 134
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d47900cbcdea0ab0800000000000000
+      internalID: -5040955373531859755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationIsmaToni_3
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 185
+        width: 133
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4f936246dbd17f30800000000000000
+      internalID: 4571676810041073484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationIsmaToni_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 130
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de79a0a7f97a5a040800000000000000
+      internalID: 4658313692973799405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationIsmaToni_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 76
+        width: 76
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f70801db4d41174b0800000000000000
+      internalID: -5444547570576621441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationIsmaToni_6
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 76
+        width: 73
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cc816095e6d63710800000000000000
+      internalID: 1672760593072884930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationIsmaToni_7
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 76
+        width: 70
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22d38c5306507a410800000000000000
+      internalID: 1488164112646552866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationIsmaToni_8
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 76
+        width: 76
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9582d1daa899656a0800000000000000
+      internalID: -6460807794527492007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationIsmaToni_9
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 0
+        width: 86
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1aaaaf4e9b966e20800000000000000
+      internalID: 3343530877612894749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationIsmaToni_10
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 2
+        width: 86
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbde7af5cc0a581d0800000000000000
+      internalID: -3349093948241482307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationIsmaToni_11
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 2
+        width: 78
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a64e971b6628733f0800000000000000
+      internalID: -921124221198146454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a87949252a15ddb4b88eaac7b5d48d22
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      AnimationIsmaToni_0: 2413546002211361066
+      AnimationIsmaToni_1: 8906646553894960381
+      AnimationIsmaToni_10: -3349093948241482307
+      AnimationIsmaToni_11: -921124221198146454
+      AnimationIsmaToni_2: -5040955373531859755
+      AnimationIsmaToni_3: 4571676810041073484
+      AnimationIsmaToni_4: 4658313692973799405
+      AnimationIsmaToni_5: -5444547570576621441
+      AnimationIsmaToni_6: 1672760593072884930
+      AnimationIsmaToni_7: 1488164112646552866
+      AnimationIsmaToni_8: -6460807794527492007
+      AnimationIsmaToni_9: 3343530877612894749
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
