@@ -23,9 +23,9 @@ Nuestro juego trata sobre un niño que ha perdido su peluche y está decidido a 
 Sin embargo, su motivación no es únicamente encontrar su peluche: el niño también siente una gran curiosidad por descubrir los secretos que oculta el ático. 
 
 ## 👁️ A qué se juega
-En esencia, el juego se centra en la resolución de puzles y acertijos, así como en esquivar enemigos que dificultarán constantemente el progreso del jugador. A medida que avanza por la aventura, el jugador irá descubriendo fragmentos de información y piezas clave de la historia, que deberá unir poco a poco para comprender por completo el misterio y la trama..
+En esencia, el juego se centra en la resolución de puzles y acertijos, así como en esquivar enemigos que dificultarán constantemente el progreso del jugador. A medida que avanza por la aventura, el jugador irá descubriendo fragmentos de información y piezas clave de la historia, que deberá unir poco a poco para comprender por completo el misterio y la trama.
 
-## ⌨️ Controles
+## 👁️ Controles
 ### Escena de Juego
 
 | Acción | Teclado | Mando (Xbox) |
@@ -37,15 +37,12 @@ En esencia, el juego se centra en la resolución de puzles y acertijos, así com
 | **Inventario** | `I` | Botón Vista |
 | **Pausar el juego** | `Escape` | Botón `≡` (Menú) |
 
-#### Diagrama de Mando
-[Esquema de Controles Mando](URL_IMAGEN_MANDO)
 
----
 
-## 🌟 Créditos y Recursos Externos
+## 👁️ Créditos y Recursos Externos
 *(Añadir aquí los recursos )
 
-## ⚠️ Bug conocidos 
+## 👁️ Bug conocidos 
 * [Error 1]: Aveces hay de darle más de una vez al interactuar cuando te escondes para que funcione.No hemos logrado arreglarlo y creemos que proviene del la ejecución de unity
 * [Error 2]: No es un error pero puede molestar, si tienes el objeto equipado y das a interactuar con npc que necesita ese objeto, automáticamente te lo quita y sale la escena de dialogos
 * [Error 3]: Cuando paras de caminar el idle del niño siempre mria a una direción cocnreta, y cuando se pasa de andar a quieto aveces resulta raro.
