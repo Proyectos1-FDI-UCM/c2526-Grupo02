@@ -4777,8 +4777,6 @@ GameObject:
   - component: {fileID: 747591625}
   - component: {fileID: 747591630}
   - component: {fileID: 747591629}
-  - component: {fileID: 747591628}
-  - component: {fileID: 747591627}
   - component: {fileID: 747591626}
   m_Layer: 0
   m_Name: Guillermito
@@ -4895,107 +4893,31 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 747591627}
-        m_TargetAssemblyTypeName: Conditional, Assembly-CSharp
-        m_MethodName: CheckCondition
-        m_Mode: 1
+      - m_Target: {fileID: 932304833}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: SetName
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Guille
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 932304833}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: Talk
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GuilleA.txt
           m_BoolArgument: 0
         m_CallState: 2
   cameraInteracts: 0
---- !u!114 &747591627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 747591622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d19b12259ae7724d946da99d8a445b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  code:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 932304833}
-        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: SetName
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Guille
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 932304833}
-        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: Talk
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: GuilleA.txt
-          m_BoolArgument: 0
-        m_CallState: 2
-  negativeCode:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 932304833}
-        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: SetName
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Guille
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 932304833}
-        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: Talk
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: GuilleA.txt
-          m_BoolArgument: 0
-        m_CallState: 2
-  Mano: {fileID: 6329152183601729566}
-  NeededType: 0
-  condition: 0
-  Repeateable: 0
---- !u!114 &747591628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 747591622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b64a8458d7de41647a7766035c14a7c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Canvas: {fileID: 1617609905}
-  Dialogue: {fileID: 1387251030}
-  Speed: 0.03
-  High: {fileID: 8300000, guid: 8c1bb40d7f59f7d479f69a27e52f9967, type: 3}
-  Middle: {fileID: 8300000, guid: eead35fe8d5860b43827c024fbf19c11, type: 3}
-  Low: {fileID: 8300000, guid: e69af7d767d088240bc1e3323bd7bf7d, type: 3}
 --- !u!61 &747591629
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6240,24 +6162,6 @@ MonoBehaviour:
   NeededType: 0
   condition: 0
   Repeateable: 0
---- !u!114 &1078449564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078449562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b64a8458d7de41647a7766035c14a7c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Canvas: {fileID: 1617609905}
-  Dialogue: {fileID: 1387251030}
-  Speed: 0.03
-  High: {fileID: 8300000, guid: 8c1bb40d7f59f7d479f69a27e52f9967, type: 3}
-  Middle: {fileID: 8300000, guid: eead35fe8d5860b43827c024fbf19c11, type: 3}
-  Low: {fileID: 8300000, guid: e69af7d767d088240bc1e3323bd7bf7d, type: 3}
 --- !u!114 &1078449565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10837,9 +10741,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2854372717920814992, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1752491794}
-    - targetCorrespondingSourceObject: {fileID: 2854372717920814992, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1752491793}
     - targetCorrespondingSourceObject: {fileID: 2854372717920814992, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       insertIndex: -1
@@ -10970,24 +10871,6 @@ MonoBehaviour:
   NeededType: 0
   condition: 0
   Repeateable: 0
---- !u!114 &1752491794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1752491790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b64a8458d7de41647a7766035c14a7c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Canvas: {fileID: 1617609905}
-  Dialogue: {fileID: 1387251030}
-  Speed: 0.03
-  High: {fileID: 8300000, guid: 8c1bb40d7f59f7d479f69a27e52f9967, type: 3}
-  Middle: {fileID: 8300000, guid: eead35fe8d5860b43827c024fbf19c11, type: 3}
-  Low: {fileID: 8300000, guid: e69af7d767d088240bc1e3323bd7bf7d, type: 3}
 --- !u!1 &1768110775 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4082793434466057598, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
@@ -11859,94 +11742,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1842405695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842405692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d19b12259ae7724d946da99d8a445b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  code:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 932304833}
-        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: SetName
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Isma
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 932304833}
-        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: Talk
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: IsmaA.txt
-          m_BoolArgument: 0
-        m_CallState: 2
-  negativeCode:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 932304833}
-        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: SetName
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Isma
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 932304833}
-        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
-        m_MethodName: Talk
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: IsmaA.txt
-          m_BoolArgument: 0
-        m_CallState: 2
-  Mano: {fileID: 6329152183601729566}
-  NeededType: 0
-  condition: 0
-  Repeateable: 0
---- !u!114 &1842405696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842405692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b64a8458d7de41647a7766035c14a7c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Canvas: {fileID: 1617609905}
-  Dialogue: {fileID: 1387251030}
-  Speed: 0.03
-  High: {fileID: 8300000, guid: 8c1bb40d7f59f7d479f69a27e52f9967, type: 3}
-  Middle: {fileID: 8300000, guid: eead35fe8d5860b43827c024fbf19c11, type: 3}
-  Low: {fileID: 8300000, guid: e69af7d767d088240bc1e3323bd7bf7d, type: 3}
 --- !u!114 &1842405698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11963,16 +11758,28 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1842405695}
-        m_TargetAssemblyTypeName: Conditional, Assembly-CSharp
-        m_MethodName: CheckCondition
-        m_Mode: 1
+      - m_Target: {fileID: 932304833}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: SetName
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Ismael
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 932304833}
+        m_TargetAssemblyTypeName: Dialogo, Assembly-CSharp
+        m_MethodName: Talk
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: IsmaA.txt
           m_BoolArgument: 0
         m_CallState: 2
   cameraInteracts: 0
@@ -15394,9 +15201,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2854372717920814992, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1078449564}
-    - targetCorrespondingSourceObject: {fileID: 2854372717920814992, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1078449563}
     - targetCorrespondingSourceObject: {fileID: 2854372717920814992, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       insertIndex: -1
@@ -16298,12 +16102,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8598333716720090309, guid: 1cef6ba036c95964b88359b48830becd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1842405694}
-    - targetCorrespondingSourceObject: {fileID: 8598333716720090309, guid: 1cef6ba036c95964b88359b48830becd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1842405696}
-    - targetCorrespondingSourceObject: {fileID: 8598333716720090309, guid: 1cef6ba036c95964b88359b48830becd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1842405695}
     - targetCorrespondingSourceObject: {fileID: 8598333716720090309, guid: 1cef6ba036c95964b88359b48830becd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1842405698}

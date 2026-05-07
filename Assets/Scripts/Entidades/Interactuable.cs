@@ -39,7 +39,7 @@ public class Interactuable : MonoBehaviour
     //Variable que guarda la accion de interact
     private InputAction _Interact;
     private float _timer;
-    private float _delayTime;
+    private float _delayTime = 0.05f;
    
     #endregion
     
