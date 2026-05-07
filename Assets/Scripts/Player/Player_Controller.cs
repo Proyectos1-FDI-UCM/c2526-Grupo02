@@ -140,6 +140,7 @@ public class Player_Controller : MonoBehaviour
     {
         //Ponemos la velocidad a 0 para que no se mueva el jugador (RECORDAR QUE NO SE LLAME CONSTANTEMENTE)
         Speed = 0;
+        _animator.SetBool("Caminar",false);
     }
     public void Resume()
     {
