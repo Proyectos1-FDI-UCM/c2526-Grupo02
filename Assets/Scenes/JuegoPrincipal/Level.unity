@@ -15910,7 +15910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6462725759749997516, guid: 06f598fdf4066af4682c571bb1c4edb8, type: 3}
       propertyPath: m_Name
-      value: sotano_kid
+      value: BasementKid
       objectReference: {fileID: 0}
     - target: {fileID: 7767779093465436818, guid: 06f598fdf4066af4682c571bb1c4edb8, type: 3}
       propertyPath: m_Size.x
