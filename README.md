@@ -1,30 +1,29 @@
 # Don't go up
 
-[Cabecera](AQUÍ_VA_URL_IMAGEN_CABECERA)
 
 ## 👥 Integrantes
 
 | Avatar | Miembro | Descripción / Rol |
 | :---: | :--- | :--- |
-| <img src="URL_PATO" width="80" height="80"> | **Pablo** | Nuestro niño rubio |
-| <img src="URL_PERRO" width="80" height="80"> | **Alejandra** | 
-| <img src="URL_TARSIO" width="80" height="80"> | **Alejandro** | 
-| <img src="URL_CARACOL" width="80" height="80"> | **Hermes** | 
-| <img src="URL_RANA" width="80" height="80"> | **Sara** | 
-| <img src="URL_CAMELEON" width="80" height="80"> | **Jesus** |
+| | **Pablo** | Nuestro niño rubio |
+|| **Alejandra** | 
+|  | **Alejandro** | 
+| | **Hermes** | 
+|| **Sara** | 
+|  | **Jesus** |
 
 ---
 
-## 🎯 Objetivos
+## 👁️ Objetivos
 **Don't go up** consiste en una aventura narrativa que combina la experiencia de contar una historia con la resolución de puzles y la presencia constante de enemigos. Estos elementos no solo enriquecen la jugabilidad, sino que también añaden tensión y dificultad, obligando al jugador a superar obstáculos mientras avanza en su aventura y descubre los secretos de la trama.
 
-## 📖 De qué trata nuestro juego
+## 👁️ De qué trata nuestro juego
 Nuestro juego trata sobre un niño que ha perdido su peluche y está decidido a recuperarlo. Para conseguirlo, deberá subir hasta el **ático del orfanato** donde vive, un lugar estrictamente prohibido por razones que desconoce.
 
-[cite_start]Sin embargo, su motivación no es únicamente encontrar su peluche: el niño también siente una gran curiosidad por descubrir los secretos que oculta el ático[cite: 52]. 
+Sin embargo, su motivación no es únicamente encontrar su peluche: el niño también siente una gran curiosidad por descubrir los secretos que oculta el ático. 
 
-## 🎮 A qué se juega
-[cite_start]En esencia, el juego se centra en la resolución de puzles y acertijos, así como en esquivar enemigos que dificultarán constantemente el progreso del jugador[cite: 58]. [cite_start]A medida que avanza por la aventura, el jugador irá descubriendo fragmentos de información y piezas clave de la historia, que deberá unir poco a poco para comprender por completo el misterio y la trama[cite: 59].
+## 👁️ A qué se juega
+En esencia, el juego se centra en la resolución de puzles y acertijos, así como en esquivar enemigos que dificultarán constantemente el progreso del jugador. A medida que avanza por la aventura, el jugador irá descubriendo fragmentos de información y piezas clave de la historia, que deberá unir poco a poco para comprender por completo el misterio y la trama..
 
 ## ⌨️ Controles
 ### Escena de Juego
