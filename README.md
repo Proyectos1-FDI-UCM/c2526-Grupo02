@@ -60,7 +60,7 @@ http://creativecommons.org/licenses/by/4.0/
 * "Grand Dark Waltz Moderato" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
-*"Magic Escape Room" Kevin MacLeod (incompetech.com)
+* "Magic Escape Room" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
 * "Ossuary 5 - Rest" Kevin MacLeod (incompetech.com)
