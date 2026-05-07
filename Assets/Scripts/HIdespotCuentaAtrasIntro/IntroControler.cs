@@ -58,7 +58,7 @@ public class IntroControler : MonoBehaviour
     void Start()
     {
         //Desactiva el botón al comenzar la escena
-        botonContinuar.SetActive(false);
+      
         // Muestra la primera frase de la historia
         textoUI.text = historia[indice];
     }

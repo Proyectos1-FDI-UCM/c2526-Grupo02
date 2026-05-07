@@ -60,7 +60,7 @@ public class Dialogo : MonoBehaviour
     private string _archive;
     private string _ruta;
     private float _timer;
-    private float _delayTime = 0.001f;
+    private float _delayTime = 0.00001f;
     private bool _toniete;
     private bool _twitea;
     private int _twiteaCountDown;

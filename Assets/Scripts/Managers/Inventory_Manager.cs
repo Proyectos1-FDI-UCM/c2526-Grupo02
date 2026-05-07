@@ -78,7 +78,7 @@ public class Inventory_Manager : MonoBehaviour
     private Object_use _objectUse;
 
  
-    private float _delayTime = 0.001f;
+    private float _delayTime = 0.00001f;
     private float _delayTimeMove = 0.1f;
     private float _timer1 = 0.0f;
     private float _timer2 = 0.0f;
