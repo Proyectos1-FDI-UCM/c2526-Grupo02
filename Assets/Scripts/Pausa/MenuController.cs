@@ -39,6 +39,8 @@ public class MenuController : MonoBehaviour
     #region Atributos Privados (private fields)
     //Atributo de la acción para menu
     private InputAction _pausa;
+    private float _timer;
+    private float _delayTime = 0.3f;
 
     #endregion
 
@@ -65,10 +67,21 @@ public class MenuController : MonoBehaviour
     {
         if (_pausa.WasPressedThisFrame())
         {
-            _panelControles.SetActive(false);
-            _menuCanvas.SetActive(!_menuCanvas.activeSelf); //devuelve lo contrario a como entre
-            Pausa_controller.SetPause(_menuCanvas.activeSelf);
-            EventSystem.current.SetSelectedGameObject(_FirstButton);
+            if (_timer >= _delayTime)
+            {
+                _timer = 0;
+                _panelControles.SetActive(false);
+                _menuCanvas.SetActive(!_menuCanvas.activeSelf); //devuelve lo contrario a como entre
+                Pausa_controller.SetPause(_menuCanvas.activeSelf);
+                EventSystem.current.SetSelectedGameObject(_FirstButton);
+            }
+        }
+        else
+        {
+            if (_timer < _delayTime)
+            {
+                _timer += Time.deltaTime;
+            }
         }
     }
     #endregion

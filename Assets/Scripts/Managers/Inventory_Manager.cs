@@ -79,7 +79,9 @@ public class Inventory_Manager : MonoBehaviour
     private Object_use _objectUse;
 
 
-    private float _timer = 0.0f;
+    private float _timer1 = 0.0f;
+    private float _timer2 = 0.0f;
+    private float _timer3 = 0.0f;
     #endregion
 
 
@@ -149,22 +151,38 @@ public class Inventory_Manager : MonoBehaviour
 
     private void Update()
     {
-        if (_openInvAction.WasPressedThisFrame()&& !Pausa_controller.IsGamePaused) //si pulsamos el boton de inventario lo mostramos/ocultamos
+
+        if (_openInvAction.WasPressedThisFrame() && !Pausa_controller.IsGamePaused) //si pulsamos el boton de inventario lo mostramos/ocultamos
         {
-            _inventoryIsOpen = !_inventoryIsOpen;
-            _inventoryHud.SetActive(_inventoryIsOpen);
-            if (_inventoryIsOpen)
+            
+            if (_timer1 >= _delayTime)
             {
-                _currentItemIndex = 0;
-                _timer = _delayTime;
-                _playerController.Stop();
+                _inventoryIsOpen = !_inventoryIsOpen;
+                _inventoryHud.SetActive(_inventoryIsOpen);
+                if (_inventoryIsOpen)
+                {
+                    _currentItemIndex = 0;
+
+                    _playerController.Stop();
+                    _timer1 = 0;
+                }
+                else
+                {
+                    _playerController.Resume();
+                    _timer1 = 0;
+                }
+                _selection.position = _invHudSpaces[0].GetComponent<RectTransform>().position;
             }
-            else
-            {
-                _playerController.Resume();
-            }
-            _selection.position = _invHudSpaces[0].GetComponent<RectTransform>().position;
+            
         }
+        else
+        {
+            if (_timer1 < _delayTime)
+            {
+                _timer1 += Time.deltaTime;
+            }
+        }
+
 
         if (_inventoryIsOpen && !Pausa_controller.IsGamePaused)
         {
@@ -175,7 +193,7 @@ public class Inventory_Manager : MonoBehaviour
 
             if(dir.x != 0)
             {
-                if (_timer >= _delayTime)
+                if (_timer2 >= _delayTime)
                 {
                     if (_currentItemIndex > 0 && HorizontalDir == -1)
                     {
@@ -187,11 +205,11 @@ public class Inventory_Manager : MonoBehaviour
                     }
                     _selection.position = _invHudSpaces[_currentItemIndex].GetComponent<RectTransform>().position;
 
-                    _timer = 0;
+                    _timer2 = 0;
                 }
                 else
                 {
-                    _timer += Time.deltaTime;
+                    _timer2 += Time.deltaTime;
                 }
             }
 
@@ -199,9 +217,16 @@ public class Inventory_Manager : MonoBehaviour
 
             if (_Interact.WasPressedThisFrame() && _currentItemIndex < _nObj)
             {
-
-                _objectUse.SetPickedObject(_inv[_currentItemIndex]);
-                _sujetado = _inv[_currentItemIndex];
+                if (_timer3 >= _delayTime)
+                {
+                    _timer3 = 0;
+                    _objectUse.SetPickedObject(_inv[_currentItemIndex]);
+                    _sujetado = _inv[_currentItemIndex];
+                }
+            }
+            else
+            {
+                _timer3 += Time.deltaTime;
             }
         }
     }

@@ -57,6 +57,8 @@ public class Dialogo : MonoBehaviour
     private AudioSource _clip;
     private string _archive;
     private string _ruta;
+    private float _timer;
+    private float _delayTime = 0.3f;
 
     #endregion
 
@@ -95,21 +97,36 @@ public class Dialogo : MonoBehaviour
                     _talking = false;
                     _playerController.Resume();
                 }//si avanza dialogo en la ultima linea regresa al estado de entrada
-                _time += Time.deltaTime;
+               // _time += Time.deltaTime;
                 //Código para que la primera línea se ejecute sin tener que "interactuar"
                 if (_first)
                 {
-                    Debug.Log("PRIMERA");
                     _pressed = true;
                     _first = false;
                 }
                 else
                 {
-                    _pressed = _talk.ReadValue<float>() > 0f && _talk.WasPressedThisFrame();
+
+                    if (_talk.WasPressedThisFrame())
+                    {
+                        if (_timer >= _delayTime)
+                        {
+                            _timer = 0;
+                            _pressed = true;
+                        }
+                    }
+                    else
+                    {
+                        if (_timer < _delayTime)
+                        {
+                            _timer += Time.deltaTime;
+                        }
+                    }
                 }
 
                 if (_pressed)
                 {
+                    _pressed = false;
                     Canvas.enabled = true;
                     if (_type) _typeAll = true;
                     else
@@ -197,7 +214,6 @@ public class Dialogo : MonoBehaviour
             {
                 string texto = File.ReadAllText(_ruta); // lee el archivo
                 _script = texto.Split('\n'); //lo separa por lineas
-                Debug.Log(texto.Length);
             }
             else
             {
@@ -219,15 +235,7 @@ public class Dialogo : MonoBehaviour
     //{
     //    if (collision.GetComponent<Player_Controller>() != null) { _talking = true; }
     //}
-    private void OnTriggerExit2D(Collider2D collision) // resetea todo  al alejarse del npc
-    {
-        if (collision.GetComponent<Test_detect_correction>() != null) 
-        {
-            _talking = false; 
-            Canvas.enabled = false; 
-            _currentLine = ""; 
-        }
-    }
+  
     private void WriteLine(string linea) //animacion de escribir por letra, el nombre del personaje se queda afuera del bucle para que no cambie
     {
         _index = 0;

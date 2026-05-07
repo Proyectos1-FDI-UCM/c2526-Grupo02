@@ -38,6 +38,8 @@ public class Interactuable : MonoBehaviour
     #region Atributos Privados (private fields)
     //Variable que guarda la accion de interact
     private InputAction _Interact;
+    private float _timer;
+    private float _delayTime;
    
     #endregion
     
@@ -78,9 +80,21 @@ public class Interactuable : MonoBehaviour
                     || (cameraInteracts && LookUpComponent.GetAlturaAlta() && other.tag == "Player")) //Interaccion de la camara, la camara esta mirando arriba y esta en rango
                     && _Interact.WasPressedThisFrame()) //Si el jugador esta pulsando el boton de interaccion
                 {
-                OnInteract.Invoke(); //llamamos a la funcion asignada en el inspector
+
+                if (_timer >= _delayTime)
+                {
+                    _timer = 0;
+                    OnInteract.Invoke(); //llamamos a la funcion asignada en el inspector
                 }
-            
+                }
+            else
+            {
+                if (_timer < _delayTime)
+                {
+                    _timer += Time.deltaTime;
+                }
+            }
+
         }
     }
     #endregion
