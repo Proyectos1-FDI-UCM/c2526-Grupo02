@@ -51,7 +51,24 @@ En esencia, el juego se centra en la resolución de puzles y acertijos, así com
 
 
 ## 👁️ Créditos y Recursos Externos
-*(Añadir aquí los recursos )
+* "Dentaneosuchus Hunt " Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+* "Anguish" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+* "Grand Dark Waltz Moderato" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+*"Magic Escape Room" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+* "Ossuary 5 - Rest" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+* "Ossuary 1 - A Beginning" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
 
 ## 👁️ Bug conocidos 
 * [Error 1]: No es un error pero puede molestar, si tienes el objeto equipado y das a interactuar con npc que necesita ese objeto, automáticamente te lo quita y sale la escena de dialogos
