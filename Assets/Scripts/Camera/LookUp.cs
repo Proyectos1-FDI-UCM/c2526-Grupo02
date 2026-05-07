@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Responsable de la creación de este archivo  JESUS DIEZ
-// Nombre del juego - Dont go up
+// Nombre del juego - Don't Go Up
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -82,7 +82,6 @@ public class LookUp : MonoBehaviour
         }
         interactionCollider = Jugador.GetComponentInChildren<Test_detect_correction>().gameObject;
 
-
     }
 
     private void Update()
@@ -119,7 +118,6 @@ public class LookUp : MonoBehaviour
                 {
                     // Ajuste de altura sobre el jugador
                     yObj = alturaElevada + Jugador.transform.position.y;
-
 
                     //El stop Si se pone en el update porque otro script podría llegar a permitir al jugador moverse pero por este no se debería poder.
                     Jugador.GetComponent<Player_Controller>().Stop();

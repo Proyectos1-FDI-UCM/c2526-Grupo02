@@ -1,30 +1,27 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
 // Responsable de la creación de este archivo  JESUS DIEZ
-// Don't Go Up
+// Nombre del juego - Don't Go Up
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using System;
 using UnityEngine;
-//Directiva control de de escenas
-using UnityEngine.SceneManagement;
 // Directiva de la IU
 using UnityEngine.UI;
 // Directiva textos TMP
 using TMPro; 
 
 /// <summary>
-//Contrala la escena que narra
-//la historia del niño y sus objetos del juego
-
+///Controla la escena que narra
+///la historia del niño y sus objetos del juego
 /// </summary>
 public class IntroControler : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     
-    // Referencia al texto de la UI donde se mostrará la historia
+    // Referencia al texto de la UI y el lugar se mostrará la historia
     [SerializeField] private TextMeshProUGUI textoUI;
 
     // Tiempo (en segundos) que se muestra cada frase
@@ -60,15 +57,15 @@ public class IntroControler : MonoBehaviour
 
     void Start()
     {
-        //Desactivama el panel con la historial al comenzar
+        //Desactiva el botón al comenzar la escena
         botonContinuar.SetActive(false);
-        //Asigna al texto del panel cada elemento(frase) del array co los textos
+        // Muestra la primera frase de la historia
         textoUI.text = historia[indice];
     }
 
     void Update()
     {
-        //01. CONTROL DE FINAL DE HISTORIA
+        //01. CONTROLA SI LA ESCENA HA TERMINADO
 
         // Si el índice actual ya está en la última frase del array...
         // (Length - 1 porque los arrays empiezan en 0)
@@ -76,11 +73,11 @@ public class IntroControler : MonoBehaviour
         if (indice >= historia.Length - 1)
             // Salimos del método y no seguimos ejecutando nada más
             return;
-        
+
         //02. CONTROL DEL TIEMPO
 
-        // Sumamos al contador el tiempo que ha pasado desde el último frame
-        // Time.deltaTime = tiempo real entre frames
+        // Acumula el tiempo transcurrido entre frames
+        // Time.deltaTime representa el tiempo entre frames
         contadorTiempo += Time.deltaTime;
         // Si el contador ha alcanzado el tiempo que queremos esperar
         // (se puede configurar en el inspector¡)
@@ -108,13 +105,6 @@ public class IntroControler : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-
-    //Lleva a escana1, se asigna al boton
-    //Esta comentado, ya que he puesto el prefab del boton tiene ya un script de cambio de escana
-    //public void IrAEscena1()
-    //{
-    //  SceneManager.LoadScene("Escena1");
-    //}
 
     #endregion
 

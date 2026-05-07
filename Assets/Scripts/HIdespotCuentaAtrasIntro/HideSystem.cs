@@ -1,29 +1,23 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
 // Responsable de la creación de este archivo JESUS DIEZ
-// Nombre del juego - Dont go up
+// Nombre del juego - Don't Go Up
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
-// Añadir aquí el resto de directivas using
-
-
-// Se encarga de gestionar el estado de escondite del jugador.
-// Permite entrar y salir de un escondite, controlando visibilidad,
-// colisiones
+/// <summary>
+/// Gestiona el sistema de escondite del jugador.
+/// Permite entrar y salir de escondites, controlando la visibilidad,
+/// el movimiento y el estado del personaje.
+/// <summary>
 
 public class HideSystem : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
-    [Header("Configuración")]
 
+    [Header("Configuración")]
 
     //Permite acceder al Player_Controler para para el jugador cuando está escondido
     [SerializeField] private Player_Controller movement;
@@ -35,18 +29,15 @@ public class HideSystem : MonoBehaviour
    
     //Indica si el jugador está actualmente escondido
     private bool _isHiding = false;
-    //Guarda el último momento en el que se interactuó
-    private float _lastInputTime;
-  
+
     // Referencia al Renderer del jugador
     private Renderer _renderer;
 
     // Referencia al Collider del jugador
     private Collider2D _collider;
-
+   
     private float _counter = 0;
     private float _maxCounter = 0.001f;
-
 
     #endregion
 
@@ -81,31 +72,39 @@ public class HideSystem : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    
-
-    //Activa y desactiva si el jugdor esta escondido
+    /// <summary>
+    /// Alterna entre entrar y salir del estado de escondite.
+    /// Solo permite el cambio si ha pasado el tiempo de espera (_counter),
+    /// evitando pulsaciones rápidas consecutivas.
+    /// </summary>
     public void ToggleHide()
     {
+        // Comprueba que el cooldown haya finalizado
         if (_counter <= 0)
         {
             if (!_isHiding)
             {
-            _isHiding = !_isHiding;
-            EnterHide();
+        // Si el jugador NO está escondido, entra en modo escondite
+                _isHiding = !_isHiding;
+        // Ejecuta la lógica de ocultarse (desactivar visibilidad, movimiento, etc.)
+                EnterHide();
+
+           // Reinicia el cooldown
                 _counter = _maxCounter;
-           
             }
             else
             {
-            _isHiding = !_isHiding;
+            // Cambia el estado a visible
+                _isHiding = !_isHiding;
             ExitHide();
+            // Reinicia el cooldown
                 _counter = _maxCounter;
             }
         }
     
     }
     
-    //permite acceder a la variable privad isHIding a traves de propiedad
+    //permite acceder a la variable privada isHiding a traves de propiedad
     public bool IsHiding
     {
         get { return _isHiding; }

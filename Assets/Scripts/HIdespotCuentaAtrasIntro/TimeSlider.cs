@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
 // Responsable de la creación de este archivo JESUS DIEZ
-// Nombre del juego - Dont go up
+// Nombre del juego - Don't Go Up
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -14,30 +14,21 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
 /// <summary>
-//Cronómetro, cuenta a tras configurable
-//en el editor, se muestra en el HUB atraves de un collader
-//y un texto que va marcha atra.
-//Tiene un metodo públic Star iniciar el cronometro
-//Tiene un método públic Stop para parar el cronómetro
-//y ocultar los paneles.
-//Cuando termina de contar el cronómetro para al jugador.
-//El cronómetro puede activarse desde el inspector
-//Si el cronómetro alcanza el cero lleva 
-//al final malo "BadEnding()" que bien
-//(activa el panel)  o escena (codigo anotado) de "badending".
-
+/// Sistema de cronómetro con cuenta atrás.
+/// Muestra el tiempo restante mediante un slider y texto UI.
+/// Puede iniciarse manualmente o desde el Inspector.
+/// Al llegar a cero detiene al jugador y ejecuta un evento de final de partida.
 /// </summary>
 public class TimeSlider : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     
-    [Header("Activacion/desactivacion desde Inspector")]
+    [Header("Activación/desactivación desde Inspector")]
     [SerializeField]
     private bool activateTimerInInspector = false;
 
-
-    // Canvas que contiene slider y text
+    // Canvas que contiene la UI del cronómetro (slider y texto)
     [SerializeField] private GameObject timerCanvas;
     
     //Referencia al slider del HUB
@@ -45,30 +36,32 @@ public class TimeSlider : MonoBehaviour
 
     // Tiempo total que durará el cronómetro (en segundos)
     [SerializeField] private float duration = 10f;
-    [SerializeField]
-        private GameObject GameOver;
+    
+    // Objeto o UI de Game Over (final de la partida)
+    [SerializeField] private GameObject GameOver;
 
-    // Referencia al texto que mostrará el tiempo en pantalla
+    // Texto que muestra el tiempo restante en pantalla
     [SerializeField] private TMP_Text timerText;
 
-    // Nombre de la escena de final malo
-    //[SerializeField] private string badEndingSceneName = "BadEnding";
-
+    // Evento ejecutado cuando el tiempo llega a cero (Game Over, cambio de escena, etc.).
+    // Se ejecuta cuando el temporizador llega a cero.
+    // Permite enlazar acciones como cambiar de escena, mostrar UI o activar GameOver
+    // sin necesidad de escribir código adicional.
     [SerializeField]
     UnityEvent code;
 
-    // Referencia al jugador, para llamar a su funcion "stop" para poder pararlo
-    [SerializeField] private Player_Controller player;  
+    // Referencia al jugador para detener su movimiento al finalizar el tiempo
+    [SerializeField] private Player_Controller player;
 
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    
-    // Tiempo que ha pasado desde que empezó el contador
+
+    // Tiempo acumulado desde que empezó el cronómetro
     private float _timePassed = 0f;
 
-    // Controla si el temporizador está activo
+    // Indica si el cronómetro está activo
     private bool _isRunning = false;
 
     #endregion
@@ -79,11 +72,9 @@ public class TimeSlider : MonoBehaviour
     //los paneles se ponen inactivos al arrancar la escena
     void Start()
     {
-        //panel del slider y cronometro apagados al iniciar la escena
+        // Oculta la UI del cronómetro al iniciar la escena
         if (timerCanvas != null)
             timerCanvas.SetActive(false);
-
-        //Panel del final malo apagado al iniciar la escena
 
         // No empieza solo, espera StartTimer()
         _isRunning = false; 
@@ -91,16 +82,17 @@ public class TimeSlider : MonoBehaviour
 
     void Update()
     {
+        // No actualiza el cronómetro si el juego está pausado o el jugador ha muerto
         if (!Pausa_controller.IsGamePaused && !LevelManager.Instance.GetDeath())
         {
-            /// Control desde Inspector
+            // Permite iniciar automáticamente el cronómetro desde el Inspector
             if (activateTimerInInspector)
             {
                 if (!_isRunning) StartTimer();
             }
 
-            ///Lógica del temporizador
-
+            //Lógica del temporizador
+            // Actualiza el cronómetro solo si está en ejecución
             // Si el temporizador está detenido, no ejecuta nada
             if (!_isRunning) return;
 
@@ -111,14 +103,14 @@ public class TimeSlider : MonoBehaviour
             // Calcula cuánto tiempo queda
             float timeLeft = duration - _timePassed;
 
-            // Actualiza el slider (valor entre 0 y 1)
+            // Normaliza el tiempo entre 0 y 1 para el slider
             slider.value = _timePassed / duration;
 
             // Actualiza el texto mostrando el tiempo restante
-            //  Redondea hacia arriba (ej: 2.3 -> 3)
+            // Muestra el tiempo restante redondeado
             timerText.text = Mathf.Round(timeLeft) + "s";
 
-            // Si el tiempo se ha terminado...
+            // Si el tiempo llega a cero, finaliza la partida
             if (_timePassed >= duration)
             {
                 // Detiene el temporizador
@@ -135,7 +127,6 @@ public class TimeSlider : MonoBehaviour
 
                 // Llama a la función del final malo
                 BadEnding();
-
             }
         }
     }
@@ -143,28 +134,28 @@ public class TimeSlider : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-   //Lleva al final malo
+    // Ejecuta el evento de final de partida (Game Over)
     public void BadEnding()
     {
         code.Invoke();
     }
 
-    // Función para iniciar el temporizador 
+    // Inicia el cronómetro y muestra la UI correspondiente
     public void StartTimer()
     {
-        //arranca el timmer
+        // Activa el cronómetro
         _isRunning = true;
-        //lo pone a cero
+        // Reinicia el tiempo transcurrido
         _timePassed = 0f;
 
-        //Hace visble canvas donde va el contador y el slider
+        // Muestra la interfaz del cronómetro
         if (timerCanvas != null)
             timerCanvas.SetActive(true);
 
         // Oculta el panel si está visible
 
     }
-    //Detiene el timer y oculta el panel con el cronómetro
+    //Detiene el temporizador y oculta el panel con el cronómetro
     public void StopTimer()
     {
         _isRunning = false;

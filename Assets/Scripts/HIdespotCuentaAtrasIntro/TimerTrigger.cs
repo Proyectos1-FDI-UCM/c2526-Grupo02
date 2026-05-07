@@ -1,31 +1,31 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
 // Responsable de la creación de este archivo JESUS DIEZ
-//Nombre del juego - Dont go up
+// Nombre del juego - Don't Go Up
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
-// Añadir aquí el resto de directivas using
-
-
-//Script para poder probar el cronómetro
-//El cronómetro se activa al pasar el jugador por un collader colocado
-//en un objeto
+/// <summary>
+/// </summary> para activar el cronómetro
+///El cronómetro se activa al pasar el jugador por un collider colocado
+///en un objeto
+/// <summary>
 public class TimerTrigger : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Referencia a tu temporizador
+    // Referencia al script del temporizador que se va a activar
     [SerializeField] private TimeSlider timer;
 
-    // Activar solo la primera vez
+    // Evita que el trigger se ejecute más de una vez
     [SerializeField] private bool onlyOnce = true;
 
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
+    // Evita que el trigger se ejecute más de una vez
     private bool triggered = false;
 
     #endregion
@@ -35,15 +35,16 @@ public class TimerTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Comprobamos que sea el jugador (tag "Player") y que no se haya activado ya
+        // Verifica si el objeto es el jugador y si el trigger puede ejecutarse
         if (other.CompareTag("Player") && (!onlyOnce || !triggered))
         {
+            // Evita que el jugador pueda reiniciar el temporizador múltiples veces
             triggered = true;
 
-            // Llama a StartTimer() del TimeSlider
+            // Inicia el temporizador si está asignado
             if (timer != null)
                 timer.StartTimer();
-
+            // Mensaje de depuración para comprobar activación del trigger
             Debug.Log("Trigger activado: temporizador arrancado");
         }
     }
