@@ -40,7 +40,7 @@ public class MenuController : MonoBehaviour
     //Atributo de la acción para menu
     private InputAction _pausa;
     private float _timer;
-    private float _delayTime = 0.05f;
+    private float _delayTime = 0.01f;
 
     #endregion
 

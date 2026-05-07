@@ -36,7 +36,7 @@ public class Inventory_Manager : MonoBehaviour
     private Object _sujetado;
 
     [SerializeField]
-    private float _delayTime = 0.5f;
+    private float _delayTime = 0.01f;
 
     [SerializeField]
     private RectTransform _selection; //índice visual
