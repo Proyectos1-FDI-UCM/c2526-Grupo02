@@ -1,6 +1,6 @@
 # Don't go up
 
-![Cabecera](AQUÍ_VA_URL_IMAGEN_CABECERA)
+[Cabecera](AQUÍ_VA_URL_IMAGEN_CABECERA)
 
 ## 👥 Integrantes
 
@@ -16,10 +16,10 @@
 ---
 
 ## 🎯 Objetivos
-[cite_start]**Don't go up** consiste en una aventura narrativa que combina la experiencia de contar una historia con la resolución de puzles y la presencia constante de enemigos[cite: 47]. [cite_start]Estos elementos no solo enriquecen la jugabilidad, sino que también añaden tensión y dificultad, obligando al jugador a superar obstáculos mientras avanza en su aventura y descubre los secretos de la trama[cite: 48].
+**Don't go up** consiste en una aventura narrativa que combina la experiencia de contar una historia con la resolución de puzles y la presencia constante de enemigos. Estos elementos no solo enriquecen la jugabilidad, sino que también añaden tensión y dificultad, obligando al jugador a superar obstáculos mientras avanza en su aventura y descubre los secretos de la trama.
 
 ## 📖 De qué trata nuestro juego
-[cite_start]Nuestro juego trata sobre un niño que ha perdido su peluche y está decidido a recuperarlo[cite: 50]. [cite_start]Para conseguirlo, deberá subir hasta el **ático del orfanato** donde vive, un lugar estrictamente prohibido por razones que desconoce[cite: 51].
+Nuestro juego trata sobre un niño que ha perdido su peluche y está decidido a recuperarlo. Para conseguirlo, deberá subir hasta el **ático del orfanato** donde vive, un lugar estrictamente prohibido por razones que desconoce.
 
 [cite_start]Sin embargo, su motivación no es únicamente encontrar su peluche: el niño también siente una gran curiosidad por descubrir los secretos que oculta el ático[cite: 52]. 
 
