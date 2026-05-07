@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 1780499}
   - component: {fileID: 1780500}
   m_Layer: 2
-  m_Name: TPSotanoArriba
+  m_Name: TPBasementUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 5992504}
   - component: {fileID: 5992508}
   m_Layer: 0
-  m_Name: MesaEscondite (1)
+  m_Name: TableHideOut3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1338,7 +1338,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 381050329868028170, guid: ec2fbeedb8b2faa4b8d08b4668076099, type: 3}
       propertyPath: m_Name
-      value: Llave
+      value: Key
       objectReference: {fileID: 0}
     - target: {fileID: 475307447167709376, guid: ec2fbeedb8b2faa4b8d08b4668076099, type: 3}
       propertyPath: m_Size.x
@@ -1603,7 +1603,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1842195130103001372, guid: 06daeb36b39e5dc448cbc12df93a806f, type: 3}
       propertyPath: m_Name
-      value: Inventory_Manager
+      value: InventoryManager
       objectReference: {fileID: 0}
     - target: {fileID: 3318845372619443286, guid: 06daeb36b39e5dc448cbc12df93a806f, type: 3}
       propertyPath: m_LocalScale.z
@@ -1748,7 +1748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 269026316}
   m_Layer: 0
-  m_Name: Hall_general
+  m_Name: Hall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1787,7 +1787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 287474711}
   m_Layer: 0
-  m_Name: Oficina_general
+  m_Name: Office
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1827,7 +1827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 290158343}
   m_Layer: 0
-  m_Name: Salon_general
+  m_Name: LivingRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2463,7 +2463,7 @@ GameObject:
   - component: {fileID: 326477956}
   - component: {fileID: 326477955}
   m_Layer: 0
-  m_Name: comedor_0
+  m_Name: LivingRoomImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2551,7 +2551,7 @@ GameObject:
   - component: {fileID: 344927261}
   - component: {fileID: 344927262}
   m_Layer: 0
-  m_Name: ParedesSotano (2)
+  m_Name: BasementWall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2996,7 +2996,7 @@ GameObject:
   - component: {fileID: 366052083}
   - component: {fileID: 366052084}
   m_Layer: 2
-  m_Name: VisualArmario
+  m_Name: ClosetVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3369,7 +3369,7 @@ GameObject:
   - component: {fileID: 455583922}
   - component: {fileID: 455583923}
   m_Layer: 0
-  m_Name: "s\xF3tano_0"
+  m_Name: BasementImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4987,7 +4987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 757110884}
   m_Layer: 0
-  m_Name: Cocina_general
+  m_Name: Kitchen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5023,7 +5023,7 @@ GameObject:
   - component: {fileID: 768240222}
   - component: {fileID: 768240221}
   m_Layer: 0
-  m_Name: Oficina
+  m_Name: OfficeImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5277,7 +5277,7 @@ PrefabInstance:
       objectReference: {fileID: -502013596686201963, guid: f30f2fa10d51a654fbafb7b6a3670419, type: 3}
     - target: {fileID: 9076730456491123190, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: m_Name
-      value: Armario
+      value: Closet
       objectReference: {fileID: 0}
     - target: {fileID: 9076730456491123190, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: m_Layer
@@ -5629,7 +5629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 965314887}
   m_Layer: 0
-  m_Name: Sotano
+  m_Name: Basement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5668,7 +5668,7 @@ GameObject:
   - component: {fileID: 981826364}
   - component: {fileID: 981826363}
   m_Layer: 0
-  m_Name: Hall_0
+  m_Name: HallImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5758,7 +5758,7 @@ GameObject:
   - component: {fileID: 988897722}
   - component: {fileID: 988897726}
   m_Layer: 0
-  m_Name: MesaEscondite (3)
+  m_Name: TableHideOut2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5940,7 +5940,7 @@ PrefabInstance:
       objectReference: {fileID: 1709524641}
     - target: {fileID: 6783893821581927113, guid: 9de0dfe00064fc945a17c828a8525f37, type: 3}
       propertyPath: m_Name
-      value: Veneno
+      value: Poison
       objectReference: {fileID: 0}
     - target: {fileID: 7741927571760478988, guid: 9de0dfe00064fc945a17c828a8525f37, type: 3}
       propertyPath: m_Size.x
@@ -6548,7 +6548,7 @@ PrefabInstance:
       objectReference: {fileID: 3043447112872090625, guid: 84e45dc9382e1f74fba039aebec7fda9, type: 3}
     - target: {fileID: 9076730456491123190, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: m_Name
-      value: Gemelos_juguetones
+      value: PlayfulTwins
       objectReference: {fileID: 0}
     - target: {fileID: 9076730456491123190, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: m_Layer
@@ -6587,7 +6587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1157956638}
   m_Layer: 0
-  m_Name: Jardin_general
+  m_Name: Garden
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7125,7 +7125,7 @@ GameObject:
   - component: {fileID: 1233426707}
   - component: {fileID: 1233426708}
   m_Layer: 0
-  m_Name: ParedesSotano
+  m_Name: BasementFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7583,7 +7583,7 @@ GameObject:
   - component: {fileID: 1334615324}
   - component: {fileID: 1334615323}
   m_Layer: 0
-  m_Name: pasillo_0
+  m_Name: Corridor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7766,6 +7766,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2084379509}
     m_Modifications:
+    - target: {fileID: 1032071782155975475, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
+      propertyPath: m_Name
+      value: InventaryClosed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099620730814259122, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
+      propertyPath: m_Name
+      value: Slot1
+      objectReference: {fileID: 0}
     - target: {fileID: 1615495685129868523, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -7866,10 +7874,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4583635197052446165, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
+      propertyPath: m_Name
+      value: InventoryOpenBakcground
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183128993272444602, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
+      propertyPath: m_Name
+      value: Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5275222088890334126, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
+      propertyPath: m_Name
+      value: Icon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284943157111081624, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
+      propertyPath: m_Name
+      value: Slot2
+      objectReference: {fileID: 0}
     - target: {fileID: 5369849014205508632, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -9141691868695453010, guid: 67de0402204089043acc656f4c0ca774, type: 3}
+    - target: {fileID: 5858932233476105376, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
+      propertyPath: m_Name
+      value: Slot4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876269740532111594, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
+      propertyPath: m_Name
+      value: Slot3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8627791515019816041, guid: 039e375353ebcd14fa25ad2b51cc90be, type: 3}
+      propertyPath: m_Name
+      value: InventotyOpen
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7901,7 +7937,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1390186710}
   m_Layer: 0
-  m_Name: Piso_de_abajo
+  m_Name: FirstFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7939,7 +7975,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 381050329868028170, guid: ec2fbeedb8b2faa4b8d08b4668076099, type: 3}
       propertyPath: m_Name
-      value: Pelota
+      value: Ball
       objectReference: {fileID: 0}
     - target: {fileID: 475307447167709376, guid: ec2fbeedb8b2faa4b8d08b4668076099, type: 3}
       propertyPath: m_Size.x
@@ -8134,7 +8170,7 @@ GameObject:
   - component: {fileID: 1450437033}
   - component: {fileID: 1450437032}
   m_Layer: 0
-  m_Name: Pared_bp
+  m_Name: WallLimit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8511,7 +8547,7 @@ GameObject:
   - component: {fileID: 1501063993}
   - component: {fileID: 1501063994}
   m_Layer: 2
-  m_Name: OtroGemelo
+  m_Name: PePa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8672,7 +8708,7 @@ GameObject:
   - component: {fileID: 1519470639}
   - component: {fileID: 1519470640}
   m_Layer: 0
-  m_Name: TPArriba
+  m_Name: TPUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9108,7 +9144,7 @@ GameObject:
   - component: {fileID: 1558395042}
   - component: {fileID: 1558395041}
   m_Layer: 0
-  m_Name: MesaEscondite (4)
+  m_Name: TableHideOut6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9741,7 +9777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9076730456491123190, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: m_Name
-      value: caja_fusibles
+      value: FuseBox
       objectReference: {fileID: 0}
     - target: {fileID: 9076730456491123190, guid: 25364da18e6d3694288037c4787484bb, type: 3}
       propertyPath: m_Layer
@@ -10355,7 +10391,7 @@ GameObject:
   - component: {fileID: 1637615526}
   - component: {fileID: 1637615525}
   m_Layer: 0
-  m_Name: MesaEscondite (2)
+  m_Name: TableHideOut4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10530,7 +10566,7 @@ GameObject:
   - component: {fileID: 1656987007}
   - component: {fileID: 1656987006}
   m_Layer: 0
-  m_Name: cocina_0
+  m_Name: KitchenImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10821,7 +10857,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2854372717920814992, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: m_Name
-      value: Cocinero Cabreado
+      value: ChefAngry
       objectReference: {fileID: 0}
     - target: {fileID: 2854372717920814992, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: m_Layer
@@ -11352,7 +11388,7 @@ GameObject:
   - component: {fileID: 1803551787}
   - component: {fileID: 1803551788}
   m_Layer: 0
-  m_Name: ParedesSotano (1)
+  m_Name: BasementWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11685,7 +11721,7 @@ GameObject:
   - component: {fileID: 1831073766}
   - component: {fileID: 1831073765}
   m_Layer: 0
-  m_Name: jardin_0
+  m_Name: GardenImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11771,7 +11807,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 381050329868028170, guid: ec2fbeedb8b2faa4b8d08b4668076099, type: 3}
       propertyPath: m_Name
-      value: Mantita
+      value: Blanket
       objectReference: {fileID: 0}
     - target: {fileID: 475307447167709376, guid: ec2fbeedb8b2faa4b8d08b4668076099, type: 3}
       propertyPath: m_Size.x
@@ -12172,7 +12208,7 @@ GameObject:
   - component: {fileID: 1893338767}
   - component: {fileID: 1893338766}
   m_Layer: 0
-  m_Name: MesaEscondite (3)
+  m_Name: TableHideOut5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13530,7 +13566,7 @@ GameObject:
   - component: {fileID: 2124593155}
   - component: {fileID: 2124593159}
   m_Layer: 0
-  m_Name: MesaEscondite
+  m_Name: TableHideOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14005,7 +14041,7 @@ GameObject:
   - component: {fileID: 2141424548}
   - component: {fileID: 2141424552}
   m_Layer: 0
-  m_Name: MesaEscondite (2)
+  m_Name: TableHideOut1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14591,7 +14627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5767841069475921872, guid: 6192918a746214a46b074814802aa290, type: 3}
       propertyPath: m_Name
-      value: Directora
+      value: Directress
       objectReference: {fileID: 0}
     - target: {fileID: 7523747400988837640, guid: 6192918a746214a46b074814802aa290, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14604,6 +14640,10 @@ PrefabInstance:
     - target: {fileID: 7523747400988837640, guid: 6192918a746214a46b074814802aa290, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792948242458030863, guid: 6192918a746214a46b074814802aa290, type: 3}
+      propertyPath: m_Name
+      value: DirectressVision
       objectReference: {fileID: 0}
     - target: {fileID: 8792948242458030863, guid: 6192918a746214a46b074814802aa290, type: 3}
       propertyPath: m_IsActive
@@ -14981,6 +15021,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.88459235
       objectReference: {fileID: 0}
+    - target: {fileID: 3537480742039107542, guid: 175109bc4504d9b45b6e2c3ad2ae091e, type: 3}
+      propertyPath: m_Name
+      value: Dialogue
+      objectReference: {fileID: 0}
     - target: {fileID: 3776923022850234689, guid: 175109bc4504d9b45b6e2c3ad2ae091e, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -15011,7 +15055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6175499759418025804, guid: 175109bc4504d9b45b6e2c3ad2ae091e, type: 3}
       propertyPath: m_Name
-      value: DialogCanvas
+      value: DialogueCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 8599238255059865499, guid: 175109bc4504d9b45b6e2c3ad2ae091e, type: 3}
       propertyPath: m_SizeDelta.x
@@ -15281,7 +15325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2854372717920814992, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: m_Name
-      value: Cocinero
+      value: Chef
       objectReference: {fileID: 0}
     - target: {fileID: 2854372717920814992, guid: c75f7a874a4ef7943aa78ce42d90168b, type: 3}
       propertyPath: m_Layer
@@ -15733,7 +15777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4082793434466057598, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
       propertyPath: m_Name
-      value: Segurata
+      value: Security
       objectReference: {fileID: 0}
     - target: {fileID: 4082793434466057598, guid: 7fad362c39d59934f9e1f052ae86fdf4, type: 3}
       propertyPath: m_Layer
@@ -16579,7 +16623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3172384838573841477, guid: 7be6c5b4dd34c184f84c9d3efa189b1e, type: 3}
       propertyPath: m_Name
-      value: Jugador
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4229237792428544835, guid: 7be6c5b4dd34c184f84c9d3efa189b1e, type: 3}
       propertyPath: handImage
