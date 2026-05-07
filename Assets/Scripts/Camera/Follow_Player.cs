@@ -66,8 +66,8 @@ public class Follow_Player : MonoBehaviour
     #region Métodos públicos
     // Teletransporta el objeto a una posición específica en el mundo
     public void Teleport(Vector3 pos)
-    { 
-        this.GetComponent<Transform>().position = pos;
+    {
+        transform.position = pos;
     }
     #endregion
 
