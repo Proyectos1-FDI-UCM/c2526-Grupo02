@@ -35,6 +35,8 @@ public class Dialogo : MonoBehaviour
     private AudioClip Middle;
     [SerializeField]
     private AudioClip Low;
+    [SerializeField]
+    private AudioClip Miau;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -58,7 +60,10 @@ public class Dialogo : MonoBehaviour
     private string _archive;
     private string _ruta;
     private float _timer;
-    private float _delayTime = 0.05f;
+    private float _delayTime = 0.3f;
+    private bool _toniete;
+    private bool _twitea;
+    private int _twiteaCountDown;
 
     #endregion
 
@@ -89,7 +94,17 @@ public class Dialogo : MonoBehaviour
             if (_talking)
             {
                 _playerController.Stop();
-
+                if (_toniete)
+                {
+                    if (_line == _script.GetLength(0))
+                    {
+                        Canvas.enabled = false;
+                        _line = 0;
+                        _talking = false;
+                        _toniete=false;
+                        _playerController.Resume();
+                    }
+                }
                 if (_line == _script.GetLength(0) + 1)
                 {
                     Canvas.enabled = false;
@@ -130,11 +145,31 @@ public class Dialogo : MonoBehaviour
                     Canvas.enabled = true;
                     if (_type) _typeAll = true;
                     else
-                    {
-                        if (_line < _script.GetLength(0))
+                    {   
+                        if (_toniete)
                         {
-                            WriteLine(_script[_line]);
+                            if (_line <= 0)
+                            { 
+                                if (_twiteaCountDown<2)
+                                {
+                                    WriteLine(_script[0]);
+                                    _twiteaCountDown++;
+                                }
+                                else
+                                {
+                                    WriteLine(_script[1]);
+                                    _twiteaCountDown = 0;
+                                }
+                            }
                         }
+                        else
+                        {
+                            if (_line < _script.GetLength(0))
+                            {
+                            WriteLine(_script[_line]);
+                            }
+                        }
+                       
                         _line++;
                     }
                 }
@@ -160,11 +195,16 @@ public class Dialogo : MonoBehaviour
                     if (_time >= Speed && _index < _currentLine.Length)
                     {
                         Dialogue.text += _currentLine[_index];
+                        if (_toniete)
+                        {
+                            _clip.PlayOneShot(Miau);
+                        }
+                        else
+                        {
                         if (_index % 2 == 0) _clip.PlayOneShot(High);
                         else if (_index % 3 == 0) _clip.PlayOneShot(Middle);
                         else _clip.PlayOneShot(Low);
-
-
+                        }
                         _index++;
                         _time = 0;
                     }
@@ -195,6 +235,19 @@ public class Dialogo : MonoBehaviour
     public void SetName(string inputName)
     {
         _name = inputName;
+    }
+    public void Twitea()
+    {
+        if (!_talking)
+        {
+            _talking = true;
+            _toniete = true;
+            _first = true;
+            _currentLine = "";
+            _script = new string[2];
+            _script[0] = "miauuuu";
+            _script[1] = "twitea toñete";
+        }
     }
     //Método con el que ponemos la velocidad a la que habla
     public void SetSpeed(float spd)
