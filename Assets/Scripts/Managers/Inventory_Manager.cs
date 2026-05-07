@@ -35,8 +35,7 @@ public class Inventory_Manager : MonoBehaviour
     [SerializeField]
     private Object _sujetado;
 
-    [SerializeField]
-    private float _delayTime = 0.01f;
+    
 
     [SerializeField]
     private RectTransform _selection; //índice visual
@@ -78,7 +77,9 @@ public class Inventory_Manager : MonoBehaviour
 
     private Object_use _objectUse;
 
-
+ 
+    private float _delayTime = 0.001f;
+    private float _delayTimeMove = 0.1f;
     private float _timer1 = 0.0f;
     private float _timer2 = 0.0f;
     private float _timer3 = 0.0f;
@@ -193,7 +194,7 @@ public class Inventory_Manager : MonoBehaviour
 
             if(dir.x != 0)
             {
-                if (_timer2 >= _delayTime)
+                if (_timer2 >= _delayTimeMove)
                 {
                     if (_currentItemIndex > 0 && HorizontalDir == -1)
                     {
