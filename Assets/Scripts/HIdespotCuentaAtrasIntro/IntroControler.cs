@@ -47,6 +47,8 @@ public class IntroControler : MonoBehaviour
     // Contador interno para medir el tiempo
     private float contadorTiempo = 0f;
     private InputAction _interact;
+    private float _timer;
+    private float _delayTime = 0.00001f;
 
     #endregion
 
@@ -84,12 +86,16 @@ public class IntroControler : MonoBehaviour
         // (se puede configurar en el inspector¡)
         if (contadorTiempo >= tiempoEntreFrases || _interact.WasPressedThisFrame() )
         {
-            // Reiniciamos el contador a 0 para empezar a contar otra vez
-            contadorTiempo = 0f;
-            // Avanzamos al siguiente índice del array (siguiente frase)
-            indice++;
-            // Actualizamos el texto en pantalla con la nueva frase
-            textoUI.text = historia[indice];
+            if (_timer >= _delayTime)
+            {
+                // Reiniciamos el contador a 0 para empezar a contar otra vez
+                contadorTiempo = 0f;
+                // Avanzamos al siguiente índice del array (siguiente frase)
+                indice++;
+                // Actualizamos el texto en pantalla con la nueva frase
+                textoUI.text = historia[indice];
+                _timer = 0f;
+            }
 
         //03. ACTIVAR BOTÓN AL FINAL
 
@@ -99,6 +105,10 @@ public class IntroControler : MonoBehaviour
                 // Activamos el botón para ir a la escena definida
                 GameManager.Instance.ChangeToNextScene(3);
             }
+        }
+        else
+        {
+            _timer += Time.deltaTime;
         }
     }
 
