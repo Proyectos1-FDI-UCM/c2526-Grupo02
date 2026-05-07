@@ -53,6 +53,5 @@ En esencia, el juego se centra en la resolución de puzles y acertijos, así com
 *(Añadir aquí los recursos )
 
 ## 👁️ Bug conocidos 
-* [Error 1]: Aveces hay de darle más de una vez al interactuar cuando te escondes para que funcione.No hemos logrado arreglarlo y creemos que proviene del la ejecución de unity
 * [Error 2]: No es un error pero puede molestar, si tienes el objeto equipado y das a interactuar con npc que necesita ese objeto, automáticamente te lo quita y sale la escena de dialogos
-* [Error 3]: Cuando paras de caminar el idle del niño siempre mria a una direción cocnreta, y cuando se pasa de andar a quieto aveces resulta raro.
+* [Error 3]: Cuando paras de caminar el idle del niño siempre mira a una dirección concreta, y cuando pasa de andar a quieto a veces resulta raro.
