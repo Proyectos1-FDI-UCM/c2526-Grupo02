@@ -4,10 +4,13 @@
 </p>
 
 <p align="center">
-  <img src="Assets/Images/escena1.png" width="300">
-  <img src="Assets/Images/escena1.png" width="300">
+  <img src="Assets/Images/escena2.png" width="300">
+  <img src="Assets/Images/escena3.png" width="300">
 </p>
-
+<p align="center">
+  <img src="Assets/Images/escena4.png" width="300">
+  <img src="Assets/Images/escena5.png" width="300">
+</p>
 ## 👥 Integrantes
 
 | Avatar | Miembro | Descripción / Rol |
