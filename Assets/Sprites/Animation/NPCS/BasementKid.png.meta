@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: b73f54cf675aec241b8ceedb0664df8f
+guid: 89b8ec130c210bc4899e1a4172358841
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6259440379094813346
-    second: Guille_0
+      213: -8947658065728301999
+    second: BasementKid_0
+  - first:
+      213: -5000423567075694961
+    second: BasementKid_1
+  - first:
+      213: 3738800203312359822
+    second: BasementKid_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Guille_0
+      name: BasementKid_0
       rect:
         serializedVersion: 2
-        x: 476
-        y: 10
-        width: 117
-        height: 146
+        x: 10
+        y: 15
+        width: 68
+        height: 140
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2aacea06cdffdd650800000000000000
-      internalID: 6259440379094813346
+      spriteID: 1541b9c556883d380800000000000000
+      internalID: -8947658065728301999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BasementKid_1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 15
+        width: 67
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8626f5524dea9ab0800000000000000
+      internalID: -5000423567075694961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BasementKid_2
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 13
+        width: 69
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e896794d9f2e2e330800000000000000
+      internalID: 3738800203312359822
       vertices: []
       indices: 
       edges: []
@@ -135,7 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Guille_0: 6259440379094813346
+      BasementKid_0: -8947658065728301999
+      BasementKid_1: -5000423567075694961
+      BasementKid_2: 3738800203312359822
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

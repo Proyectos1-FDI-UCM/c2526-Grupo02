@@ -5034,13 +5034,13 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.9, y: 4.866667}
+    oldSize: {x: 1.6714286, y: 2.0857143}
     newSize: {x: 1.17, y: 1.46}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.9, y: 4.866667}
+  m_Size: {x: 2.5, y: 3}
   m_EdgeRadius: 0
 --- !u!114 &747591630
 MonoBehaviour:
@@ -7923,11 +7923,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7216491046037799834, guid: ec2fbeedb8b2faa4b8d08b4668076099, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 70.96
+      value: 72.08
       objectReference: {fileID: 0}
     - target: {fileID: 7216491046037799834, guid: ec2fbeedb8b2faa4b8d08b4668076099, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.6
+      value: -5.23
       objectReference: {fileID: 0}
     - target: {fileID: 7216491046037799834, guid: ec2fbeedb8b2faa4b8d08b4668076099, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15861,6 +15861,14 @@ PrefabInstance:
       value: Conditional, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5341711887955205083, guid: 06f598fdf4066af4682c571bb1c4edb8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341711887955205083, guid: 06f598fdf4066af4682c571bb1c4edb8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341711887955205083, guid: 06f598fdf4066af4682c571bb1c4edb8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.8
       objectReference: {fileID: 0}
@@ -15903,6 +15911,14 @@ PrefabInstance:
     - target: {fileID: 6462725759749997516, guid: 06f598fdf4066af4682c571bb1c4edb8, type: 3}
       propertyPath: m_Name
       value: sotano_kid
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767779093465436818, guid: 06f598fdf4066af4682c571bb1c4edb8, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767779093465436818, guid: 06f598fdf4066af4682c571bb1c4edb8, type: 3}
+      propertyPath: m_Size.y
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8259521757246036511, guid: 06f598fdf4066af4682c571bb1c4edb8, type: 3}
       propertyPath: Mano
@@ -16092,6 +16108,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6462725759749997516, guid: 06f598fdf4066af4682c571bb1c4edb8, type: 3}
       insertIndex: 4
       addedObject: {fileID: 4385960181552679137}
+    - targetCorrespondingSourceObject: {fileID: 6462725759749997516, guid: 06f598fdf4066af4682c571bb1c4edb8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4385960181552679138}
   m_SourcePrefab: {fileID: 100100000, guid: 06f598fdf4066af4682c571bb1c4edb8, type: 3}
 --- !u!114 &4385960181552679136 stripped
 MonoBehaviour:
@@ -16198,6 +16217,28 @@ MonoBehaviour:
   NeededType: 4
   condition: 0
   Repeateable: 0
+--- !u!95 &4385960181552679138
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537684811}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0dc71d70a08e27e47a1a30954fb71de6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &4661791166959280423
 PrefabInstance:
   m_ObjectHideFlags: 0
