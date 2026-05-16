@@ -269,7 +269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &162630467
 RectTransform:
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 360}
+  m_AnchoredPosition: {x: 0, y: -360}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &162630468
@@ -3760,8 +3760,7 @@ MonoBehaviour:
   activateTimerInInspector: 1
   timerCanvas: {fileID: 1025855236}
   slider: {fileID: 1964870565}
-  duration: 60
-  GameOver: {fileID: 0}
+  duration: 3
   timerText: {fileID: 314003151}
   code:
     m_PersistentCalls:
@@ -3781,6 +3780,18 @@ MonoBehaviour:
       - m_Target: {fileID: 917050295}
         m_TargetAssemblyTypeName: Teleport, Assembly-CSharp
         m_MethodName: Tp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 917050293}
+        m_TargetAssemblyTypeName: TimeSlider, Assembly-CSharp
+        m_MethodName: StopTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

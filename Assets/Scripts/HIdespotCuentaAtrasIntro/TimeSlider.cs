@@ -36,9 +36,7 @@ public class TimeSlider : MonoBehaviour
 
     // Tiempo total que durará el cronómetro (en segundos)
     [SerializeField] private float duration = 10f;
-    
-    // Objeto o UI de Game Over (final de la partida)
-    [SerializeField] private GameObject GameOver;
+
 
     // Texto que muestra el tiempo restante en pantalla
     [SerializeField] private TMP_Text timerText;
@@ -119,11 +117,6 @@ public class TimeSlider : MonoBehaviour
                 // Cambia el texto final
                 timerText.text = "¡Demasiado tarde...!";
 
-                // Hay que activar el panel lolazo
-                if (GameOver != null)
-                {
-                    GameOver.SetActive(true);
-                }
                 // Para al jugador
                 if (player != null)
                 {
