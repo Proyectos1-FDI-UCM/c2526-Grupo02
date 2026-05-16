@@ -12,16 +12,22 @@
   <img src="Assets/Images/escena5.png" width="300">
 </p>
 
+## Mi proyecto
+
+Este juego ha sido desarrollado por estudiantes de la Facultad de Informática de la Universidad Complutense de Madrid.
+
+👉 Juega aquí: [itch.io](https://aleee-000.itch.io/dont-go-up)
+
 ## 👥 Integrantes
 
-| Avatar | Miembro | Descripción / Rol |
+| Avatar | Miembro | Página en itch.io |
 | :---: | :--- | :--- |
-| | **Pablo** | Nuestro niño rubio |
-|| **Alejandra** | 
-|  | **Alejandro** | 
-| | **Hermes** | 
-|| **Sara** | 
-|  | **Jesus** |
+| | **Pablo Polegre** | Nuestro niño rubio |
+|| **Alejandra Martínez** | [itch.io](https://aleee-000.itch.io/) |
+|  | **Alejandro Jiménez** | 
+| | **Hermes González** | 
+|| **Sara Quílez** | 
+|  | **Jesus Diez** |[itch.io](https://jesusdiezapp.itch.io/) |
 
 ---
 
