@@ -3760,7 +3760,7 @@ MonoBehaviour:
   activateTimerInInspector: 1
   timerCanvas: {fileID: 1025855236}
   slider: {fileID: 1964870565}
-  duration: 3
+  duration: 60
   timerText: {fileID: 314003151}
   code:
     m_PersistentCalls:
