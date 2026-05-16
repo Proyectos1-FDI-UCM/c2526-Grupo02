@@ -62,13 +62,13 @@ public class Pausa_controller : MonoBehaviour
 
         //Busca todos los objetos activos en la escena que tengan el componente Enemy_Detect,
         //no los ordena y los guarda en el array enemigos
-        Enemy_Detect[] enemigos = Object.FindObjectsByType<Enemy_Detect>(FindObjectsSortMode.None);
+        //Enemy_Detect[] enemigos = Object.FindObjectsByType<Enemy_Detect>(FindObjectsSortMode.None);
 
-        //
-        foreach (Enemy_Detect enemy in enemigos) //por cada enemigo dentro del array enemigos 
-        {
-            enemy.gameObject.SetActive(!paused); //Desactiva a los enemigos, para que no te puedan atacar
-        }
+        ////
+        //foreach (Enemy_Detect enemy in enemigos) //por cada enemigo dentro del array enemigos 
+        //{
+        //    enemy.gameObject.SetActive(!paused); //Desactiva a los enemigos, para que no te puedan atacar
+        //}
 
         if (IsGamePaused) //si está pausao el jugador no se mueve
         {

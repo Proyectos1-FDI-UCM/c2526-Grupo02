@@ -70,9 +70,6 @@ public class Lamp : MonoBehaviour
     /// </summary>
     void Update()
     {
-      
-
-        
         if (!Pausa_controller.IsGamePaused)
         {
             float angle = _angles * Mathf.Sin(Time.time * _speed);

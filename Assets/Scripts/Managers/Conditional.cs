@@ -143,6 +143,12 @@ public class Conditional : MonoBehaviour
             negativeCode.Invoke();
         }
     }
+
+
+    public void SetUsed()
+    {
+        _used = true;
+    }
 #endregion
     
 

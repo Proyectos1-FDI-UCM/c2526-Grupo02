@@ -84,8 +84,7 @@ public class Phases : MonoBehaviour
 
     public void EnemyPhases(Collider2D collision) //Método que lleva las fases de los enemigos
     {
-        if (!Pausa_controller.IsGamePaused)
-        {
+       
             var player = collision.GetComponent<Player_Controller>();
 
             if (player != null)
@@ -94,7 +93,6 @@ public class Phases : MonoBehaviour
                    
                 
                 int fase = _detect.GetState();
-                _animator.SetInteger("Fase", fase);
                 switch (fase)
                 {
                     case 0:
@@ -111,7 +109,7 @@ public class Phases : MonoBehaviour
                         break;
                 }
             }
-        }
+        
     }
 
     #endregion

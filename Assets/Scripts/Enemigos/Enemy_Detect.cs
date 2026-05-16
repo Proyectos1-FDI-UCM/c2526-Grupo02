@@ -36,6 +36,8 @@ public class Enemy_Detect : MonoBehaviour
     private bool _playerIsInside;
     //Variable para esconderse
     private HideSystem HideSystem;
+
+    private static  bool _debugInvencible = false;
     
   
     #endregion
@@ -83,7 +85,7 @@ public class Enemy_Detect : MonoBehaviour
     void Update()
     {
         // si el jugador está dentro vamos contando el tiempo hacia arriba
-        if (_playerIsInside && !HideSystem.IsHiding && !Pausa_controller.IsGamePaused)
+        if (_playerIsInside && !HideSystem.IsHiding && !Pausa_controller.IsGamePaused && !_debugInvencible)
         {
             //Si el tiempo es menor que el máximo, se sigue contando hacia arriba
             if (_time <= MaxStateTime)
@@ -130,6 +132,11 @@ public class Enemy_Detect : MonoBehaviour
     #region Métodos públicos
     public int GetState()
         { return _state; }
+
+    public static void SwitchInvencibility()
+    {
+        _debugInvencible = !_debugInvencible;
+    }
     #endregion
 
 

@@ -132,7 +132,10 @@ public class Teleport : MonoBehaviour
         camAux.x = TargetDestination.x;
         camAux.y = TargetDestination.y+2;
         Camera.transform.position = camAux;
-        _clip.Play();
+        if (_clip != null)
+        {
+            _clip.Play();
+        }
     }
 
     #endregion

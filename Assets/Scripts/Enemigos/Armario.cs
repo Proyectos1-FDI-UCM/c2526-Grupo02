@@ -126,7 +126,8 @@ public class Armario : MonoBehaviour
         if (!Pausa_controller.IsGamePaused)
         {
             _timer += Time.deltaTime;
-            if (_currentState == CabinetState.Active && _timer >= timeToDeactivate)
+        }
+        if (_currentState == CabinetState.Active && _timer >= timeToDeactivate)
             {
                 _currentState = CabinetState.Inactive;
                 _timer = 0;
@@ -138,7 +139,7 @@ public class Armario : MonoBehaviour
                 _timer = 0;
                 UpdateVisuals(true);
             }
-        }
+        
     }
 
 
