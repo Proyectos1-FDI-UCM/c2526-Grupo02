@@ -119,6 +119,11 @@ public class TimeSlider : MonoBehaviour
                 // Cambia el texto final
                 timerText.text = "¡Demasiado tarde...!";
 
+                // Hay que activar el panel lolazo
+                if (GameOver != null)
+                {
+                    GameOver.SetActive(true);
+                }
                 // Para al jugador
                 if (player != null)
                 {
