@@ -81,4 +81,5 @@ http://creativecommons.org/licenses/by/4.0/
 * [Error 2]: Cuando paras de caminar el idle del niño siempre mira a una dirección concreta, y cuando pasa de andar a quieto a veces resulta raro.
 * [Error 3]: El primer diálogo del cocinero está entrecortado,no afecta a la historia pero es molesto.
 * [Error 4]: Algunos acentos no se muestran correctamente.
-
+* [Error 5]: Cuando te saltas la intro la musica de la intro se superpone a la musica de fondo el resto del juego.
+* [Error 6]: Cuando estas encima de un escondite y seleccionas un objeto puede que te atasques.
