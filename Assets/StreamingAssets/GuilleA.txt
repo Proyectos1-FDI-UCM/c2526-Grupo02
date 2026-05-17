@@ -1,4 +1,2 @@
 ¿Como se supone que juegue con estos ladrillos?
-Ni mecánicas implementadas tiene
-Huelo puras corrutinas dentro
-Seguro no hacían dailys.
+Quiero meter la esfera por el cuadrado.
