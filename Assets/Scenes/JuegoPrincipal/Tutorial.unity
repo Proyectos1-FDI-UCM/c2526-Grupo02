@@ -1029,8 +1029,8 @@ Transform:
   m_GameObject: {fileID: 313182095}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.720917, y: -7.26807, z: -0.025299152}
-  m_LocalScale: {x: 205.1525, y: 1, z: 1}
+  m_LocalPosition: {x: -30, y: -7.26807, z: -0.025299152}
+  m_LocalScale: {x: 95, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 701879203}
@@ -2695,8 +2695,8 @@ Transform:
   m_GameObject: {fileID: 936297877}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.720917, y: 7.41193, z: -0.025299152}
-  m_LocalScale: {x: 205.1525, y: 1, z: 1}
+  m_LocalPosition: {x: -30, y: 7.41193, z: -0.025299152}
+  m_LocalScale: {x: 95, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 701879203}
@@ -4355,8 +4355,8 @@ Transform:
   m_GameObject: {fileID: 1327696747}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -76.07092, y: -7.2680717, z: -0.025299152}
-  m_LocalScale: {x: 205.15251, y: 1, z: 1}
+  m_LocalPosition: {x: -76.07092, y: 0, z: -0.025299152}
+  m_LocalScale: {x: 20, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 701879203}
@@ -5516,8 +5516,8 @@ Transform:
   m_GameObject: {fileID: 1659051386}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 16.429081, y: -7.2680717, z: -0.025299152}
-  m_LocalScale: {x: 205.15251, y: 1, z: 1}
+  m_LocalPosition: {x: 16.429081, y: 0, z: -0.025299152}
+  m_LocalScale: {x: 20, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 701879203}
@@ -6389,7 +6389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6796723685309551226, guid: 7be6c5b4dd34c184f84c9d3efa189b1e, type: 3}
       propertyPath: m_SortingOrder
-      value: 5
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8651979121576136995, guid: 7be6c5b4dd34c184f84c9d3efa189b1e, type: 3}
       propertyPath: m_LocalScale.y
