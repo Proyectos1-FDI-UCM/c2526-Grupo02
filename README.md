@@ -22,11 +22,11 @@ Este juego ha sido desarrollado por estudiantes de la Facultad de Informática d
 
 | Avatar | Miembro | Página en itch.io |
 | :---: | :--- | :--- |
-| | **Pablo Polegre** | Nuestro niño rubio |
+| | **Pablo Polegre** | [itch.io](https://crukito59.itch.io/) |
 || **Alejandra Martínez** | [itch.io](https://aleee-000.itch.io/) |
-|  | **Alejandro Jiménez** | 
-| | **Hermes González** | 
-|| **Sara Quílez** | 
+|  | **Alejandro Jiménez** | [itch.io](https://alexjiro742.itch.io/) |
+| | **Hermes González** | [itch.io](https://hermes-0.itch.io/) |
+|| **Sara Quílez** |[itch.io](https://sara-0713.itch.io/) |
 |  | **Jesus Diez** |[itch.io](https://jesusdiezapp.itch.io/) |
 
 ---
