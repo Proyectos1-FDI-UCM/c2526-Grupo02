@@ -246,7 +246,7 @@ public class Dialogo : MonoBehaviour
             _currentLine = "";
             _script = new string[2];
             _script[0] = "miauuuu";
-            _script[1] = "twitea toñete";
+            _script[1] = "(Niño acuerdate de mirar arriba)";
         }
     }
     //Método con el que ponemos la velocidad a la que habla

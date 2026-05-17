@@ -588,6 +588,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2758610764121051824, guid: 7be6c5b4dd34c184f84c9d3efa189b1e, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2821457594948951414, guid: 7be6c5b4dd34c184f84c9d3efa189b1e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.39188
@@ -4533,7 +4537,7 @@ MonoBehaviour:
   activateTimerInInspector: 1
   timerCanvas: {fileID: 1025855236}
   slider: {fileID: 1964870565}
-  duration: 60
+  duration: 45
   timerText: {fileID: 314003151}
   code:
     m_PersistentCalls:
