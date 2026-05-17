@@ -79,3 +79,6 @@ http://creativecommons.org/licenses/by/4.0/
 ## 👁️ Bug conocidos 
 * [Error 1]: No es un error pero puede molestar, si tienes el objeto equipado y das a interactuar con npc que necesita ese objeto, automáticamente te lo quita y sale la escena de dialogos
 * [Error 2]: Cuando paras de caminar el idle del niño siempre mira a una dirección concreta, y cuando pasa de andar a quieto a veces resulta raro.
+* [Error 3]: El primer diálogo del cocinero está entrecortado,no afecta a la historia pero es molesto.
+* [Error 4]: Algunos acentos no se muestran correctamente.
+
