@@ -648,6 +648,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3682994802574069962, guid: 7be6c5b4dd34c184f84c9d3efa189b1e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4229237792428544835, guid: 7be6c5b4dd34c184f84c9d3efa189b1e, type: 3}
       propertyPath: handImage
       value: 
@@ -853,7 +857,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177098164}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 721628e6871e33d4b8e141d0ea3ccd7b, type: 3}
   m_Name: 
@@ -4938,7 +4942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &983847216
 Transform:
   m_ObjectHideFlags: 0
